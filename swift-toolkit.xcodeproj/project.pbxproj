@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8AB18EF01F86360300F1A65C /* swift_toolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB18EEE1F86360300F1A65C /* swift_toolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AB18EF71F86365100F1A65C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB18EF61F86365100F1A65C /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8AB18EEB1F86360300F1A65C /* swift_toolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_toolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB18EEE1F86360300F1A65C /* swift_toolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swift_toolkit.h; sourceTree = "<group>"; };
 		8AB18EEF1F86360300F1A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AB18EF61F86365100F1A65C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		8AB18EED1F86360300F1A65C /* swift-toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				8AB18EF61F86365100F1A65C /* Extensions.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
 				8AB18EEF1F86360300F1A65C /* Info.plist */,
 			);
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					8AB18EEA1F86360300F1A65C = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB18EF71F86365100F1A65C /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +258,7 @@
 		8AB18EF41F86360300F1A65C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +272,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rlc.swift-toolkit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -274,6 +281,7 @@
 		8AB18EF51F86360300F1A65C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
