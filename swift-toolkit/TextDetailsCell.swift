@@ -13,6 +13,6 @@ public class TextDetailsCell : ConfigurableCell {
         get { return "TextDetailsCell" }
     }
     
-    @IBOutlet weak var title: RWLabel!
-    @IBOutlet weak var subtitle: RWLabel!
+    @IBOutlet public weak var title: RWLabel!
+    @IBOutlet public weak var subtitle: RWLabel!
 }
