@@ -97,11 +97,11 @@ public extension Date {
     init(_ day: Int, _ month:Int, _ year: Int) {
         self.init(timeInterval: 0, since: DateComponents(day, month, year).toDate())
     }
-
+    
     var day: Int {
         get { return DateComponents(date: self).day! }
     }
-
+    
     var weekday: Int {
         get { return DateComponents(date: self).weekday! }
     }
@@ -109,7 +109,7 @@ public extension Date {
     var month: Int {
         get { return DateComponents(date: self).month! }
     }
-
+    
     var year: Int {
         get { return DateComponents(date: self).year! }
     }
@@ -275,14 +275,14 @@ public extension UIImage {
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         return scaledImage!
     }
-
+    
 }
 
 public extension String {
     subscript (i: Int) -> String {
         return String(Array(self.characters)[i])
     }
-
+    
     func capitalizingFirstLetter() -> String {
         let first = String(characters.prefix(1)).capitalized
         let other = String(characters.dropFirst())
@@ -308,7 +308,7 @@ public extension UIFont {
 
 public extension UIDevice {
     static var modelName: String {
- 
+        
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             let DEVICE_IS_SIMULATOR = true
         #else

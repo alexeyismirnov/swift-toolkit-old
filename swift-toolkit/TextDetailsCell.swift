@@ -9,7 +9,7 @@
 import UIKit
 
 public class TextDetailsCell : ConfigurableCell {
-    override class var cellId: String {
+    override public class var cellId: String {
         get { return "TextDetailsCell" }
     }
     

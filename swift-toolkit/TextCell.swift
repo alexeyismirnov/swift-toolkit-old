@@ -9,10 +9,10 @@
 import UIKit
 
 public class TextCell : ConfigurableCell {
-    override class var cellId: String {
+    override public class var cellId: String {
         get { return "TextCell" }
     }
 
-    @IBOutlet weak var title: RWLabel!
+    @IBOutlet public weak var title: RWLabel!
     
 }

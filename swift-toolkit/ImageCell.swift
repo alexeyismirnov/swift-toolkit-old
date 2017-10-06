@@ -9,7 +9,7 @@
 import UIKit
 
 public class ImageCell : ConfigurableCell {
-    override class var cellId: String {
+    override public class var cellId: String {
         get { return "ImageCell" }
     }
     

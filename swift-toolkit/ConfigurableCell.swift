@@ -9,7 +9,7 @@
 import UIKit
 
 public class ConfigurableCell : UITableViewCell  {
-    class var cellId: String {
+    public class var cellId: String {
         get { return "" }
     }
     
