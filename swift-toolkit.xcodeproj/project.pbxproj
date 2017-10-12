@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1238081F8F3C8900F6B382 /* Animation.swift */; };
+		8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */; };
+		8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */; };
 		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
 		8A5F0BE61F872D8F0059194A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE01F872D8F0059194A /* ImageCell.swift */; };
 		8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A1238081F8F3C8900F6B382 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimated.swift; sourceTree = "<group>"; };
+		8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimated.swift; sourceTree = "<group>"; };
 		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
 		8A5F0BE01F872D8F0059194A /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -58,6 +64,9 @@
 		8AB18EED1F86360300F1A65C /* swift-toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				8A1238081F8F3C8900F6B382 /* Animation.swift */,
+				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
+				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */,
 				8A5F0BE01F872D8F0059194A /* ImageCell.swift */,
@@ -150,11 +159,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
 				8A5F0BE91F872D8F0059194A /* TextDetailsCell.swift in Sources */,
 				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
 				8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */,
+				8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */,
+				8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */,
 				8A5F0BE61F872D8F0059194A /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
