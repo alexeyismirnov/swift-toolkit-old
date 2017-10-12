@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class UIViewControllerAnimated : UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+open class UIViewControllerAnimated : UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     var animation = UIViewControllerAnimator()
     var animationInteractive = UIViewControllerAnimatorInteractive()
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         navigationController?.delegate = self
         animationInteractive.completionSpeed = 0.999
         

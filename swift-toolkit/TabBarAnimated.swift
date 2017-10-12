@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class UITabBarControllerAnimated: UITabBarController, UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning {
+open class UITabBarControllerAnimated: UITabBarController, UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning {
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1.0
     }
