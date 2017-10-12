@@ -21,15 +21,15 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
         view.addGestureRecognizer(pan)
     }
     
-    public func viewControllerCurrent() -> UIViewController {
+    open func viewControllerCurrent() -> UIViewController {
         fatalError("This method must be overridden")
     }
     
-    public func viewControllerForward() -> UIViewController {
+    open func viewControllerForward() -> UIViewController {
         fatalError("This method must be overridden")
     }
     
-    public func viewControllerBackward() -> UIViewController {
+    open func viewControllerBackward() -> UIViewController {
         fatalError("This method must be overridden")
     }
     
