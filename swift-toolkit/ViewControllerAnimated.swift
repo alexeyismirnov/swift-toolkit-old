@@ -12,13 +12,15 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
     var animation = UIViewControllerAnimator()
     var animationInteractive = UIViewControllerAnimatorInteractive()
     
+    public var panGesture :UIPanGestureRecognizer!
+    
     override open func viewDidLoad() {
         navigationController?.delegate = self
         animationInteractive.completionSpeed = 0.999
         
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan))
-        pan.delegate = self
-        view.addGestureRecognizer(pan)
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan))
+        panGesture.delegate = self
+        view.addGestureRecognizer(panGesture)
     }
     
     open func viewControllerCurrent() -> UIViewController {
