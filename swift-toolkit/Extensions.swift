@@ -413,8 +413,8 @@ public extension UIImage {
 }
 
 public extension UIViewController {
-    static func named(_ name: String) -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    static func named(_ name: String, bundle : Bundle? = nil) -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         return storyboard.instantiateViewController(withIdentifier: name)
     }
 }
