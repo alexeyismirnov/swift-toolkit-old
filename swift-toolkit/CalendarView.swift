@@ -10,7 +10,7 @@ import UIKit
 
 public let dateChangedNotification = "DATE_CHANGED"
 
-protocol CellWithDate {
+public protocol CellWithDate {
     var currentDate : Date? { get }
     func configureCell(date : Date?)
 }
