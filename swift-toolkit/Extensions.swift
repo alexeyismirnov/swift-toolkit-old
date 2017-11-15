@@ -189,7 +189,7 @@ public struct DateRange : Sequence {
     var startDate: Date
     var endDate: Date
     
-    init (_ arg1: Date, _ arg2: Date){
+    public init (_ arg1: Date, _ arg2: Date){
         startDate = arg1-1.days
         endDate = arg2
     }
