@@ -13,7 +13,7 @@ public class ImageCell : ConfigurableCell {
         get { return "ImageCell" }
     }
     
-    @IBOutlet weak var title: RWLabel!
-    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet public weak var title: RWLabel!
+    @IBOutlet public weak var icon: UIImageView!
     
 }

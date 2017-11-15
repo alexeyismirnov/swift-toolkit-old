@@ -18,8 +18,6 @@ public class RWLabel : UILabel {
                     self.setNeedsDisplay()
 
                 })
-
-                
             }
         }
     }
