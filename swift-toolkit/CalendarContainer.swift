@@ -29,7 +29,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     var cellReuseIdentifier : String! 
     var cellNibName : String!
     
-    public static func show(inVC: UIViewController, cellReuseIdentifier: String, cellNibName: String) {
+    public static func show(inVC: UIViewController, cellReuseIdentifier: String, cellNibName: String) -> PopupController {
         let bundle = Bundle(identifier: "com.rlc.swift-toolkit")
 
         let container = UIViewController.named("CalendarContainer", bundle: bundle) as! CalendarNavigation
@@ -41,14 +41,13 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         container.navigationBar.tintColor = .blue
         container.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black]
         
-        PopupController
+        let popup = PopupController
             .create(inVC)
             .customize(
                 [
                     .animation(.fadeIn),
                     .layout(.center),
                     .backgroundStyle(.blackFilter(alpha: 0.7))
-                    
                 ]
             )
  /*
@@ -56,7 +55,9 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
                 NotificationCenter.default.post(name: Notification.Name(rawValue: calendarClosedNotification), object: nil, userInfo: nil)
             }
  */
-            .show(container)
+        
+        popup.show(container)
+        return popup
     }
         
     override public func viewDidLoad() {
