@@ -162,9 +162,8 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         
     }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-        print("end scrolling " , scrollView.contentOffset.x)
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("end dragging " , scrollView.contentOffset.x, decelerate)
     }
     
     func generateLabels(_ view: UIView, standalone : Bool = false, textColor : UIColor? = nil, fontSize : CGFloat? = nil) {
