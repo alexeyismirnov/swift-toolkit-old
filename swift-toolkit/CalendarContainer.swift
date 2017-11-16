@@ -162,7 +162,8 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         
     }
     
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    
         print("end scrolling " , scrollView.contentOffset.x)
     }
     
