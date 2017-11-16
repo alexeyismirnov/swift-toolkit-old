@@ -12,7 +12,7 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
     var animation = UIViewControllerAnimator()
     var animationInteractive = UIViewControllerAnimatorInteractive()
     
-    public var panGesture :UIPanGestureRecognizer!
+    var panGesture :UIPanGestureRecognizer!
     
     override open func viewDidLoad() {
         navigationController?.delegate = self

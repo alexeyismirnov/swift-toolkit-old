@@ -138,6 +138,8 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         let contentOffsetWhenFullyScrolledRight = collectionView.frame.size.width * CGFloat(dates.count - 1)
         var current = dates[1]
 
+        print("end decel " , scrollView.contentOffset.x)
+
         if scrollView.contentOffset.x == 0 {
             current = dates[0]
         } else if scrollView.contentOffset.x == contentOffsetWhenFullyScrolledRight {
@@ -158,6 +160,10 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
             UIView.setAnimationsEnabled(true)
         })
         
+    }
+    
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        print("end scrolling " , scrollView.contentOffset.x)
     }
     
     func generateLabels(_ view: UIView, standalone : Bool = false, textColor : UIColor? = nil, fontSize : CGFloat? = nil) {
