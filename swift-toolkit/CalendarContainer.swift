@@ -48,11 +48,14 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
                     .animation(.fadeIn),
                     .layout(.center),
                     .backgroundStyle(.blackFilter(alpha: 0.7))
+                    
                 ]
             )
+ /*
             .didCloseHandler { _ in
                 NotificationCenter.default.post(name: Notification.Name(rawValue: calendarClosedNotification), object: nil, userInfo: nil)
             }
+ */
             .show(container)
     }
         
@@ -134,12 +137,10 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
 
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func adjustView(_ scrollView: UIScrollView) {
         let contentOffsetWhenFullyScrolledRight = collectionView.frame.size.width * CGFloat(dates.count - 1)
         var current = dates[1]
-
-        print("end decel " , scrollView.contentOffset.x)
-
+        
         if scrollView.contentOffset.x == 0 {
             current = dates[0]
         } else if scrollView.contentOffset.x == contentOffsetWhenFullyScrolledRight {
@@ -147,7 +148,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         }
         
         setTitle(fromDate: current)
-
+        
         collectionView.performBatchUpdates({
             self.dates[0] = current-1.months
             self.dates[1] = current
@@ -159,7 +160,10 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
             self.collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .left, animated: false)
             UIView.setAnimationsEnabled(true)
         })
-        
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        adjustView(scrollView)
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

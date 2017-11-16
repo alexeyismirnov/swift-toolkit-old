@@ -189,7 +189,7 @@ private extension PopupController {
         baseScrollView.frame = view.frame
         view.addSubview(baseScrollView)
         
-        popupView.layer.cornerRadius = 2
+        popupView.layer.cornerRadius = 10
         popupView.layer.masksToBounds = true
         popupView.frame.origin.y = 0
         
