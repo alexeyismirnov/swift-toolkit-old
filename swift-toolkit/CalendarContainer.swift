@@ -29,13 +29,15 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     var cellReuseIdentifier : String! 
     var cellNibName : String!
     
-    public static func show(inVC: UIViewController, cellReuseIdentifier: String, cellNibName: String) -> PopupController {
+    public static func show(inVC: UIViewController, cellReuseIdentifier: String, cellNibName: String, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
         let bundle = Bundle(identifier: "com.rlc.swift-toolkit")
 
         let container = UIViewController.named("CalendarContainer", bundle: bundle) as! CalendarNavigation
         let calendar = container.topViewController as! CalendarContainer
         calendar.cellNibName = cellNibName
         calendar.cellReuseIdentifier = cellReuseIdentifier
+        calendar.navigationItem.leftBarButtonItem = leftButton
+        calendar.navigationItem.rightBarButtonItem = rightButton
         
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
         container.navigationBar.tintColor = .blue
