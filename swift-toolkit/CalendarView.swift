@@ -15,22 +15,22 @@ public protocol CellWithDate {
     func configureCell(date : Date?)
 }
 
-class CalendarViewCell: UICollectionViewCell, UICollectionViewDelegateFlowLayout {
+class CalendarViewCell: UICollectionViewCell {
     static let cellId = "CalendarCell"
 
     var collectionView: UICollectionView!
-    var dataSource : CalendarDataSource!
+    var delegate : CalendarDelegate!
     var cellReuseIdentifier : String! {
         didSet {
             collectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
-            dataSource.cellReuseIdentifier = cellReuseIdentifier
+            delegate.cellReuseIdentifier = cellReuseIdentifier
         }
     }
     var cellNibName : String!
     
     var currentDate: Date! {
         didSet {
-            dataSource.currentDate = currentDate
+            delegate.currentDate = currentDate
             collectionView.reloadData()
         }
     }
@@ -52,21 +52,16 @@ class CalendarViewCell: UICollectionViewCell, UICollectionViewDelegateFlowLayout
         collectionView = UICollectionView(frame: initialFrame, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clear
 
-        dataSource = CalendarDataSource()
+        delegate = CalendarDelegate()
         
-        collectionView.delegate = self
-        collectionView.dataSource = dataSource
+        collectionView.dataSource = delegate
+        collectionView.delegate = delegate
         
         let recognizer = UITapGestureRecognizer(target: self, action:#selector(doneWithDate(_:)))
         recognizer.numberOfTapsRequired = 1
         collectionView.addGestureRecognizer(recognizer)
         
         contentView.addSubview(collectionView)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = (collectionView.bounds.width-1) / 7.0
-        return CGSize(width: cellWidth, height: cellWidth)
     }
     
     @objc func doneWithDate(_ recognizer: UITapGestureRecognizer) {

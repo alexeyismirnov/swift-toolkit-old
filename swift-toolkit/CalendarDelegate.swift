@@ -8,18 +8,17 @@
 
 import UIKit
 
-class CalendarDataSource: NSObject, UICollectionViewDataSource {
+public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var startGap: Int!
     var selectedDate: Date?
-    var textSize : CGFloat?
-    var cellReuseIdentifier : String!
+    public var cellReuseIdentifier : String!
     
     var cal: Calendar = {
         let c = Calendar.current
         return c
     }()
     
-    var currentDate: Date! {
+    public var currentDate: Date! {
         didSet {
             let monthStart = Date(1, currentDate.month, currentDate.year)
             cal.locale = Locale(identifier: "ru")
@@ -27,11 +26,11 @@ class CalendarDataSource: NSObject, UICollectionViewDataSource {
         }
     }
 
-    @objc func numberOfSections(in collectionView: UICollectionView) -> Int {
+    @objc public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    @objc public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (currentDate == nil) {
             return 0
         }
@@ -40,7 +39,7 @@ class CalendarDataSource: NSObject, UICollectionViewDataSource {
         return range.length + startGap
     }
     
-    @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! CellWithDate
         var curDate : Date? = nil
         
@@ -52,6 +51,11 @@ class CalendarDataSource: NSObject, UICollectionViewDataSource {
         cell.configureCell(date: curDate)
         
         return cell as! UICollectionViewCell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = (collectionView.bounds.width-1) / 7.0
+        return CGSize(width: cellWidth, height: cellWidth)
     }
 
 }

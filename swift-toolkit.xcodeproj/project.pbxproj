@@ -18,7 +18,7 @@
 		8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BEA1F8732650059194A /* Extensions.swift */; };
 		8AB18EF01F86360300F1A65C /* swift_toolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB18EEE1F86360300F1A65C /* swift_toolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC338151FB851C100CF0D02 /* Main.storyboard */; };
-		8AC3381E1FB879D300CF0D02 /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381A1FB879D200CF0D02 /* CalendarDataSource.swift */; };
+		8AC3381E1FB879D300CF0D02 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */; };
 		8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381B1FB879D200CF0D02 /* PopupController.swift */; };
 		8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */; };
 		8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381D1FB879D300CF0D02 /* CalendarView.swift */; };
@@ -38,7 +38,7 @@
 		8AB18EEE1F86360300F1A65C /* swift_toolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swift_toolkit.h; sourceTree = "<group>"; };
 		8AB18EEF1F86360300F1A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AC338151FB851C100CF0D02 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8AC3381A1FB879D200CF0D02 /* CalendarDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
+		8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
 		8AC3381B1FB879D200CF0D02 /* PopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarContainer.swift; sourceTree = "<group>"; };
 		8AC3381D1FB879D300CF0D02 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
-				8AC3381A1FB879D200CF0D02 /* CalendarDataSource.swift */,
+				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
 				8AC3381D1FB879D300CF0D02 /* CalendarView.swift */,
 				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
 				8A1238081F8F3C8900F6B382 /* Animation.swift */,
@@ -175,7 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AC3381E1FB879D300CF0D02 /* CalendarDataSource.swift in Sources */,
+				8AC3381E1FB879D300CF0D02 /* CalendarDelegate.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
