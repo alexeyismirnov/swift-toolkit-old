@@ -39,6 +39,8 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         calendar.navigationItem.leftBarButtonItem = leftButton
         calendar.navigationItem.rightBarButtonItem = rightButton
         
+        calendar.navigationController!.navigationBar.tintColor = .black
+        
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
         container.navigationBar.tintColor = .blue
         container.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black]
