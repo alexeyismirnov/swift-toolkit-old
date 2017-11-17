@@ -98,7 +98,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
             layout.itemSize = CGSize(width: 500, height: 500)
         }
         
-        generateLabels(view)
+        CalendarContainer.generateLabels(view)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -175,7 +175,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    func generateLabels(_ view: UIView, standalone : Bool = false, textColor : UIColor? = nil, fontSize : CGFloat? = nil) {
+    public static func generateLabels(_ view: UIView, standalone : Bool = false, textColor : UIColor? = nil, fontSize : CGFloat? = nil) {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLLL yyyy"
         formatter.locale = Locale(identifier: "ru")
