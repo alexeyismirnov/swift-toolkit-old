@@ -8,8 +8,6 @@
 
 import UIKit
 
-public let calendarClosedNotification = "CALENDAR_POPUP_CLOSED"
-
 class CalendarNavigation: UINavigationController, PopupContentViewController {
     func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
         
@@ -39,11 +37,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         calendar.navigationItem.leftBarButtonItem = leftButton
         calendar.navigationItem.rightBarButtonItem = rightButton
         
-       
-        calendar.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.red]
-
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
-        container.navigationBar.tintColor = .blue
         container.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black]
         
         let popup = PopupController
@@ -55,11 +49,6 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
                     .backgroundStyle(.blackFilter(alpha: 0.7))
                 ]
             )
- /*
-            .didCloseHandler { _ in
-                NotificationCenter.default.post(name: Notification.Name(rawValue: calendarClosedNotification), object: nil, userInfo: nil)
-            }
- */
         
         popup.show(container)
         return popup
@@ -102,6 +91,9 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         }
         
         CalendarContainer.generateLabels(view)
+        
+        let vc = UIViewController.named("calendar_info")
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
