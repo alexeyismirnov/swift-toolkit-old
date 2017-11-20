@@ -198,15 +198,22 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
             }
         }
         
-        if let color = textColor,
-            let size = fontSize {
+        if let color = textColor {
             for index in 1...7 {
                 if let label = view.viewWithTag(index) as? UILabel {
                     label.textColor =  color
+                }
+            }
+        }
+
+        if let size = fontSize {
+            for index in 1...7 {
+                if let label = view.viewWithTag(index) as? UILabel {
                     label.font = UIFont.systemFont(ofSize: size)
                 }
             }
         }
+
     }
 
 }
