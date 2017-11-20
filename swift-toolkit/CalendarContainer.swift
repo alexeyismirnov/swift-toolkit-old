@@ -91,9 +91,6 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         }
         
         CalendarContainer.generateLabels(view)
-        
-        let vc = UIViewController.named("calendar_info")
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
