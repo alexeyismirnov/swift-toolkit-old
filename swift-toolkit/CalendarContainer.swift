@@ -40,6 +40,9 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
         container.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black]
         
+        let vc = UIViewController.named("test", bundle: bundle) as! UIViewController
+        container.pushViewController(vc, animated: false)
+
         let popup = PopupController
             .create(inVC)
             .customize(
