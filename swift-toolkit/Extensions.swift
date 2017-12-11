@@ -470,7 +470,7 @@ public func findIndex<S: Sequence>(_ sequence: S, predicate: (S.Iterator.Element
     return nil
 }
 
-extension Collection  {
+public extension Collection  {
     subscript (safe index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
