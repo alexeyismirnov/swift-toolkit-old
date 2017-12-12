@@ -492,7 +492,15 @@ public extension UIImageView {
                 
                 print(rect)
                 
-                //self.frame = rect
+                if let imageCell = cell as? ImageCell {
+                    imageCell.icon!.constraints.forEach { con in
+                        if con.identifier == "icon-width" {
+                            con.constant = rect.width
+                        } else if con.identifier == "icon-height" {
+                            con.constant = rect.height
+                        }
+                    }
+                }
                 
                 cell.setNeedsLayout()
                 cell.setNeedsUpdateConstraints()
