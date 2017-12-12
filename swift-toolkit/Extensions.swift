@@ -488,8 +488,8 @@ public extension UIImageView {
             DispatchQueue.main.async { () -> Void in
                 self.image = image
                 
-                let rect = self.frameForImageInImageViewAspectFit()
-                self.frame = rect
+                //let rect = self.frameForImageInImageViewAspectFit()
+                //self.frame = rect
                 
                 cell.setNeedsLayout()
                 cell.setNeedsUpdateConstraints()
