@@ -444,6 +444,21 @@ extension UIImageView{
         
         return CGRect(x: 0, y: 0, width: 0, height: 0)
     }
+    
+    func resizeToFit(_ cell: UIView) {
+        if let imageCell = cell as? ImageCell {
+            let rect = self.frameForImageInImageViewAspectFit()
+            
+            imageCell.icon!.constraints.forEach { con in
+                if con.identifier == "icon-width" {
+                    con.constant = rect.width
+                } else if con.identifier == "icon-height" {
+                    con.constant = rect.height
+                }
+            }
+        }
+        
+    }
 }
 
 public extension UIImageView {
@@ -461,6 +476,8 @@ public extension UIImageView {
             // print("found in bundle \(link)")
             let data = try! Data(contentsOf: bundleURL)
             image = UIImage(data: data)
+            resizeToFit(cell)
+
             return
         }
         
@@ -469,6 +486,7 @@ public extension UIImageView {
         if (localURL as NSURL).checkResourceIsReachableAndReturnError(nil) {
             let data = try! Data(contentsOf: localURL)
             image = UIImage(data: data)
+            resizeToFit(cell)
             return
         }
         
@@ -487,20 +505,7 @@ public extension UIImageView {
             
             DispatchQueue.main.async { () -> Void in
                 self.image = image
-                
-                let rect = self.frameForImageInImageViewAspectFit()
-                
-                print(rect)
-                
-                if let imageCell = cell as? ImageCell {
-                    imageCell.icon!.constraints.forEach { con in
-                        if con.identifier == "icon-width" {
-                            con.constant = rect.width
-                        } else if con.identifier == "icon-height" {
-                            con.constant = rect.height
-                        }
-                    }
-                }
+                self.resizeToFit(cell)
                 
                 cell.setNeedsLayout()
                 cell.setNeedsUpdateConstraints()
