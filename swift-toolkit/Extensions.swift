@@ -417,6 +417,56 @@ public extension UIImage {
     }
 }
 
+public extension UIImageView {
+    func downloadedFrom(link:String, contentMode mode: UIViewContentMode, cell: UIView) {
+        guard let url = URL(string: link) else { return }
+        
+        contentMode = mode
+        image = nil
+        
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        guard let documentDirectory:URL = urls.first else { return }
+        
+        if let bundleURL = Bundle.main.url(forResource: url.lastPathComponent, withExtension: "") {
+            // print("found in bundle \(link)")
+            let data = try! Data(contentsOf: bundleURL)
+            image = UIImage(data: data)
+            return
+        }
+        
+        let localURL = documentDirectory.appendingPathComponent(url.lastPathComponent)
+        
+        if (localURL as NSURL).checkResourceIsReachableAndReturnError(nil) {
+            let data = try! Data(contentsOf: localURL)
+            image = UIImage(data: data)
+            return
+        }
+        
+        print("loading \(link)")
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            
+            try? data.write(to: localURL, options: .withoutOverwriting)
+            try? (localURL as NSURL).setResourceValue(true, forKey: URLResourceKey.isExcludedFromBackupKey)
+            
+            DispatchQueue.main.async { () -> Void in
+                self.image = image
+                
+                cell.setNeedsLayout()
+                cell.setNeedsUpdateConstraints()
+                cell.setNeedsDisplay()
+            }
+        }).resume()
+    }
+}
+
 public extension UIViewController {
     static func named(_ name: String, bundle : Bundle? = nil) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
