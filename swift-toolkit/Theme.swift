@@ -15,9 +15,9 @@ public enum AppTheme {
 }
 
 public struct Theme {
-    static var textColor: UIColor!
-    static var mainColor : UIColor?
-    static var secondaryColor : UIColor!
+    public static var textColor: UIColor!
+    public static var mainColor : UIColor?
+    public static var secondaryColor : UIColor!
     
     public static func set(_ t: AppTheme) {
         switch t {
