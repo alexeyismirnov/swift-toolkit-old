@@ -407,8 +407,8 @@ public extension UserDefaults {
 }
 
 public extension UIImage {
-    convenience init(background: String , inView view: UIView) {
-        let image = UIImage(named: background)
+    convenience init(background: String , inView view: UIView, bundle: Bundle?=nil) {
+        let image = UIImage(named: background, in: bundle, compatibleWith: nil)
         UIGraphicsBeginImageContext(view.frame.size)
         image!.draw(in: view.bounds)
         let bgImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!

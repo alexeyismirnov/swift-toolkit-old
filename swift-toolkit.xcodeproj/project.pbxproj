@@ -24,6 +24,7 @@
 		8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381D1FB879D300CF0D02 /* CalendarView.swift */; };
 		8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6753E1FED05DB00A9000C /* Chameleon.framework */; };
 		8AC675421FED06A900A9000C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC675411FED06A900A9000C /* Theme.swift */; };
+		8AC675481FED0D4700A9000C /* bg3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8AC675471FED0D4700A9000C /* bg3@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = swift_toolkit.framework; path = Carthage/Build/iOS/swift_toolkit.framework; sourceTree = "<group>"; };
 		8AC6753E1FED05DB00A9000C /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		8AC675411FED06A900A9000C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8AC675471FED0D4700A9000C /* bg3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg3@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		8AB18EED1F86360300F1A65C /* swift-toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				8AC675461FED0D1100A9000C /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
 				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
@@ -109,6 +112,15 @@
 				8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AC675461FED0D1100A9000C /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8AC675471FED0D4700A9000C /* bg3@2x.jpg */,
+			);
+			name = images;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */,
+				8AC675481FED0D4700A9000C /* bg3@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
