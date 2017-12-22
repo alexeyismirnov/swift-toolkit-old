@@ -9,17 +9,17 @@
 import UIKit
 import Chameleon
 
-enum AppTheme {
+public enum AppTheme {
     case Default
     case Chameleon(color: UIColor)
 }
 
-struct Theme {
+public struct Theme {
     static var textColor: UIColor!
     static var mainColor : UIColor?
     static var secondaryColor : UIColor!
     
-    static func set(_ t: AppTheme) {
+    public static func set(_ t: AppTheme) {
         switch t {
         case .Default:
             mainColor = nil
