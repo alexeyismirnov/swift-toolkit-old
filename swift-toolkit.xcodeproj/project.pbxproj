@@ -16,6 +16,9 @@
 		8A23BFC2201049B10034189E /* church@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC0201049B10034189E /* church@2x.jpg */; };
 		8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC3201049DC0034189E /* zoom_out.pdf */; };
 		8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC4201049DC0034189E /* zoom_in.pdf */; };
+		8A23BFCA201053BC0034189E /* question.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC7201053BB0034189E /* question.pdf */; };
+		8A23BFCB201053BC0034189E /* calendar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC8201053BB0034189E /* calendar.pdf */; };
+		8A23BFCC201053BC0034189E /* options.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC9201053BC0034189E /* options.pdf */; };
 		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
 		8A5F0BE61F872D8F0059194A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE01F872D8F0059194A /* ImageCell.swift */; };
 		8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */; };
@@ -42,6 +45,9 @@
 		8A23BFC0201049B10034189E /* church@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "church@2x.jpg"; sourceTree = "<group>"; };
 		8A23BFC3201049DC0034189E /* zoom_out.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = zoom_out.pdf; sourceTree = "<group>"; };
 		8A23BFC4201049DC0034189E /* zoom_in.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = zoom_in.pdf; sourceTree = "<group>"; };
+		8A23BFC7201053BB0034189E /* question.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = question.pdf; sourceTree = "<group>"; };
+		8A23BFC8201053BB0034189E /* calendar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = calendar.pdf; sourceTree = "<group>"; };
+		8A23BFC9201053BC0034189E /* options.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = options.pdf; sourceTree = "<group>"; };
 		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
 		8A5F0BE01F872D8F0059194A /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -76,6 +82,9 @@
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8A23BFC8201053BB0034189E /* calendar.pdf */,
+				8A23BFC9201053BC0034189E /* options.pdf */,
+				8A23BFC7201053BB0034189E /* question.pdf */,
 				8A23BFC4201049DC0034189E /* zoom_in.pdf */,
 				8A23BFC3201049DC0034189E /* zoom_out.pdf */,
 				8A23BFBF201049B00034189E /* bg3@2x.jpg */,
@@ -210,9 +219,12 @@
 			files = (
 				8A23BFC1201049B10034189E /* bg3@2x.jpg in Resources */,
 				8A23BFBD201048EE0034189E /* Images.xcassets in Resources */,
+				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
 				8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
+				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
+				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
