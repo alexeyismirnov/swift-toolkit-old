@@ -417,6 +417,8 @@ public extension UIImage {
     }
 }
 
+public let imageLoadedNotification = "IMAGE_WAS_LOADED"
+
 extension UIImageView{
     func frameForImageInImageViewAspectFit() -> CGRect
     {
@@ -446,6 +448,8 @@ extension UIImageView{
     }
     
     func resizeToFit(_ cell: UIView) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: imageLoadedNotification), object: nil, userInfo: nil)
+
         if let imageCell = cell as? ImageCell {
             let rect = self.frameForImageInImageViewAspectFit()
             
