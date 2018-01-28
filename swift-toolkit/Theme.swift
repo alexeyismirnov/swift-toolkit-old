@@ -27,8 +27,13 @@ public struct Theme {
             secondaryColor = UIColor.init(hex: "#804000")
             
             UINavigationBar.appearance().barTintColor = UIColor(red: 255/255.0, green: 233/255.0, blue: 210/255.0, alpha: 1.0)
-            UINavigationBar.appearance().tintColor = UIColor.blue
+            UINavigationBar.appearance().tintColor = .blue
             UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black]
+            
+            UIBarButtonItem.appearance().tintColor = .blue
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .blue
+            UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .blue
+            
             UITabBar.appearance().barTintColor = UIColor(red: 255/255.0, green: 233/255.0, blue: 210/255.0, alpha: 1.0)
             UITabBar.appearance().tintColor = UIColor.red
 
