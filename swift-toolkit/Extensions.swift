@@ -284,13 +284,9 @@ public extension UIImage {
 }
 
 public extension String {
-    subscript (i: Int) -> String {
-        return String(Array(self.characters)[i])
-    }
-    
     func capitalizingFirstLetter() -> String {
-        let first = String(characters.prefix(1)).capitalized
-        let other = String(characters.dropFirst())
+        let first = String(prefix(1)).capitalized
+        let other = String(dropFirst())
         return first + other
     }
     

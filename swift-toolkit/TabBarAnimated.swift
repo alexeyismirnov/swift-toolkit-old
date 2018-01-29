@@ -32,8 +32,8 @@ open class UITabBarControllerAnimated: UITabBarController, UITabBarControllerDel
         let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         let toView = toVC?.view
         
-        let indexFrom = findIndex(viewControllers as! [UINavigationController]) { $0.restorationIdentifier == fromVC?.restorationIdentifier }
-        let indexTo = findIndex(viewControllers as! [UINavigationController]) { $0.restorationIdentifier == toVC?.restorationIdentifier }
+        let indexFrom = findIndex(viewControllers!) { $0.restorationIdentifier == fromVC?.restorationIdentifier }
+        let indexTo = findIndex(viewControllers!) { $0.restorationIdentifier == toVC?.restorationIdentifier }
         
         let centerRect =  transitionContext.finalFrame(for: toVC!)
         let leftRect   = centerRect.offsetBy(dx: -(centerRect.width+PaddingBetweenViews), dy: 0);
