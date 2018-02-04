@@ -515,6 +515,18 @@ public extension UIImageView {
     }
 }
 
+public extension UIImageView {
+    convenience init(btnImage: UIImage, target: AnyObject, btnHandler: Selector) {
+        self.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        image = btnImage
+        contentMode = .center
+        
+        let tap = UITapGestureRecognizer(target: target, action: btnHandler)
+        isUserInteractionEnabled = true
+        addGestureRecognizer(tap)
+    }
+}
+
 public extension UIViewController {
     static func named(_ name: String, bundle : Bundle? = nil) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
