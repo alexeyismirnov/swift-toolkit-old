@@ -520,7 +520,8 @@ public extension UIImageView {
         self.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         image = btnImage
         contentMode = .center
-        
+        tintColor = UINavigationBar.appearance().tintColor
+
         let tap = UITapGestureRecognizer(target: target, action: btnHandler)
         isUserInteractionEnabled = true
         addGestureRecognizer(tap)
