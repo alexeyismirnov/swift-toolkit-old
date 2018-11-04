@@ -19,15 +19,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="310" translatesAutoresizingMaskIntoConstraints="NO" id="369-Je-Wmy" customClass="RWLabel" customModule="swift_toolkit" customModuleProvider="target">
-                        <rect key="frame" x="20" y="0.0" width="280" height="38.5"/>
+                        <rect key="frame" x="10" y="0.0" width="300" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="369-Je-Wmy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="MFo-Kx-O2q"/>
-                    <constraint firstAttribute="trailing" secondItem="369-Je-Wmy" secondAttribute="trailing" priority="999" constant="20" symbolic="YES" id="PFG-kt-4F3"/>
+                    <constraint firstItem="369-Je-Wmy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="10" id="MFo-Kx-O2q"/>
+                    <constraint firstAttribute="trailing" secondItem="369-Je-Wmy" secondAttribute="trailing" priority="999" constant="10" id="PFG-kt-4F3"/>
                     <constraint firstAttribute="bottom" secondItem="369-Je-Wmy" secondAttribute="bottom" priority="999" constant="5" id="nYh-53-lLq"/>
                     <constraint firstItem="369-Je-Wmy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="999" id="vAU-Yb-3d8"/>
                 </constraints>
