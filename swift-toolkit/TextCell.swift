@@ -12,5 +12,7 @@ public class TextCell : ConfigurableCell {
     override public class var cellId: String {
         get { return "TextCell" }
     }
-        
+    
+    @IBOutlet weak var title: RWLabel!
+    
 }
