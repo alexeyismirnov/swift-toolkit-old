@@ -22,10 +22,8 @@
 		8A23BFCF201056390034189E /* share.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCD201056390034189E /* share.pdf */; };
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
 		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
-		8A5F0BE61F872D8F0059194A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE01F872D8F0059194A /* ImageCell.swift */; };
 		8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */; };
 		8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE21F872D8F0059194A /* TextCell.swift */; };
-		8A5F0BE91F872D8F0059194A /* TextDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE31F872D8F0059194A /* TextDetailsCell.swift */; };
 		8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BEA1F8732650059194A /* Extensions.swift */; };
 		8AB18EF01F86360300F1A65C /* swift_toolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB18EEE1F86360300F1A65C /* swift_toolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC338151FB851C100CF0D02 /* Main.storyboard */; };
@@ -36,6 +34,10 @@
 		8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6753E1FED05DB00A9000C /* Chameleon.framework */; };
 		8AC675421FED06A900A9000C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC675411FED06A900A9000C /* Theme.swift */; };
 		8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF663C218EB74200DDA40B /* TextCell.xib */; };
+		8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */; };
+		8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */; };
+		8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF6643218EED6500DDA40B /* ImageCell.swift */; };
+		8AFF6646218EED6500DDA40B /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF6644218EED6500DDA40B /* ImageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,10 +56,8 @@
 		8A23BFCD201056390034189E /* share.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = share.pdf; sourceTree = "<group>"; };
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
 		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
-		8A5F0BE01F872D8F0059194A /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		8A5F0BE21F872D8F0059194A /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
-		8A5F0BE31F872D8F0059194A /* TextDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDetailsCell.swift; sourceTree = "<group>"; };
 		8A5F0BEA1F8732650059194A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8AB18EEB1F86360300F1A65C /* swift_toolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_toolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB18EEE1F86360300F1A65C /* swift_toolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swift_toolkit.h; sourceTree = "<group>"; };
@@ -71,6 +71,10 @@
 		8AC6753E1FED05DB00A9000C /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		8AC675411FED06A900A9000C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8AFF663C218EB74200DDA40B /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
+		8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailsCell.swift; sourceTree = "<group>"; };
+		8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextDetailsCell.xib; sourceTree = "<group>"; };
+		8AFF6643218EED6500DDA40B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		8AFF6644218EED6500DDA40B /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +139,10 @@
 				8A5F0BDF1F872D8F0059194A /* RWLabel.swift */,
 				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
 				8AFF663C218EB74200DDA40B /* TextCell.xib */,
-				8A5F0BE31F872D8F0059194A /* TextDetailsCell.swift */,
-				8A5F0BE01F872D8F0059194A /* ImageCell.swift */,
+				8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */,
+				8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */,
+				8AFF6643218EED6500DDA40B /* ImageCell.swift */,
+				8AFF6644218EED6500DDA40B /* ImageCell.xib */,
 				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
 				8AB18EEF1F86360300F1A65C /* Info.plist */,
@@ -234,7 +240,9 @@
 				8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
+				8AFF6646218EED6500DDA40B /* ImageCell.xib in Resources */,
 				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
+				8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */,
 				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
 			);
@@ -252,16 +260,16 @@
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
-				8A5F0BE91F872D8F0059194A /* TextDetailsCell.swift in Sources */,
 				8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */,
 				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
+				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
 				8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */,
 				8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */,
 				8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */,
 				8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */,
 				8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */,
-				8A5F0BE61F872D8F0059194A /* ImageCell.swift in Sources */,
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
+				8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

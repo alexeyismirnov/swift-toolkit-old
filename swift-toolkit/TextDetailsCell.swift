@@ -16,3 +16,4 @@ public class TextDetailsCell : ConfigurableCell {
     @IBOutlet public weak var title: RWLabel!
     @IBOutlet public weak var subtitle: RWLabel!
 }
+

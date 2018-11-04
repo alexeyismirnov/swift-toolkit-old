@@ -17,3 +17,4 @@ public class ImageCell : ConfigurableCell {
     @IBOutlet public weak var icon: UIImageView!
     
 }
+

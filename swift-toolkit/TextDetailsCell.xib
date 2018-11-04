@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextDetailsCell" rowHeight="55" id="0uv-up-vfC" customClass="TextDetailsCell" customModule="swift_toolkit">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="55"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0uv-up-vfC" id="ZXM-fC-FU9">
+                <rect key="frame" x="0.0" y="0.0" width="768" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="748" translatesAutoresizingMaskIntoConstraints="NO" id="YIs-QP-CVw" customClass="RWLabel" customModule="swift_toolkit">
+                        <rect key="frame" x="20" y="29" width="738" height="20.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="748" translatesAutoresizingMaskIntoConstraints="NO" id="GEW-7u-hcq" customClass="RWLabel" customModule="swift_toolkit">
+                        <rect key="frame" x="20" y="5" width="738" height="24"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="GEW-7u-hcq" firstAttribute="top" secondItem="ZXM-fC-FU9" secondAttribute="top" priority="999" constant="5" id="BUY-aT-egq"/>
+                    <constraint firstAttribute="bottom" secondItem="YIs-QP-CVw" secondAttribute="bottom" priority="999" constant="5" id="Ba9-Np-6cw"/>
+                    <constraint firstItem="YIs-QP-CVw" firstAttribute="top" secondItem="GEW-7u-hcq" secondAttribute="bottom" priority="999" id="LX5-Hx-z3L"/>
+                    <constraint firstAttribute="trailing" secondItem="YIs-QP-CVw" secondAttribute="trailing" priority="999" constant="10" id="P54-Wi-mQa"/>
+                    <constraint firstItem="YIs-QP-CVw" firstAttribute="leading" secondItem="ZXM-fC-FU9" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="XzD-Bd-6C4"/>
+                    <constraint firstItem="GEW-7u-hcq" firstAttribute="leading" secondItem="ZXM-fC-FU9" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="eYG-e9-Czb"/>
+                    <constraint firstAttribute="trailing" secondItem="GEW-7u-hcq" secondAttribute="trailing" priority="999" constant="10" id="mXd-UR-Ziz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="subtitle" destination="YIs-QP-CVw" id="ncZ-zk-XIH"/>
+                <outlet property="title" destination="GEW-7u-hcq" id="DKN-NQ-qAw"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

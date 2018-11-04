@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="35" id="7fU-oE-Wv6" customClass="ImageCell" customModule="swift_toolkit">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="35"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7fU-oE-Wv6" id="aIR-VR-bGq">
+                <rect key="frame" x="0.0" y="0.0" width="768" height="34.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" placeholderIntrinsicWidth="702" placeholderIntrinsicHeight="21" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="702" translatesAutoresizingMaskIntoConstraints="NO" id="TBD-zT-nBy" customClass="RWLabel" customModule="swift_toolkit">
+                        <rect key="frame" x="45" y="7" width="713" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfw-pK-d8h">
+                        <rect key="frame" x="10" y="5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="VOz-0t-Unx"/>
+                            <constraint firstAttribute="width" constant="35" id="gcB-tk-bqK"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="TBD-zT-nBy" secondAttribute="trailing" priority="999" constant="10" id="2bA-rv-0KA"/>
+                    <constraint firstAttribute="centerY" secondItem="rfw-pK-d8h" secondAttribute="centerY" id="7G0-3C-OhY"/>
+                    <constraint firstItem="TBD-zT-nBy" firstAttribute="leading" secondItem="rfw-pK-d8h" secondAttribute="trailing" priority="999" constant="10" id="KL4-VK-QRU"/>
+                    <constraint firstAttribute="centerY" secondItem="TBD-zT-nBy" secondAttribute="centerY" priority="999" id="LMI-G0-gaM"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TBD-zT-nBy" secondAttribute="bottom" priority="999" id="RhP-LV-Gvb"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rfw-pK-d8h" secondAttribute="bottom" priority="998" id="fVX-t2-TCn"/>
+                    <constraint firstItem="rfw-pK-d8h" firstAttribute="leading" secondItem="aIR-VR-bGq" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="pPX-zB-quX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="icon" destination="rfw-pK-d8h" id="hre-jD-cQt"/>
+                <outlet property="title" destination="TBD-zT-nBy" id="9pe-2T-CBk"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
