@@ -26,8 +26,8 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="369-Je-Wmy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="20" id="MFo-Kx-O2q"/>
-                    <constraint firstAttribute="trailing" secondItem="369-Je-Wmy" secondAttribute="trailing" priority="999" constant="20" id="PFG-kt-4F3"/>
+                    <constraint firstItem="369-Je-Wmy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="MFo-Kx-O2q"/>
+                    <constraint firstAttribute="trailing" secondItem="369-Je-Wmy" secondAttribute="trailing" priority="999" constant="20" symbolic="YES" id="PFG-kt-4F3"/>
                     <constraint firstAttribute="bottom" secondItem="369-Je-Wmy" secondAttribute="bottom" priority="999" constant="5" id="nYh-53-lLq"/>
                     <constraint firstItem="369-Je-Wmy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="999" id="vAU-Yb-3d8"/>
                 </constraints>
