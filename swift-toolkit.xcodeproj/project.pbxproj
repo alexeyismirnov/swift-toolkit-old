@@ -35,6 +35,7 @@
 		8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381D1FB879D300CF0D02 /* CalendarView.swift */; };
 		8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6753E1FED05DB00A9000C /* Chameleon.framework */; };
 		8AC675421FED06A900A9000C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC675411FED06A900A9000C /* Theme.swift */; };
+		8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF663C218EB74200DDA40B /* TextCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = swift_toolkit.framework; path = Carthage/Build/iOS/swift_toolkit.framework; sourceTree = "<group>"; };
 		8AC6753E1FED05DB00A9000C /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		8AC675411FED06A900A9000C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8AFF663C218EB74200DDA40B /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,10 +132,11 @@
 				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */,
-				8A5F0BE01F872D8F0059194A /* ImageCell.swift */,
 				8A5F0BDF1F872D8F0059194A /* RWLabel.swift */,
 				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
+				8AFF663C218EB74200DDA40B /* TextCell.xib */,
 				8A5F0BE31F872D8F0059194A /* TextDetailsCell.swift */,
+				8A5F0BE01F872D8F0059194A /* ImageCell.swift */,
 				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
 				8AB18EEF1F86360300F1A65C /* Info.plist */,
@@ -228,6 +231,7 @@
 				8A23BFD0201056390034189E /* close2.pdf in Resources */,
 				8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */,
 				8A23BFCF201056390034189E /* share.pdf in Resources */,
+				8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
 				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
