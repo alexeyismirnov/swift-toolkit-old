@@ -47,7 +47,7 @@ open class UITabBarControllerAnimated: UITabBarController, UITabBarControllerDel
                            delay: 0,
                            usingSpringWithDamping: DampingConstant,
                            initialSpringVelocity: InitialVelocity,
-                           options: UIViewAnimationOptions(rawValue: 0),
+                           options: UIView.AnimationOptions(rawValue: 0),
                            animations: { fromView!.frame = leftRect; toView!.frame = centerRect },
                            completion: { (value:Bool) in transitionContext.completeTransition(true) } )
             
@@ -60,7 +60,7 @@ open class UITabBarControllerAnimated: UITabBarController, UITabBarControllerDel
                            delay: Foundation.TimeInterval(0),
                            usingSpringWithDamping: DampingConstant,
                            initialSpringVelocity: -InitialVelocity,
-                           options: UIViewAnimationOptions(rawValue: 0),
+                           options: UIView.AnimationOptions(rawValue: 0),
                            animations: { fromView!.frame = rightRect; toView!.frame = centerRect },
                            completion: { (value:Bool) in transitionContext.completeTransition(true) } )
             

@@ -43,7 +43,7 @@ public class Palette: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.delegate = self
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsetsMake(edgeInsets, edgeInsets, edgeInsets, edgeInsets)
+        layout.sectionInset = UIEdgeInsets.init(top: edgeInsets, left: edgeInsets, bottom: edgeInsets, right: edgeInsets)
         layout.minimumInteritemSpacing = interitemSpacing
         layout.minimumLineSpacing = interitemSpacing
 

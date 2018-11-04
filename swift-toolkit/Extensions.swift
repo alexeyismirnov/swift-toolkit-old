@@ -159,11 +159,11 @@ public func + (arg1: NSMutableAttributedString?, arg2: (String?, UIColor)) -> NS
     if let rightArg = arg2.0 {
         if let leftArg = arg1 {
             let result = NSMutableAttributedString(attributedString: leftArg)
-            result.append(NSMutableAttributedString(string: rightArg, attributes: [NSAttributedStringKey.foregroundColor: arg2.1]))
+            result.append(NSMutableAttributedString(string: rightArg, attributes: [NSAttributedString.Key.foregroundColor: arg2.1]))
             return result
             
         } else {
-            return NSMutableAttributedString(string: rightArg, attributes: [NSAttributedStringKey.foregroundColor: arg2.1])
+            return NSMutableAttributedString(string: rightArg, attributes: [NSAttributedString.Key.foregroundColor: arg2.1])
         }
         
     } else {
@@ -296,9 +296,9 @@ public extension String {
 }
 
 public extension UIFont {
-    func withTraits(_ traits:UIFontDescriptorSymbolicTraits...) -> UIFont {
+    func withTraits(_ traits:UIFontDescriptor.SymbolicTraits...) -> UIFont {
         let descriptor = self.fontDescriptor
-            .withSymbolicTraits(UIFontDescriptorSymbolicTraits(traits))
+            .withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits))
         return UIFont(descriptor: descriptor!, size: 0)
     }
     
@@ -462,7 +462,7 @@ extension UIImageView{
 }
 
 public extension UIImageView {
-    func downloadedFrom(link:String, contentMode mode: UIViewContentMode, cell: UIView) {
+    func downloadedFrom(link:String, contentMode mode: UIView.ContentMode, cell: UIView) {
         guard let url = URL(string: link) else { return }
         
         contentMode = mode

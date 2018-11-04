@@ -35,7 +35,7 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
         fatalError("This method must be overridden")
     }
     
-    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         return (animation.direction != .none) ? animation : nil
     }
@@ -114,7 +114,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
             return newCell
             
         } else {
-            return T(style: UITableViewCellStyle.default, reuseIdentifier: T.cellId)
+            return T(style: UITableViewCell.CellStyle.default, reuseIdentifier: T.cellId)
         }
     }
     
@@ -123,7 +123,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         
-        let size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         return size.height+1.0
     }
 }

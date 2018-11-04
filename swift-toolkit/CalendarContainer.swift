@@ -38,7 +38,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         calendar.navigationItem.rightBarButtonItem = rightButton
         
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
-        container.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black]
+        container.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
 
         let popup = PopupController
             .create(inVC)
@@ -80,7 +80,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         collectionView.delegate = self
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         

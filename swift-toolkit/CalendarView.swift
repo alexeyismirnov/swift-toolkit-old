@@ -45,7 +45,7 @@ class CalendarViewCell: UICollectionViewCell {
         let initialFrame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
 
