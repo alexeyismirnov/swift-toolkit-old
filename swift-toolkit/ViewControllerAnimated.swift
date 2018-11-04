@@ -120,7 +120,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     
     public func calculateHeightForCell(_ cell: UITableViewCell) -> CGFloat {
         // 25 for margins
-        cell.bounds = CGRect(x: 0, y: 0, width: tableView.frame.width - 25, height: cell.bounds.height)
+        cell.bounds = CGRect(x: 0, y: 0, width: tableView.frame.width-1, height: cell.bounds.height)
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         
