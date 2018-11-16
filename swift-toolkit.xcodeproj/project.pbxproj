@@ -21,6 +21,7 @@
 		8A23BFCC201053BC0034189E /* options.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC9201053BC0034189E /* options.pdf */; };
 		8A23BFCF201056390034189E /* share.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCD201056390034189E /* share.pdf */; };
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
+		8A5CE4E3219EA79F007FAEAE /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E2219EA79F007FAEAE /* WrapperView.swift */; };
 		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
 		8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */; };
 		8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE21F872D8F0059194A /* TextCell.swift */; };
@@ -55,6 +56,7 @@
 		8A23BFC9201053BC0034189E /* options.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = options.pdf; sourceTree = "<group>"; };
 		8A23BFCD201056390034189E /* share.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = share.pdf; sourceTree = "<group>"; };
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
+		8A5CE4E2219EA79F007FAEAE /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
 		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
 		8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		8A5F0BE21F872D8F0059194A /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				8AFF6643218EED6500DDA40B /* ImageCell.swift */,
 				8AFF6644218EED6500DDA40B /* ImageCell.xib */,
 				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
+				8A5CE4E2219EA79F007FAEAE /* WrapperView.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
 				8AB18EEF1F86360300F1A65C /* Info.plist */,
 				8AC338151FB851C100CF0D02 /* Main.storyboard */,
@@ -263,6 +266,7 @@
 				8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */,
 				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
+				8A5CE4E3219EA79F007FAEAE /* WrapperView.swift in Sources */,
 				8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */,
 				8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */,
 				8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */,
