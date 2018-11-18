@@ -21,6 +21,7 @@
 		8A23BFCC201053BC0034189E /* options.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC9201053BC0034189E /* options.pdf */; };
 		8A23BFCF201056390034189E /* share.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCD201056390034189E /* share.pdf */; };
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
+		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E3219EA79F007FAEAE /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E2219EA79F007FAEAE /* WrapperView.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
@@ -57,6 +58,7 @@
 		8A23BFC9201053BC0034189E /* options.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = options.pdf; sourceTree = "<group>"; };
 		8A23BFCD201056390034189E /* share.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = share.pdf; sourceTree = "<group>"; };
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
+		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E2219EA79F007FAEAE /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
 				8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
+				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
 				8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */,
 				8A5F0BDF1F872D8F0059194A /* RWLabel.swift */,
 				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
@@ -265,6 +268,7 @@
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
+				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
 				8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */,
 				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
