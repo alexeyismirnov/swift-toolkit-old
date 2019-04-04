@@ -14,10 +14,10 @@ public let themeChangedNotification  = "THEME_CHANGED"
 public class Palette: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PopupContentViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let colors : [UIColor] = [.flatRed(), .flatOrange(), .flatYellow(), .flatSand(), .flatNavyBlue(), .flatBlack(),
-                              .flatMagenta(), .flatTeal(), .flatSkyBlue(), .flatGreen(), .flatMint(), .flatWhite(),
-                              .flatGray(), .flatForestGreen(), .flatPurple(), .flatBrown(), .flatPlum(), .flatWatermelon(),
-                              .flatLime(), .flatPink(), .flatMaroon(), .flatCoffee(), .flatPowderBlue(), .flatBlue(), .flatSandColorDark()]
+    let colors : [UIColor] = [.flatRed, .flatOrange, .flatYellow, .flatSand, .flatNavyBlue, .flatBlack,
+                              .flatMagenta, .flatTeal, .flatSkyBlue, .flatGreen, .flatMint, .flatWhite,
+                              .flatGray, .flatForestGreen, .flatPurple, .flatBrown, .flatPlum, .flatWatermelon,
+                              .flatLime, .flatPink, .flatMaroon, .flatCoffee, .flatPowderBlue, .flatBlue, .flatSand]
     
     var edgeInsets: CGFloat!
     var interitemSpacing: CGFloat!
