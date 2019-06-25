@@ -38,11 +38,19 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         calendar.cellNibName = cellNibName
         calendar.cellReuseIdentifier = cellReuseIdentifier
         
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
-        spacer.width = 20
+        if let leftButton = leftButton {
+            let spacer_l = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+            spacer_l.width = 10
             
-        calendar.navigationItem.leftBarButtonItems = [leftButton!]
-        calendar.navigationItem.rightBarButtonItems = [spacer, rightButton!]
+            calendar.navigationItem.leftBarButtonItems = [spacer_l, leftButton]
+        }
+        
+        if let rightButton = rightButton {
+            let spacer_r = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+            spacer_r.width = 10
+            
+            calendar.navigationItem.rightBarButtonItems = [spacer_r, rightButton]
+        }
         
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
         container.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
