@@ -24,14 +24,17 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dates = [Date]()
+    var initialDate: Date!
     var cellReuseIdentifier : String! 
     var cellNibName : String!
     
-    public static func show(inVC: UIViewController, cellReuseIdentifier: String, cellNibName: String, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
+    public static func show(inVC: UIViewController, initialDate: Date, cellReuseIdentifier: String, cellNibName: String, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
         let bundle = Bundle(identifier: "com.rlc.swift-toolkit")
 
         let container = UIViewController.named("CalendarContainer", bundle: bundle) as! CalendarNavigation
         let calendar = container.topViewController as! CalendarContainer
+        
+        calendar.initialDate = initialDate
         calendar.cellNibName = cellNibName
         calendar.cellReuseIdentifier = cellReuseIdentifier
         calendar.navigationItem.leftBarButtonItem = leftButton
@@ -71,9 +74,8 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         
         view.setNeedsLayout()
         
-        let currentDate: Date = DateComponents(date: Date()).toDate()
-        setTitle(fromDate: currentDate)
-        dates = [currentDate-1.months, currentDate, currentDate+1.months]
+        setTitle(fromDate: initialDate)
+        dates = [initialDate-1.months, initialDate, initialDate+1.months]
         
         collectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.cellId)
         collectionView.dataSource = self
