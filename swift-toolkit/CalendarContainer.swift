@@ -37,8 +37,12 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         calendar.initialDate = initialDate
         calendar.cellNibName = cellNibName
         calendar.cellReuseIdentifier = cellReuseIdentifier
+        
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+        spacer.width = 20
+            
         calendar.navigationItem.leftBarButtonItems = [leftButton!]
-        calendar.navigationItem.rightBarButtonItems = [rightButton!]
+        calendar.navigationItem.rightBarButtonItems = [spacer, rightButton!]
         
         container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
         container.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
