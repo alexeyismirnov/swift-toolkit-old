@@ -101,13 +101,13 @@ public protocol ResizableTableViewCells {
 }
 
 public extension ResizableTableViewCells where Self: UIViewController {
-    public func getSimpleCell() -> UITableViewCell {
+    func getSimpleCell() -> UITableViewCell {
         let newCell  = tableView.dequeueReusableCell(withIdentifier: "cell")!
         newCell.accessoryType = .none
         return newCell
     }
     
-    public func getCell<T: ConfigurableCell>() -> T {
+    func getCell<T: ConfigurableCell>() -> T {
         if let newCell  = tableView.dequeueReusableCell(withIdentifier: T.cellId) as? T {
             newCell.accessoryType = .none
             newCell.backgroundColor = .clear
@@ -118,7 +118,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
         }
     }
     
-    public func calculateHeightForCell(_ cell: UITableViewCell) -> CGFloat {
+    func calculateHeightForCell(_ cell: UITableViewCell) -> CGFloat {
         cell.bounds = CGRect(x: 0, y: 0, width: tableView.frame.width-1, height: cell.bounds.height)
         cell.setNeedsLayout()
         cell.layoutIfNeeded()

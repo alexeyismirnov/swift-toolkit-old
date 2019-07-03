@@ -603,4 +603,20 @@ public extension Collection  {
     }
 }
 
-
+public extension UIViewController {
+    private static var popup: PopupController!
+    
+    func showPopup(_ vc: UIViewController, onClose handler: @escaping (PopupController) -> Void = {_ in }) {
+        UIViewController.popup = PopupController
+            .create(self.navigationController!)
+            .customize(
+                [
+                    .animation(.fadeIn),
+                    .layout(.center),
+                    .backgroundStyle(.blackFilter(alpha: 0.7))
+                ]
+            ).didCloseHandler(handler)
+        
+        UIViewController.popup.show(vc)
+    }
+}
