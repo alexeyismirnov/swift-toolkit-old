@@ -604,7 +604,7 @@ public extension Collection  {
 }
 
 public extension UIViewController {
-    private static var popup: PopupController!
+    static var popup: PopupController!
     
     func showPopup(_ vc: UIViewController, onClose handler: @escaping (PopupController) -> Void = {_ in }) {
         UIViewController.popup = PopupController
