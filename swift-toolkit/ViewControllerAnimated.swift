@@ -101,9 +101,37 @@ public protocol ResizableTableViewCells {
 }
 
 public extension ResizableTableViewCells where Self: UIViewController {
-    func getSimpleCell() -> UITableViewCell {
+    
+    func getTextCell(_ title: String) -> TextCell {
+        let newCell = tableView.dequeueReusableCell(withIdentifier: TextCell.cellId) as! TextCell
+        newCell.accessoryType = .none
+        newCell.backgroundColor = .clear
+        newCell.title.textColor =  Theme.textColor
+        newCell.title.text = title
+        
+        return newCell
+    }
+    
+    func getTextDetailsCell(title: String, subtitle: String) -> TextDetailsCell {
+        let newCell = tableView.dequeueReusableCell(withIdentifier: TextDetailsCell.cellId) as! TextDetailsCell
+        newCell.accessoryType = .none
+        newCell.backgroundColor = .clear
+        
+        newCell.title.textColor = Theme.textColor
+        newCell.subtitle.textColor = Theme.secondaryColor
+        
+        newCell.title.text = title
+        newCell.subtitle.text = subtitle
+
+        return newCell
+    }
+    
+    func getSimpleCell(_ title: String) -> UITableViewCell {
         let newCell  = tableView.dequeueReusableCell(withIdentifier: "cell")!
         newCell.accessoryType = .none
+        newCell.backgroundColor = .clear
+        newCell.textLabel!.text = title
+        
         return newCell
     }
     
@@ -111,6 +139,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
         if let newCell  = tableView.dequeueReusableCell(withIdentifier: T.cellId) as? T {
             newCell.accessoryType = .none
             newCell.backgroundColor = .clear
+
             return newCell
             
         } else {
