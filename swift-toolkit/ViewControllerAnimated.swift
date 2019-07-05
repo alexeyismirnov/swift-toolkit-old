@@ -130,6 +130,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
         let newCell  = tableView.dequeueReusableCell(withIdentifier: "cell")!
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
+        newCell.textLabel!.textColor = Theme.textColor
         newCell.textLabel!.text = title
         
         return newCell
