@@ -9,22 +9,19 @@
 import UIKit
 
 public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var startGap: Int!
     var selectedDate: Date?
     public var cellReuseIdentifier : String!
-    
-    var cal: Calendar = {
-        let c = Calendar.current
-        return c
-    }()
     
     public var currentDate: Date! {
         didSet {
             let monthStart = Date(1, currentDate.month, currentDate.year)
+            var cal = Calendar.current
             cal.locale = Locale(identifier: "ru")
             startGap = (monthStart.weekday < cal.firstWeekday) ? 7 - (cal.firstWeekday-monthStart.weekday) : monthStart.weekday - cal.firstWeekday
         }
     }
+    
+    private var startGap: Int!
 
     @objc public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

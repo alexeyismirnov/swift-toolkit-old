@@ -36,6 +36,15 @@
 		8AC338211FB879D300CF0D02 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381D1FB879D300CF0D02 /* CalendarView.swift */; };
 		8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6753E1FED05DB00A9000C /* Chameleon.framework */; };
 		8AC675421FED06A900A9000C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC675411FED06A900A9000C /* Theme.swift */; };
+		8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3F9FE22EB04FB0051F27F /* food-fish.pdf */; };
+		8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3F9FF22EB04FB0051F27F /* food-fruits.pdf */; };
+		8AE3FA0922EB04FB0051F27F /* food-nothing.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0022EB04FB0051F27F /* food-nothing.pdf */; };
+		8AE3FA0A22EB04FB0051F27F /* food-mexican.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0122EB04FB0051F27F /* food-mexican.pdf */; };
+		8AE3FA0B22EB04FB0051F27F /* food-pancake.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0222EB04FB0051F27F /* food-pancake.pdf */; };
+		8AE3FA0C22EB04FB0051F27F /* food-without-oil.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0322EB04FB0051F27F /* food-without-oil.pdf */; };
+		8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0422EB04FB0051F27F /* food-vegetables.pdf */; };
+		8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0522EB04FB0051F27F /* food-cupcake.pdf */; };
+		8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0622EB04FB0051F27F /* food-burger.pdf */; };
 		8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF663C218EB74200DDA40B /* TextCell.xib */; };
 		8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */; };
 		8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */; };
@@ -76,6 +85,15 @@
 		8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = swift_toolkit.framework; path = Carthage/Build/iOS/swift_toolkit.framework; sourceTree = "<group>"; };
 		8AC6753E1FED05DB00A9000C /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		8AC675411FED06A900A9000C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8AE3F9FE22EB04FB0051F27F /* food-fish.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-fish.pdf"; sourceTree = "<group>"; };
+		8AE3F9FF22EB04FB0051F27F /* food-fruits.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-fruits.pdf"; sourceTree = "<group>"; };
+		8AE3FA0022EB04FB0051F27F /* food-nothing.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-nothing.pdf"; sourceTree = "<group>"; };
+		8AE3FA0122EB04FB0051F27F /* food-mexican.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-mexican.pdf"; sourceTree = "<group>"; };
+		8AE3FA0222EB04FB0051F27F /* food-pancake.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-pancake.pdf"; sourceTree = "<group>"; };
+		8AE3FA0322EB04FB0051F27F /* food-without-oil.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-without-oil.pdf"; sourceTree = "<group>"; };
+		8AE3FA0422EB04FB0051F27F /* food-vegetables.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-vegetables.pdf"; sourceTree = "<group>"; };
+		8AE3FA0522EB04FB0051F27F /* food-cupcake.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-cupcake.pdf"; sourceTree = "<group>"; };
+		8AE3FA0622EB04FB0051F27F /* food-burger.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-burger.pdf"; sourceTree = "<group>"; };
 		8AFF663C218EB74200DDA40B /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailsCell.swift; sourceTree = "<group>"; };
 		8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextDetailsCell.xib; sourceTree = "<group>"; };
@@ -98,6 +116,15 @@
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8AE3FA0622EB04FB0051F27F /* food-burger.pdf */,
+				8AE3FA0522EB04FB0051F27F /* food-cupcake.pdf */,
+				8AE3F9FE22EB04FB0051F27F /* food-fish.pdf */,
+				8AE3F9FF22EB04FB0051F27F /* food-fruits.pdf */,
+				8AE3FA0122EB04FB0051F27F /* food-mexican.pdf */,
+				8AE3FA0022EB04FB0051F27F /* food-nothing.pdf */,
+				8AE3FA0222EB04FB0051F27F /* food-pancake.pdf */,
+				8AE3FA0422EB04FB0051F27F /* food-vegetables.pdf */,
+				8AE3FA0322EB04FB0051F27F /* food-without-oil.pdf */,
 				8A23BFCE201056390034189E /* close2.pdf */,
 				8A23BFCD201056390034189E /* share.pdf */,
 				8A23BFC8201053BB0034189E /* calendar.pdf */,
@@ -242,17 +269,26 @@
 			files = (
 				8A23BFC1201049B10034189E /* bg3@2x.jpg in Resources */,
 				8A23BFBD201048EE0034189E /* Images.xcassets in Resources */,
+				8AE3FA0B22EB04FB0051F27F /* food-pancake.pdf in Resources */,
+				8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */,
 				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
 				8A23BFD0201056390034189E /* close2.pdf in Resources */,
 				8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */,
 				8A23BFCF201056390034189E /* share.pdf in Resources */,
+				8AE3FA0A22EB04FB0051F27F /* food-mexican.pdf in Resources */,
+				8AE3FA0922EB04FB0051F27F /* food-nothing.pdf in Resources */,
 				8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */,
+				8AE3FA0C22EB04FB0051F27F /* food-without-oil.pdf in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
+				8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
+				8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */,
 				8AFF6646218EED6500DDA40B /* ImageCell.xib in Resources */,
 				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
 				8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */,
 				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
+				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
+				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
