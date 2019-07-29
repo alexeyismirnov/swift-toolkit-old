@@ -10,7 +10,7 @@ import Foundation
 import Squeal
 
 public struct SaintModel {
-    static func saints(_ date: Date) -> [(FeastType, String)] {
+    static public func saints(_ date: Date) -> [(FeastType, String)] {
         var saints = [(FeastType, String)]()
         
         Cal.setDate(date)

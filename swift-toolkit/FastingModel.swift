@@ -64,16 +64,16 @@ public struct FastingModel {
     
     static var fastingComments = [String:String]()
     
-    static let monasticTypes : [FastingModel] = [
+    static public let monasticTypes : [FastingModel] = [
         FastingModel(.noFood), FastingModel(.xerophagy),
         FastingModel(.withoutOil), FastingModel(.withOil),
         FastingModel(.fishAllowed), FastingModel(.fastFree)]
     
-    static let laymenTypes: [FastingModel] = [
+    static public let laymenTypes: [FastingModel] = [
         FastingModel(.vegetarian), FastingModel(.fishAllowed), FastingModel(.fastFree)
     ]
     
-    static var fastingLevel: FastingLevel!
+    static public var fastingLevel: FastingLevel!
     
     init(_ type: FastingType, _ descr: String? = nil) {
         self.type = type
@@ -89,7 +89,7 @@ public struct FastingModel {
         self.comments = FastingModel.fastingComments[self.descr]
     }
     
-    static func fasting(forDate date: Date) -> FastingModel{
+    static public func fasting(forDate date: Date) -> FastingModel{
         Cal.setDate(date)
         
         switch fastingLevel! {

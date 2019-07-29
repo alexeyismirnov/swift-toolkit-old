@@ -1,15 +1,15 @@
 
 import UIKit
 
-enum FeastType: Int {
+public enum FeastType: Int {
     case none=0, noSign, sixVerse, doxology, polyeleos, vigil, great
 }
 
-enum NameOfDay: Int {
+public enum NameOfDay: Int {
     case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostolesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
 }
 
-enum DayOfWeek: Int  {
+public enum DayOfWeek: Int  {
     case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
 }
 
@@ -39,19 +39,19 @@ public struct ChurchCalendar {
         return formatter
     }()
     
-    static var currentDate: Date!
-    static var currentYear: Int!
-    static var currentWeekday: DayOfWeek = .monday
+    static public var currentDate: Date!
+    static public var currentYear: Int!
+    static public var currentWeekday: DayOfWeek = .monday
     
-    static var isLeapYear: Bool {
+    static public var isLeapYear: Bool {
         get { return (currentYear % 400) == 0 || ((currentYear%4 == 0) && (currentYear%100 != 0)) }
     }
     
-    static var leapStart: Date {
+    static public var leapStart: Date {
         get { return Date(29, 2, currentYear) }
     }
     
-    static var leapEnd: Date {
+    static public var leapEnd: Date {
         get { return Date(13, 3, currentYear) }
     }
     
@@ -136,11 +136,11 @@ public struct ChurchCalendar {
         dCache[DateCache(code, year)] = res[0]
     }
     
-    static func d(_ code: NameOfDay) -> Date {
+    static public func d(_ code: NameOfDay) -> Date {
         return dCache[DateCache(code, currentYear)]!
     }
     
-    static func setDate(_ date: Date) {
+    static public func setDate(_ date: Date) {
         let dateComponents = DateComponents(date: date)
         currentYear = dateComponents.year
         currentWeekday = DayOfWeek(rawValue: dateComponents.weekday!)!
@@ -521,7 +521,7 @@ public struct ChurchCalendar {
 
     }
 
-    static func getGreatFeast(_ date: Date) -> NameOfDay? {
+    static public func getGreatFeast(_ date: Date) -> NameOfDay? {
         if let feastCodes = feastDates[date] {
             for code in feastCodes {
                 if greatFeastCodes.contains(code) {
@@ -532,7 +532,7 @@ public struct ChurchCalendar {
         return nil
     }
     
-    static func getDayDescription(_ date: Date) -> [(FeastType, String)] {
+    static public func getDayDescription(_ date: Date) -> [(FeastType, String)] {
         var result = [(FeastType, String)]()
         
         setDate(date)
@@ -556,7 +556,7 @@ public struct ChurchCalendar {
         return result
     }
     
-    static func getWeekDescription(_ date: Date) -> String? {
+    static public func getWeekDescription(_ date: Date) -> String? {
         
         let sundays : [NameOfDay:String] = [
             .sundayOfPublicianAndPharisee: "Sunday of the Publican and the Pharisee",
@@ -633,7 +633,7 @@ public struct ChurchCalendar {
         
     }
     
-    static func getTone(_ date: Date) -> Int? {
+    static public func getTone(_ date: Date) -> Int? {
         func tone(dayNum: Int) -> Int {
             let reminder = (dayNum/7) % 8
             return (reminder == 0) ? 8 : reminder
@@ -652,7 +652,7 @@ public struct ChurchCalendar {
         }
     }
     
-    static func getToneDescription(_ date: Date) -> String? {
+    static public func getToneDescription(_ date: Date) -> String? {
         if let tone = getTone(date) {
             return String(format: Translate.s("Tone %@"), Translate.stringFromNumber(tone))
 

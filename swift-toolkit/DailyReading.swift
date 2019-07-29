@@ -228,7 +228,7 @@ public struct DailyReading {
         return newDate
     }
     
-    static func getDailyReading(_ date: Date) -> [String] {
+    static public func getDailyReading(_ date: Date) -> [String] {
         var readings = [String]()
         var transferred = [Date:String]()
         var noRegularReading = false
