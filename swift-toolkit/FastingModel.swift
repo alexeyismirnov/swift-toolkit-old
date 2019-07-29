@@ -16,7 +16,7 @@ public enum FastingType: Int {
     case noFast=0, vegetarian, fishAllowed, fastFree, cheesefare, noFood, xerophagy, withoutOil, withOil, noFastMonastic
 }
 
-struct FastingModel {
+public struct FastingModel {
     let type: FastingType
     let descr: String
     let comments: String?

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DailyReading {
+public struct DailyReading {
     
     struct LukeSpringParams {
         var PAPSunday : Date!

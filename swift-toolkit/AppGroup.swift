@@ -9,17 +9,17 @@
 import Foundation
 
 public struct AppGroup {
-    static var id: String! {
+    static public var id: String! {
         didSet {
             url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: id)
             prefs = UserDefaults(suiteName: id)
         }
     }
     
-    static var url : URL!
-    static var prefs : UserDefaults!
+    static public var url : URL!
+    static public var prefs : UserDefaults!
     
-    static func copyFile(_ filename: String, _ ext: String)  {
+    static public func copyFile(_ filename: String, _ ext: String)  {
         let srcPath = Bundle.main.url(forResource: filename, withExtension: ext)!
         let dstPath = url.appendingPathComponent(filename+"."+ext)
         

@@ -9,7 +9,7 @@
 import Foundation
 import Squeal
 
-struct SaintModel {
+public struct SaintModel {
     static func saints(_ date: Date) -> [(FeastType, String)] {
         var saints = [(FeastType, String)]()
         

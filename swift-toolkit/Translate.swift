@@ -14,11 +14,12 @@ extension Array {
     }
 }
 
-class Translate: NSObject {
+public class Translate: NSObject {
     fileprivate static var dict = [String:String]()
-    static var defaultLanguage = "en"
-    static var locale  = Locale(identifier: "en")
-    static var files = [String]() {
+    
+    static public var defaultLanguage = "en"
+    static public var locale  = Locale(identifier: "en")
+    static public var files = [String]() {
         didSet {
             files.mapInPlace { file in
                 return AppGroup.url.appendingPathComponent("\(file).plist").path
@@ -26,7 +27,7 @@ class Translate: NSObject {
         }
     }
     
-    static var language:String = defaultLanguage {
+    static public var language:String = defaultLanguage {
         didSet {
             locale = Locale(identifier: (language == "cn") ? "zh_CN" : language)
             
@@ -42,11 +43,11 @@ class Translate: NSObject {
         }
     }
     
-    static func s(_ str : String) -> String {
+    static public func s(_ str : String) -> String {
         return dict[str] ?? str
     }
     
-    static func stringFromNumber(_ num : Int) -> String {
+    static public func stringFromNumber(_ num : Int) -> String {
         if language == defaultLanguage {
             return String(num)
 
@@ -62,7 +63,7 @@ class Translate: NSObject {
         }
     }
     
-    static func readings(_ reading : String) -> String {
+    static public func readings(_ reading : String) -> String {
         var reading = reading
         if language == defaultLanguage {
             return reading

@@ -31,7 +31,7 @@ func == (lhs: DateCache, rhs: DateCache) -> Bool {
     return lhs.code == rhs.code && lhs.year == rhs.year
 }
 
-struct ChurchCalendar {
+public struct ChurchCalendar {
     static var formatter: DateFormatter = {
         var formatter = DateFormatter()
         formatter.dateStyle = .short
