@@ -9,8 +9,8 @@
 import Foundation
 import Squeal
 
-var groupId = ""
-var groupURL : URL!
+public var groupId = ""
+public var groupURL : URL!
 
 struct SaintModel {
     static func saints(_ date: Date) -> [(FeastType, String)] {
