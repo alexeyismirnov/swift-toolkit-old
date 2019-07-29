@@ -11,8 +11,8 @@ import Foundation
 public struct AppGroup {
     static public var id: String! {
         didSet {
-            url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: id)
-            prefs = UserDefaults(suiteName: id)
+            url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: id)!
+            prefs = UserDefaults(suiteName: id)!
         }
     }
     

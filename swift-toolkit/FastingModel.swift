@@ -62,7 +62,7 @@ public struct FastingModel {
         .withOil:       "vegetables",
     ]
     
-    static var fastingComments = [String:String]()
+    static public var fastingComments = [String:String]()
     
     static public let monasticTypes : [FastingModel] = [
         FastingModel(.noFood), FastingModel(.xerophagy),
