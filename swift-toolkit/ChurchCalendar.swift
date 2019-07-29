@@ -662,5 +662,5 @@ public struct ChurchCalendar {
     }
 }
 
-typealias Cal = ChurchCalendar
+public typealias Cal = ChurchCalendar
 
