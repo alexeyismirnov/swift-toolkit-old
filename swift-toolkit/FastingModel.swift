@@ -17,11 +17,11 @@ public enum FastingType: Int {
 }
 
 public struct FastingModel {
-    let type: FastingType
-    let descr: String
-    let comments: String?
-    let icon: String
-    let color: UIColor
+    public let type: FastingType
+    public let descr: String
+    public let comments: String?
+    public let icon: String
+    public let color: UIColor
     
     static let fastingColor : [FastingType: UIColor] = [
         .noFast:            .clear,

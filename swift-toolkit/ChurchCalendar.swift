@@ -111,7 +111,7 @@ public struct ChurchCalendar {
         .killedInAction:            (.none, "Commemoration of Fallen Soldiers")
     ]
 
-    static let feastIcon : [FeastType: String] = [
+    static public let feastIcon : [FeastType: String] = [
         .noSign: "nosign",
         .sixVerse: "sixverse",
         .doxology: "doxology",
@@ -123,7 +123,6 @@ public struct ChurchCalendar {
     static let greatFeastCodes : [NameOfDay] = [.palmSunday, .pascha, .ascension, .pentecost, .nativityOfGod, .circumcision, .theophany, .meetingOfLord, .annunciation, .nativityOfJohn, .peterAndPaul, .transfiguration, .dormition, .beheadingOfJohn, .nativityOfTheotokos, .exaltationOfCross, .veilOfTheotokos, .entryIntoTemple]
 
     static func saveFeastDate(_ code: NameOfDay, _ year:Int) {
-        
         if (code == .sundayBeforeNativity || code == .saturdayBeforeNativity) {
             // it is possible that there will be 2 Sundays or Saturdays before Nativity in a given year
             return;
