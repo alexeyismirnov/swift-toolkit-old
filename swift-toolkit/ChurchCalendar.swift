@@ -60,7 +60,7 @@ public struct ChurchCalendar {
 
     static var dateFeastDescr = [Date: [(FeastType, String)]]()
 
-    static let codeFeastDescr : [NameOfDay: (FeastType, String)] = [
+    static public  let codeFeastDescr : [NameOfDay: (FeastType, String)] = [
         .pascha:                    (.great, "PASCHA. The Bright and Glorious Resurrection of our Lord, God, and Saviour Jesus Christ"),
         .pentecost:                 (.great, "Pentecost. Sunday of the Holy Trinity. Descent of the Holy Spirit on the Apostles"),
         .ascension:                 (.great, "Ascension of our Lord, God, and Saviour Jesus Christ"),
