@@ -34,6 +34,7 @@
 		8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */; };
 		8AA660DE22EEA5690021D996 /* Squeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA660DD22EEA5690021D996 /* Squeal.framework */; };
 		8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660DF22EEA67F0021D996 /* SaintModel.swift */; };
+		8AA660E222EED0570021D996 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660E122EED0570021D996 /* AppGroup.swift */; };
 		8AB18EF01F86360300F1A65C /* swift_toolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB18EEE1F86360300F1A65C /* swift_toolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC338151FB851C100CF0D02 /* Main.storyboard */; };
 		8AC3381E1FB879D300CF0D02 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */; };
@@ -86,6 +87,7 @@
 		8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar.swift; sourceTree = "<group>"; };
 		8AA660DD22EEA5690021D996 /* Squeal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Squeal.framework; path = Carthage/Build/iOS/Squeal.framework; sourceTree = "<group>"; };
 		8AA660DF22EEA67F0021D996 /* SaintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintModel.swift; sourceTree = "<group>"; };
+		8AA660E122EED0570021D996 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		8AB18EEB1F86360300F1A65C /* swift_toolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_toolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB18EEE1F86360300F1A65C /* swift_toolkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swift_toolkit.h; sourceTree = "<group>"; };
 		8AB18EEF1F86360300F1A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
+				8AA660E122EED0570021D996 /* AppGroup.swift */,
 				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
 				8AA660DF22EEA67F0021D996 /* SaintModel.swift */,
 				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
@@ -326,6 +329,7 @@
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
+				8AA660E222EED0570021D996 /* AppGroup.swift in Sources */,
 				8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */,
 				8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,

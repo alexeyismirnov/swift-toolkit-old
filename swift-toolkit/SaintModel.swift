@@ -9,9 +9,6 @@
 import Foundation
 import Squeal
 
-public var groupId = ""
-public var groupURL : URL!
-
 struct SaintModel {
     static func saints(_ date: Date) -> [(FeastType, String)] {
         var saints = [(FeastType, String)]()
@@ -46,7 +43,7 @@ struct SaintModel {
         let dc = DateComponents(date: date)
         let filename = String(format: "saints_%02d_%@.sqlite", dc.month!, Translate.language)
         
-        let dst = groupURL.appendingPathComponent(filename)
+        let dst = AppGroup.url.appendingPathComponent(filename)
         let db = try! Database(path:dst.path)
         
         var saints = [(FeastType, String)]()
