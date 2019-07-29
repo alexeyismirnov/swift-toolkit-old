@@ -8,11 +8,23 @@
 
 import UIKit
 
+extension Array {
+    mutating func mapInPlace(_ transform: (Element) -> Element) {
+        self = map(transform)
+    }
+}
+
 class Translate: NSObject {
     fileprivate static var dict = [String:String]()
     static var defaultLanguage = "en"
     static var locale  = Locale(identifier: "en")
-    static var files = [String]()
+    static var files = [String]() {
+        didSet {
+            files.mapInPlace { file in
+                return AppGroup.url.appendingPathComponent("\(file).plist").path
+            }
+        }
+    }
     
     static var language:String = defaultLanguage {
         didSet {
@@ -24,7 +36,7 @@ class Translate: NSObject {
                 return
             }
             
-            for (_, file) in files.enumerated() {
+            for file in files {
                 dict += NSDictionary(contentsOfFile: file) as! [String: String]
             }
         }
