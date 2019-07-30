@@ -132,7 +132,9 @@ public struct ChurchCalendar {
             return codes.contains(code) && DateComponents(date:date).year == year ? date : nil
         }
         
-        dCache[DateCache(code, year)] = res[0]
+        if res.count > 0 {
+            dCache[DateCache(code, year)] = res[0]
+        }
     }
     
     static public func d(_ code: NameOfDay) -> Date {
