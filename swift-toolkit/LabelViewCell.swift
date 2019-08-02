@@ -29,8 +29,8 @@ extension UICollectionView {
     }
 }
 
-class LabelViewCell: UICollectionViewCell {
-    var title: UILabel!
+public class LabelViewCell: UICollectionViewCell {
+    public var title: UILabel!
     var con = [NSLayoutConstraint]()
     
     func regularLayout() {
@@ -46,7 +46,7 @@ class LabelViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(con)
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         title = UILabel()

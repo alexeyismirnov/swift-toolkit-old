@@ -8,8 +8,8 @@
 
 import UIKit
 
-class DayViewCell: LabelViewCell {
-    var currentDate : Date?
+public class DayViewCell: LabelViewCell {
+    public var currentDate : Date?
 
     func configureCell(date: Date?, fontSize: CGFloat, textColor: UIColor, selectedDate: Date?) {
         regularLayout()
