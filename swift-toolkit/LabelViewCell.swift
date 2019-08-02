@@ -12,18 +12,18 @@ public protocol ReusableView: class {
     static var defaultReuseIdentifier: String { get }
 }
 
-extension ReusableView where Self: UIView {
+public extension ReusableView where Self: UIView {
     public static var defaultReuseIdentifier: String {
         return String(describing: self)
     }
 }
 
-extension UICollectionView {
-    func register<T: UICollectionViewCell>(_: T.Type) where T: ReusableView {
+public extension UICollectionView {
+    public func register<T: UICollectionViewCell>(_: T.Type) where T: ReusableView {
         register(T.self, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
     }
     
-    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
+    public func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
         register(T.self)
         return dequeueReusableCell(withReuseIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
     }
