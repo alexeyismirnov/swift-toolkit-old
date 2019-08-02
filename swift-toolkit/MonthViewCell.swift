@@ -10,23 +10,15 @@ import UIKit
 
 public let dateChangedNotification = "DATE_CHANGED"
 
-public protocol CellWithDate {
-    var currentDate : Date? { get }
-    func configureCell(date : Date?)
-}
-
 class MonthViewCell: UICollectionViewCell {
-    static let cellId = "CalendarCell"
-
     var collectionView: UICollectionView!
-    var delegate : CalendarDelegate!
-    var cellReuseIdentifier : String! {
+    
+    var delegate : CalendarDelegate! {
         didSet {
-            collectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
-            delegate.cellReuseIdentifier = cellReuseIdentifier
+            collectionView.dataSource = delegate
+            collectionView.delegate = delegate
         }
     }
-    var cellNibName : String!
     
     var currentDate: Date! {
         didSet {
@@ -52,11 +44,6 @@ class MonthViewCell: UICollectionViewCell {
         collectionView = UICollectionView(frame: initialFrame, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clear
 
-        delegate = CalendarDelegate()
-        
-        collectionView.dataSource = delegate
-        collectionView.delegate = delegate
-        
         let recognizer = UITapGestureRecognizer(target: self, action:#selector(doneWithDate(_:)))
         recognizer.numberOfTapsRequired = 1
         collectionView.addGestureRecognizer(recognizer)
@@ -68,7 +55,7 @@ class MonthViewCell: UICollectionViewCell {
         let loc = recognizer.location(in: collectionView)
         
         if  let path = collectionView.indexPathForItem(at: loc),
-            let cell = collectionView.cellForItem(at: path) as? CellWithDate,
+            let cell = collectionView.cellForItem(at: path) as? DayViewCell,
             let curDate = cell.currentDate {
                 let userInfo:[String: Date] = ["date": curDate]
                 NotificationCenter.default.post(name: Notification.Name(rawValue: dateChangedNotification), object: nil, userInfo: userInfo)
@@ -76,3 +63,5 @@ class MonthViewCell: UICollectionViewCell {
     }
     
 }
+
+extension MonthViewCell: ReusableView {}

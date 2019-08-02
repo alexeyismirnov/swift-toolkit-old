@@ -9,8 +9,11 @@
 import UIKit
 
 public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var startGap: Int!
+
+    var fontSize: CGFloat
+    var textColor : UIColor
     var selectedDate: Date?
-    public var cellReuseIdentifier : String!
     
     public var currentDate: Date! {
         didSet {
@@ -21,7 +24,14 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
         }
     }
     
-    private var startGap: Int!
+    
+    init(fontSize: CGFloat = Theme.defaultFontSize, textColor: UIColor = .black, selectedDate: Date? = nil) {
+        self.fontSize = fontSize
+        self.textColor = textColor
+        self.selectedDate = selectedDate
+        
+        super.init()
+    }
 
     @objc public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -37,17 +47,16 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! CellWithDate
-        var curDate : Date? = nil
+        let cell: DayViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        var date : Date? = nil
         
         if indexPath.row >= startGap {
             let dayIndex = indexPath.row + 1 - startGap
-            curDate = Date(dayIndex, currentDate.month, currentDate.year)
+            date = Date(dayIndex, currentDate.month, currentDate.year)
         }
         
-        cell.configureCell(date: curDate)
-        
-        return cell as! UICollectionViewCell
+        cell.configureCell(date: date, fontSize: fontSize, textColor: textColor, selectedDate: selectedDate)
+        return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

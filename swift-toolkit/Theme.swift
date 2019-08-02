@@ -18,6 +18,7 @@ public struct Theme {
     public static var textColor: UIColor!
     public static var mainColor : UIColor?
     public static var secondaryColor : UIColor!
+    public static let defaultFontSize = CGFloat(UIDevice.current.userInterfaceIdiom == .phone ? 16.0 : 18.0)
     
     public static func set(_ t: AppTheme) {
         switch t {

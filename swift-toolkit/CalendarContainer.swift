@@ -24,19 +24,15 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dates = [Date]()
-    var initialDate: Date!
-    var cellReuseIdentifier : String! 
-    var cellNibName : String!
+    var currentDate: Date!
     
-    public static func show(inVC: UIViewController, initialDate: Date, cellReuseIdentifier: String, cellNibName: String, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
+    public static func show(inVC: UIViewController, initialDate: Date, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
         let bundle = Bundle(identifier: "com.rlc.swift-toolkit")
 
         let container = UIViewController.named("CalendarContainer", bundle: bundle) as! CalendarNavigation
         let calendar = container.topViewController as! CalendarContainer
         
-        calendar.initialDate = initialDate
-        calendar.cellNibName = cellNibName
-        calendar.cellReuseIdentifier = cellReuseIdentifier
+        calendar.currentDate = initialDate
         
         if let leftButton = leftButton {
             let spacer_l = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
@@ -86,10 +82,9 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         
         view.setNeedsLayout()
         
-        setTitle(fromDate: initialDate)
-        dates = [initialDate-1.months, initialDate, initialDate+1.months]
+        setTitle(fromDate: currentDate)
+        dates = [currentDate-1.months, currentDate, currentDate+1.months]
         
-        collectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.cellId)
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -137,10 +132,9 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewCell.cellId, for: indexPath) as! CalendarViewCell
-        cell.cellNibName = cellNibName
-        cell.cellReuseIdentifier = cellReuseIdentifier
+        let cell: MonthViewCell = collectionView.dequeueReusableCell(for: indexPath)
         
+        cell.delegate = CalendarDelegate(selectedDate: Cal.currentDate)
         cell.currentDate = dates[indexPath.row]
         
         return cell
