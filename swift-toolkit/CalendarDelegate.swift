@@ -13,7 +13,7 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
 
     var fontSize: CGFloat
     var textColor : UIColor
-    var selectedDate: Date?
+    public var selectedDate: Date?
     
     public var currentDate: Date! {
         didSet {
