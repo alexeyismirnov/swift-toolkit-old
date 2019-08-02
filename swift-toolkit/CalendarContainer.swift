@@ -24,7 +24,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dates = [Date]()
-    var currentDate: Date!
+    var initialDate: Date!
     
     public static func show(inVC: UIViewController, initialDate: Date, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
         let bundle = Bundle(identifier: "com.rlc.swift-toolkit")
@@ -32,7 +32,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         let container = UIViewController.named("CalendarContainer", bundle: bundle) as! CalendarNavigation
         let calendar = container.topViewController as! CalendarContainer
         
-        calendar.currentDate = initialDate
+        calendar.initialDate = initialDate
         
         if let leftButton = leftButton {
             let spacer_l = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
@@ -82,8 +82,8 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         
         view.setNeedsLayout()
         
-        setTitle(fromDate: currentDate)
-        dates = [currentDate-1.months, currentDate, currentDate+1.months]
+        setTitle(fromDate: initialDate)
+        dates = [initialDate-1.months, initialDate, initialDate+1.months]
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -134,7 +134,7 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MonthViewCell = collectionView.dequeueReusableCell(for: indexPath)
         
-        cell.delegate = CalendarDelegate(selectedDate: Cal.currentDate)
+        cell.delegate = CalendarDelegate(selectedDate: initialDate)
         cell.currentDate = dates[indexPath.row]
         
         return cell
