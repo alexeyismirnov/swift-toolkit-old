@@ -25,7 +25,7 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
     }
     
     
-    init(fontSize: CGFloat = Theme.defaultFontSize, textColor: UIColor = .black, selectedDate: Date? = nil) {
+    public init(fontSize: CGFloat = Theme.defaultFontSize, textColor: UIColor = .black, selectedDate: Date? = nil) {
         self.fontSize = fontSize
         self.textColor = textColor
         self.selectedDate = selectedDate
