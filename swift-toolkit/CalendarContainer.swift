@@ -9,9 +9,9 @@
 import UIKit
 
 public class CalendarNavigation: UINavigationController, PopupContentViewController {
-    var leftButton: UIBarButtonItem?
-    var rightButton: UIBarButtonItem?
-    var initialDate: Date!
+    public var leftButton: UIBarButtonItem?
+    public var rightButton: UIBarButtonItem?
+    public var initialDate: Date!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
