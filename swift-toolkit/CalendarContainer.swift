@@ -8,8 +8,38 @@
 
 import UIKit
 
-class CalendarNavigation: UINavigationController, PopupContentViewController {
-    func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
+public class CalendarNavigation: UINavigationController, PopupContentViewController {
+    var leftButton: UIBarButtonItem?
+    var rightButton: UIBarButtonItem?
+    var initialDate: Date!
+
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        
+        let calendar = topViewController as! CalendarContainer
+        calendar.initialDate = initialDate
+        
+        if let leftButton = leftButton {
+            let spacer_l = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+            spacer_l.width = 10
+            
+            navigationItem.leftBarButtonItems = [spacer_l, leftButton]
+        }
+        
+        if let rightButton = rightButton {
+            let spacer_r = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+            spacer_r.width = 10
+            
+            navigationItem.rightBarButtonItems = [spacer_r, rightButton]
+        }
+        
+
+    }
+    
+    public func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
         
         if (UIDevice.current.userInterfaceIdiom == .phone) {
             return CGSize(width: 300, height: 350)
