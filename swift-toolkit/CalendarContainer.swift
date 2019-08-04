@@ -26,14 +26,14 @@ public class CalendarNavigation: UINavigationController, PopupContentViewControl
             let spacer_l = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
             spacer_l.width = 10
             
-            navigationItem.leftBarButtonItems = [spacer_l, leftButton]
+            calendar.navigationItem.leftBarButtonItems = [spacer_l, leftButton]
         }
         
         if let rightButton = rightButton {
             let spacer_r = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
             spacer_r.width = 10
             
-            navigationItem.rightBarButtonItems = [spacer_r, rightButton]
+            calendar.navigationItem.rightBarButtonItems = [spacer_r, rightButton]
         }
         
 
