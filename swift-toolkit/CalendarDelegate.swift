@@ -19,7 +19,7 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
         didSet {
             let monthStart = Date(1, currentDate.month, currentDate.year)
             var cal = Calendar.current
-            cal.locale = Locale(identifier: "ru")
+            cal.locale = Translate.locale
             startGap = (monthStart.weekday < cal.firstWeekday) ? 7 - (cal.firstWeekday-monthStart.weekday) : monthStart.weekday - cal.firstWeekday
         }
     }

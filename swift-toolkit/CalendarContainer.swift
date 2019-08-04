@@ -35,12 +35,9 @@ public class CalendarNavigation: UINavigationController, PopupContentViewControl
             
             calendar.navigationItem.rightBarButtonItems = [spacer_r, rightButton]
         }
-        
-
     }
     
     public func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
-        
         if (UIDevice.current.userInterfaceIdiom == .phone) {
             return CGSize(width: 300, height: 350)
 
@@ -55,45 +52,6 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     
     var dates = [Date]()
     var initialDate: Date!
-    
-    public static func show(inVC: UIViewController, initialDate: Date, leftButton: UIBarButtonItem? = nil, rightButton: UIBarButtonItem? = nil) -> PopupController {
-        let bundle = Bundle(identifier: "com.rlc.swift-toolkit")
-
-        let container = UIViewController.named("CalendarContainer", bundle: bundle) as! CalendarNavigation
-        let calendar = container.topViewController as! CalendarContainer
-        
-        calendar.initialDate = initialDate
-        
-        if let leftButton = leftButton {
-            let spacer_l = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
-            spacer_l.width = 10
-            
-            calendar.navigationItem.leftBarButtonItems = [spacer_l, leftButton]
-        }
-        
-        if let rightButton = rightButton {
-            let spacer_r = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
-            spacer_r.width = 10
-            
-            calendar.navigationItem.rightBarButtonItems = [spacer_r, rightButton]
-        }
-        
-        container.navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
-        container.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
-
-        let popup = PopupController
-            .create(inVC)
-            .customize(
-                [
-                    .animation(.fadeIn),
-                    .layout(.center),
-                    .backgroundStyle(.blackFilter(alpha: 0.7))
-                ]
-            )
-        
-        popup.show(container)
-        return popup
-    }
         
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -135,13 +93,12 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .left, animated: false)
-
     }
     
     func setTitle(fromDate date: Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLLL yyyy"
-        formatter.locale = Locale(identifier: "ru")
+        formatter.locale = Translate.locale
 
         title = formatter.string(from: date).capitalizingFirstLetter()
     }
@@ -208,10 +165,10 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
     public static func generateLabels(_ view: UIView, standalone : Bool = false, textColor : UIColor? = nil, fontSize : CGFloat? = nil) {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLLL yyyy"
-        formatter.locale = Locale(identifier: "ru")
+        formatter.locale = Translate.locale
         
         var cal = Calendar.current
-        cal.locale = Locale(identifier: "ru")
+        cal.locale = Translate.locale
         
         var dayLabel = [String]()
         
