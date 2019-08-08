@@ -640,6 +640,7 @@ public extension UICollectionView {
         register(T.self)
         return dequeueReusableCell(withReuseIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
     }
+    
 }
 
 public extension UITableView {
@@ -650,5 +651,10 @@ public extension UITableView {
     func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
         register(T.self)
         return dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>() -> T where T: ReusableView {
+        register(T.self)
+        return dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier) as! T
     }
 }
