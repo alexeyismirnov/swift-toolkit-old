@@ -620,3 +620,35 @@ public extension UIViewController {
         UIViewController.popup.show(vc)
     }
 }
+
+public protocol ReusableView: class {
+    static var defaultReuseIdentifier: String { get }
+}
+
+public extension ReusableView where Self: UIView {
+    static var defaultReuseIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+public extension UICollectionView {
+    func register<T: UICollectionViewCell>(_: T.Type) where T: ReusableView {
+        register(T.self, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
+    }
+    
+    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
+        register(T.self)
+        return dequeueReusableCell(withReuseIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
+    }
+}
+
+public extension UITableView {
+    func register<T: UITableViewCell>(_: T.Type) where T: ReusableView {
+        register(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
+        register(T.self)
+        return dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
+    }
+}

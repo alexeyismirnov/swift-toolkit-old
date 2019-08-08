@@ -8,27 +8,6 @@
 
 import UIKit
 
-public protocol ReusableView: class {
-    static var defaultReuseIdentifier: String { get }
-}
-
-public extension ReusableView where Self: UIView {
-    static var defaultReuseIdentifier: String {
-        return String(describing: self)
-    }
-}
-
-public extension UICollectionView {
-    func register<T: UICollectionViewCell>(_: T.Type) where T: ReusableView {
-        register(T.self, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
-    }
-    
-    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ReusableView {
-        register(T.self)
-        return dequeueReusableCell(withReuseIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
-    }
-}
-
 public class LabelViewCell: UICollectionViewCell {
     public var title: UILabel!
     var con = [NSLayoutConstraint]()

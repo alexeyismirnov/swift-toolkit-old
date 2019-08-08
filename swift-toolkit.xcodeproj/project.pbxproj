@@ -132,6 +132,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A00A50A22F6DE540040F14C /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
+				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
+				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
+				8AC3381D1FB879D300CF0D02 /* MonthViewCell.swift */,
+				8AFE334722F4319F008DBCD6 /* DayViewCell.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,18 +189,14 @@
 		8AB18EED1F86360300F1A65C /* swift-toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				8A00A50A22F6DE540040F14C /* Calendar */,
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
-				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
 				8AA660DF22EEA67F0021D996 /* SaintModel.swift */,
 				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
 				8AA660D622EEA1AE0021D996 /* FastingModel.swift */,
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
-				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
-				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
-				8AC3381D1FB879D300CF0D02 /* MonthViewCell.swift */,
-				8AFE334722F4319F008DBCD6 /* DayViewCell.swift */,
 				8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */,
 				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
 				8A1238081F8F3C8900F6B382 /* Animation.swift */,
