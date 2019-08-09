@@ -159,6 +159,8 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         print("qq1")
         
         let content = model.getContent(at: pos) as! String
+        
+        print(content)
         webView.loadHTMLString(header + "<html><head>" + styleCSS + "</head><body>" + content + "</body></html>", baseURL: toolkit!.bundleURL)
         
         return webView
