@@ -122,12 +122,10 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         NSLayoutConstraint.activate(con)
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    private func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url
             else { decisionHandler(.allow); return }
-        
-        print(url)
-        
+                
         if url.scheme == "comment"  {
             let id = Int(url.host!)!
             let text = model.getComment(commentId: id)
