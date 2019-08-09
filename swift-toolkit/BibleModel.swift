@@ -86,7 +86,7 @@ public class OldTestamentModel : BookModel {
     public var isExpandable = true
     public var hasNavigation = true
     
-    static let data: [[(String, String)]] = [
+    public static let data: [[(String, String)]] = [
         [
             ("Genesis", "gen"),
             ("Exodus", "ex"),
@@ -137,7 +137,7 @@ public class OldTestamentModel : BookModel {
             ]
     ]
     
-    static let shared = OldTestamentModel()
+    public static let shared = OldTestamentModel()
 
     public func getSections() -> [String] {
         return ["Five Books of Moses", "Historical books", "Wisdom books", "Prophets books"].map { return Translate.s($0) }
@@ -210,7 +210,7 @@ public class NewTestamentModel : BookModel {
     public var isExpandable = true
     public var hasNavigation = true
 
-    static let data: [[(String, String)]] = [
+    public static let data: [[(String, String)]] = [
         [
             ("Gospel of St Matthew", "matthew"),
             ("Gospel of St Mark", "mark"),
@@ -248,7 +248,7 @@ public class NewTestamentModel : BookModel {
         ]
     ]
     
-    static let shared = NewTestamentModel()
+    public static let shared = NewTestamentModel()
     
     public func getSections() -> [String] {
         return ["Four Gospels and Acts", "Catholic Epistles", "Epistles of Paul", "Apocalypse"].map { return Translate.s($0) }
