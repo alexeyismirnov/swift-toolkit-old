@@ -123,9 +123,12 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
     }
     
     private func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        print("qq")
+        
         guard let url = navigationAction.request.url
             else { decisionHandler(.allow); return }
-                
+        
         if url.scheme == "comment"  {
             let id = Int(url.host!)!
             let text = model.getComment(commentId: id)
