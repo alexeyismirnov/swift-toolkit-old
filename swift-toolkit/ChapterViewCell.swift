@@ -11,15 +11,15 @@ import UIKit
 public let chapterSelectedNotification = "CHAPTER_SELECTED"
 
 public class ChapterViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
-    var collectionView: UICollectionView!
-    var numChapters: Int!
-    var index : IndexPath!
+    public var collectionView: UICollectionView!
+    public var numChapters: Int!
+    public var index : IndexPath!
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public  init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
