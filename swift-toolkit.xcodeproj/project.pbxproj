@@ -23,6 +23,8 @@
 		8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6922FD7FB300CEA2DB /* BookPageText.swift */; };
 		8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6A22FD7FB300CEA2DB /* BookPage.swift */; };
 		8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */; };
+		8A229D7122FD92A800CEA2DB /* BookTOC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6F22FD92A800CEA2DB /* BookTOC.swift */; };
+		8A229D7222FD92A800CEA2DB /* BookmarksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */; };
 		8A23BFBD201048EE0034189E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFBC201048EE0034189E /* Images.xcassets */; };
 		8A23BFC1201049B10034189E /* bg3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFBF201049B00034189E /* bg3@2x.jpg */; };
 		8A23BFC2201049B10034189E /* church@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC0201049B10034189E /* church@2x.jpg */; };
@@ -90,6 +92,8 @@
 		8A229D6922FD7FB300CEA2DB /* BookPageText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageText.swift; sourceTree = "<group>"; };
 		8A229D6A22FD7FB300CEA2DB /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
 		8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageHTML.swift; sourceTree = "<group>"; };
+		8A229D6F22FD92A800CEA2DB /* BookTOC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTOC.swift; sourceTree = "<group>"; };
+		8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModel.swift; sourceTree = "<group>"; };
 		8A23BFBC201048EE0034189E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8A23BFBF201049B00034189E /* bg3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg3@2x.jpg"; sourceTree = "<group>"; };
 		8A23BFC0201049B10034189E /* church@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "church@2x.jpg"; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		8A229D5C22FD7C7600CEA2DB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */,
+				8A229D6F22FD92A800CEA2DB /* BookTOC.swift */,
 				8A229D6A22FD7FB300CEA2DB /* BookPage.swift */,
 				8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */,
 				8A229D6922FD7FB300CEA2DB /* BookPageText.swift */,
@@ -404,8 +410,10 @@
 				8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */,
 				8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
+				8A229D7122FD92A800CEA2DB /* BookTOC.swift in Sources */,
 				8AC338211FB879D300CF0D02 /* MonthViewCell.swift in Sources */,
 				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
+				8A229D7222FD92A800CEA2DB /* BookmarksModel.swift in Sources */,
 				8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
 				8A5CE4E3219EA79F007FAEAE /* WrapperView.swift in Sources */,
