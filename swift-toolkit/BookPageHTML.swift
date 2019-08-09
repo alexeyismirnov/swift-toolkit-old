@@ -63,6 +63,8 @@ public class LabelViewController : UIViewController, PopupContentViewController 
 }
 
 public class BookPageHTML: BookPage, WKNavigationDelegate {
+    let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
+
     let header = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'></header>"
     let bookIcon = """
             .icon {
@@ -91,8 +93,6 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
     }
     
     @objc override func reloadTheme() {
-        let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
-
         if let bgColor = Theme.mainColor {
             view.backgroundColor =  bgColor
             
@@ -157,10 +157,9 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         view.addSubview(webView)
         
         print("qq1")
-
         
         let content = model.getContent(at: pos) as! String
-        webView.loadHTMLString(header + "<html><head>" + styleCSS + "</head><body>" + content + "</body></html>", baseURL: Bundle.main.bundleURL)
+        webView.loadHTMLString(header + "<html><head>" + styleCSS + "</head><body>" + content + "</body></html>", baseURL: toolkit!.bundleURL)
         
         return webView
     }
