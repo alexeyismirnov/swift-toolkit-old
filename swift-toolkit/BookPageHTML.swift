@@ -124,7 +124,7 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
     
     private func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
-        print("qq")
+        print("qq2")
         
         guard let url = navigationAction.request.url
             else { decisionHandler(.allow); return }
@@ -155,6 +155,9 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         webView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(webView)
+        
+        print("qq1")
+
         
         let content = model.getContent(at: pos) as! String
         webView.loadHTMLString(header + "<html><head>" + styleCSS + "</head><body>" + content + "</body></html>", baseURL: Bundle.main.bundleURL)
