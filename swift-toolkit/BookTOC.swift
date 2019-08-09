@@ -19,7 +19,7 @@ public class BookTOC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     public var tableView: UITableView!
     
-    init?(_ model: BookModel) {
+    public init?(_ model: BookModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
     }
