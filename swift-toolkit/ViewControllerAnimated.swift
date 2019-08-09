@@ -97,7 +97,7 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
 }
 
 public protocol ResizableTableViewCells {
-    weak var tableView: UITableView! { get set }
+    var tableView: UITableView! { get set }
 }
 
 public extension ResizableTableViewCells where Self: UIViewController {

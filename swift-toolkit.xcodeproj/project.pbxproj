@@ -11,6 +11,18 @@
 		8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1238081F8F3C8900F6B382 /* Animation.swift */; };
 		8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */; };
 		8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */; };
+		8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */; };
+		8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5722FD7C0F00CEA2DB /* BookModel.swift */; };
+		8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */; };
+		8A229D6322FD7E6700CEA2DB /* review.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D5D22FD7E6700CEA2DB /* review.pdf */; };
+		8A229D6422FD7E6700CEA2DB /* arrow-right.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D5E22FD7E6700CEA2DB /* arrow-right.pdf */; };
+		8A229D6522FD7E6700CEA2DB /* arrow-left.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D5F22FD7E6700CEA2DB /* arrow-left.pdf */; };
+		8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D6022FD7E6700CEA2DB /* add_bookmark.pdf */; };
+		8A229D6722FD7E6700CEA2DB /* fontsize.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D6122FD7E6700CEA2DB /* fontsize.pdf */; };
+		8A229D6822FD7E6700CEA2DB /* remove_bookmark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D6222FD7E6700CEA2DB /* remove_bookmark.pdf */; };
+		8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6922FD7FB300CEA2DB /* BookPageText.swift */; };
+		8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6A22FD7FB300CEA2DB /* BookPage.swift */; };
+		8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */; };
 		8A23BFBD201048EE0034189E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFBC201048EE0034189E /* Images.xcassets */; };
 		8A23BFC1201049B10034189E /* bg3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFBF201049B00034189E /* bg3@2x.jpg */; };
 		8A23BFC2201049B10034189E /* church@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC0201049B10034189E /* church@2x.jpg */; };
@@ -66,6 +78,18 @@
 		8A1238081F8F3C8900F6B382 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimated.swift; sourceTree = "<group>"; };
 		8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimated.swift; sourceTree = "<group>"; };
+		8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleModel.swift; sourceTree = "<group>"; };
+		8A229D5722FD7C0F00CEA2DB /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewCell.swift; sourceTree = "<group>"; };
+		8A229D5D22FD7E6700CEA2DB /* review.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = review.pdf; sourceTree = "<group>"; };
+		8A229D5E22FD7E6700CEA2DB /* arrow-right.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "arrow-right.pdf"; sourceTree = "<group>"; };
+		8A229D5F22FD7E6700CEA2DB /* arrow-left.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "arrow-left.pdf"; sourceTree = "<group>"; };
+		8A229D6022FD7E6700CEA2DB /* add_bookmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = add_bookmark.pdf; sourceTree = "<group>"; };
+		8A229D6122FD7E6700CEA2DB /* fontsize.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = fontsize.pdf; sourceTree = "<group>"; };
+		8A229D6222FD7E6700CEA2DB /* remove_bookmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = remove_bookmark.pdf; sourceTree = "<group>"; };
+		8A229D6922FD7FB300CEA2DB /* BookPageText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageText.swift; sourceTree = "<group>"; };
+		8A229D6A22FD7FB300CEA2DB /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
+		8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageHTML.swift; sourceTree = "<group>"; };
 		8A23BFBC201048EE0034189E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8A23BFBF201049B00034189E /* bg3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg3@2x.jpg"; sourceTree = "<group>"; };
 		8A23BFC0201049B10034189E /* church@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "church@2x.jpg"; sourceTree = "<group>"; };
@@ -144,9 +168,28 @@
 			name = Calendar;
 			sourceTree = "<group>";
 		};
+		8A229D5C22FD7C7600CEA2DB /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8A229D6A22FD7FB300CEA2DB /* BookPage.swift */,
+				8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */,
+				8A229D6922FD7FB300CEA2DB /* BookPageText.swift */,
+				8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */,
+				8A229D5722FD7C0F00CEA2DB /* BookModel.swift */,
+				8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8A229D6022FD7E6700CEA2DB /* add_bookmark.pdf */,
+				8A229D5F22FD7E6700CEA2DB /* arrow-left.pdf */,
+				8A229D5E22FD7E6700CEA2DB /* arrow-right.pdf */,
+				8A229D6122FD7E6700CEA2DB /* fontsize.pdf */,
+				8A229D6222FD7E6700CEA2DB /* remove_bookmark.pdf */,
+				8A229D5D22FD7E6700CEA2DB /* review.pdf */,
 				8AE3FA0622EB04FB0051F27F /* food-burger.pdf */,
 				8AE3FA0522EB04FB0051F27F /* food-cupcake.pdf */,
 				8AE3F9FE22EB04FB0051F27F /* food-fish.pdf */,
@@ -190,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				8A00A50A22F6DE540040F14C /* Calendar */,
+				8A229D5C22FD7C7600CEA2DB /* Library */,
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
@@ -307,7 +351,9 @@
 				8A23BFBD201048EE0034189E /* Images.xcassets in Resources */,
 				8AE3FA0B22EB04FB0051F27F /* food-pancake.pdf in Resources */,
 				8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */,
+				8A229D6322FD7E6700CEA2DB /* review.pdf in Resources */,
 				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
+				8A229D6722FD7E6700CEA2DB /* fontsize.pdf in Resources */,
 				8A23BFD0201056390034189E /* close2.pdf in Resources */,
 				8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */,
 				8A23BFCF201056390034189E /* share.pdf in Resources */,
@@ -315,6 +361,7 @@
 				8AE3FA0922EB04FB0051F27F /* food-nothing.pdf in Resources */,
 				8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */,
 				8AE3FA0C22EB04FB0051F27F /* food-without-oil.pdf in Resources */,
+				8A229D6522FD7E6700CEA2DB /* arrow-left.pdf in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
 				8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
@@ -324,8 +371,11 @@
 				8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */,
 				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
 				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
+				8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */,
+				8A229D6822FD7E6700CEA2DB /* remove_bookmark.pdf in Resources */,
 				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
+				8A229D6422FD7E6700CEA2DB /* arrow-right.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,11 +387,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AC3381E1FB879D300CF0D02 /* CalendarDelegate.swift in Sources */,
+				8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */,
 				8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
+				8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */,
 				8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */,
 				8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */,
+				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
+				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
+				8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
 				8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */,
@@ -351,6 +406,7 @@
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
 				8AC338211FB879D300CF0D02 /* MonthViewCell.swift in Sources */,
 				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
+				8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
 				8A5CE4E3219EA79F007FAEAE /* WrapperView.swift in Sources */,
 				8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */,
