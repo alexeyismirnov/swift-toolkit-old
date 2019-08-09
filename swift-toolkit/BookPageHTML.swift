@@ -126,6 +126,8 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         guard let url = navigationAction.request.url
             else { decisionHandler(.allow); return }
         
+        print(url)
+        
         if url.scheme == "comment"  {
             let id = Int(url.host!)!
             let text = model.getComment(commentId: id)
