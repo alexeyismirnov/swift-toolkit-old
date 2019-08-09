@@ -122,7 +122,7 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         NSLayoutConstraint.activate(con)
     }
     
-    private func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         print("qq2")
         
