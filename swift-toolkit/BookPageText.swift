@@ -64,7 +64,7 @@ public class BookPageText: BookPage {
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
         
-        textView.attributedText = model.getContent(at: pos) as! NSAttributedString
+        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         
         view.addSubview(textView)
         textView.scrollRangeToVisible(NSRange(location:0, length:0))

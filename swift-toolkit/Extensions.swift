@@ -619,6 +619,13 @@ public extension UIViewController {
         
         UIViewController.popup.show(vc)
     }
+    
+    func fullScreen(view forView: UIView) {
+        forView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        forView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        forView.topAnchor.constraint(equalTo: view.topAnchor, constant: (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height).isActive = true
+        forView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController?.tabBar.frame.size.height ?? 0.0)).isActive = true
+    }
 }
 
 public protocol ReusableView: class {

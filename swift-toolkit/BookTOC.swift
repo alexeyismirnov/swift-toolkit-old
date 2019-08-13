@@ -41,16 +41,12 @@ public class BookTOC: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
-        
         tableView.register(UINib(nibName: "TextDetailsCell", bundle: toolkit), forCellReuseIdentifier: "TextDetailsCell")
 
         view.addSubview(tableView)
-
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: navigationController!.navigationBar.frame.height + UIApplication.shared.statusBarFrame.height).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController?.tabBar.frame.size.height ?? 0.0)).isActive = true
         
+        fullScreen(view: tableView)
+
         automaticallyAdjustsScrollViewInsets = false
         navigationController?.makeTransparent()
         
