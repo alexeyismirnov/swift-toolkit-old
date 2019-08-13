@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BookTOC: UIViewController, UITableViewDelegate, UITableViewDataSource, ResizableTableViewCells {
+public class BookTOC: UIViewController, ResizableTableViewCells {
     let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
     let prefs = AppGroup.prefs!
 
@@ -33,22 +33,8 @@ public class BookTOC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         expandable = model.isExpandable
         
-        tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
+        createTableView(style: .grouped)
         tableView.register(UINib(nibName: "TextDetailsCell", bundle: toolkit), forCellReuseIdentifier: "TextDetailsCell")
-
-        view.addSubview(tableView)
-        
-        fullScreen(view: tableView)
-
-        automaticallyAdjustsScrollViewInsets = false
-        navigationController?.makeTransparent()
         
         NotificationCenter.default.addObserver(self, selector: #selector(showChapter), name: NSNotification.Name(rawValue: chapterSelectedNotification), object: nil)
         

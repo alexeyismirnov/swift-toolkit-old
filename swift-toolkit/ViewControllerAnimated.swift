@@ -96,11 +96,26 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
     
 }
 
-public protocol ResizableTableViewCells {
+public protocol ResizableTableViewCells : UITableViewDelegate, UITableViewDataSource {
     var tableView: UITableView! { get set }
 }
 
 public extension ResizableTableViewCells where Self: UIViewController {
+    func createTableView(style: UITableView.Style) {
+        automaticallyAdjustsScrollViewInsets = false
+
+        tableView = UITableView(frame: .zero, style: style)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
+        
+        view.addSubview(tableView)
+        fullScreen(view: tableView)
+    }
     
     func getTextCell(_ title: String) -> TextCell {
         let newCell = tableView.dequeueReusableCell(withIdentifier: TextCell.cellId) as! TextCell
