@@ -35,6 +35,7 @@
 		8A23BFCC201053BC0034189E /* options.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFC9201053BC0034189E /* options.pdf */; };
 		8A23BFCF201056390034189E /* share.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCD201056390034189E /* share.pdf */; };
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
+		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
@@ -103,6 +104,7 @@
 		8A23BFC9201053BC0034189E /* options.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = options.pdf; sourceTree = "<group>"; };
 		8A23BFCD201056390034189E /* share.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = share.pdf; sourceTree = "<group>"; };
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
+		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				8AA660D622EEA1AE0021D996 /* FastingModel.swift */,
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
 				8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */,
+				8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */,
 				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
 				8A1238081F8F3C8900F6B382 /* Animation.swift */,
 				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
@@ -421,6 +424,7 @@
 				8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */,
 				8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */,
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
+				8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */,
 				8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
