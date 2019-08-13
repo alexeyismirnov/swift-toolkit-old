@@ -107,7 +107,6 @@ public extension ResizableTableViewCells where Self: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
 
         tableView = UITableView(frame: .zero, style: style)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.delegate = self
         tableView.dataSource = self

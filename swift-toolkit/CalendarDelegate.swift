@@ -47,7 +47,6 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: DayViewCell = collectionView.dequeueReusableCell(for: indexPath)
         var date : Date? = nil
         
         if indexPath.row >= startGap {
@@ -55,8 +54,16 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
             date = Date(dayIndex, currentDate.month, currentDate.year)
         }
         
-        cell.configureCell(date: date, fontSize: fontSize, textColor: textColor, selectedDate: selectedDate)
-        return cell
+        if date == selectedDate {
+            let cell: SelectedDayViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configureCell(date: date, fontSize: fontSize, textColor: textColor)
+            return cell
+
+        } else {
+            let cell: DayViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configureCell(date: date, fontSize: fontSize, textColor: textColor)
+            return cell
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

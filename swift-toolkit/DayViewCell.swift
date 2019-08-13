@@ -8,17 +8,32 @@
 
 import UIKit
 
+public class SelectedDayViewCell: DayViewCell {
+    override func configureCell(date: Date?, fontSize: CGFloat, textColor: UIColor) {
+        super.configureCell(date: date, fontSize: fontSize, textColor: textColor)
+       
+        title.layer.cornerRadius = fontSize
+        title.backgroundColor = .red
+        title.textColor = .white
+        
+        removeConstraints()
+        
+        title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        title.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        title.widthAnchor.constraint(equalToConstant: fontSize + 15.0).isActive = true
+        title.heightAnchor.constraint(equalToConstant: fontSize + 15.0).isActive = true
+    }
+
+}
+
 public class DayViewCell: LabelViewCell {
     public var currentDate : Date?
 
-    func configureCell(date: Date?, fontSize: CGFloat, textColor: UIColor, selectedDate: Date?) {
-        regularLayout()
-        
+    func configureCell(date: Date?, fontSize: CGFloat, textColor: UIColor) {
         contentView.backgroundColor =  UIColor.clear
         title.backgroundColor =  UIColor.clear
         
         currentDate = date
-        
         guard let date = date else { title.text = ""; return }
         
         title.text = String(format: "%d", date.day)
@@ -42,24 +57,6 @@ public class DayViewCell: LabelViewCell {
         }
         
         contentView.backgroundColor = fasting.color
-        
-        if date == selectedDate {
-            NSLayoutConstraint.deactivate(con)
-
-            con = [
-                title.centerXAnchor.constraint(equalTo: centerXAnchor),
-                title.centerYAnchor.constraint(equalTo: centerYAnchor),
-                title.widthAnchor.constraint(equalToConstant: fontSize + 15.0),
-                title.heightAnchor.constraint(equalToConstant: fontSize + 15.0),
-
-            ]
-            
-            NSLayoutConstraint.activate(con)
-            
-            title.layer.cornerRadius = fontSize
-            title.backgroundColor = .red
-            title.textColor = .white
-        }
         
     }
 }
