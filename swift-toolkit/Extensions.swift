@@ -630,8 +630,8 @@ public extension UIViewController {
     }
 }
 
-extension UIView {
-    public var parentViewController: UIViewController? {
+public extension UIView {
+    var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {
             parentResponder = parentResponder!.next

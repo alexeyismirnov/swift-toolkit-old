@@ -31,19 +31,13 @@ public class ChapterViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         flowLayout.minimumLineSpacing = 0
         flowLayout.itemSize = CGSize(width: 50, height: 50)
         
-        collectionView = UICollectionView(frame: bounds, collectionViewLayout: flowLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+        collectionView = UICollectionView(frame: bounds, collectionViewLayout: flowLayout)        
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
         
         addSubview(collectionView)
-        
-        collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        fullScreen(view: collectionView)
         
         let recognizer = UITapGestureRecognizer(target: self, action:#selector(chapterSelected(_:)))
         recognizer.numberOfTapsRequired = 1
