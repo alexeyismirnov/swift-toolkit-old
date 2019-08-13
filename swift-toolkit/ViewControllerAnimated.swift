@@ -15,6 +15,8 @@ open class UIViewControllerAnimated : UIViewController, UINavigationControllerDe
     var panGesture :UIPanGestureRecognizer!
     
     override open func viewDidLoad() {
+        super.viewDidLoad()
+        
         navigationController?.delegate = self
         animationInteractive.completionSpeed = 0.999
         

@@ -621,10 +621,13 @@ public extension UIViewController {
     }
     
     func fullScreen(view forView: UIView) {
+        print(forView.constraints)
         forView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         forView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         forView.topAnchor.constraint(equalTo: view.topAnchor, constant: (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height).isActive = true
         forView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController?.tabBar.frame.size.height ?? 0.0)).isActive = true
+        print(forView.constraints)
+
     }
 }
 
