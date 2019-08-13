@@ -112,7 +112,6 @@ public extension ResizableTableViewCells where Self: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
         
         view.addSubview(tableView)
         fullScreen(view: tableView)
