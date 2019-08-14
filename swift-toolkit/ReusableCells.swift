@@ -105,7 +105,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
     
     func getSimpleCell(_ title: String) -> UITableViewCell {
-        let newCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let newCell: SimpleCell = tableView.dequeueReusableCell()
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
         newCell.textLabel!.textColor = Theme.textColor
@@ -132,3 +132,5 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
 }
 
+public class SimpleCell : UITableViewCell {}
+extension SimpleCell: ReusableView {}
