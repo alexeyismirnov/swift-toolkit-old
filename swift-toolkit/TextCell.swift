@@ -26,14 +26,13 @@ public class TextCell : UITableViewCell  {
 
         title.font = UIFont.systemFont(ofSize: 17)
         title.adjustsFontSizeToFitWidth = false
-        title.clipsToBounds = true
+        // title.clipsToBounds = true
         
         contentView.addSubview(title)
         
         title.translatesAutoresizingMaskIntoConstraints = false
-        
-        title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10.0).isActive = true
-        title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 10.0).isActive = true
+        title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20.0).isActive = true
+        title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20.0).isActive = true
         title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0.0).isActive = true
         title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5.0).isActive = true
     }
