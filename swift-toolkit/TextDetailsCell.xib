@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,13 +35,13 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="GEW-7u-hcq" firstAttribute="top" secondItem="ZXM-fC-FU9" secondAttribute="top" priority="999" constant="5" id="BUY-aT-egq"/>
-                    <constraint firstAttribute="bottom" secondItem="YIs-QP-CVw" secondAttribute="bottom" priority="999" constant="5" id="Ba9-Np-6cw"/>
-                    <constraint firstItem="YIs-QP-CVw" firstAttribute="top" secondItem="GEW-7u-hcq" secondAttribute="bottom" priority="999" id="LX5-Hx-z3L"/>
-                    <constraint firstAttribute="trailing" secondItem="YIs-QP-CVw" secondAttribute="trailing" priority="999" constant="10" id="P54-Wi-mQa"/>
-                    <constraint firstItem="YIs-QP-CVw" firstAttribute="leading" secondItem="ZXM-fC-FU9" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="XzD-Bd-6C4"/>
-                    <constraint firstItem="GEW-7u-hcq" firstAttribute="leading" secondItem="ZXM-fC-FU9" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="eYG-e9-Czb"/>
-                    <constraint firstAttribute="trailing" secondItem="GEW-7u-hcq" secondAttribute="trailing" priority="999" constant="10" id="mXd-UR-Ziz"/>
+                    <constraint firstItem="GEW-7u-hcq" firstAttribute="top" secondItem="ZXM-fC-FU9" secondAttribute="top" constant="5" id="BUY-aT-egq"/>
+                    <constraint firstAttribute="bottom" secondItem="YIs-QP-CVw" secondAttribute="bottom" constant="5" id="Ba9-Np-6cw"/>
+                    <constraint firstItem="YIs-QP-CVw" firstAttribute="top" secondItem="GEW-7u-hcq" secondAttribute="bottom" id="LX5-Hx-z3L"/>
+                    <constraint firstAttribute="trailing" secondItem="YIs-QP-CVw" secondAttribute="trailing" constant="10" id="P54-Wi-mQa"/>
+                    <constraint firstItem="YIs-QP-CVw" firstAttribute="leading" secondItem="ZXM-fC-FU9" secondAttribute="leading" constant="20" symbolic="YES" id="XzD-Bd-6C4"/>
+                    <constraint firstItem="GEW-7u-hcq" firstAttribute="leading" secondItem="ZXM-fC-FU9" secondAttribute="leading" constant="20" symbolic="YES" id="eYG-e9-Czb"/>
+                    <constraint firstAttribute="trailing" secondItem="GEW-7u-hcq" secondAttribute="trailing" constant="10" id="mXd-UR-Ziz"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

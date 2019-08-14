@@ -18,6 +18,7 @@ public class TextCell : UITableViewCell  {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        
         title = RWLabel()
         title.numberOfLines = 0
         
