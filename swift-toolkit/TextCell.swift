@@ -21,6 +21,11 @@ public class TextCell : UITableViewCell  {
         title = RWLabel()
         title.numberOfLines = 0
         
+        title.font = UIFont.systemFont(ofSize: Theme.defaultFontSize)
+        title.textColor = Theme.textColor
+        title.adjustsFontSizeToFitWidth = false
+        title.clipsToBounds = true
+        
         addSubview(title)
         //fullScreen(view: title)
         
@@ -28,7 +33,7 @@ public class TextCell : UITableViewCell  {
         
         title.leftAnchor.constraint(equalTo: leftAnchor, constant: 10.0).isActive = true
         title.rightAnchor.constraint(equalTo: rightAnchor, constant: 10.0).isActive = true
-        title.topAnchor.constraint(equalTo: topAnchor, constant: 5.0).isActive = true
+        title.topAnchor.constraint(equalTo: topAnchor, constant: 0.0).isActive = true
         title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5.0).isActive = true
     }
 }
