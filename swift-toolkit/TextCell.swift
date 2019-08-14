@@ -22,7 +22,14 @@ public class TextCell : UITableViewCell  {
         title.numberOfLines = 0
         
         addSubview(title)
-        fullScreen(view: title)
+        //fullScreen(view: title)
+        
+        title.translatesAutoresizingMaskIntoConstraints = false
+        
+        title.leftAnchor.constraint(equalTo: leftAnchor, constant: 10.0).isActive = true
+        title.rightAnchor.constraint(equalTo: rightAnchor, constant: 10.0).isActive = true
+        title.topAnchor.constraint(equalTo: topAnchor, constant: 5.0).isActive = true
+        title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5.0).isActive = true
     }
 }
 
