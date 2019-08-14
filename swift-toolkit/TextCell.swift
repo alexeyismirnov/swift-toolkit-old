@@ -8,11 +8,8 @@
 
 import UIKit
 
-public class TextCell : ConfigurableCell {
-    override public class var cellId: String {
-        get { return "TextCell" }
-    }
-    
+public class TextCell : UITableViewCell  {
     @IBOutlet public weak var title: RWLabel!
-    
 }
+
+extension TextCell: ReusableView {}

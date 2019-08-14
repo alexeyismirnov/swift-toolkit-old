@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Alexey Smirnov. All rights reserved.
 //
 
+/*
 import UIKit
 
 open class ConfigurableCell : UITableViewCell  {
@@ -23,3 +24,4 @@ open class ConfigurableCell : UITableViewCell  {
     }
     
 }
+*/

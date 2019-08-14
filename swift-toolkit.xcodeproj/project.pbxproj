@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */; };
+		8A0F81912303BD1200BDCCAD /* ReusableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F81902303BD1200BDCCAD /* ReusableCells.swift */; };
 		8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1238081F8F3C8900F6B382 /* Animation.swift */; };
 		8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */; };
 		8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */; };
@@ -38,7 +39,6 @@
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
-		8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BDF1F872D8F0059194A /* RWLabel.swift */; };
 		8A5F0BE71F872D8F0059194A /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */; };
 		8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE21F872D8F0059194A /* TextCell.swift */; };
 		8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BEA1F8732650059194A /* Extensions.swift */; };
@@ -77,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		8A0F81902303BD1200BDCCAD /* ReusableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCells.swift; sourceTree = "<group>"; };
 		8A1238081F8F3C8900F6B382 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimated.swift; sourceTree = "<group>"; };
 		8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimated.swift; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
-		8A5F0BDF1F872D8F0059194A /* RWLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLabel.swift; sourceTree = "<group>"; };
 		8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		8A5F0BE21F872D8F0059194A /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		8A5F0BEA1F8732650059194A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -253,11 +253,11 @@
 				8A1238081F8F3C8900F6B382 /* Animation.swift */,
 				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
 				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
+				8A0F81902303BD1200BDCCAD /* ReusableCells.swift */,
 				8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
 				8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */,
-				8A5F0BDF1F872D8F0059194A /* RWLabel.swift */,
 				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
 				8AFF663C218EB74200DDA40B /* TextCell.xib */,
 				8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */,
@@ -412,7 +412,7 @@
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
 				8A229D7122FD92A800CEA2DB /* BookTOC.swift in Sources */,
 				8AC338211FB879D300CF0D02 /* MonthViewCell.swift in Sources */,
-				8A5F0BE51F872D8F0059194A /* RWLabel.swift in Sources */,
+				8A0F81912303BD1200BDCCAD /* ReusableCells.swift in Sources */,
 				8A229D7222FD92A800CEA2DB /* BookmarksModel.swift in Sources */,
 				8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,

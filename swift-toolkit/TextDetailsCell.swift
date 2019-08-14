@@ -8,12 +8,9 @@
 
 import UIKit
 
-public class TextDetailsCell : ConfigurableCell {
-    override public class var cellId: String {
-        get { return "TextDetailsCell" }
-    }
-    
+public class TextDetailsCell : UITableViewCell {
     @IBOutlet public weak var title: RWLabel!
     @IBOutlet public weak var subtitle: RWLabel!
 }
 
+extension TextDetailsCell: ReusableView {}
