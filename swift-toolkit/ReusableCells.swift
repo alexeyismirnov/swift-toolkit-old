@@ -91,7 +91,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
     
     func getTextDetailsCell(title: String, subtitle: String) -> TextDetailsCell {
-        let newCell:TextDetailsCell = tableView.dequeueReusableCell(withIdentifier: TextDetailsCell.defaultReuseIdentifier) as! TextDetailsCell
+        let newCell:TextDetailsCell = tableView.dequeueReusableCell()
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
         

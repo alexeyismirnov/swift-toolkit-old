@@ -17,20 +17,16 @@ public class TextCell : UITableViewCell  {
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        heightAnchor.constraint(equalToConstant: 45.0).isActive = true
-        
+
         title = RWLabel()
         title.numberOfLines = 0
         title.preferredMaxLayoutWidth = 310
-
         title.font = UIFont.systemFont(ofSize: 17)
         title.adjustsFontSizeToFitWidth = false
-        // title.clipsToBounds = true
-        
+        title.translatesAutoresizingMaskIntoConstraints = false
+
         contentView.addSubview(title)
         
-        title.translatesAutoresizingMaskIntoConstraints = false
         title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20.0).isActive = true
         title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20.0).isActive = true
         title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0.0).isActive = true

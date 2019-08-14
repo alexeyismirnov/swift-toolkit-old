@@ -69,7 +69,6 @@
 		8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */; };
 		8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE334722F4319F008DBCD6 /* DayViewCell.swift */; };
 		8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */; };
-		8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */; };
 		8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF6643218EED6500DDA40B /* ImageCell.swift */; };
 		8AFF6646218EED6500DDA40B /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF6644218EED6500DDA40B /* ImageCell.xib */; };
 /* End PBXBuildFile section */
@@ -140,7 +139,6 @@
 		8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewCell.swift; sourceTree = "<group>"; };
 		8AFE334722F4319F008DBCD6 /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
 		8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailsCell.swift; sourceTree = "<group>"; };
-		8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextDetailsCell.xib; sourceTree = "<group>"; };
 		8AFF6643218EED6500DDA40B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		8AFF6644218EED6500DDA40B /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -258,7 +256,6 @@
 				8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */,
 				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
 				8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */,
-				8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */,
 				8AFF6643218EED6500DDA40B /* ImageCell.swift */,
 				8AFF6644218EED6500DDA40B /* ImageCell.xib */,
 				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
@@ -370,7 +367,6 @@
 				8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */,
 				8AFF6646218EED6500DDA40B /* ImageCell.xib in Resources */,
 				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
-				8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */,
 				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
 				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
 				8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */,
