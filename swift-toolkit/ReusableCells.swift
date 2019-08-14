@@ -81,7 +81,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
     
     func getTextCell(_ title: String) -> TextCell {
-        let newCell: TextCell = tableView.dequeueReusableCell()
+        let newCell: TextCell = tableView.dequeueReusableCell(withIdentifier: TextCell.defaultReuseIdentifier) as! TextCell
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
         newCell.title.textColor =  Theme.textColor
@@ -91,7 +91,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
     
     func getTextDetailsCell(title: String, subtitle: String) -> TextDetailsCell {
-        let newCell:TextDetailsCell = tableView.dequeueReusableCell()
+        let newCell:TextDetailsCell = tableView.dequeueReusableCell(withIdentifier: TextDetailsCell.defaultReuseIdentifier) as! TextDetailsCell
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
         
@@ -115,7 +115,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
     
     func getCell<T: UITableViewCell>() -> T  where T: ReusableView  {
-        let newCell:T  = tableView.dequeueReusableCell()
+        let newCell:T  = tableView.dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier) as! T
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
             
