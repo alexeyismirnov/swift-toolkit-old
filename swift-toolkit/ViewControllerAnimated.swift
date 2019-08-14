@@ -113,6 +113,9 @@ public extension ResizableTableViewCells where Self: UIViewController {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
+        
         view.addSubview(tableView)
         fullScreen(view: tableView)
     }
