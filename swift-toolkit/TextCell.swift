@@ -25,6 +25,7 @@ public class TextCell : UITableViewCell  {
         title.textColor = Theme.textColor
         title.adjustsFontSizeToFitWidth = false
         title.clipsToBounds = true
+        title.preferredMaxLayoutWidth = 310
         
         addSubview(title)
         //fullScreen(view: title)

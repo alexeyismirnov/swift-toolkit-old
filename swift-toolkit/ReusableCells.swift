@@ -8,6 +8,21 @@
 
 import UIKit
 
+public class RWLabel : UILabel {
+    override public var bounds : CGRect {
+        didSet {
+            if numberOfLines == 0 && bounds.size.width != preferredMaxLayoutWidth {
+                preferredMaxLayoutWidth = self.bounds.size.width
+                DispatchQueue.main.async(execute: {
+                    self.setNeedsUpdateConstraints()
+                    self.setNeedsDisplay()
+                    
+                })
+            }
+        }
+    }
+}
+
 public protocol ReusableView: class {
     static var defaultReuseIdentifier: String { get }
 }
@@ -43,21 +58,6 @@ public extension UITableView {
     func dequeueReusableCell<T: UITableViewCell>() -> T where T: ReusableView {
         register(T.self)
         return dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier) as! T
-    }
-}
-
-public class RWLabel : UILabel {
-    override public var bounds : CGRect {
-        didSet {
-            if numberOfLines == 0 && bounds.size.width != preferredMaxLayoutWidth {
-                preferredMaxLayoutWidth = self.bounds.size.width
-                DispatchQueue.main.async(execute: {
-                    self.setNeedsUpdateConstraints()
-                    self.setNeedsDisplay()
-                    
-                })
-            }
-        }
     }
 }
 
