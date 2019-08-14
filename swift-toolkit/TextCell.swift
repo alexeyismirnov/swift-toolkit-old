@@ -9,7 +9,7 @@
 import UIKit
 
 public class TextCell : UITableViewCell  {
-    var title: RWLabel!
+    public var title: RWLabel!
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
