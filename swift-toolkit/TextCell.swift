@@ -9,7 +9,21 @@
 import UIKit
 
 public class TextCell : UITableViewCell  {
-    @IBOutlet public weak var title: RWLabel!
+    var title: RWLabel!
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        title = RWLabel()
+        title.numberOfLines = 0
+        
+        addSubview(title)
+        fullScreen(view: title)
+    }
 }
 
 extension TextCell: ReusableView {}

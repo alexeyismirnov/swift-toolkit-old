@@ -68,7 +68,6 @@
 		8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0622EB04FB0051F27F /* food-burger.pdf */; };
 		8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */; };
 		8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE334722F4319F008DBCD6 /* DayViewCell.swift */; };
-		8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF663C218EB74200DDA40B /* TextCell.xib */; };
 		8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */; };
 		8AFF6642218EEC9100DDA40B /* TextDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */; };
 		8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF6643218EED6500DDA40B /* ImageCell.swift */; };
@@ -140,7 +139,6 @@
 		8AE3FA0622EB04FB0051F27F /* food-burger.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-burger.pdf"; sourceTree = "<group>"; };
 		8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewCell.swift; sourceTree = "<group>"; };
 		8AFE334722F4319F008DBCD6 /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
-		8AFF663C218EB74200DDA40B /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailsCell.swift; sourceTree = "<group>"; };
 		8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextDetailsCell.xib; sourceTree = "<group>"; };
 		8AFF6643218EED6500DDA40B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
 				8A5F0BE11F872D8F0059194A /* ConfigurableCell.swift */,
 				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
-				8AFF663C218EB74200DDA40B /* TextCell.xib */,
 				8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */,
 				8AFF6640218EEC9100DDA40B /* TextDetailsCell.xib */,
 				8AFF6643218EED6500DDA40B /* ImageCell.swift */,
@@ -365,7 +362,6 @@
 				8A23BFCF201056390034189E /* share.pdf in Resources */,
 				8AE3FA0A22EB04FB0051F27F /* food-mexican.pdf in Resources */,
 				8AE3FA0922EB04FB0051F27F /* food-nothing.pdf in Resources */,
-				8AFF663E218EB74200DDA40B /* TextCell.xib in Resources */,
 				8AE3FA0C22EB04FB0051F27F /* food-without-oil.pdf in Resources */,
 				8A229D6522FD7E6700CEA2DB /* arrow-left.pdf in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
