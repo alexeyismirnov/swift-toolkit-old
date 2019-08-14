@@ -115,7 +115,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
     }
     
     func getCell<T: UITableViewCell>() -> T  where T: ReusableView  {
-        let newCell:T  = tableView.dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier) as! T
+        let newCell:T  = tableView.dequeueReusableCell()
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
             
