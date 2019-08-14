@@ -31,7 +31,8 @@ public class ImageCell : UITableViewCell {
         
         icon = UIImageView()
         icon.contentMode = .scaleAspectFit
-        
+        icon.translatesAutoresizingMaskIntoConstraints = false
+
         contentView.addSubview(title)
         contentView.addSubview(icon)
         
@@ -41,12 +42,13 @@ public class ImageCell : UITableViewCell {
             icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             icon.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20.0),
             icon.rightAnchor.constraint(equalTo: title.leftAnchor, constant: 0.0),
-            icon.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor),
+            icon.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
             // icon.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
 
+            
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20.0),
-            title.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor),
+            title.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
             // title.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
 
         ]
