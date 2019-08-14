@@ -24,8 +24,8 @@ public class LabelViewCell: UICollectionViewCell {
         title.textAlignment = .center
         title.baselineAdjustment = .alignCenters
         
-        addSubview(title)
-        fullScreen(view: title)
+        contentView.addSubview(title)
+        contentView.fullScreen(view: title)
         
     }
 

@@ -36,8 +36,8 @@ public class ChapterViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        addSubview(collectionView)
-        fullScreen(view: collectionView)
+        contentView.addSubview(collectionView)
+        contentView.fullScreen(view: collectionView)
         
         let recognizer = UITapGestureRecognizer(target: self, action:#selector(chapterSelected(_:)))
         recognizer.numberOfTapsRequired = 1

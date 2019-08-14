@@ -17,8 +17,8 @@ public class ImageViewCell: UICollectionViewCell {
         
         icon = UIImageView()
 
-        addSubview(icon)
-        fullScreen(view: icon)
+        contentView.addSubview(icon)
+        contentView.fullScreen(view: icon)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -16,10 +16,10 @@ public class SelectedDayViewCell: DayViewCell {
         title.backgroundColor = .red
         title.textColor = .white
         
-        removeConstraints()
+        title.removeConstraints()
         
-        title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        title.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        title.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         title.widthAnchor.constraint(equalToConstant: fontSize + 15.0).isActive = true
         title.heightAnchor.constraint(equalToConstant: fontSize + 15.0).isActive = true
     }
