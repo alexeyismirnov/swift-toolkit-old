@@ -18,7 +18,7 @@ public class TextCell : UITableViewCell  {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        heightAnchor.constraint(equalToConstant: 45).isActive = true
+        // heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         title = RWLabel()
         title.numberOfLines = 0
@@ -29,15 +29,15 @@ public class TextCell : UITableViewCell  {
         title.clipsToBounds = true
         title.preferredMaxLayoutWidth = 310
         
-        addSubview(title)
+        contentView.addSubview(title)
         //fullScreen(view: title)
         
         title.translatesAutoresizingMaskIntoConstraints = false
         
-        title.leftAnchor.constraint(equalTo: leftAnchor, constant: 10.0).isActive = true
-        title.rightAnchor.constraint(equalTo: rightAnchor, constant: 10.0).isActive = true
-        title.topAnchor.constraint(equalTo: topAnchor, constant: 0.0).isActive = true
-        title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5.0).isActive = true
+        title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10.0).isActive = true
+        title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 10.0).isActive = true
+        title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0.0).isActive = true
+        title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5.0).isActive = true
     }
 }
 
