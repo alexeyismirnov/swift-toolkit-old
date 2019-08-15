@@ -212,5 +212,14 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
         return Translate.s("Delete")
     }
     
+    public func calculateHeightForCell(_ cell: UITableViewCell) -> CGFloat {
+        cell.bounds = CGRect(x: 0, y: 0, width: tableView.frame.width, height: cell.bounds.height)
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        
+        let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return max(size.height+1.0, 40)
+    }
+    
 }
 
