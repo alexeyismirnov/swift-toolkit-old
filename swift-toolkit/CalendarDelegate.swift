@@ -54,7 +54,7 @@ public class CalendarDelegate: NSObject, UICollectionViewDataSource, UICollectio
             date = Date(dayIndex, currentDate.month, currentDate.year)
         }
         
-        if date == selectedDate {
+        if selectedDate != nil && date == selectedDate {
             let cell: SelectedDayViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.configureCell(date: date, fontSize: fontSize, textColor: textColor)
             return cell
