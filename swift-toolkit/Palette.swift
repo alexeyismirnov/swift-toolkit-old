@@ -9,7 +9,9 @@
 import UIKit
 import Chameleon
 
-public let themeChangedNotification  = "THEME_CHANGED"
+public extension Notification.Name {
+    static let themeChangedNotification = Notification.Name("THEME_CHANGED")
+}
 
 public class Palette: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PopupContentViewController {
     
@@ -83,7 +85,7 @@ public class Palette: UIViewController, UICollectionViewDataSource, UICollection
                 Theme.set(.Chameleon(color: color))
             
                 let userInfo:[String: UIColor] = ["color": color]
-                NotificationCenter.default.post(name: Notification.Name(rawValue: themeChangedNotification), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: .themeChangedNotification, object: nil, userInfo: userInfo)
         }
     }
     

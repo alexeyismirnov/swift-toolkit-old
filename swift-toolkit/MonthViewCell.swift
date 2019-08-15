@@ -8,7 +8,9 @@
 
 import UIKit
 
-public let dateChangedNotification = "DATE_CHANGED"
+public extension Notification.Name {
+    static let dateChangedNotification = Notification.Name("DATE_CHANGED")
+}
 
 class MonthViewCell: UICollectionViewCell {
     var collectionView: UICollectionView!
@@ -58,7 +60,7 @@ class MonthViewCell: UICollectionViewCell {
             let cell = collectionView.cellForItem(at: path) as? DayViewCell,
             let curDate = cell.currentDate {
                 let userInfo:[String: Date] = ["date": curDate]
-                NotificationCenter.default.post(name: Notification.Name(rawValue: dateChangedNotification), object: nil, userInfo: userInfo)
+                NotificationCenter.default.post(name: .dateChangedNotification, object: nil, userInfo: userInfo)
         }
     }
     

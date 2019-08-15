@@ -164,6 +164,21 @@
 			name = Calendar;
 			sourceTree = "<group>";
 		};
+		8A0F819223040E9500BDCCAD /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */,
+				8A0F81902303BD1200BDCCAD /* ReusableCells.swift */,
+				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
+				8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */,
+				8AFF6643218EED6500DDA40B /* ImageCell.swift */,
+				8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */,
+				8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */,
+				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
+			);
+			name = "Custom UI";
+			sourceTree = "<group>";
+		};
 		8A229D5C22FD7C7600CEA2DB /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +247,7 @@
 			children = (
 				8A00A50A22F6DE540040F14C /* Calendar */,
 				8A229D5C22FD7C7600CEA2DB /* Library */,
+				8A0F819223040E9500BDCCAD /* Custom UI */,
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
@@ -239,19 +255,11 @@
 				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
 				8AA660D622EEA1AE0021D996 /* FastingModel.swift */,
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
-				8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */,
-				8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */,
-				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
 				8A1238081F8F3C8900F6B382 /* Animation.swift */,
 				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
 				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
-				8A0F81902303BD1200BDCCAD /* ReusableCells.swift */,
-				8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
-				8A5F0BE21F872D8F0059194A /* TextCell.swift */,
-				8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */,
-				8AFF6643218EED6500DDA40B /* ImageCell.swift */,
 				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
 				8AB18EEF1F86360300F1A65C /* Info.plist */,
