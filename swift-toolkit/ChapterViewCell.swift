@@ -8,7 +8,9 @@
 
 import UIKit
 
-public let chapterSelectedNotification = "CHAPTER_SELECTED"
+public extension Notification.Name {
+    static let chapterSelectedNotification = Notification.Name("CHAPTER_SELECTED")
+}
 
 public class ChapterViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     public var collectionView: UICollectionView!
@@ -50,7 +52,7 @@ public class ChapterViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         
         if  let path = collectionView.indexPathForItem(at: loc) {
             let userInfo = ["index": index!, "chapter": path.row] as [String : Any]
-            NotificationCenter.default.post(name: Notification.Name(rawValue: chapterSelectedNotification), object: nil, userInfo: userInfo as [AnyHashable : Any])
+            NotificationCenter.default.post(name: .chapterSelectedNotification, object: nil, userInfo: userInfo as [AnyHashable : Any])
         }
     }
     
