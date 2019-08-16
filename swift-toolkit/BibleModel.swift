@@ -35,8 +35,17 @@ public struct BibleModel {
         if isPsalm {
             let text = NSMutableAttributedString(attributedString: content.colored(with: Theme.textColor).systemFont(ofSize: fontSize))
             
-            if let r = content.range(of: Translate.s("Stasis"), options:[], range: nil) {
+            let stasis = Translate.s("Stasis")
+            var position = content.startIndex
+
+            while let r = content.range(of: stasis, options:[], range: position..<content.endIndex) {
                 text.addAttribute(.font, value: UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.bold), range: NSRange(r, in: content))
+                
+                guard let after = content.index(r.lowerBound,
+                                        offsetBy: stasis.count,
+                                        limitedBy: content.endIndex)
+                    else { break }
+                position = content.index(after: after)
             }
             
             if Translate.language == "en" ||  Translate.language == "ru" {
