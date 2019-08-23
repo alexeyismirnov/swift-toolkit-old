@@ -57,17 +57,20 @@ public class BookPageText: BookPage {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         
-        textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+        // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+        textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+
         textView.backgroundColor = .clear
         textView.textColor = Theme.textColor
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
+        textView.clipsToBounds = false
         
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         
         view.addSubview(textView)
-        //textView.scrollRangeToVisible(NSRange(location:0, length:0))
+        textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
         return textView
     }
