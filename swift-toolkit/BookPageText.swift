@@ -57,7 +57,9 @@ public class BookPageText: BookPage {
         
         let frame = CGRect(origin: CGPoint(x: 0, y: navigationController?.navigationBar.frame.height ?? 0),
                            size: view.frame.size)
-        let textView = UITextView(frame: frame)
+        
+        
+        let textView = UITextView(frame: CGRect.zero)
         
         //textView.translatesAutoresizingMaskIntoConstraints = false
         
