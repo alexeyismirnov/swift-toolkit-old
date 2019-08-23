@@ -18,6 +18,7 @@ public struct BibleModel {
     }
     
     static public func numberOfChapters(_ name: String) -> Int {
+        print(name)
         let path = Bundle.main.path(forResource: name.lowercased()+"_"+Translate.language, ofType: "sqlite")!
         let db = try! Database(path:path)
         
