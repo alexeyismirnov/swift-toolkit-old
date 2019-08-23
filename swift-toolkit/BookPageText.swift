@@ -66,7 +66,6 @@ public class BookPageText: BookPage {
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
-        textView.clipsToBounds = false
         
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         

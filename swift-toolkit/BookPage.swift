@@ -143,12 +143,16 @@ public class BookPage: UIViewController {
             let width = view.frame.width;
             contentView2 = createContentView(nextPos)
             
+            /*
             con2 = generateConstraints(forView: contentView2, leading: 10+width, trailing: -10 + width)
             NSLayoutConstraint.activate(con2)
             
             view.layoutIfNeeded()
             
             NSLayoutConstraint.deactivate(con2)
+            
+            */
+            
             con2 = generateConstraints(forView: contentView2, leading: 10, trailing: -10)
             NSLayoutConstraint.activate(con2)
             
