@@ -145,7 +145,7 @@ public class BookPage: UIViewController {
             DispatchQueue.main.async(execute: {
                 if (self.contentView1 != nil) {
                     self.contentView1.removeFromSuperview()
-                    NSLayoutConstraint.deactivate(self.con)
+                    //NSLayoutConstraint.deactivate(self.con)
                 }
                 
                 self.contentView1 = self.createContentView(nextPos)

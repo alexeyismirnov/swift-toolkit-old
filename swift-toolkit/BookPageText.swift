@@ -69,14 +69,15 @@ public class BookPageText: BookPage {
         
         view.addSubview(textView)
         
+        
+        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
+        
         textView.backgroundColor = .clear
         textView.textColor = Theme.textColor
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
-        
-        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
-        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
         
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
