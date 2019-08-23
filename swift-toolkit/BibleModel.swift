@@ -18,7 +18,6 @@ public struct BibleModel {
     }
     
     static public func numberOfChapters(_ name: String) -> Int {
-        print(name)
         let path = Bundle.main.path(forResource: name.lowercased()+"_"+Translate.language, ofType: "sqlite")!
         let db = try! Database(path:path)
         
@@ -90,7 +89,10 @@ public struct BibleModel {
 
 public class OldTestamentModel : BookModel {
     public var code : String = "OldTestament"
-    public var title = Translate.s("Old Testament")
+    public var title: String {
+        get { return Translate.s("Old Testament") }
+    }
+    
     public var mode: BookType = .text
 
     public var isExpandable = true
@@ -213,8 +215,11 @@ public class OldTestamentModel : BookModel {
 
 public class NewTestamentModel : BookModel {
     public var code: String = "NewTestament"
-    public var title = Translate.s("New Testament")
-
+    
+    public var title: String {
+        get { return Translate.s("New Testament") }
+    }
+    
     public var mode: BookType = .text
 
     public var isExpandable = true

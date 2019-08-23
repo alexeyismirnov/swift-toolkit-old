@@ -10,7 +10,11 @@ import UIKit
 
 public class BookmarksModel : BookModel {
     public var code = "Bookmarks"
-    public var title = "Закладки..."
+    
+    public var title: String {
+        get { return Translate.s("Bookmarks...") }
+    }
+    
     public var mode: BookType = .text
 
     public var isExpandable = false
