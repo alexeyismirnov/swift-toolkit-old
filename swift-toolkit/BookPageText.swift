@@ -59,7 +59,6 @@ public class BookPageText: BookPage {
         
         // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         // textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
-        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
 
         textView.backgroundColor = .clear
         textView.textColor = Theme.textColor
@@ -69,6 +68,7 @@ public class BookPageText: BookPage {
         
         view.addSubview(textView)
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
 
         let tempFrame = textView.frame
         textView.frame = CGRect.zero
