@@ -139,6 +139,11 @@ public class BookPage: UIViewController {
     }
     
     @objc func showNext() {
+        let barHeight = (navigationController?.navigationBar.frame.height ?? 0.0) +
+            UIApplication.shared.statusBarFrame.height +
+            (tabBarController?.tabBar.frame.size.height ?? 0.0)
+
+        
         if let nextPos = model.getNextSection(at: pos) {
             
             DispatchQueue.main.async(execute: {
@@ -151,6 +156,8 @@ public class BookPage: UIViewController {
                 
                 self.con = self.generateConstraints(forView: self.contentView1, leading: 10, trailing: -10)
                 NSLayoutConstraint.activate(self.con)
+                
+                self.contentView1.heightAnchor.constraint(equalToConstant: self.view.frame.size.height - barHeight).isActive = true
                 
                 self.pos = nextPos
                 self.view.layoutIfNeeded()

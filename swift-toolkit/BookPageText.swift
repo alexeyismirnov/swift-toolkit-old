@@ -61,7 +61,7 @@ public class BookPageText: BookPage {
         
         let textView = UITextView(frame: CGRect.zero)
         
-        //textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
         
         // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         // textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
