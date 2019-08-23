@@ -67,10 +67,9 @@ public class BookPageText: BookPage {
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
         
-        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
-        
         view.addSubview(textView)
-        
+        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+
         let tempFrame = textView.frame
         textView.frame = CGRect.zero
         textView.frame = tempFrame
