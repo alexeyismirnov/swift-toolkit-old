@@ -58,7 +58,8 @@ public class BookPageText: BookPage {
         textView.translatesAutoresizingMaskIntoConstraints = false
         
         // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
-        textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+        // textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
 
         textView.backgroundColor = .clear
         textView.textColor = Theme.textColor
