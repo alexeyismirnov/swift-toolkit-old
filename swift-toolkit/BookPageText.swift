@@ -54,7 +54,7 @@ public class BookPageText: BookPage {
     }
     
     override func createContentView(_ pos: BookPosition) -> UIView {
-        let textView = UITextView()
+        let textView = UITextView(frame: view.frame)
         textView.translatesAutoresizingMaskIntoConstraints = false
         
         // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
@@ -70,6 +70,11 @@ public class BookPageText: BookPage {
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         
         view.addSubview(textView)
+        
+        let tempFrame = textView.frame
+        textView.frame = CGRect.zero
+        textView.frame = tempFrame
+        
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
         return textView
