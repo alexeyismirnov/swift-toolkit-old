@@ -149,8 +149,8 @@ public class BookPage: UIViewController {
                 
                 self.contentView1 = self.createContentView(nextPos)
                 
-                self.con = self.generateConstraints(forView: self.contentView1, leading: 10, trailing: -10)
-                NSLayoutConstraint.activate(self.con)
+               // self.con = self.generateConstraints(forView: self.contentView1, leading: 10, trailing: -10)
+               // NSLayoutConstraint.activate(self.con)
                 
                 self.pos = nextPos
                 self.view.layoutIfNeeded()

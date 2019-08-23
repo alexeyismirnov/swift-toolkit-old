@@ -70,9 +70,11 @@ public class BookPageText: BookPage {
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
 
+        /*
         let tempFrame = textView.frame
         textView.frame = CGRect.zero
         textView.frame = tempFrame
+        */
         
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
