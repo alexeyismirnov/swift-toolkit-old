@@ -152,17 +152,28 @@ public class BookPage: UIViewController {
             con2 = generateConstraints(forView: contentView2, leading: 10, trailing: -10)
             NSLayoutConstraint.activate(con2)
             
+            
+            NSLayoutConstraint.deactivate(self.con)
+            self.contentView1.removeFromSuperview()
+            
+            self.contentView1 = self.contentView2
+            self.con = self.con2
+            
+            self.pos = nextPos
+            self.bookmark = self.model.getBookmark(at: self.pos)
+            
+            self.updateNavigationButtons()
+            
+            view.layoutIfNeeded()
+
+            
+            /*
             NSLayoutConstraint.deactivate(con)
             con = generateConstraints(forView: contentView1, leading: 10 - width, trailing: -10 - width)
             NSLayoutConstraint.activate(con)
             
             view.layoutIfNeeded()
 
-            
-            DispatchQueue.main.async(execute: {
-                self.view.setNeedsUpdateConstraints()
-                self.view.setNeedsDisplay()
-            })
             
             UIView.animate(withDuration: 0.5,
                            animations: { self.view.layoutIfNeeded() },
@@ -179,6 +190,8 @@ public class BookPage: UIViewController {
                             self.updateNavigationButtons()
             }
             )
+            */
+            
         }
     }
     

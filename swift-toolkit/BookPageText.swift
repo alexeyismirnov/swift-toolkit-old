@@ -67,10 +67,8 @@ public class BookPageText: BookPage {
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         
         view.addSubview(textView)
-        textView.scrollRangeToVisible(NSRange(location:0, length:0))
+        //textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
-        view.layoutIfNeeded()
-
         return textView
     }
     
