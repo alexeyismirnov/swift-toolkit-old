@@ -141,17 +141,22 @@ public class BookPage: UIViewController {
     @objc func showNext() {
         if let nextPos = model.getNextSection(at: pos) {
             
-            if (contentView1 != nil) {
-                contentView1.removeFromSuperview()
-                NSLayoutConstraint.deactivate(con)
-            }
+            DispatchQueue.main.async(execute: {
+                if (self.contentView1 != nil) {
+                    self.contentView1.removeFromSuperview()
+                    NSLayoutConstraint.deactivate(self.con)
+                }
+                
+                self.contentView1 = self.createContentView(nextPos)
+                
+                self.con = self.generateConstraints(forView: self.contentView1, leading: 10, trailing: -10)
+                NSLayoutConstraint.activate(self.con)
+                
+                self.pos = nextPos
+                self.view.layoutIfNeeded()
+            })
             
-            contentView1 = createContentView(nextPos)
-            
-            con = generateConstraints(forView: contentView1, leading: 10, trailing: -10)
-            NSLayoutConstraint.activate(con)
-            self.pos = nextPos
-            view.layoutIfNeeded()
+          
 
 /*
             let width = view.frame.width;
