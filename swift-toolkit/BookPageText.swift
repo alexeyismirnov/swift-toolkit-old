@@ -72,8 +72,9 @@ public class BookPageText: BookPage {
         textView.textColor = Theme.textColor
 
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
-        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
-        
+        // textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
+        textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+
         textView.backgroundColor = .clear
         textView.isScrollEnabled = true
         textView.isEditable = false
