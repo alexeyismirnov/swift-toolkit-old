@@ -54,34 +54,29 @@ public class BookPageText: BookPage {
     }
     
     override func createContentView(_ pos: BookPosition) -> UIView {
+        let navbarHeight = (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height
+        let tabbarHeight = (tabBarController?.tabBar.frame.size.height ?? 0.0)
         
-        let frame = CGRect(origin: CGPoint(x: 0, y: navigationController?.navigationBar.frame.height ?? 0),
-                           size: view.frame.size)
+        let frame = CGRect(origin: CGPoint(x: 0, y: navbarHeight),
+                           size: CGSize(width: view.frame.width, height: view.frame.height - navbarHeight - tabbarHeight))
         
+        let textView = UITextView(frame: frame)
         
-        let textView = UITextView(frame: CGRect.zero)
-        
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        // textView.translatesAutoresizingMaskIntoConstraints = false
         
         // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         // textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
-
         
         view.addSubview(textView)
         
-        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
-        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
         textView.backgroundColor = .clear
         textView.textColor = Theme.textColor
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
         
-        /*
-        let tempFrame = textView.frame
-        textView.frame = CGRect.zero
-        textView.frame = tempFrame
-        */
+        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+        textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
         
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
