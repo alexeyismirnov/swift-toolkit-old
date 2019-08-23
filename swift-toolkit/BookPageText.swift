@@ -68,7 +68,8 @@ public class BookPageText: BookPage {
         
         view.addSubview(textView)
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
-
+        
+        view.layoutIfNeeded()
 
         return textView
     }

@@ -156,6 +156,9 @@ public class BookPage: UIViewController {
             con = generateConstraints(forView: contentView1, leading: 10 - width, trailing: -10 - width)
             NSLayoutConstraint.activate(con)
             
+            view.layoutIfNeeded()
+
+            
             DispatchQueue.main.async(execute: {
                 self.view.setNeedsUpdateConstraints()
                 self.view.setNeedsDisplay()
