@@ -54,8 +54,12 @@ public class BookPageText: BookPage {
     }
     
     override func createContentView(_ pos: BookPosition) -> UIView {
-        let textView = UITextView(frame: view.frame)
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let frame = CGRect(origin: CGPoint(x: 0, y: navigationController?.navigationBar.frame.height ?? 0),
+                           size: view.frame.size)
+        let textView = UITextView(frame: frame)
+        
+        //textView.translatesAutoresizingMaskIntoConstraints = false
         
         // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         // textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
