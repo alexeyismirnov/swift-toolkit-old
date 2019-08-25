@@ -50,7 +50,7 @@ public class TextDetailsCell : UITableViewCell {
             subtitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.0),
         ]
         
-        NSLayoutConstraint.activate(con)
+        NSLayoutConstraint.activate(con.map() { $0.priority = UILayoutPriority(999); return $0 })
     }
     
 }

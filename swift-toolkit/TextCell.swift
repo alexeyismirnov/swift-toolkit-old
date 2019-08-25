@@ -10,7 +10,8 @@ import UIKit
 
 public class TextCell : UITableViewCell  {
     public var title: RWLabel!
-    
+    var con : [NSLayoutConstraint]!
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,10 +28,14 @@ public class TextCell : UITableViewCell  {
 
         contentView.addSubview(title)
         
-        title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20.0).isActive = true
-        title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20.0).isActive = true
-        title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0.0).isActive = true
-        title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.0).isActive = true
+        con = [
+            title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20.0),
+            title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20.0),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0.0),
+            title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.0)
+        ]
+        
+        NSLayoutConstraint.activate(con.map() { $0.priority = UILayoutPriority(999); return $0 })
     }
 }
 

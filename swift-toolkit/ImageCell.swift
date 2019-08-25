@@ -49,7 +49,7 @@ public class ImageCell : UITableViewCell {
             title.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
         ]
         
-        NSLayoutConstraint.activate(con)
+        NSLayoutConstraint.activate(con.map() { $0.priority = UILayoutPriority(999); return $0 })
     }
     
 }
