@@ -33,8 +33,6 @@ public class TextDetailsCell : UITableViewCell {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
         title = createLabel(fontSize: 20)
         subtitle = createLabel(fontSize: 17)
 

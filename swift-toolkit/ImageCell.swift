@@ -21,8 +21,6 @@ public class ImageCell : UITableViewCell {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
         title = RWLabel()
         title.numberOfLines = 0
         title.preferredMaxLayoutWidth = 310
