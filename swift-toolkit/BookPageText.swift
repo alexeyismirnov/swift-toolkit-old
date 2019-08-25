@@ -53,13 +53,10 @@ public class BookPageText: BookPage {
         NSLayoutConstraint.activate(con)
     }
     
-    override func createContentView(_ pos: BookPosition) -> UIView {
-        let navbarHeight = (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height
-        let tabbarHeight = (tabBarController?.tabBar.frame.size.height ?? 0.0)
+    override func createContentView(_ pos: BookPosition, _ _frame: CGRect? = nil) -> UIView {
         
-        let frame = CGRect(origin: CGPoint(x: 0, y: navbarHeight),
-                           size: CGSize(width: view.frame.width, height: view.frame.height - navbarHeight - tabbarHeight))
-        
+        let frame = _frame ?? fullScreenFrame
+       
         let textView = UITextView(frame: frame)
         
         // textView.translatesAutoresizingMaskIntoConstraints = false

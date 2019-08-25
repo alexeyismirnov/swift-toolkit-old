@@ -97,7 +97,7 @@ public class BookPage: UIViewController {
     var contentView1, contentView2: UIView!
     var con, con2 : [NSLayoutConstraint]!
     
-    func createContentView(_ pos: BookPosition) -> UIView { preconditionFailure("This method must be overridden") }
+    func createContentView(_ pos: BookPosition, _ frame: CGRect? = nil) -> UIView { preconditionFailure("This method must be overridden") }
 
     func reloadTheme() { preconditionFailure("This method must be overridden") }
     
@@ -141,20 +141,28 @@ public class BookPage: UIViewController {
     @objc func showNext() {
         
         if let nextPos = model.getNextSection(at: pos) {
+            let width = view.frame.width
+
+            var frame = fullScreenFrame
+            frame.origin.x = width
             
-            DispatchQueue.main.async(execute: {
-                if (self.contentView1 != nil) {
-                    self.contentView1.removeFromSuperview()
-                    //NSLayoutConstraint.deactivate(self.con)
-                }
-                
-                self.contentView1 = self.createContentView(nextPos)
-                
-                //self.con = self.generateConstraints(forView: self.contentView1, leading: 10, trailing: -10)
-                //NSLayoutConstraint.activate(self.con)
-                
-                self.pos = nextPos
-                self.view.layoutIfNeeded()
+            contentView2 = self.createContentView(nextPos, frame)
+
+            UIView.animate(withDuration: 0.5,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: { _ in
+                            self.contentView1.frame.origin.x -= width
+                            self.contentView2.frame.origin.x -= width
+                            
+                            self.contentView1.removeFromSuperview()
+                            self.contentView1 = self.contentView2
+
+                            self.pos = nextPos
+                            self.bookmark = self.model.getBookmark(at: self.pos)
+                            self.updateNavigationButtons()
+                            
+                            self.view.layoutIfNeeded()
+
             })
 
 

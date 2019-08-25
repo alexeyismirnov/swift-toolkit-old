@@ -535,6 +535,16 @@ public extension Collection  {
 public extension UIViewController {
     static var popup: PopupController!
     
+    var fullScreenFrame : CGRect {
+        get {
+            let navbarHeight = (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height
+            let tabbarHeight = (tabBarController?.tabBar.frame.size.height ?? 0.0)
+            
+            return CGRect(origin: CGPoint(x: 0, y: navbarHeight),
+                               size: CGSize(width: view.frame.width, height: view.frame.height - navbarHeight - tabbarHeight))
+        }
+    }
+    
     func showPopup(_ vc: UIViewController, onClose handler: @escaping (PopupController) -> Void = {_ in }) {
         UIViewController.popup = PopupController
             .create(self.navigationController!)
