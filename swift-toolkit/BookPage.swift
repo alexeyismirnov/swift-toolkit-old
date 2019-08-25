@@ -149,20 +149,17 @@ public class BookPage: UIViewController {
             contentView2 = self.createContentView(nextPos, frame)
 
             UIView.animate(withDuration: 0.5,
-                           animations: { self.view.layoutIfNeeded() },
+                           animations: {
+                                self.contentView1.frame.origin.x -= width
+                                self.contentView2.frame.origin.x -= width
+                            },
                            completion: { _ in
-                            self.contentView1.frame.origin.x -= width
-                            self.contentView2.frame.origin.x -= width
-                            
                             self.contentView1.removeFromSuperview()
                             self.contentView1 = self.contentView2
 
                             self.pos = nextPos
                             self.bookmark = self.model.getBookmark(at: self.pos)
                             self.updateNavigationButtons()
-                            
-                            self.view.layoutIfNeeded()
-
             })
 
 

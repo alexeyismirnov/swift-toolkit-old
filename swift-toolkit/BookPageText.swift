@@ -44,13 +44,13 @@ public class BookPageText: BookPage {
         
         if (contentView1 != nil) {
             contentView1.removeFromSuperview()
-            NSLayoutConstraint.deactivate(con)
+            //NSLayoutConstraint.deactivate(con)
         }
         
         contentView1 = createContentView(pos)
         
-        con = generateConstraints(forView: contentView1, leading: 10, trailing: -10)
-        NSLayoutConstraint.activate(con)
+        //con = generateConstraints(forView: contentView1, leading: 10, trailing: -10)
+        //NSLayoutConstraint.activate(con)
     }
     
     override func createContentView(_ pos: BookPosition, _ _frame: CGRect? = nil) -> UIView {
