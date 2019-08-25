@@ -44,39 +44,25 @@ public class BookPageText: BookPage {
         
         if (contentView1 != nil) {
             contentView1.removeFromSuperview()
-            //NSLayoutConstraint.deactivate(con)
         }
         
         contentView1 = createContentView(pos)
-        
-        //con = generateConstraints(forView: contentView1, leading: 10, trailing: -10)
-        //NSLayoutConstraint.activate(con)
     }
     
     override func createContentView(_ pos: BookPosition, _ _frame: CGRect? = nil) -> UIView {
-        
         let frame = _frame ?? fullScreenFrame
-       
         let textView = UITextView(frame: frame)
-        
-        // textView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
-        // textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
         
         view.addSubview(textView)
         
         textView.textColor = Theme.textColor
-
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
-        // textView.font = UIFont(name: "PingFangSC-Regular", size: CGFloat(fontSize))!
+        
         textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
-
         textView.backgroundColor = .clear
         textView.isScrollEnabled = true
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = true
-        
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
         
         return textView

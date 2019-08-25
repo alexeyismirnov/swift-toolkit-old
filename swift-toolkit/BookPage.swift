@@ -94,9 +94,7 @@ public class BookPage: UIViewController {
     var button_fontsize, button_add_bookmark, button_remove_bookmark : CustomBarButton!
     var button_close, button_next, button_prev : CustomBarButton!
     
-    var contentView1, contentView2: UIView!
-    var con, con2 : [NSLayoutConstraint]!
-    
+    var contentView1, contentView2: UIView!    
     func createContentView(_ pos: BookPosition, _ frame: CGRect? = nil) -> UIView { preconditionFailure("This method must be overridden") }
 
     func reloadTheme() { preconditionFailure("This method must be overridden") }
@@ -139,7 +137,6 @@ public class BookPage: UIViewController {
     }
     
     @objc func showNext() {
-        
         if let nextPos = model.getNextSection(at: pos) {
             let width = view.frame.width
 
@@ -161,100 +158,33 @@ public class BookPage: UIViewController {
                             self.bookmark = self.model.getBookmark(at: self.pos)
                             self.updateNavigationButtons()
             })
-
-
-/*
-            let width = view.frame.width;
-            contentView2 = createContentView(nextPos)
-            
-            con2 = generateConstraints(forView: contentView2, leading: 10+width, trailing: -10 + width)
-            NSLayoutConstraint.activate(con2)
-            
-            view.layoutIfNeeded()
-            
-            NSLayoutConstraint.deactivate(con2)
-            
-            
-            con2 = generateConstraints(forView: contentView2, leading: 10, trailing: -10)
-            NSLayoutConstraint.activate(con2)
-            
-            
-            NSLayoutConstraint.deactivate(self.con)
-            self.contentView1.removeFromSuperview()
-            
-            self.contentView1 = self.contentView2
-            self.con = self.con2
-            
-            self.pos = nextPos
-            self.bookmark = self.model.getBookmark(at: self.pos)
-            
-            self.updateNavigationButtons()
-            
-            view.layoutIfNeeded()
-*/
-            
-            /*
-            NSLayoutConstraint.deactivate(con)
-            con = generateConstraints(forView: contentView1, leading: 10 - width, trailing: -10 - width)
-            NSLayoutConstraint.activate(con)
-            
-            view.layoutIfNeeded()
-
-            
-            UIView.animate(withDuration: 0.5,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: { _ in
-                            NSLayoutConstraint.deactivate(self.con)
-                            self.contentView1.removeFromSuperview()
-                            
-                            self.contentView1 = self.contentView2
-                            self.con = self.con2
-                            
-                            self.pos = nextPos
-                            self.bookmark = self.model.getBookmark(at: self.pos)
-                            
-                            self.updateNavigationButtons()
-            }
-            )
-            */
             
         }
     }
     
     @objc func showPrev() {
         if let prevPos = model.getPrevSection(at: pos) {
-            let width = view.frame.width;
+            let width = view.frame.width
             
-            contentView2 = createContentView(prevPos)
+            var frame = fullScreenFrame
+            frame.origin.x = -width
             
-            con2 = generateConstraints(forView: contentView2, leading: 10-width, trailing: -10 - width)
-            NSLayoutConstraint.activate(con2)
-            
-            view.layoutIfNeeded()
-            
-            NSLayoutConstraint.deactivate(con2)
-            con2 = generateConstraints(forView: contentView2, leading: 10, trailing: -10)
-            NSLayoutConstraint.activate(con2)
-            
-            NSLayoutConstraint.deactivate(con)
-            con = generateConstraints(forView: contentView1, leading: 10 + width, trailing: -10 + width)
-            NSLayoutConstraint.activate(con)
+            contentView2 = self.createContentView(prevPos, frame)
             
             UIView.animate(withDuration: 0.5,
-                           animations: { self.view.layoutIfNeeded() },
+                           animations: {
+                            self.contentView1.frame.origin.x += width
+                            self.contentView2.frame.origin.x += width
+                        },
                            completion: { _ in
-                            NSLayoutConstraint.deactivate(self.con)
                             self.contentView1.removeFromSuperview()
-                            
                             self.contentView1 = self.contentView2
-                            self.con = self.con2
+                            
                             self.pos = prevPos
-                            
                             self.bookmark = self.model.getBookmark(at: self.pos)
-                            
                             self.updateNavigationButtons()
-            }
-            )
+            })
+            
         }
     }
     
@@ -305,15 +235,6 @@ public class BookPage: UIViewController {
     
     @objc func close() {
         let _ = navigationController?.popViewController(animated: true)
-    }
-    
-    func generateConstraints(forView : UIView, leading: CGFloat, trailing : CGFloat) -> [NSLayoutConstraint] {
-        return [
-            forView.topAnchor.constraint(equalTo: view.topAnchor, constant: (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height),
-            forView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController?.tabBar.frame.size.height ?? 0.0)),
-            forView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading),
-            forView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
-        ]
     }
     
     @objc func showFontSizeDialog() {

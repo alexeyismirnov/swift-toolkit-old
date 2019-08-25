@@ -113,13 +113,9 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         
         if (contentView1 != nil) {
             contentView1.removeFromSuperview()
-            NSLayoutConstraint.deactivate(con)
         }
         
         contentView1 = createContentView(pos)
-
-        con = generateConstraints(forView: contentView1, leading: 10, trailing: -10)
-        NSLayoutConstraint.activate(con)
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -144,8 +140,9 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         }
     }
     
-    override func createContentView(_ pos: BookPosition, _ frame: CGRect? = nil) -> UIView {
-        let webView = WKWebView()
+    override func createContentView(_ pos: BookPosition, _ _frame: CGRect? = nil) -> UIView {
+        let frame = _frame ?? fullScreenFrame
+        let webView = WKWebView(frame: frame)
         
         webView.isOpaque = false
         webView.backgroundColor = .clear
