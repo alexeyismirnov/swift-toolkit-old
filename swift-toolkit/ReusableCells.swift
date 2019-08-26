@@ -122,13 +122,13 @@ public extension ResizableTableViewCells where Self: UIViewController {
         return newCell
     }
     
-    func calculateHeightForCell(_ cell: UITableViewCell) -> CGFloat {
+    func calculateHeightForCell(_ cell: UITableViewCell, minHeight: CGFloat = 0) -> CGFloat {
         cell.bounds = CGRect(x: 0, y: 0, width: tableView.frame.width-1, height: cell.bounds.height)
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         
         let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        return size.height+1.0
+        return CGFloat.maximum(minHeight, size.height+1.0)
     }
 }
 

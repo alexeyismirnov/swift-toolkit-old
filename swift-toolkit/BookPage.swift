@@ -21,7 +21,7 @@ public class FontSizeViewController : UIViewController, PopupContentViewControll
         view.backgroundColor = UIColor(hex: "#FFEBCD")
         
         let label = UILabel()
-        label.text = "Размер шрифта"
+        label.text = Translate.s("Font size")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.textColor = .black
