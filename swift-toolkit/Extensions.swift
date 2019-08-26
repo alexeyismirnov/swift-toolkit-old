@@ -539,9 +539,10 @@ public extension UIViewController {
         get {
             let navbarHeight = (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height
             let tabbarHeight = (tabBarController?.tabBar.frame.size.height ?? 0.0)
+            let xMargin = CGFloat(10.0)
             
-            return CGRect(origin: CGPoint(x: 0, y: navbarHeight),
-                               size: CGSize(width: view.frame.width, height: view.frame.height - navbarHeight - tabbarHeight))
+            return CGRect(origin: CGPoint(x: xMargin, y: navbarHeight),
+                               size: CGSize(width: view.frame.width - 2*xMargin, height: view.frame.height - navbarHeight - tabbarHeight))
         }
     }
     
