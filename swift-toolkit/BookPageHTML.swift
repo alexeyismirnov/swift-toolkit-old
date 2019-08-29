@@ -107,6 +107,7 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
         styleCSS = """
         <style type='text/css'>
         body {font-size: \(fontSize)px; color: \(color); }
+        .rubric { color: red; font-size: 80%; }
         \(bookIcon)
         </style>
         """
