@@ -8,15 +8,15 @@
 
 import UIKit
 
-class PericopeModel : BookModel {
-    var code : String = "Pericope"
-    var title = ""
-    var mode: BookType = .text
+public class PericopeModel : BookModel {
+    public var code : String = "Pericope"
+    public var title = ""
+    public var mode: BookType = .text
     
-    var isExpandable = false
-    var hasNavigation = false
+    public var isExpandable = false
+    public var hasNavigation = false
     
-    func getPericope(_ str: String, decorated: Bool = true) -> [(NSAttributedString, NSAttributedString)] {
+    public func getPericope(_ str: String, decorated: Bool = true) -> [(NSAttributedString, NSAttributedString)] {
         var result = [(NSAttributedString, NSAttributedString)]()
         let prefs = AppGroup.prefs!
         let fontSize = CGFloat(prefs.integer(forKey: "fontSize"))
@@ -111,25 +111,25 @@ class PericopeModel : BookModel {
         return result
     }
     
-    static let shared = PericopeModel()
+    public static let shared = PericopeModel()
     
-    func getSections() -> [String] {
+    public func getSections() -> [String] {
         return []
     }
     
-    func getItems(_ section: Int) -> [String] {
+    public func getItems(_ section: Int) -> [String] {
         return []
     }
 
-    func getNumChapters(_ index: IndexPath) -> Int {
+    public func getNumChapters(_ index: IndexPath) -> Int {
         return 0
     }
     
-    func getComment(commentId: Int) -> String? {
+    public func getComment(commentId: Int) -> String? {
         return nil
     }
     
-    func getContent(at pos: BookPosition) -> Any? {
+    public func getContent(at pos: BookPosition) -> Any? {
         guard let str = pos.location else { return nil }
         let pericope = getPericope(str.trimmingCharacters(in: CharacterSet.whitespaces))
         
@@ -142,19 +142,19 @@ class PericopeModel : BookModel {
         return text
     }
     
-    func getBookmark(at pos: BookPosition) -> String {
+    public func getBookmark(at pos: BookPosition) -> String {
         return ""
     }
     
-    func getNextSection(at pos: BookPosition) -> BookPosition? {
+    public func getNextSection(at pos: BookPosition) -> BookPosition? {
         return nil
     }
     
-    func getPrevSection(at pos: BookPosition) -> BookPosition? {
+    public func getPrevSection(at pos: BookPosition) -> BookPosition? {
         return nil
     }
     
-    func getBookmarkName(_ bookmark: String) -> String {
+    public func getBookmarkName(_ bookmark: String) -> String {
         return ""
     }
     
