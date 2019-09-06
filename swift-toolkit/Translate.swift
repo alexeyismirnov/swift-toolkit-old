@@ -69,7 +69,7 @@ public class Translate: NSObject {
             return reading
         }
         
-        let bundle = Bundle.main.path(forResource: "Reading_\(language)", ofType: "plist")
+        let bundle = Bundle.main.path(forResource: "trans_reading_\(language)", ofType: "plist")
         let books = NSDictionary(contentsOfFile: bundle!) as! [String:String]
         
         for (key, value) in books {

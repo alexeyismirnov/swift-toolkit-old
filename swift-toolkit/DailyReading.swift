@@ -9,7 +9,6 @@
 import UIKit
 
 public struct DailyReading {
-    
     struct LukeSpringParams {
         var PAPSunday : Date!
         var pentecostPrevYear : Date!
@@ -68,20 +67,16 @@ public struct DailyReading {
     
     static var vigils = [Date:String]()
     
-    static let bundleApostle = Bundle.main.path(forResource: "ReadingApostle", ofType: "plist")
-    static let apostle = NSArray(contentsOfFile: bundleApostle!) as! [String]
-
-    static let bundleJohn = Bundle.main.path(forResource: "ReadingJohn", ofType: "plist")
-    static let readingsJohn = NSArray(contentsOfFile: bundleJohn!) as! [String]
-
-    static let bundleMatthew = Bundle.main.path(forResource: "ReadingMatthew", ofType: "plist")
-    static let gospelMatthew = NSArray(contentsOfFile: bundleMatthew!) as! [String]
-
-    static let bundleLuke = Bundle.main.path(forResource: "ReadingLuke", ofType: "plist")
-    static let gospelLuke = NSArray(contentsOfFile: bundleLuke!) as! [String]
-
-    static let bundleLent = Bundle.main.path(forResource: "ReadingLent", ofType: "plist")
-    static let readingsLent = NSArray(contentsOfFile: bundleLent!) as! [String]
+    static func getList(_ name: String) -> [String] {
+        let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")!
+        return NSArray(contentsOfFile: toolkit.path(forResource: name, ofType: "plist")!) as! [String]
+    }
+    
+    static let apostle = getList("ReadingApostle")
+    static let readingsJohn = getList("ReadingJohn")
+    static let gospelMatthew = getList("ReadingMatthew")
+    static let gospelLuke = getList("ReadingLuke")
+    static let readingsLent = getList("ReadingLent")
 
     static func GospelOfLent(_ date: Date) -> String {
         let dayNum = Cal.d(.sundayOfPublicianAndPharisee) >> date;

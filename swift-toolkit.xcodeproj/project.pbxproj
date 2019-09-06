@@ -12,6 +12,11 @@
 		8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1238081F8F3C8900F6B382 /* Animation.swift */; };
 		8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */; };
 		8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */; };
+		8A161E2523225C900067BE89 /* ReadingJohn.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2023225C8F0067BE89 /* ReadingJohn.plist */; };
+		8A161E2623225C900067BE89 /* ReadingLuke.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2123225C8F0067BE89 /* ReadingLuke.plist */; };
+		8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2223225C900067BE89 /* ReadingLent.plist */; };
+		8A161E2823225C900067BE89 /* ReadingMatthew.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2323225C900067BE89 /* ReadingMatthew.plist */; };
+		8A161E2923225C900067BE89 /* ReadingApostle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2423225C900067BE89 /* ReadingApostle.plist */; };
 		8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */; };
 		8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5722FD7C0F00CEA2DB /* BookModel.swift */; };
 		8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */; };
@@ -77,6 +82,11 @@
 		8A1238081F8F3C8900F6B382 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimated.swift; sourceTree = "<group>"; };
 		8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimated.swift; sourceTree = "<group>"; };
+		8A161E2023225C8F0067BE89 /* ReadingJohn.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingJohn.plist; sourceTree = "<group>"; };
+		8A161E2123225C8F0067BE89 /* ReadingLuke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingLuke.plist; sourceTree = "<group>"; };
+		8A161E2223225C900067BE89 /* ReadingLent.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingLent.plist; sourceTree = "<group>"; };
+		8A161E2323225C900067BE89 /* ReadingMatthew.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingMatthew.plist; sourceTree = "<group>"; };
+		8A161E2423225C900067BE89 /* ReadingApostle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingApostle.plist; sourceTree = "<group>"; };
 		8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleModel.swift; sourceTree = "<group>"; };
 		8A229D5722FD7C0F00CEA2DB /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewCell.swift; sourceTree = "<group>"; };
@@ -156,10 +166,13 @@
 			isa = PBXGroup;
 			children = (
 				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
-				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
-				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
-				8AC3381D1FB879D300CF0D02 /* MonthViewCell.swift */,
-				8AFE334722F4319F008DBCD6 /* DayViewCell.swift */,
+				8AA660D622EEA1AE0021D996 /* FastingModel.swift */,
+				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
+				8A161E2423225C900067BE89 /* ReadingApostle.plist */,
+				8A161E2023225C8F0067BE89 /* ReadingJohn.plist */,
+				8A161E2223225C900067BE89 /* ReadingLent.plist */,
+				8A161E2123225C8F0067BE89 /* ReadingLuke.plist */,
+				8A161E2323225C900067BE89 /* ReadingMatthew.plist */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -177,6 +190,17 @@
 				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
 			);
 			name = "Custom UI";
+			sourceTree = "<group>";
+		};
+		8A161E1F23225A730067BE89 /* Calendar UI */ = {
+			isa = PBXGroup;
+			children = (
+				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
+				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
+				8AC3381D1FB879D300CF0D02 /* MonthViewCell.swift */,
+				8AFE334722F4319F008DBCD6 /* DayViewCell.swift */,
+			);
+			name = "Calendar UI";
 			sourceTree = "<group>";
 		};
 		8A229D5C22FD7C7600CEA2DB /* Library */ = {
@@ -246,14 +270,13 @@
 			isa = PBXGroup;
 			children = (
 				8A00A50A22F6DE540040F14C /* Calendar */,
+				8A161E1F23225A730067BE89 /* Calendar UI */,
 				8A229D5C22FD7C7600CEA2DB /* Library */,
 				8A0F819223040E9500BDCCAD /* Custom UI */,
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
 				8AA660DF22EEA67F0021D996 /* SaintModel.swift */,
-				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
-				8AA660D622EEA1AE0021D996 /* FastingModel.swift */,
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
 				8A1238081F8F3C8900F6B382 /* Animation.swift */,
 				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
@@ -352,6 +375,7 @@
 				8A23BFC1201049B10034189E /* bg3@2x.jpg in Resources */,
 				8A23BFBD201048EE0034189E /* Images.xcassets in Resources */,
 				8AE3FA0B22EB04FB0051F27F /* food-pancake.pdf in Resources */,
+				8A161E2923225C900067BE89 /* ReadingApostle.plist in Resources */,
 				8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */,
 				8A229D6322FD7E6700CEA2DB /* review.pdf in Resources */,
 				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
@@ -361,17 +385,21 @@
 				8A23BFCF201056390034189E /* share.pdf in Resources */,
 				8AE3FA0A22EB04FB0051F27F /* food-mexican.pdf in Resources */,
 				8AE3FA0922EB04FB0051F27F /* food-nothing.pdf in Resources */,
+				8A161E2523225C900067BE89 /* ReadingJohn.plist in Resources */,
 				8AE3FA0C22EB04FB0051F27F /* food-without-oil.pdf in Resources */,
+				8A161E2823225C900067BE89 /* ReadingMatthew.plist in Resources */,
 				8A229D6522FD7E6700CEA2DB /* arrow-left.pdf in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
 				8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
+				8A161E2623225C900067BE89 /* ReadingLuke.plist in Resources */,
 				8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */,
 				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
 				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
 				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
 				8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */,
 				8A229D6822FD7E6700CEA2DB /* remove_bookmark.pdf in Resources */,
+				8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */,
 				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
 				8A229D6422FD7E6700CEA2DB /* arrow-right.pdf in Resources */,
