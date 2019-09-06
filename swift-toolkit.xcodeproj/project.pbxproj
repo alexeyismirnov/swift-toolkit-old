@@ -17,6 +17,7 @@
 		8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2223225C900067BE89 /* ReadingLent.plist */; };
 		8A161E2823225C900067BE89 /* ReadingMatthew.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2323225C900067BE89 /* ReadingMatthew.plist */; };
 		8A161E2923225C900067BE89 /* ReadingApostle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2423225C900067BE89 /* ReadingApostle.plist */; };
+		8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A161E2A232263130067BE89 /* PericopeModel.swift */; };
 		8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */; };
 		8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5722FD7C0F00CEA2DB /* BookModel.swift */; };
 		8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */; };
@@ -87,6 +88,7 @@
 		8A161E2223225C900067BE89 /* ReadingLent.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingLent.plist; sourceTree = "<group>"; };
 		8A161E2323225C900067BE89 /* ReadingMatthew.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingMatthew.plist; sourceTree = "<group>"; };
 		8A161E2423225C900067BE89 /* ReadingApostle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingApostle.plist; sourceTree = "<group>"; };
+		8A161E2A232263130067BE89 /* PericopeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PericopeModel.swift; sourceTree = "<group>"; };
 		8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleModel.swift; sourceTree = "<group>"; };
 		8A229D5722FD7C0F00CEA2DB /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		8A00A50A22F6DE540040F14C /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				8A161E2A232263130067BE89 /* PericopeModel.swift */,
 				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
 				8AA660D622EEA1AE0021D996 /* FastingModel.swift */,
 				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
@@ -423,6 +426,7 @@
 				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
+				8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */,
 				8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
