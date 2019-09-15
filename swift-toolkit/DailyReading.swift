@@ -173,7 +173,7 @@ public struct DailyReading {
         return apostle[daysFromPentecost] + " " + gospelLuke[daysFromLukeStart]
     }
     
-    static func getRegularReading(_ date: Date) -> String? {
+    static public func getRegularReading(_ date: Date) -> String? {
         switch (date) {
         case Cal.d(.startOfYear) ..< Cal.d(.sundayOfPublicianAndPharisee):
             return GospelOfLukeSpring(date)
@@ -226,9 +226,6 @@ public struct DailyReading {
     static public func getDailyReading(_ date: Date) -> [String] {
         var readings = [String]()
         var transferred = [Date:String]()
-        var noRegularReading = false
-        var sundayBeforeNativity = false
-        var greatFeast = false
         
         Cal.setDate(date)
 
@@ -259,6 +256,20 @@ public struct DailyReading {
             
             return readings
         }
+        
+        let synaxisTheotokos = Cal.d(.synaxisTheotokos)
+        
+        if date == synaxisTheotokos {
+            let synaxisWeekday = DayOfWeek(rawValue: synaxisTheotokos.weekday)
+            
+            if synaxisWeekday == .monday {
+                return ["Heb 2:11-18 # Theotokos", "Gal 1:11-19 Matthew 2:13-23 # Holy Ancestors"]
+                
+            } else if synaxisWeekday != .sunday {
+                return ["Heb 2:11-18 Matthew 2:13-23 # Theotokos"]
+            }
+        }
+        
         
         let formatter = DateFormatter()
         formatter.timeStyle = .none
@@ -299,44 +310,23 @@ public struct DailyReading {
             }
         }
         
-        for code in Cal.feastDates[date] ?? [] {
-            if code == .sundayBeforeNativity {
-                sundayBeforeNativity = true
-            }
-            
-            if Array(specialReadings.keys).contains(code) {
-                noRegularReading = true
+        for code in (Cal.feastDates[date] ?? []).filter({ Array(specialReadings.keys).contains($0) })  {
+            if (code == .eveOfNativityOfGod) {
+                let choices = specialReadings[code]!.components(separatedBy: "|")
+                let weekday = DateComponents(date:date).weekday
+                readings.append((weekday == 7 || weekday == 1) ? choices[1] : choices[0])
                 
-                if Cal.greatFeastCodes.contains(code) {
-                    greatFeast = true
-                }
+            } else {
+                readings += [specialReadings[code]!]
                 
-                if (code == .eveOfNativityOfGod) {
-                    let choices = specialReadings[code]!.components(separatedBy: "|")
-                    let weekday = DateComponents(date:date).weekday
-                    readings.append((weekday == 7 || weekday == 1) ? choices[1] : choices[0])
-                    
-                } else {
-                    readings += [specialReadings[code]!]
-                    
-                }
             }
         }
 
-        let synaxisTheotokos = Cal.d(.synaxisTheotokos)
-        
-        if date == synaxisTheotokos {
-            let synaxisWeekday = DayOfWeek(rawValue: synaxisTheotokos.weekday)
-
-            if synaxisWeekday == .monday {
-                return ["Heb 2:11-18 # Theotokos", "Gal 1:11-19 Matthew 2:13-23 # Holy Ancestors"]
-                
-            } else if synaxisWeekday != .sunday {
-                return ["Heb 2:11-18 Matthew 2:13-23 # Theotokos"]
-            }
-        }
-        
-        if greatFeast {
+        if (Cal.feastDates[date] ?? []).filter({
+            Cal.greatFeastCodes.contains($0) ||
+            $0 == .sundayBeforeNativity ||
+            $0 == .sundayAfterNativity
+            }).count > 0 {
             return readings
         }
         
@@ -355,27 +345,13 @@ public struct DailyReading {
 
             }
         }
-
-        if date == Cal.d(.sundayAfterNativity) {
-            let daysFromExaltation = (LS.sundayAfterExaltationPrevYear+1.days) >> date
-            
-            if 111-daysFromExaltation >= LS.totalOffset  {
-                noRegularReading = false
-            }
-            
-        } else if Cal.currentWeekday == .sunday && !sundayBeforeNativity  {
-            noRegularReading = false
-        }
         
-        for code in Cal.feastDates[date] ?? [] where specialAndRegular.contains(code) {
-            noRegularReading = false
-            break
-        }
-
-        if (noRegularReading) {
+        if Cal.currentWeekday != .sunday && (Cal.feastDates[date] ?? []).filter({
+            Array(specialReadings.keys).contains($0) &&
+                !specialAndRegular.contains($0) }).count > 0 {
             return readings
         }
-        
+
         return readings + (getRegularReading(date).map { [$0] } ?? []) + (transferred[date].map { [$0] } ?? [])
     }
     
