@@ -46,7 +46,7 @@ public struct DailyReading {
         .sundayAfterNativity:       "Gal 1:11-19 Matthew 2:13-23 # Sunday after the Nativity",
         .saturdayBeforeTheophany:   "1Tim 3:14-4:5 Matthew 3:1-11 # Saturday before the Theophany",
         .sundayBeforeTheophany:     "2Tim 4:5-8 Mark 1:1-8 # Sunday before the Theophany",
-        .eveOfTheophany:            "1Cor 9:19-27 Luke 3:1-18",
+        .eveOfTheophany:            "1Cor 9:19-27 Luke 3:1-18 # Epiphany Eve",
         .saturdayAfterTheophany:    "Ephes 6:10-17 Matthew 4:1-11 # Saturday after the Theophany",
         .sundayAfterTheophany:      "Ephes 4:7-13 Matthew 4:12-17 # Sunday after the Theophany",
         .newMartyrsConfessorsOfRussia: "Rom 8:28-39 Luke 21:8-19 # Martyrs",
@@ -314,7 +314,7 @@ public struct DailyReading {
             if (code == .eveOfNativityOfGod) {
                 let choices = specialReadings[code]!.components(separatedBy: "|")
                 let weekday = DateComponents(date:date).weekday
-                readings.append((weekday == 7 || weekday == 1) ? choices[1] : choices[0])
+                readings.append(((weekday == 7 || weekday == 1) ? choices[1] : choices[0]) + " # Eve of the Nativity")
                 
             } else {
                 readings += [specialReadings[code]!]
