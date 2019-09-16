@@ -350,7 +350,7 @@ public struct ChurchCalendar {
 
     }
     
-    static func nearestSundayAfter(_ date: Date) -> Date {
+    static public func nearestSundayAfter(_ date: Date) -> Date {
         let weekday = DateComponents(date:date).weekday!
         let sunOffset = (weekday == 1) ? 0 : 8-weekday
         return date + sunOffset.days
