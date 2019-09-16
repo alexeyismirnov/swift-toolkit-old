@@ -45,9 +45,10 @@ public protocol BookModel {
     var code : String { get }
     var mode : BookType { get }
     var title: String { get }
+    var date : Date { get }
     
     var isExpandable : Bool { get }
-    var hasNavigation : Bool { get }
+    var hasDate : Bool { get }
     
     func getSections() -> [String]
     func getItems(_ section : Int) -> [String]
@@ -56,11 +57,11 @@ public protocol BookModel {
     func getComment(commentId: Int) -> String?
     
     func getContent(at pos: BookPosition) -> Any?
-    func getBookmark(at pos: BookPosition) -> String
     
     func getNextSection(at pos: BookPosition) -> BookPosition?
     func getPrevSection(at pos: BookPosition) -> BookPosition?
     
+    func getBookmark(at pos: BookPosition) -> String?
     func getBookmarkName(_ bookmark : String) -> String
 }
 

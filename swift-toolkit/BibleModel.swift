@@ -98,8 +98,10 @@ public class OldTestamentModel : BookModel {
     public var mode: BookType = .text
 
     public var isExpandable = true
-    public var hasNavigation = true
     
+    public var hasDate = false
+    public var date: Date = Date()
+
     public static let data: [[(String, String)]] = [
         [
             ("Genesis", "gen"),
@@ -187,7 +189,7 @@ public class OldTestamentModel : BookModel {
         return BibleModel.getChapter(code, chapter+1)
     }
     
-    public func getBookmark(at pos: BookPosition) -> String {
+    public func getBookmark(at pos: BookPosition) -> String? {
         guard let index = pos.index, let chapter = pos.chapter else { return "" }
         return "OldTestament_\(index.section)_\(index.row)_\(chapter)"
     }
@@ -225,8 +227,10 @@ public class NewTestamentModel : BookModel {
     public var mode: BookType = .text
 
     public var isExpandable = true
-    public var hasNavigation = true
 
+    public var hasDate = false
+    public var date: Date = Date()
+    
     public static let data: [[(String, String)]] = [
         [
             ("Gospel of St Matthew", "matthew"),
@@ -301,7 +305,7 @@ public class NewTestamentModel : BookModel {
         return BibleModel.getChapter(code, chapter+1)
     }
     
-    public func getBookmark(at pos: BookPosition) -> String {
+    public func getBookmark(at pos: BookPosition) -> String? {
         guard let index = pos.index, let chapter = pos.chapter else { return "" }
         return "NewTestament_\(index.section)_\(index.row)_\(chapter)"
     }

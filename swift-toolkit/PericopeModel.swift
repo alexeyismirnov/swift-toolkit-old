@@ -14,7 +14,9 @@ public class PericopeModel : BookModel {
     public var mode: BookType = .text
     
     public var isExpandable = false
-    public var hasNavigation = false
+
+    public var hasDate = false
+    public var date: Date = Date()
     
     public func getPericope(_ str: String, decorated: Bool = true) -> [(NSAttributedString, NSAttributedString)] {
         var result = [(NSAttributedString, NSAttributedString)]()
@@ -142,22 +144,11 @@ public class PericopeModel : BookModel {
         return text
     }
     
-    public func getBookmark(at pos: BookPosition) -> String {
-        return ""
-    }
+    public func getNextSection(at pos: BookPosition) -> BookPosition? { return nil }
+    public func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
     
-    public func getNextSection(at pos: BookPosition) -> BookPosition? {
-        return nil
-    }
-    
-    public func getPrevSection(at pos: BookPosition) -> BookPosition? {
-        return nil
-    }
-    
-    public func getBookmarkName(_ bookmark: String) -> String {
-        return ""
-    }
-    
+    public func getBookmark(at pos: BookPosition) -> String? { return nil }
+    public func getBookmarkName(_ bookmark: String) -> String { return "" }
     
 }
 

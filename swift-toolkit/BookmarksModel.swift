@@ -18,7 +18,9 @@ public class BookmarksModel : BookModel {
     public var mode: BookType = .text
 
     public var isExpandable = false
-    public var hasNavigation = false
+
+    public var hasDate = false
+    public var date: Date = Date()
     
     public static var books = [BookModel]()
     
@@ -62,7 +64,7 @@ public class BookmarksModel : BookModel {
     
     public func getContent(at pos: BookPosition) -> Any? { return nil }
         
-    public func getBookmark(at pos: BookPosition) -> String { return "" }
+    public func getBookmark(at pos: BookPosition) -> String? { return nil }
     
     public func getBookmarkName(_ bookmark: String) -> String { return "" }
     

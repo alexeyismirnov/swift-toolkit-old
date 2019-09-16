@@ -89,7 +89,7 @@ public class BookPage: UIViewController {
     var model : BookModel
     var pos : BookPosition
     
-    var bookmark: String
+    var bookmark: String?
     
     var button_fontsize, button_add_bookmark, button_remove_bookmark : CustomBarButton!
     var button_close, button_next, button_prev : CustomBarButton!
@@ -189,6 +189,8 @@ public class BookPage: UIViewController {
     }
     
     @objc func addBookmark() {
+        guard let bookmark = bookmark else { return }
+        
         var bookmarks = prefs.stringArray(forKey: "bookmarks")!
         bookmarks.append(bookmark)
         prefs.set(bookmarks, forKey: "bookmarks")
@@ -198,6 +200,8 @@ public class BookPage: UIViewController {
     }
     
     @objc func removeBookmark() {
+        guard let bookmark = bookmark else { return }
+
         var bookmarks = prefs.stringArray(forKey: "bookmarks")!
         bookmarks.removeAll(where: { $0 == bookmark })
         prefs.set(bookmarks, forKey: "bookmarks")
@@ -207,29 +211,27 @@ public class BookPage: UIViewController {
     }
     
     func updateNavigationButtons() {
-        if model.hasNavigation {
-            let bookmarks = prefs.stringArray(forKey: "bookmarks")!
-            
-            navigationItem.rightBarButtonItems = bookmarks.contains(bookmark)  ? [button_fontsize, button_remove_bookmark]:
-                [button_fontsize, button_add_bookmark]
-            
-            var nav_buttons = [CustomBarButton]()
-            
-            if let _ = model.getPrevSection(at: pos) {
-                nav_buttons.append(button_prev)
-            }
-            
-            if let _ = model.getNextSection(at: pos) {
-                nav_buttons.append(button_next)
-            }
-            
-            nav_buttons.insert(button_close, at: 0)
-            navigationItem.leftBarButtonItems = nav_buttons
-
-        } else {
-            navigationItem.rightBarButtonItem = button_fontsize
-            navigationItem.leftBarButtonItem = button_close
+        var left_nav_buttons = [CustomBarButton]()
+        var right_nav_buttons = [CustomBarButton]()
+        
+        if let _ = model.getPrevSection(at: pos) {
+            left_nav_buttons.append(button_prev)
         }
+        
+        if let _ = model.getNextSection(at: pos) {
+            left_nav_buttons.append(button_next)
+        }
+        
+        left_nav_buttons.insert(button_close, at: 0)
+        navigationItem.leftBarButtonItems = left_nav_buttons
+        
+        if let bookmark = bookmark {
+            let bookmarks = prefs.stringArray(forKey: "bookmarks")!
+            right_nav_buttons.append(bookmarks.contains(bookmark) ? button_remove_bookmark : button_add_bookmark)
+        }
+        
+        right_nav_buttons.append(button_close)
+        navigationItem.rightBarButtonItems = right_nav_buttons
       
     }
     
