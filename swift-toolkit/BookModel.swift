@@ -57,6 +57,12 @@ public protocol BookModel {
     func getComment(commentId: Int) -> String?
     
     func getContent(at pos: BookPosition) -> Any?
+    
+    func getNextSection(at pos: BookPosition) -> BookPosition?
+    func getPrevSection(at pos: BookPosition) -> BookPosition?
+    
+    func getBookmark(at pos: BookPosition) -> String?
+    func getBookmarkName(_ bookmark : String) -> String 
 }
 
 public extension BookModel {
