@@ -594,12 +594,12 @@ public extension UIView {
         self.removeConstraints(self.constraints)
     }
     
-    func fullScreen(view forView: UIView) {
+    func fullScreen(view forView: UIView, marginX: CGFloat = 0.0, marginY: CGFloat = 0.0) {
         forView.translatesAutoresizingMaskIntoConstraints = false
 
-        forView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        forView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        forView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        forView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        forView.leftAnchor.constraint(equalTo: leftAnchor, constant: marginX).isActive = true
+        forView.rightAnchor.constraint(equalTo: rightAnchor, constant: -marginX).isActive = true
+        forView.topAnchor.constraint(equalTo: topAnchor, constant: marginY).isActive = true
+        forView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -marginY).isActive = true
     }
 }
