@@ -230,7 +230,7 @@ public class BookPage: UIViewController {
             right_nav_buttons.append(bookmarks.contains(bookmark) ? button_remove_bookmark : button_add_bookmark)
         }
         
-        right_nav_buttons.append(button_close)
+        right_nav_buttons.append(button_fontsize)
         navigationItem.rightBarButtonItems = right_nav_buttons
       
     }
