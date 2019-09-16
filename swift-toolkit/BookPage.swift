@@ -222,7 +222,6 @@ public class BookPage: UIViewController {
             left_nav_buttons.append(button_next)
         }
         
-        left_nav_buttons.insert(button_close, at: 0)
         navigationItem.leftBarButtonItems = left_nav_buttons
         
         if let bookmark = bookmark {
@@ -230,9 +229,8 @@ public class BookPage: UIViewController {
             right_nav_buttons.append(bookmarks.contains(bookmark) ? button_remove_bookmark : button_add_bookmark)
         }
         
-        right_nav_buttons.append(button_fontsize)
+        right_nav_buttons.insert(button_fontsize, at: 0)
         navigationItem.rightBarButtonItems = right_nav_buttons
-      
     }
     
     @objc func close() {
