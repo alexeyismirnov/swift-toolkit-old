@@ -222,6 +222,7 @@ public class BookPage: UIViewController {
             left_nav_buttons.append(button_next)
         }
         
+        left_nav_buttons.insert(button_close, at: 0)
         navigationItem.leftBarButtonItems = left_nav_buttons
         
         if let bookmark = bookmark {
