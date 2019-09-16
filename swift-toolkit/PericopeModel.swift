@@ -144,11 +144,5 @@ public class PericopeModel : BookModel {
         return text
     }
     
-    public func getNextSection(at pos: BookPosition) -> BookPosition? { return nil }
-    public func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
-    
-    public func getBookmark(at pos: BookPosition) -> String? { return nil }
-    public func getBookmarkName(_ bookmark: String) -> String { return "" }
-    
 }
 

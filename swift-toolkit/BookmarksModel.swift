@@ -63,14 +63,6 @@ public class BookmarksModel : BookModel {
     }
     
     public func getContent(at pos: BookPosition) -> Any? { return nil }
-        
-    public func getBookmark(at pos: BookPosition) -> String? { return nil }
-    
-    public func getBookmarkName(_ bookmark: String) -> String { return "" }
-    
-    public func getNextSection(at pos: BookPosition) -> BookPosition? { return nil }
-    
-    public func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
     
 }
 
