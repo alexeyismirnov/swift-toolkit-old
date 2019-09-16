@@ -35,7 +35,6 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
         
         createTableView(style: .grouped)
         tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "TextDetailsCell", bundle: toolkit), forCellReuseIdentifier: "TextDetailsCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(showChapter), name: .chapterSelectedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTheme), name: .themeChangedNotification, object: nil)

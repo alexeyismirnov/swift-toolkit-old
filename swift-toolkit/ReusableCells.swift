@@ -66,7 +66,7 @@ public protocol ResizableTableViewCells : UITableViewDelegate, UITableViewDataSo
 }
 
 public extension ResizableTableViewCells where Self: UIViewController {
-    func createTableView(style: UITableView.Style) {
+    func createTableView(style: UITableView.Style, isPopup: Bool = false) {
         automaticallyAdjustsScrollViewInsets = false
         
         tableView = UITableView(frame: .zero, style: style)
@@ -77,7 +77,13 @@ public extension ResizableTableViewCells where Self: UIViewController {
         tableView.separatorStyle = .none
         
         view.addSubview(tableView)
-        fullScreen(view: tableView)
+        
+        if isPopup {
+            view.fullScreen(view: tableView)
+
+        } else {
+            fullScreen(view: tableView)
+        }
     }
     
     func getTextCell(_ title: String) -> TextCell {
