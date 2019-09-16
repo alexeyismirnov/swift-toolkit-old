@@ -79,7 +79,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
         view.addSubview(tableView)
         
         if isPopup {
-            view.fullScreen(view: tableView)
+            view.fullScreen(view: tableView, marginX: 0.0, marginY: 10.0)
 
         } else {
             fullScreen(view: tableView)
