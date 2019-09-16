@@ -62,7 +62,9 @@ public protocol BookModel {
     func getPrevSection(at pos: BookPosition) -> BookPosition?
     
     func getBookmark(at pos: BookPosition) -> String?
-    func getBookmarkName(_ bookmark : String) -> String 
+    func getBookmarkName(_ bookmark : String) -> String
+    
+    func dateIterator(startDate: Date) -> AnyIterator<Date>
 }
 
 public extension BookModel {
