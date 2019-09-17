@@ -27,9 +27,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    var button_close :CustomBarButton!
-    
+        
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,15 +40,6 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTheme), name: .themeChangedNotification, object: nil)
         
         reloadTheme()
-        
-        button_close = CustomBarButton(image: UIImage(named: "close", in: toolkit, compatibleWith: nil), style: .plain, target: self, action: #selector(close))
-
-        navigationItem.rightBarButtonItems = [button_close]
-
-    }
-    
-    @objc func close() {
-        
     }
     
     override public func viewWillAppear(_ animated: Bool) {
