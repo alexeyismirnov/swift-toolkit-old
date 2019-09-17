@@ -127,9 +127,9 @@ public extension PopupController {
         let controller = PopupController()
         controller.defaultConfigure()
         
-        parentViewController.addChild(controller)
+        //parentViewController.addChild(controller)
         parentViewController.view.addSubview(controller.view)
-        controller.didMove(toParent: parentViewController)
+        //controller.didMove(toParent: parentViewController)
         
         return controller
     }
