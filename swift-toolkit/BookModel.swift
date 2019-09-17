@@ -45,7 +45,7 @@ public protocol BookModel {
     var code : String { get }
     var mode : BookType { get }
     var title: String { get }
-    var date : Date { get }
+    var date : Date { get set }
     
     var isExpandable : Bool { get }
     var hasDate : Bool { get }
