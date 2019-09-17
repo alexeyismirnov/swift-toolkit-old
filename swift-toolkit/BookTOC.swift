@@ -45,7 +45,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
         
         button_close = CustomBarButton(image: UIImage(named: "close", in: toolkit, compatibleWith: nil), style: .plain, target: self, action: #selector(close))
 
-        navigationController?.navigationItem.rightBarButtonItems = [button_close]
+        navigationItem.rightBarButtonItems = [button_close]
 
     }
     
