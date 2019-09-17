@@ -153,7 +153,7 @@ public struct ChurchCalendar {
         }
     }
 
-    static func paschaDay(_ year: Int) -> Date {
+    static public func paschaDay(_ year: Int) -> Date {
         // http://calendar.lenacom.spb.ru/index.php
         let a = (19*(year%19) + 15) % 30
         let b = (2*(year%4) + 4*(year%7) + 6*a + 6) % 7
