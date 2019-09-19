@@ -47,6 +47,7 @@
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE21F872D8F0059194A /* TextCell.swift */; };
 		8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BEA1F8732650059194A /* Extensions.swift */; };
+		8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86F7432333883800CFC905 /* ServiceDateSelector.swift */; };
 		8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D522EEA1AE0021D996 /* DailyReading.swift */; };
 		8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D622EEA1AE0021D996 /* FastingModel.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
@@ -118,6 +119,7 @@
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5F0BE21F872D8F0059194A /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		8A5F0BEA1F8732650059194A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8A86F7432333883800CFC905 /* ServiceDateSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDateSelector.swift; sourceTree = "<group>"; };
 		8AA660D522EEA1AE0021D996 /* DailyReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReading.swift; sourceTree = "<group>"; };
 		8AA660D622EEA1AE0021D996 /* FastingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		8A229D5C22FD7C7600CEA2DB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8A86F7432333883800CFC905 /* ServiceDateSelector.swift */,
 				8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */,
 				8A229D6F22FD92A800CEA2DB /* BookTOC.swift */,
 				8A229D6A22FD7FB300CEA2DB /* BookPage.swift */,
@@ -449,6 +452,7 @@
 				8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */,
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
 				8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */,
+				8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */,
 				8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
