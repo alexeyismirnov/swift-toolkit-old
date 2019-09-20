@@ -116,6 +116,8 @@ public struct DailyReading {
     static func GospelOfLukeSpring(_ date: Date) -> String {
         var gospelIndex:Int, apostleIndex:Int
         
+        initLukeSpring()
+        
         let daysFromPentecost = LS.pentecostPrevYear >> date
         let daysFromExaltation = (LS.sundayAfterExaltationPrevYear+1.days) >> date
         let daysBeforePAP = date >> LS.PAPSunday
@@ -275,8 +277,6 @@ public struct DailyReading {
         formatter.timeStyle = .none
         formatter.dateFormat = "cccc"
         formatter.locale = Locale(identifier: "en")
-        
-        initLukeSpring()
         
         vigils = [
             Date(30, 1, Cal.currentYear):     "Heb 13:17-21 Luke 6:17-23 # Venerable",
