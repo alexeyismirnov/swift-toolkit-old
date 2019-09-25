@@ -22,7 +22,8 @@ public class ServiceDateSelector: UIViewController, ResizableTableViewCells, Pop
     
     public init?(_ model: BookModel) {
         self.model = model
-        self.iterator = model.dateIterator(startDate: DateComponents(date: Date()).toDate())
+//        self.iterator = model.dateIterator(startDate: DateComponents(date: Date()).toDate())
+        self.iterator = model.dateIterator(startDate: Date(2019,2,17))
         super.init(nibName: nil, bundle: nil)
     }
     
