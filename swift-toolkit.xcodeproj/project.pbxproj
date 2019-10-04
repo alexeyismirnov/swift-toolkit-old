@@ -45,6 +45,10 @@
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
+		8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */; };
+		8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D084D234750B1009D9F55 /* YearlyMonthViewCell.swift */; };
+		8A5D0851234750B2009D9F55 /* YearlyMonthViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A5D084E234750B1009D9F55 /* YearlyMonthViewCell.xib */; };
+		8A5D085423475101009D9F55 /* YearCalendarGridTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D085323475101009D9F55 /* YearCalendarGridTheme.swift */; };
 		8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE21F872D8F0059194A /* TextCell.swift */; };
 		8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BEA1F8732650059194A /* Extensions.swift */; };
 		8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86F7432333883800CFC905 /* ServiceDateSelector.swift */; };
@@ -117,6 +121,10 @@
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
+		8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingLegendCell.swift; sourceTree = "<group>"; };
+		8A5D084D234750B1009D9F55 /* YearlyMonthViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearlyMonthViewCell.swift; sourceTree = "<group>"; };
+		8A5D084E234750B1009D9F55 /* YearlyMonthViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearlyMonthViewCell.xib; sourceTree = "<group>"; };
+		8A5D085323475101009D9F55 /* YearCalendarGridTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearCalendarGridTheme.swift; sourceTree = "<group>"; };
 		8A5F0BE21F872D8F0059194A /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		8A5F0BEA1F8732650059194A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A86F7432333883800CFC905 /* ServiceDateSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDateSelector.swift; sourceTree = "<group>"; };
@@ -255,6 +263,17 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		8A5D0852234750B7009D9F55 /* Year Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8A5D085323475101009D9F55 /* YearCalendarGridTheme.swift */,
+				8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */,
+				8A5D084D234750B1009D9F55 /* YearlyMonthViewCell.swift */,
+				8A5D084E234750B1009D9F55 /* YearlyMonthViewCell.xib */,
+			);
+			name = "Year Calendar";
+			sourceTree = "<group>";
+		};
 		8AB18EE11F86360300F1A65C = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +296,7 @@
 			children = (
 				8A00A50A22F6DE540040F14C /* Calendar */,
 				8A161E1F23225A730067BE89 /* Calendar UI */,
+				8A5D0852234750B7009D9F55 /* Year Calendar */,
 				8A229D5C22FD7C7600CEA2DB /* Library */,
 				8A0F819223040E9500BDCCAD /* Custom UI */,
 				8A23BFBE201049550034189E /* images */,
@@ -409,6 +429,7 @@
 				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
 				8A229D6422FD7E6700CEA2DB /* arrow-right.pdf in Resources */,
+				8A5D0851234750B2009D9F55 /* YearlyMonthViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,9 +445,11 @@
 				8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
 				8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */,
+				8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */,
 				8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */,
 				8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */,
 				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
+				8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
 				8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */,
@@ -443,6 +466,7 @@
 				8A0F81912303BD1200BDCCAD /* ReusableCells.swift in Sources */,
 				8A229D7222FD92A800CEA2DB /* BookmarksModel.swift in Sources */,
 				8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */,
+				8A5D085423475101009D9F55 /* YearCalendarGridTheme.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
 				8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */,
 				8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */,
