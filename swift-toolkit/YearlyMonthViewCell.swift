@@ -16,7 +16,7 @@ public class YearlyMonthViewCell: UICollectionViewCell {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var calendarDelegate: CalendarDelegate!
-    var appeared = false
+    public var appeared = false
     let theme = YearCalendarGridTheme.shared
 
     public var currentDate : Date! {
