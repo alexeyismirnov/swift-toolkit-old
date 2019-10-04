@@ -9,7 +9,7 @@
 import UIKit
 
 public class YearlyMonthViewCell: UICollectionViewCell {
-    static let cellId = "YearlyMonthViewCell"
+    static public let cellId = "YearlyMonthViewCell"
 
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
