@@ -64,14 +64,20 @@ public struct FastingModel {
     
     static public var fastingComments = [String:String]()
     
-    static public let monasticTypes : [FastingModel] = [
-        FastingModel(.noFood), FastingModel(.xerophagy),
-        FastingModel(.withoutOil), FastingModel(.withOil),
-        FastingModel(.fishAllowed), FastingModel(.fastFree)]
+    static public var monasticTypes : [FastingModel] {
+        get { return [
+            FastingModel(.noFood), FastingModel(.xerophagy),
+            FastingModel(.withoutOil), FastingModel(.withOil),
+            FastingModel(.fishAllowed), FastingModel(.fastFree)]
+        }
+    }
     
-    static public let laymenTypes: [FastingModel] = [
-        FastingModel(.vegetarian), FastingModel(.fishAllowed), FastingModel(.fastFree)
-    ]
+    static public var laymenTypes: [FastingModel]  {
+        get { return [
+            FastingModel(.vegetarian), FastingModel(.fishAllowed), FastingModel(.fastFree)
+            ]
+        }
+    }
     
     static public var fastingLevel: FastingLevel!
     
