@@ -54,6 +54,7 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = getTextDetailsCell(title: Translate.s(indexPath.row == 0 ? "Monthly" : "Yearly"), subtitle: "")
+        cell.title.textColor = .black
         cell.title.textAlignment = .center
         
         return cell
