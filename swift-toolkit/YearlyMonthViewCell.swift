@@ -29,14 +29,15 @@ public class YearlyMonthViewCell: UICollectionViewCell {
             monthLabel.font = UIFont.systemFont(ofSize: theme.titleFontSize)
             monthLabel.textColor = theme.textColor
 
+            calendarDelegate = CalendarDelegate(fontSize: theme.fontSize, textColor: theme.textColor)
+            calendarDelegate.currentDate = currentDate
+            
             if appeared {
                 indicator.stopAnimating()
-                
-                collectionView.delegate = calendarDelegate
-                collectionView.dataSource = calendarDelegate
             }
             
-            calendarDelegate.currentDate = currentDate
+            collectionView.delegate = calendarDelegate
+            collectionView.dataSource = calendarDelegate
             collectionView.reloadData()
             
             CalendarContainer.generateLabels(self, standalone: true, textColor: theme.textColor, fontSize: theme.fontSize)
@@ -56,9 +57,7 @@ public class YearlyMonthViewCell: UICollectionViewCell {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .vertical
-                
-        calendarDelegate = CalendarDelegate(fontSize: theme.fontSize, textColor: theme.textColor)
-        
+                        
         collectionView.layer.addBorder(edge: .top, color: theme.textColor, thickness: 1)
 
     }
