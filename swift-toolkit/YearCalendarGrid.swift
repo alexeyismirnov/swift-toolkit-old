@@ -141,7 +141,7 @@ public class YearCalendarGrid: UIView, UICollectionViewDataSource, UICollectionV
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath as IndexPath) as! YearCalendarGridHeader
         
-        headerView.title.text =  "Православный календарь на \(year) г."
+        headerView.title.text =  String(format: Translate.s("Year %d Orthodox Calendar"), year)
        
         return headerView
     }
