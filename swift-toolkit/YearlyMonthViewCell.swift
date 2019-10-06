@@ -28,17 +28,17 @@ public class YearlyMonthViewCell: UICollectionViewCell {
             monthLabel.text = formatter.string(from: currentDate).capitalizingFirstLetter()
             monthLabel.font = UIFont.systemFont(ofSize: theme.titleFontSize)
             monthLabel.textColor = theme.textColor
-
-            calendarDelegate = CalendarDelegate(fontSize: theme.fontSize, textColor: theme.textColor)
-            calendarDelegate.currentDate = currentDate
             
             if appeared {
                 indicator.stopAnimating()
+                
+                calendarDelegate = CalendarDelegate(fontSize: theme.fontSize, textColor: theme.textColor)
+                calendarDelegate.currentDate = currentDate
+                
+                collectionView.delegate = calendarDelegate
+                collectionView.dataSource = calendarDelegate
+                collectionView.reloadData()
             }
-            
-            collectionView.delegate = calendarDelegate
-            collectionView.dataSource = calendarDelegate
-            collectionView.reloadData()
             
             CalendarContainer.generateLabels(self, standalone: true, textColor: theme.textColor, fontSize: theme.fontSize)
         }
