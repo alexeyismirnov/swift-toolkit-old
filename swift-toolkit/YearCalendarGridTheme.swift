@@ -71,6 +71,12 @@ public class YearCalendarGridTheme {
         self.titleFontSize = titleFontSize
         self.fontSize = fontSize
         self.textColor = Theme.textColor
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTheme), name: .themeChangedNotification, object: nil)
+    }
+    
+    @objc func reloadTheme() {
+        self.textColor = Theme.textColor
     }
     
     public func setSharing(_ sharing: Bool) {
