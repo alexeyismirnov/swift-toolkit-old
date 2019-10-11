@@ -9,7 +9,7 @@
 import Foundation
 import UserNotifications
 
-public class FeastNotifications {
+open class FeastNotifications {
     static let center = UNUserNotificationCenter.current()
 
     class func addNotification(date: Date, title: String, body: String) {
@@ -35,9 +35,9 @@ public class FeastNotifications {
         }
     }
     
-    public class func setupExtraNotifications() {}
+    open class func setupExtraNotifications() {}
     
-    public class func setupNotifications() {
+    open class func setupNotifications() {
         let prefs = AppGroup.prefs!
 
         FeastList.sharing = false
