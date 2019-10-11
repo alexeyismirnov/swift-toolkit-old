@@ -12,7 +12,7 @@ import UserNotifications
 open class FeastNotifications {
     static let center = UNUserNotificationCenter.current()
 
-    class func addNotification(date: Date, title: String, body: String) {
+    open class func addNotification(date: Date, title: String, body: String) {
         var components: DateComponents!
     
         components = DateComponents(date: date-1.days)
