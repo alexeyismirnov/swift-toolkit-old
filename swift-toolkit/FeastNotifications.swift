@@ -41,7 +41,7 @@ open class FeastNotifications {
         let prefs = AppGroup.prefs!
 
         FeastList.sharing = false
-        FeastList.setDate(Date()+365.days)
+        FeastList.setDate(Date())
         
         let year = Cal.currentYear!
         
