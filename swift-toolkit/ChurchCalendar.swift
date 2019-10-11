@@ -417,9 +417,7 @@ public struct ChurchCalendar {
             Date(31, 12, year):  [.endOfYear],
         ];
         
-        if Translate.language == "ru" {
-            fixedFeasts += [Date(9,  5, year): [.killedInAction]]
-        }
+        fixedFeasts += [Date(9,  5, year): [.killedInAction]]
 
         feastDates += movingFeasts
         feastDates += fixedFeasts
