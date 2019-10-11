@@ -15,6 +15,8 @@
 		8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1238081F8F3C8900F6B382 /* Animation.swift */; };
 		8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */; };
 		8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */; };
+		8A12C92323507D1B00F16694 /* FeastList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C92123507D1B00F16694 /* FeastList.swift */; };
+		8A12C92423507D1B00F16694 /* FeastNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C92223507D1B00F16694 /* FeastNotifications.swift */; };
 		8A161E2523225C900067BE89 /* ReadingJohn.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2023225C8F0067BE89 /* ReadingJohn.plist */; };
 		8A161E2623225C900067BE89 /* ReadingLuke.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2123225C8F0067BE89 /* ReadingLuke.plist */; };
 		8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2223225C900067BE89 /* ReadingLent.plist */; };
@@ -97,6 +99,8 @@
 		8A1238081F8F3C8900F6B382 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimated.swift; sourceTree = "<group>"; };
 		8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnimated.swift; sourceTree = "<group>"; };
+		8A12C92123507D1B00F16694 /* FeastList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeastList.swift; sourceTree = "<group>"; };
+		8A12C92223507D1B00F16694 /* FeastNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeastNotifications.swift; sourceTree = "<group>"; };
 		8A161E2023225C8F0067BE89 /* ReadingJohn.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingJohn.plist; sourceTree = "<group>"; };
 		8A161E2123225C8F0067BE89 /* ReadingLuke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingLuke.plist; sourceTree = "<group>"; };
 		8A161E2223225C900067BE89 /* ReadingLent.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingLent.plist; sourceTree = "<group>"; };
@@ -213,6 +217,9 @@
 				8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */,
 				8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */,
 				8AC3381B1FB879D200CF0D02 /* PopupController.swift */,
+				8A1238081F8F3C8900F6B382 /* Animation.swift */,
+				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
+				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -322,12 +329,11 @@
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
 				8AA660DF22EEA67F0021D996 /* SaintModel.swift */,
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
-				8A1238081F8F3C8900F6B382 /* Animation.swift */,
-				8A12380A1F8F3CB900F6B382 /* TabBarAnimated.swift */,
-				8A12380C1F8F3CED00F6B382 /* ViewControllerAnimated.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
 				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
+				8A12C92123507D1B00F16694 /* FeastList.swift */,
+				8A12C92223507D1B00F16694 /* FeastNotifications.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
 				8AB18EEF1F86360300F1A65C /* Info.plist */,
 				8AC338151FB851C100CF0D02 /* Main.storyboard */,
@@ -480,8 +486,10 @@
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
 				8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */,
+				8A12C92423507D1B00F16694 /* FeastNotifications.swift in Sources */,
 				8AA660E222EED0570021D996 /* AppGroup.swift in Sources */,
 				8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */,
+				8A12C92323507D1B00F16694 /* FeastList.swift in Sources */,
 				8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
 				8A229D7122FD92A800CEA2DB /* BookTOC.swift in Sources */,
