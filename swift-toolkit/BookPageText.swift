@@ -57,10 +57,18 @@ public class BookPageText: BookPage {
         
         textView.textColor = Theme.textColor
         
-        textView.font = UIFont(name: Translate.language == "cn" ? "STHeitiSC-Light" : "TimesNewRomanPSMT",
-                               size: CGFloat(fontSize))!
-        
-        textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+        if Translate.language == "cn" {
+            textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+            
+            textView.font = UIFont(name: "STHeitiSC-Light" ,
+                                   size: CGFloat(fontSize))!
+            
+        } else {
+            textView.font = UIFont(name: "TimesNewRomanPSMT",
+                                   size: CGFloat(fontSize))!
+            
+            textView.attributedText = model.getContent(at: pos) as? NSAttributedString
+        }
         
         textView.backgroundColor = .clear
         textView.isScrollEnabled = true
