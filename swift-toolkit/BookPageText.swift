@@ -57,7 +57,9 @@ public class BookPageText: BookPage {
         
         textView.textColor = Theme.textColor
         
-        textView.font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+        textView.font = UIFont(name: Translate.language == "cn" ? "PingFangSC-Regular" : "TimesNewRomanPSMT",
+                               size: CGFloat(fontSize))!
+        
         textView.attributedText = model.getContent(at: pos) as? NSAttributedString
         
         textView.backgroundColor = .clear
