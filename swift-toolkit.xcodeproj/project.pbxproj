@@ -23,6 +23,9 @@
 		8A161E2823225C900067BE89 /* ReadingMatthew.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2323225C900067BE89 /* ReadingMatthew.plist */; };
 		8A161E2923225C900067BE89 /* ReadingApostle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A161E2423225C900067BE89 /* ReadingApostle.plist */; };
 		8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A161E2A232263130067BE89 /* PericopeModel.swift */; };
+		8A19AE5F235171D7004A059B /* CenterViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A19AE5C235171D6004A059B /* CenterViewFlowLayout.swift */; };
+		8A19AE60235171D7004A059B /* SaintIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A19AE5D235171D6004A059B /* SaintIconView.swift */; };
+		8A19AE61235171D7004A059B /* SaintIconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A19AE5E235171D7004A059B /* SaintIconModel.swift */; };
 		8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */; };
 		8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5722FD7C0F00CEA2DB /* BookModel.swift */; };
 		8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */; };
@@ -107,6 +110,9 @@
 		8A161E2323225C900067BE89 /* ReadingMatthew.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingMatthew.plist; sourceTree = "<group>"; };
 		8A161E2423225C900067BE89 /* ReadingApostle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReadingApostle.plist; sourceTree = "<group>"; };
 		8A161E2A232263130067BE89 /* PericopeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PericopeModel.swift; sourceTree = "<group>"; };
+		8A19AE5C235171D6004A059B /* CenterViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewFlowLayout.swift; sourceTree = "<group>"; };
+		8A19AE5D235171D6004A059B /* SaintIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaintIconView.swift; sourceTree = "<group>"; };
+		8A19AE5E235171D7004A059B /* SaintIconModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaintIconModel.swift; sourceTree = "<group>"; };
 		8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleModel.swift; sourceTree = "<group>"; };
 		8A229D5722FD7C0F00CEA2DB /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewCell.swift; sourceTree = "<group>"; };
@@ -236,7 +242,18 @@
 			name = "Calendar UI";
 			sourceTree = "<group>";
 		};
-		8A229D5C22FD7C7600CEA2DB /* Library */ = {
+		8A19AE5B23517188004A059B /* DailyTab */ = {
+			isa = PBXGroup;
+			children = (
+				8A19AE5C235171D6004A059B /* CenterViewFlowLayout.swift */,
+				8A19AE5E235171D7004A059B /* SaintIconModel.swift */,
+				8A19AE5D235171D6004A059B /* SaintIconView.swift */,
+				8AA660DF22EEA67F0021D996 /* SaintModel.swift */,
+			);
+			name = DailyTab;
+			sourceTree = "<group>";
+		};
+		8A229D5C22FD7C7600CEA2DB /* LibraryTab */ = {
 			isa = PBXGroup;
 			children = (
 				8A86F7432333883800CFC905 /* ServiceDateSelector.swift */,
@@ -249,7 +266,7 @@
 				8A229D5722FD7C0F00CEA2DB /* BookModel.swift */,
 				8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */,
 			);
-			name = Library;
+			name = LibraryTab;
 			sourceTree = "<group>";
 		};
 		8A23BFBE201049550034189E /* images */ = {
@@ -322,12 +339,12 @@
 				8A00A50A22F6DE540040F14C /* Calendar */,
 				8A161E1F23225A730067BE89 /* Calendar UI */,
 				8A5D0852234750B7009D9F55 /* Year Calendar */,
-				8A229D5C22FD7C7600CEA2DB /* Library */,
+				8A19AE5B23517188004A059B /* DailyTab */,
+				8A229D5C22FD7C7600CEA2DB /* LibraryTab */,
 				8A0F819223040E9500BDCCAD /* Custom UI */,
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
-				8AA660DF22EEA67F0021D996 /* SaintModel.swift */,
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
@@ -473,6 +490,7 @@
 				8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
 				8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */,
+				8A19AE60235171D7004A059B /* SaintIconView.swift in Sources */,
 				8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */,
 				8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */,
 				8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */,
@@ -486,6 +504,7 @@
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
 				8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */,
+				8A19AE5F235171D7004A059B /* CenterViewFlowLayout.swift in Sources */,
 				8A12C92423507D1B00F16694 /* FeastNotifications.swift in Sources */,
 				8AA660E222EED0570021D996 /* AppGroup.swift in Sources */,
 				8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */,
@@ -499,6 +518,7 @@
 				8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */,
 				8A5D085423475101009D9F55 /* YearCalendarGridTheme.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
+				8A19AE61235171D7004A059B /* SaintIconModel.swift in Sources */,
 				8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */,
 				8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */,
 				8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */,
