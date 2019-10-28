@@ -230,6 +230,28 @@ public struct DailyReading {
         var transferred = [Date:String]()
         
         Cal.setDate(date)
+        
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateFormat = "cccc"
+        formatter.locale = Locale(identifier: "en")
+        
+        vigils = [
+            Date(30, 1, Cal.currentYear):     "Heb 13:17-21 Luke 6:17-23 # Venerable",
+            Date(2, 2, Cal.currentYear):      "Heb 13:17-21 Luke 6:17-23 # Venerable",
+            Date(12, 2, Cal.currentYear):     "Heb 13:7-16 Matthew 5:14-19 # Hierarchs",
+            Date(6, 5, Cal.currentYear):      "Acts 12:1-11 John 15:17-16:2 # Great Martyr",
+            Date(21, 5, Cal.currentYear):     "1John 1:1-7 John 19:25-27,21:24-25 # Apostle",
+            Date(24, 5, Cal.currentYear):     "Heb 7:26-8:2 Matthew 5:14-19 # Equal-to-the Apostles",
+            Date(28, 7, Cal.currentYear):     "Gal 1:11-19 John 10:1-9 # Equal-to-the Apostles",
+            Date(1, 8, Cal.currentYear):      "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
+            Date(2, 8, Cal.currentYear):      "James 5:10-20 Luke 4:22-30 # Prophet",
+            Date(14, 9, Cal.currentYear):     "1Tim 2:1-7 Luke 4:16-22 # New Year",
+            Date(9, 10, Cal.currentYear):     "1John 4:12-19 John 19:25-27,21:24-25 # Repose of the John the Theologian",
+            Date(26, 11, Cal.currentYear):    "Heb 7:26-8:2 John 10:9-16 # St. John",
+            Date(18, 12, Cal.currentYear):    "Gal 5:22-6:2 Matthew 11:27-30 # Venerable",
+            Date(19, 12, Cal.currentYear):    "Heb 13:17-21 Luke 6:17-23 # St. Nicholas",
+        ]
 
         if Cal.d(.beginningOfGreatLent) ..< Cal.d(.pascha) ~= date  {
             let greatLentStart = Cal.d(.beginningOfGreatLent)
@@ -257,6 +279,13 @@ public struct DailyReading {
             }
             
             return readings
+            
+        } else if Cal.d(.pascha) ... Cal.d(.pentecost) ~= date {
+            if let vigilReading = vigils[date] {
+                readings += [vigilReading]
+            }
+            
+            return readings + (getRegularReading(date).map { [$0] } ?? [])
         }
         
         let synaxisTheotokos = Cal.d(.synaxisTheotokos)
@@ -271,29 +300,6 @@ public struct DailyReading {
                 return ["Heb 2:11-18 Matthew 2:13-23 # Theotokos"]
             }
         }
-        
-        
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateFormat = "cccc"
-        formatter.locale = Locale(identifier: "en")
-        
-        vigils = [
-            Date(30, 1, Cal.currentYear):     "Heb 13:17-21 Luke 6:17-23 # Venerable",
-            Date(2, 2, Cal.currentYear):      "Heb 13:17-21 Luke 6:17-23 # Venerable",
-            Date(12, 2, Cal.currentYear):     "Heb 13:7-16 Matthew 5:14-19 # Hierarchs",
-            Date(6, 5, Cal.currentYear):      "Acts 12:1-11 John 15:17-16:2 # Great Martyr",
-            Date(21, 5, Cal.currentYear):     "1John 1:1-7 John 19:25-27,21:24-25 # Apostle",
-            Date(24, 5, Cal.currentYear):     "Heb 7:26-8:2 Matthew 5:14-19 # Equal-to-the Apostles",
-            Date(28, 7, Cal.currentYear):     "Gal 1:11-19 John 10:1-9 # Equal-to-the Apostles",
-            Date(1, 8, Cal.currentYear):      "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
-            Date(2, 8, Cal.currentYear):      "James 5:10-20 Luke 4:22-30 # Prophet",
-            Date(14, 9, Cal.currentYear):     "1Tim 2:1-7 Luke 4:16-22 # New Year",
-            Date(9, 10, Cal.currentYear):     "1John 4:12-19 John 19:25-27,21:24-25 # Repose of the John the Theologian",
-            Date(26, 11, Cal.currentYear):    "Heb 7:26-8:2 John 10:9-16 # St. John",
-            Date(18, 12, Cal.currentYear):    "Gal 5:22-6:2 Matthew 11:27-30 # Venerable",
-            Date(19, 12, Cal.currentYear):    "Heb 13:17-21 Luke 6:17-23 # St. Nicholas",
-        ]
         
         for code in Array(specialReadings.keys) where !dontTransferReading.contains(code) {
             if let newDate = transferReading(Cal.d(code))  {
@@ -332,11 +338,7 @@ public struct DailyReading {
         
         if let vigilReading = vigils[date] {
             readings += [vigilReading]
-            
-            if Cal.d(.pascha) ... Cal.d(.pentecost) ~= date {
-                return readings + (getRegularReading(date).map { [$0] } ?? [])
-            }
-            
+           
             if Cal.currentWeekday != .sunday {
                 return readings + (transferred[date].map { [$0] } ?? [])
                 
