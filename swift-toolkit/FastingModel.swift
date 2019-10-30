@@ -50,7 +50,7 @@ public struct FastingModel {
     ]
     
     static var fastingIcon: [FastingType: String] = [
-        .noFast:        "burger",
+        .noFast:        "salami",
         .noFastMonastic:"mexican",
         .vegetarian:    "vegetables",
         .fishAllowed:   "fish",

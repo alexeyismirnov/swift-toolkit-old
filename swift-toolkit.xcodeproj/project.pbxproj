@@ -51,6 +51,7 @@
 		8A23BFCF201056390034189E /* share.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCD201056390034189E /* share.pdf */; };
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
+		8A3D824923696D6D00C118AA /* salami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3D824823696D6D00C118AA /* salami.pdf */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */; };
@@ -138,6 +139,7 @@
 		8A23BFCD201056390034189E /* share.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = share.pdf; sourceTree = "<group>"; };
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		8A3D824823696D6D00C118AA /* salami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = salami.pdf; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingLegendCell.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8A3D824823696D6D00C118AA /* salami.pdf */,
 				8A0EA8DF234B3F2D0029CFB4 /* help.pdf */,
 				8A0EA8DE234B3F2D0029CFB4 /* today.pdf */,
 				8A229D6022FD7E6700CEA2DB /* add_bookmark.pdf */,
@@ -468,6 +471,7 @@
 				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
 				8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */,
 				8A229D6822FD7E6700CEA2DB /* remove_bookmark.pdf in Resources */,
+				8A3D824923696D6D00C118AA /* salami.pdf in Resources */,
 				8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */,
 				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
