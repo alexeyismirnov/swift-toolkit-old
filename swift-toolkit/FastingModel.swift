@@ -134,20 +134,27 @@ public struct FastingModel {
         }
     }
     
+    static func meetingOfLord(_ date: Date, monastic: Bool) -> FastingModel {
+        if Cal.d(.sundayOfPublicianAndPharisee)+1.days ... Cal.d(.sundayOfProdigalSon) ~= date {
+            return FastingModel(.fastFree)
+            
+        } else if Cal.d(.sundayOfDreadJudgement)+1.days ..< Cal.d(.beginningOfGreatLent) ~= date {
+            return FastingModel(.cheesefare)
+            
+        } else if date == Cal.d(.beginningOfGreatLent) {
+            return monastic ? FastingModel(.noFood) : FastingModel(.vegetarian, "Great Lent")
+            
+        } else {
+            return (Cal.currentWeekday == .monday ||
+                Cal.currentWeekday == .wednesday ||
+                Cal.currentWeekday == .friday) ? FastingModel(.fishAllowed) : FastingModel(monastic ? .noFastMonastic : .noFast)
+        }
+    }
+    
     static func getFastingMonastic(_ date: Date) -> FastingModel {
         switch date {
         case Cal.d(.meetingOfLord):
-            if Cal.d(.beginningOfGreatLent)-7.days ... Cal.d(.beginningOfGreatLent)-1.days ~= date {
-                return FastingModel(.cheesefare)
-                
-            } else if date == Cal.d(.beginningOfGreatLent) {
-                return FastingModel(.noFood)
-                
-            } else {
-                return (Cal.currentWeekday == .monday ||
-                    Cal.currentWeekday == .wednesday ||
-                    Cal.currentWeekday == .friday) ? FastingModel(.fishAllowed) : FastingModel(.noFastMonastic)
-            }
+            return meetingOfLord(date, monastic: true)
             
         case Cal.d(.theophany):
             return FastingModel(.noFastMonastic)
@@ -251,16 +258,7 @@ public struct FastingModel {
     static func getFastingLaymen(_ date: Date) -> FastingModel {
         switch date {
         case Cal.d(.meetingOfLord):
-            if Cal.d(.beginningOfGreatLent)-7.days ... Cal.d(.beginningOfGreatLent)-1.days ~= date {
-                return FastingModel(.cheesefare)
-                
-            } else if date == Cal.d(.beginningOfGreatLent) {
-                return FastingModel(.vegetarian, "Great Lent")
-                
-            } else {
-                return (Cal.currentWeekday == .wednesday ||
-                    Cal.currentWeekday == .friday) ? FastingModel(.fishAllowed) : FastingModel(.noFast)
-            }
+            return meetingOfLord(date, monastic: false)
             
         case Cal.d(.theophany):
             return FastingModel(.noFast)
