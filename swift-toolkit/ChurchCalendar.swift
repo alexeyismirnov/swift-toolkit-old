@@ -104,6 +104,7 @@ public struct ChurchCalendar {
         .synaxisMoscowSaints:       (.none, "Synaxis of all saints of Moscow"),
         .synaxisNizhnyNovgorodSaints:       (.none, "Synaxis of all saints of Nizhny Novgorod"),
         .saturdayOfFathers:         (.noSign, "Commemoration of all the saints, who showed forth in asceticism"),
+        .lazarusSaturday:           (.none, "Saturday of Palms (Lazarus Saturday)"),
         .saturdayTrinity:           (.none, "Trinity Saturday; Commemoration of the Departed"),
         .saturdayOfDeparted:        (.none, "The Saturday of the Dead"),
         .demetriusSaturday:         (.none, "Demetrius Saturday: Commemoration of the Departed"),
@@ -179,9 +180,14 @@ public struct ChurchCalendar {
             greatLentStart+27.days: [(.noSign, "Venerable John Climacus of Sinai, Author of “the Ladder” († 649)")],
             greatLentStart+31.days: [(.none,   "Thursday of the Great Canon, with the Life of St. Mary of Egypt")],
             greatLentStart+33.days: [(.none,   "Saturday of the Akathist; Laudation of the Most Holy Theotokos")],
-            greatLentStart+34.days: [(.none,   "Venerable Mary of Egypt")]]
-        
-        miscFeasts += [
+            greatLentStart+34.days: [(.none,   "Venerable Mary of Egypt")],
+            pascha-6.days:          [(.none,   "Great Monday")],
+            pascha-5.days:          [(.none,   "Great Tuesday")],
+            pascha-4.days:          [(.none,   "Great Wednesday")],
+            pascha-3.days:          [(.none,   "Great Thursday")],
+            pascha-2.days:          [(.none,   "Great Friday")],
+            pascha-1.days:          [(.none,   "Great Saturday")],
+
             pascha+5.days:          [(.none,   "Feast of the Life-Giving Spring of the Mother of God")],
             pascha+14.days:         [(.noSign, "St Joseph of Arimathea, and Nicodemus"),
                                      (.noSign, "Right-believing Tamara, Queen of Georgia († 1213)")],
@@ -568,7 +574,6 @@ public struct ChurchCalendar {
             .sunday5AfterPascha: "Fifth Sunday after Pascha. Sunday of the Samaritan Woman",
             .sunday6AfterPascha: "Sixth Sunday after Pascha. Sunday of the Blind Man",
             .sunday7AfterPascha: "Seventh Sunday after Pascha. Commemoration of the 318 Holy Fathers of the First Ecumenical Council (325)",
-            .lazarusSaturday: "Saturday of Palms (Lazarus Saturday)",
         ];
         
         setDate(date)
@@ -599,23 +604,8 @@ public struct ChurchCalendar {
         case d(.beginningOfGreatLent) ..< d(.palmSunday):
             return  String(format: Translate.s("\(dayOfWeek) %@ of Great Lent"), Translate.stringFromNumber((d(.beginningOfGreatLent) >> date)/7+1))
         
-        case d(.palmSunday)+1.days:
-            return Translate.s("Great Monday")
-            
-        case d(.palmSunday)+2.days:
-            return Translate.s("Great Tuesday")
-
-        case d(.palmSunday)+3.days:
-            return Translate.s("Great Wednesday")
-
-        case d(.palmSunday)+4.days:
-            return Translate.s("Great Thursday")
-            
-        case d(.palmSunday)+5.days:
-            return Translate.s("Great Friday")
-
-        case d(.palmSunday)+6.days:
-            return Translate.s("Great Saturday")
+        case d(.palmSunday)+1.days ..< d(.pascha):
+            return Translate.s("Holy Week")
             
         case d(.pascha)+1.days ..< d(.pascha)+7.days:
             return Translate.s("Bright Week")
