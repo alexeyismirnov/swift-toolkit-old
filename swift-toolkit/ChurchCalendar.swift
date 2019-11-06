@@ -109,7 +109,17 @@ public struct ChurchCalendar {
         .saturdayOfDeparted:        (.none, "The Saturday of the Dead"),
         .demetriusSaturday:         (.none, "Demetrius Saturday: Commemoration of the Departed"),
         .radonitsa:                 (.none, "Radonitsa (Day of Rejoycing)"),
-        .killedInAction:            (.none, "Commemoration of Fallen Soldiers")
+        .killedInAction:            (.none, "Commemoration of Fallen Soldiers"),
+        .sundayOfPublicianAndPharisee:  (.none, "Sunday of the Publican and the Pharisee"),
+        .sundayOfProdigalSon:           (.none, "Sunday of the Prodigal Son"),
+        .sundayOfDreadJudgement:        (.none, "Sunday of the Dread Judgement"),
+        .cheesefareSunday:              (.none, "Cheesefare Sunday (Forgiveness Sunday): Commemoration of the Expulsion of Adam from Paradise"),
+        .sunday2AfterPascha:            (.none, "Second Sunday after Pascha. Thomas Sunday, or Antipascha"),
+        .sunday3AfterPascha:            (.none, "Third Sunday after Pascha. Sunday of the Myrrhbearing Women"),
+        .sunday4AfterPascha:            (.none, "Fourth Sunday after Pascha. Sunday of the Paralytic"),
+        .sunday5AfterPascha:            (.none, "Fifth Sunday after Pascha. Sunday of the Samaritan Woman"),
+        .sunday6AfterPascha:            (.none, "Sixth Sunday after Pascha. Sunday of the Blind Man"),
+        .sunday7AfterPascha:            (.none, "Seventh Sunday after Pascha. Commemoration of the 318 Holy Fathers of the First Ecumenical Council (325)"),
     ]
 
     static public let feastIcon : [FeastType: String] = [
@@ -562,30 +572,8 @@ public struct ChurchCalendar {
     }
     
     static public func getWeekDescription(_ date: Date) -> String? {
-        
-        let sundays : [NameOfDay:String] = [
-            .sundayOfPublicianAndPharisee: "Sunday of the Publican and the Pharisee",
-            .sundayOfProdigalSon: "Sunday of the Prodigal Son",
-            .sundayOfDreadJudgement: "Sunday of the Dread Judgement",
-            .cheesefareSunday: "Cheesefare Sunday (Forgiveness Sunday): Commemoration of the Expulsion of Adam from Paradise",
-            .sunday2AfterPascha: "Second Sunday after Pascha. Thomas Sunday, or Antipascha",
-            .sunday3AfterPascha: "Third Sunday after Pascha. Sunday of the Myrrhbearing Women",
-            .sunday4AfterPascha: "Fourth Sunday after Pascha. Sunday of the Paralytic",
-            .sunday5AfterPascha: "Fifth Sunday after Pascha. Sunday of the Samaritan Woman",
-            .sunday6AfterPascha: "Sixth Sunday after Pascha. Sunday of the Blind Man",
-            .sunday7AfterPascha: "Seventh Sunday after Pascha. Commemoration of the 318 Holy Fathers of the First Ecumenical Council (325)",
-        ];
-        
         setDate(date)
 
-        if let codes = feastDates[date] {
-            for code in codes {
-                if let descr = sundays[code] {
-                    return Translate.s(descr)
-                }
-            }
-        }
-        
         let dayOfWeek = (currentWeekday == .sunday) ? "Sunday" : "Week"
         
         switch (date) {
@@ -598,7 +586,7 @@ public struct ChurchCalendar {
         case d(.sundayOfProdigalSon)+1.days ..< d(.sundayOfDreadJudgement):
             return Translate.s("Week of the Prodigal Son")
 
-        case d(.sundayOfDreadJudgement)+1.days ..< d(.beginningOfGreatLent)-1.days:
+        case d(.sundayOfDreadJudgement)+1.days ..< d(.cheesefareSunday):
             return Translate.s("Week of the Dread Judgement")
 
         case d(.beginningOfGreatLent) ..< d(.palmSunday):
