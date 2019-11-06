@@ -9,10 +9,8 @@
 import UIKit
 
 public extension Notification.Name {
+    static let weeklyCalendarNotification = Notification.Name("SHOW_WEEKLY")
     static let monthlyCalendarNotification = Notification.Name("SHOW_MONTHLY")
-}
-
-public extension Notification.Name {
     static let yearlyCalendarNotification = Notification.Name("SHOW_YEARLY")
 }
 
@@ -37,15 +35,17 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        NotificationCenter.default.post(name:  indexPath.row == 0 ? .monthlyCalendarNotification : .yearlyCalendarNotification,
+        let notifications : [Notification.Name] = [.weeklyCalendarNotification, .monthlyCalendarNotification, .yearlyCalendarNotification]
+        
+        NotificationCenter.default.post(name: notifications[indexPath.row],
                                         object: nil,
                                         userInfo: nil)
-
+        
         return nil
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -53,7 +53,9 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = getTextDetailsCell(title: Translate.s(indexPath.row == 0 ? "Monthly" : "Yearly"), subtitle: "")
+        let names = ["Weekly", "Monthly", "Yearly"]
+        
+        let cell = getTextDetailsCell(title: Translate.s(names[indexPath.row]), subtitle: "")
         cell.title.textColor = .black
         cell.title.textAlignment = .center
         
