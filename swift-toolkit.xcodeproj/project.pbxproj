@@ -235,6 +235,7 @@
 		8A161E1F23225A730067BE89 /* Calendar UI */ = {
 			isa = PBXGroup;
 			children = (
+				8A5D0859234757D2009D9F55 /* CalendarSelector.swift */,
 				8A0EA8E2234B404E0029CFB4 /* FastingLegendTableView.swift */,
 				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
 				8AC3381A1FB879D200CF0D02 /* CalendarDelegate.swift */,
@@ -308,7 +309,6 @@
 		8A5D0852234750B7009D9F55 /* Year Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				8A5D0859234757D2009D9F55 /* CalendarSelector.swift */,
 				8A5D085523475433009D9F55 /* YearCalendarGrid.swift */,
 				8A5D085323475101009D9F55 /* YearCalendarGridTheme.swift */,
 				8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */,
