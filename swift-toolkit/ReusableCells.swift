@@ -11,7 +11,7 @@ import UIKit
 public class RWLabel : UILabel {
     override public var bounds : CGRect {
         didSet {
-            if numberOfLines == 0 && bounds.size.width != preferredMaxLayoutWidth {
+            if bounds.size.width != preferredMaxLayoutWidth {
                 preferredMaxLayoutWidth = self.bounds.size.width
                 DispatchQueue.main.async(execute: {
                     self.setNeedsUpdateConstraints()
