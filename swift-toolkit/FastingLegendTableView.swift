@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class FastingLegendTableView: UITableViewController {
+public class FastingLegendTableView: UITableViewController, PopupContentViewController {
     let fastingTypes : [FastingModel] = (FastingModel.fastingLevel == .monastic) ? FastingModel.monasticTypes : FastingModel.laymenTypes
     let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
 
@@ -51,6 +51,10 @@ public class FastingLegendTableView: UITableViewController {
     
     override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
+    }
+    
+    public func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
+        return CGSize(width: 300, height: 350)
     }
 
 }
