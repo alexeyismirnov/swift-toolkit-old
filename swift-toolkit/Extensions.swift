@@ -419,6 +419,10 @@ public extension UserDefaults {
 }
 
 public extension UIImage {
+    convenience init?(named name: String, in bundle: Bundle?) {
+        self.init(named: name, in: bundle, compatibleWith: nil)
+    }
+    
     convenience init(background: String , inView view: UIView, bundle: Bundle?=nil) {
         let image = UIImage(named: background, in: bundle, compatibleWith: nil)
         UIGraphicsBeginImageContext(view.frame.size)

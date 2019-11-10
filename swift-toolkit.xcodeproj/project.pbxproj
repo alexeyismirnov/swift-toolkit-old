@@ -64,6 +64,10 @@
 		8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BE21F872D8F0059194A /* TextCell.swift */; };
 		8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F0BEA1F8732650059194A /* Extensions.swift */; };
 		8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86F7432333883800CFC905 /* ServiceDateSelector.swift */; };
+		8A88FD6D2377EEA100E46116 /* fat-right.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD692377EEA100E46116 /* fat-right.pdf */; };
+		8A88FD6E2377EEA100E46116 /* fat-left.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD6A2377EEA100E46116 /* fat-left.pdf */; };
+		8A88FD6F2377EEA100E46116 /* fat-up.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD6B2377EEA100E46116 /* fat-up.pdf */; };
+		8A88FD702377EEA100E46116 /* fat-down.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD6C2377EEA100E46116 /* fat-down.pdf */; };
 		8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D522EEA1AE0021D996 /* DailyReading.swift */; };
 		8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D622EEA1AE0021D996 /* FastingModel.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
@@ -152,6 +156,10 @@
 		8A5F0BE21F872D8F0059194A /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		8A5F0BEA1F8732650059194A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A86F7432333883800CFC905 /* ServiceDateSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDateSelector.swift; sourceTree = "<group>"; };
+		8A88FD692377EEA100E46116 /* fat-right.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-right.pdf"; sourceTree = "<group>"; };
+		8A88FD6A2377EEA100E46116 /* fat-left.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-left.pdf"; sourceTree = "<group>"; };
+		8A88FD6B2377EEA100E46116 /* fat-up.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-up.pdf"; sourceTree = "<group>"; };
+		8A88FD6C2377EEA100E46116 /* fat-down.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-down.pdf"; sourceTree = "<group>"; };
 		8AA660D522EEA1AE0021D996 /* DailyReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReading.swift; sourceTree = "<group>"; };
 		8AA660D622EEA1AE0021D996 /* FastingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
@@ -275,6 +283,10 @@
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8A88FD6C2377EEA100E46116 /* fat-down.pdf */,
+				8A88FD6A2377EEA100E46116 /* fat-left.pdf */,
+				8A88FD692377EEA100E46116 /* fat-right.pdf */,
+				8A88FD6B2377EEA100E46116 /* fat-up.pdf */,
 				8A3D824823696D6D00C118AA /* salami.pdf */,
 				8A0EA8DF234B3F2D0029CFB4 /* help.pdf */,
 				8A0EA8DE234B3F2D0029CFB4 /* today.pdf */,
@@ -443,10 +455,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A23BFC1201049B10034189E /* bg3@2x.jpg in Resources */,
+				8A88FD6F2377EEA100E46116 /* fat-up.pdf in Resources */,
+				8A88FD6E2377EEA100E46116 /* fat-left.pdf in Resources */,
 				8A23BFBD201048EE0034189E /* Images.xcassets in Resources */,
 				8AE3FA0B22EB04FB0051F27F /* food-pancake.pdf in Resources */,
 				8A0EA8E1234B3F2D0029CFB4 /* help.pdf in Resources */,
 				8A161E2923225C900067BE89 /* ReadingApostle.plist in Resources */,
+				8A88FD702377EEA100E46116 /* fat-down.pdf in Resources */,
 				8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */,
 				8A229D6322FD7E6700CEA2DB /* review.pdf in Resources */,
 				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
@@ -477,6 +492,7 @@
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
 				8A229D6422FD7E6700CEA2DB /* arrow-right.pdf in Resources */,
 				8A5D0851234750B2009D9F55 /* YearlyMonthViewCell.xib in Resources */,
+				8A88FD6D2377EEA100E46116 /* fat-right.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
