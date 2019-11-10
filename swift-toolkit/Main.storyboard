@@ -191,7 +191,7 @@
         <!--Compact View Controller-->
         <scene sceneID="bLb-hz-bRL">
             <objects>
-                <viewController storyboardIdentifier="Compact" automaticallyAdjustsScrollViewInsets="NO" id="Ruj-Ga-8d0" customClass="CompactViewController" customModule="CalendarWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Compact" automaticallyAdjustsScrollViewInsets="NO" id="Ruj-Ga-8d0" customClass="CompactViewController" customModule="swift_toolkit" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oTW-tC-2aU"/>
                         <viewControllerLayoutGuide type="bottom" id="XT0-Wi-Xtl"/>
@@ -269,7 +269,7 @@
         <!--Expanded View Controller-->
         <scene sceneID="DNo-Dw-gv3">
             <objects>
-                <viewController storyboardIdentifier="Expanded" automaticallyAdjustsScrollViewInsets="NO" id="RY0-qa-BEc" customClass="ExpandedViewController" customModule="CalendarWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Expanded" automaticallyAdjustsScrollViewInsets="NO" id="RY0-qa-BEc" customClass="ExpandedViewController" customModule="swift_toolkit" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AX6-sL-YSe"/>
                         <viewControllerLayoutGuide type="bottom" id="Lgf-Xg-zYS"/>

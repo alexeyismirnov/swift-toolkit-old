@@ -120,19 +120,19 @@ public class BookPage: UIViewController {
         
         let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
         
-        button_close = CustomBarButton(image: UIImage(named: "close", in: toolkit, compatibleWith: nil), style: .plain, target: self, action: #selector(close))
+        button_close = CustomBarButton(image: UIImage(named: "close", in: toolkit), style: .plain, target: self, action: #selector(close))
         
-        button_next = CustomBarButton(image: UIImage(named: "arrow-right", in: toolkit, compatibleWith: nil), style: .plain, target: self, action: #selector(showNext))
+        button_next = CustomBarButton(image: UIImage(named: "arrow-right", in: toolkit), style: .plain, target: self, action: #selector(showNext))
         
-        button_prev = CustomBarButton(image: UIImage(named: "arrow-left", in: toolkit, compatibleWith: nil), style: .plain, target: self, action: #selector(showPrev))
+        button_prev = CustomBarButton(image: UIImage(named: "arrow-left", in: toolkit), style: .plain, target: self, action: #selector(showPrev))
         
-        button_fontsize = CustomBarButton(image: UIImage(named: "fontsize", in: toolkit, compatibleWith: nil)!
+        button_fontsize = CustomBarButton(image: UIImage(named: "fontsize", in: toolkit)!
             , target: self, btnHandler: #selector(self.showFontSizeDialog))
         
-        button_add_bookmark = CustomBarButton(image: UIImage(named: "add_bookmark", in: toolkit, compatibleWith: nil)!
+        button_add_bookmark = CustomBarButton(image: UIImage(named: "add_bookmark", in: toolkit)!
             , target: self, btnHandler: #selector(self.addBookmark))
         
-        button_remove_bookmark = CustomBarButton(image: UIImage(named: "remove_bookmark", in: toolkit, compatibleWith: nil)!
+        button_remove_bookmark = CustomBarButton(image: UIImage(named: "remove_bookmark", in: toolkit)!
             , target: self, btnHandler: #selector(self.removeBookmark))
     }
     

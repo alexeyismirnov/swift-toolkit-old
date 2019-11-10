@@ -25,7 +25,7 @@ public class FastingLegendTableView: UITableViewController, PopupContentViewCont
         
         view.backgroundColor = UIColor(hex: "#FFEBCD")
 
-        let backButton = UIBarButtonItem(image: UIImage(named: "close", in: toolkit, compatibleWith: nil)!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(close))
+        let backButton = UIBarButtonItem(image: UIImage(named: "close", in: toolkit)!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(close))
         
         navigationItem.leftBarButtonItem = backButton
     }

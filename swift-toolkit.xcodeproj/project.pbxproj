@@ -74,6 +74,8 @@
 		8A88FD7A2377F2B000E46116 /* vigil.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD742377F2AF00E46116 /* vigil.pdf */; };
 		8A88FD7B2377F2B000E46116 /* great.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD752377F2AF00E46116 /* great.pdf */; };
 		8A88FD7C2377F2B000E46116 /* nosign.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD762377F2B000E46116 /* nosign.pdf */; };
+		8A88FD7F2377F58000E46116 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD7D2377F57F00E46116 /* CompactViewController.swift */; };
+		8A88FD802377F58000E46116 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */; };
 		8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D522EEA1AE0021D996 /* DailyReading.swift */; };
 		8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D622EEA1AE0021D996 /* FastingModel.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
@@ -172,6 +174,8 @@
 		8A88FD742377F2AF00E46116 /* vigil.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = vigil.pdf; sourceTree = "<group>"; };
 		8A88FD752377F2AF00E46116 /* great.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = great.pdf; sourceTree = "<group>"; };
 		8A88FD762377F2B000E46116 /* nosign.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = nosign.pdf; sourceTree = "<group>"; };
+		8A88FD7D2377F57F00E46116 /* CompactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
+		8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
 		8AA660D522EEA1AE0021D996 /* DailyReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReading.swift; sourceTree = "<group>"; };
 		8AA660D622EEA1AE0021D996 /* FastingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
@@ -349,6 +353,15 @@
 			name = "Year Calendar";
 			sourceTree = "<group>";
 		};
+		8A88FD812377F59500E46116 /* Calendar Widget */ = {
+			isa = PBXGroup;
+			children = (
+				8A88FD7D2377F57F00E46116 /* CompactViewController.swift */,
+				8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */,
+			);
+			name = "Calendar Widget";
+			sourceTree = "<group>";
+		};
 		8AB18EE11F86360300F1A65C = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +388,7 @@
 				8A19AE5B23517188004A059B /* DailyTab */,
 				8A229D5C22FD7C7600CEA2DB /* LibraryTab */,
 				8A0F819223040E9500BDCCAD /* Custom UI */,
+				8A88FD812377F59500E46116 /* Calendar Widget */,
 				8A23BFBE201049550034189E /* images */,
 				8AC675411FED06A900A9000C /* Theme.swift */,
 				8AA660E122EED0570021D996 /* AppGroup.swift */,
@@ -539,6 +553,7 @@
 				8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */,
 				8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */,
 				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
+				8A88FD7F2377F58000E46116 /* CompactViewController.swift in Sources */,
 				8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
@@ -559,6 +574,7 @@
 				8AC338211FB879D300CF0D02 /* MonthViewCell.swift in Sources */,
 				8A0F81912303BD1200BDCCAD /* ReusableCells.swift in Sources */,
 				8A229D7222FD92A800CEA2DB /* BookmarksModel.swift in Sources */,
+				8A88FD802377F58000E46116 /* ExpandedViewController.swift in Sources */,
 				8A229D5B22FD7C0F00CEA2DB /* ChapterViewCell.swift in Sources */,
 				8A5D085423475101009D9F55 /* YearCalendarGridTheme.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
