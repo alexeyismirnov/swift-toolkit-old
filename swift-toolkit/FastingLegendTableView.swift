@@ -43,6 +43,7 @@ public class FastingLegendTableView: UITableViewController, PopupContentViewCont
         let fasting = fastingTypes[indexPath.row]
         
         cell.title.text = fasting.descr
+        cell.title.textColor = .black
         cell.icon.backgroundColor = fasting.color
         cell.backgroundColor = .clear
         
