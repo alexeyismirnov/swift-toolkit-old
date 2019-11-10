@@ -30,7 +30,7 @@ open class CalendarWidgetViewController : UINavigationController, NCWidgetProvid
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         Translate.language = AppGroup.prefs.object(forKey: "language") as! String
