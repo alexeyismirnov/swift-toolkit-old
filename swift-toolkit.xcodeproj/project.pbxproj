@@ -68,6 +68,12 @@
 		8A88FD6E2377EEA100E46116 /* fat-left.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD6A2377EEA100E46116 /* fat-left.pdf */; };
 		8A88FD6F2377EEA100E46116 /* fat-up.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD6B2377EEA100E46116 /* fat-up.pdf */; };
 		8A88FD702377EEA100E46116 /* fat-down.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD6C2377EEA100E46116 /* fat-down.pdf */; };
+		8A88FD772377F2B000E46116 /* sixverse.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD712377F2AF00E46116 /* sixverse.pdf */; };
+		8A88FD782377F2B000E46116 /* doxology.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD722377F2AF00E46116 /* doxology.pdf */; };
+		8A88FD792377F2B000E46116 /* polyeleos.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD732377F2AF00E46116 /* polyeleos.pdf */; };
+		8A88FD7A2377F2B000E46116 /* vigil.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD742377F2AF00E46116 /* vigil.pdf */; };
+		8A88FD7B2377F2B000E46116 /* great.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD752377F2AF00E46116 /* great.pdf */; };
+		8A88FD7C2377F2B000E46116 /* nosign.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD762377F2B000E46116 /* nosign.pdf */; };
 		8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D522EEA1AE0021D996 /* DailyReading.swift */; };
 		8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D622EEA1AE0021D996 /* FastingModel.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
@@ -160,6 +166,12 @@
 		8A88FD6A2377EEA100E46116 /* fat-left.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-left.pdf"; sourceTree = "<group>"; };
 		8A88FD6B2377EEA100E46116 /* fat-up.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-up.pdf"; sourceTree = "<group>"; };
 		8A88FD6C2377EEA100E46116 /* fat-down.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "fat-down.pdf"; sourceTree = "<group>"; };
+		8A88FD712377F2AF00E46116 /* sixverse.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sixverse.pdf; sourceTree = "<group>"; };
+		8A88FD722377F2AF00E46116 /* doxology.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = doxology.pdf; sourceTree = "<group>"; };
+		8A88FD732377F2AF00E46116 /* polyeleos.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = polyeleos.pdf; sourceTree = "<group>"; };
+		8A88FD742377F2AF00E46116 /* vigil.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = vigil.pdf; sourceTree = "<group>"; };
+		8A88FD752377F2AF00E46116 /* great.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = great.pdf; sourceTree = "<group>"; };
+		8A88FD762377F2B000E46116 /* nosign.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = nosign.pdf; sourceTree = "<group>"; };
 		8AA660D522EEA1AE0021D996 /* DailyReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReading.swift; sourceTree = "<group>"; };
 		8AA660D622EEA1AE0021D996 /* FastingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
@@ -283,6 +295,12 @@
 		8A23BFBE201049550034189E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8A88FD722377F2AF00E46116 /* doxology.pdf */,
+				8A88FD752377F2AF00E46116 /* great.pdf */,
+				8A88FD762377F2B000E46116 /* nosign.pdf */,
+				8A88FD732377F2AF00E46116 /* polyeleos.pdf */,
+				8A88FD712377F2AF00E46116 /* sixverse.pdf */,
+				8A88FD742377F2AF00E46116 /* vigil.pdf */,
 				8A88FD6C2377EEA100E46116 /* fat-down.pdf */,
 				8A88FD6A2377EEA100E46116 /* fat-left.pdf */,
 				8A88FD692377EEA100E46116 /* fat-right.pdf */,
@@ -463,10 +481,14 @@
 				8A161E2923225C900067BE89 /* ReadingApostle.plist in Resources */,
 				8A88FD702377EEA100E46116 /* fat-down.pdf in Resources */,
 				8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */,
+				8A88FD7A2377F2B000E46116 /* vigil.pdf in Resources */,
+				8A88FD792377F2B000E46116 /* polyeleos.pdf in Resources */,
+				8A88FD782377F2B000E46116 /* doxology.pdf in Resources */,
 				8A229D6322FD7E6700CEA2DB /* review.pdf in Resources */,
 				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
 				8A229D6722FD7E6700CEA2DB /* fontsize.pdf in Resources */,
 				8A23BFD0201056390034189E /* close2.pdf in Resources */,
+				8A88FD772377F2B000E46116 /* sixverse.pdf in Resources */,
 				8AC338161FB851C100CF0D02 /* Main.storyboard in Resources */,
 				8A23BFCF201056390034189E /* share.pdf in Resources */,
 				8AE3FA0A22EB04FB0051F27F /* food-mexican.pdf in Resources */,
@@ -481,6 +503,7 @@
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
 				8A161E2623225C900067BE89 /* ReadingLuke.plist in Resources */,
 				8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */,
+				8A88FD7C2377F2B000E46116 /* nosign.pdf in Resources */,
 				8A23BFCA201053BC0034189E /* question.pdf in Resources */,
 				8A23BFCB201053BC0034189E /* calendar.pdf in Resources */,
 				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
@@ -490,6 +513,7 @@
 				8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */,
 				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,
 				8A23BFC2201049B10034189E /* church@2x.jpg in Resources */,
+				8A88FD7B2377F2B000E46116 /* great.pdf in Resources */,
 				8A229D6422FD7E6700CEA2DB /* arrow-right.pdf in Resources */,
 				8A5D0851234750B2009D9F55 /* YearlyMonthViewCell.xib in Resources */,
 				8A88FD6D2377EEA100E46116 /* fat-right.pdf in Resources */,
