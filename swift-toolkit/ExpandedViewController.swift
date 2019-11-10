@@ -116,7 +116,7 @@ class ExpandedViewController: UIViewController {
         let dayDescription = Cal.getDayDescription(date)
         let feasts = (saints+dayDescription).sorted { $0.0.rawValue > $1.0.rawValue }
         
-        // saintsLabel.attributedText = MainViewController.describe(saints: feasts, font: saintsLabel.font, dark: dark)
+        saintsLabel.attributedText = CalendarWidgetViewController.describe(saints: feasts, font: saintsLabel.font, dark: dark)
     }
     
     @objc func tapOnCell(_ recognizer: UITapGestureRecognizer) {

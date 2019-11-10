@@ -108,7 +108,7 @@ class CompactViewController: UIViewController {
         let feasts = (saints+day).sorted { $0.0.rawValue > $1.0.rawValue }
         
         result.append(NSAttributedString(string: "\n"))
-        // result.append(MainViewController.describe(saints: feasts, font: fontRegular, dark: dark))
+        result.append(CalendarWidgetViewController.describe(saints: feasts, font: fontRegular, dark: dark))
 
         return result.colored(with: dark ? .white : .black)
     }

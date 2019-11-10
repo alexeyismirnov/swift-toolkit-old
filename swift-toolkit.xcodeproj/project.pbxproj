@@ -76,6 +76,8 @@
 		8A88FD7C2377F2B000E46116 /* nosign.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A88FD762377F2B000E46116 /* nosign.pdf */; };
 		8A88FD7F2377F58000E46116 /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD7D2377F57F00E46116 /* CompactViewController.swift */; };
 		8A88FD802377F58000E46116 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */; };
+		8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */; };
+		8A88FD852377FAB600E46116 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A88FD842377FAB600E46116 /* NotificationCenter.framework */; platformFilter = ios; };
 		8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D522EEA1AE0021D996 /* DailyReading.swift */; };
 		8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D622EEA1AE0021D996 /* FastingModel.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
@@ -176,6 +178,8 @@
 		8A88FD762377F2B000E46116 /* nosign.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = nosign.pdf; sourceTree = "<group>"; };
 		8A88FD7D2377F57F00E46116 /* CompactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
 		8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
+		8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewController.swift; sourceTree = "<group>"; };
+		8A88FD842377FAB600E46116 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8AA660D522EEA1AE0021D996 /* DailyReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReading.swift; sourceTree = "<group>"; };
 		8AA660D622EEA1AE0021D996 /* FastingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A88FD852377FAB600E46116 /* NotificationCenter.framework in Frameworks */,
 				8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */,
 				8AA660DE22EEA5690021D996 /* Squeal.framework in Frameworks */,
 			);
@@ -356,6 +361,7 @@
 		8A88FD812377F59500E46116 /* Calendar Widget */ = {
 			isa = PBXGroup;
 			children = (
+				8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */,
 				8A88FD7D2377F57F00E46116 /* CompactViewController.swift */,
 				8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */,
 			);
@@ -409,6 +415,7 @@
 		8AC6753B1FED05AE00A9000C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A88FD842377FAB600E46116 /* NotificationCenter.framework */,
 				8AA660DD22EEA5690021D996 /* Squeal.framework */,
 				8AC6753E1FED05DB00A9000C /* Chameleon.framework */,
 				8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */,
@@ -555,6 +562,7 @@
 				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
 				8A88FD7F2377F58000E46116 /* CompactViewController.swift in Sources */,
 				8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */,
+				8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
 				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
 				8A5D085A234757D2009D9F55 /* CalendarSelector.swift in Sources */,
