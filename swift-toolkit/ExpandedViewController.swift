@@ -49,11 +49,13 @@ class ExpandedViewController: UIViewController {
             dark = (traitCollection.userInterfaceStyle == .dark)
         }
         
-        let arrowLeft = UIImage(named: "fat-left")?.withRenderingMode(.alwaysTemplate)
+        let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
+
+        let arrowLeft = UIImage(named: "fat-left", in: toolkit)?.withRenderingMode(.alwaysTemplate)
         buttonLeft.imageView?.tintColor = UIColor.white
         buttonLeft.setImage(arrowLeft, for: UIControl.State())
         
-        let arrowRight = UIImage(named: "fat-right")?.withRenderingMode(.alwaysTemplate)
+        let arrowRight = UIImage(named: "fat-right", in: toolkit)?.withRenderingMode(.alwaysTemplate)
         buttonRight.imageView?.tintColor = UIColor.white
         buttonRight.setImage(arrowRight, for: UIControl.State())
 

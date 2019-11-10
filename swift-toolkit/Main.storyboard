@@ -206,7 +206,7 @@
                                     <constraint firstAttribute="width" constant="35" id="0yb-z1-aSm"/>
                                     <constraint firstAttribute="height" constant="35" id="hS0-mV-HYr"/>
                                 </constraints>
-                                <state key="normal" image="fat-up"/>
+                                <state key="normal" image="calendar"/>
                                 <connections>
                                     <action selector="prevDay:" destination="Ruj-Ga-8d0" eventType="touchUpInside" id="aVw-ur-5Gk"/>
                                 </connections>
@@ -217,7 +217,7 @@
                                     <constraint firstAttribute="width" constant="35" id="Moq-xm-s7S"/>
                                     <constraint firstAttribute="height" constant="35" id="tss-rV-qiX"/>
                                 </constraints>
-                                <state key="normal" image="fat-down"/>
+                                <state key="normal" image="calendar"/>
                                 <connections>
                                     <action selector="nextDay:" destination="Ruj-Ga-8d0" eventType="touchUpInside" id="3hi-ca-Lqc"/>
                                 </connections>
@@ -359,7 +359,7 @@
                                     <constraint firstAttribute="width" constant="35" id="WJp-tt-NJz"/>
                                     <constraint firstAttribute="height" constant="35" id="nns-KT-Fe5"/>
                                 </constraints>
-                                <state key="normal" image="fat-left"/>
+                                <state key="normal" image="calendar"/>
                                 <connections>
                                     <action selector="prevMonth:" destination="RY0-qa-BEc" eventType="touchUpInside" id="IA7-n3-vVx"/>
                                 </connections>
@@ -371,7 +371,7 @@
                                     <constraint firstAttribute="height" constant="35" id="573-Co-Jyh"/>
                                     <constraint firstAttribute="width" constant="35" id="Ejy-BJ-3DK"/>
                                 </constraints>
-                                <state key="normal" image="fat-right"/>
+                                <state key="normal" image="calendar"/>
                                 <connections>
                                     <action selector="nextMonth:" destination="RY0-qa-BEc" eventType="touchUpInside" id="4BM-Pl-Teg"/>
                                 </connections>
@@ -465,9 +465,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fat-down" width="25" height="25"/>
-        <image name="fat-left" width="25" height="25"/>
-        <image name="fat-right" width="25" height="25"/>
-        <image name="fat-up" width="25" height="25"/>
+        <image name="calendar" width="25" height="25"/>
     </resources>
 </document>

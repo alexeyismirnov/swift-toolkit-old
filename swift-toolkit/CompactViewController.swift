@@ -41,10 +41,12 @@ class CompactViewController: UIViewController {
             dark = (traitCollection.userInterfaceStyle == .dark)
         }
         
-        let image1 = UIImage(named: "fat-up")!.withRenderingMode(.alwaysTemplate)
+        let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
+        
+        let image1 = UIImage(named: "fat-up", in: toolkit)!.withRenderingMode(.alwaysTemplate)
         buttonUp.setImage(image1, for: UIControl.State())
         
-        let image2 = UIImage(named: "fat-down")!.withRenderingMode(.alwaysTemplate)
+        let image2 = UIImage(named: "fat-down", in: toolkit)!.withRenderingMode(.alwaysTemplate)
         buttonDown.setImage(image2, for: UIControl.State())
         
         buttonUp.imageView?.tintColor =  dark ? .white : .darkGray
