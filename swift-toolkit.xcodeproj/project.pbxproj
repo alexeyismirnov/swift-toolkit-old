@@ -102,6 +102,8 @@
 		8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0422EB04FB0051F27F /* food-vegetables.pdf */; };
 		8AE3FA0E22EB04FB0051F27F /* food-cupcake.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0522EB04FB0051F27F /* food-cupcake.pdf */; };
 		8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3FA0622EB04FB0051F27F /* food-burger.pdf */; };
+		8AFD017B23813E6500BE14D1 /* WeekCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD017923813E6500BE14D1 /* WeekCalendar.swift */; };
+		8AFD017C23813E6500BE14D1 /* WeekCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD017A23813E6500BE14D1 /* WeekCalendarCell.swift */; };
 		8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */; };
 		8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE334722F4319F008DBCD6 /* DayViewCell.swift */; };
 		8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */; };
@@ -207,6 +209,8 @@
 		8AE3FA0422EB04FB0051F27F /* food-vegetables.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-vegetables.pdf"; sourceTree = "<group>"; };
 		8AE3FA0522EB04FB0051F27F /* food-cupcake.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-cupcake.pdf"; sourceTree = "<group>"; };
 		8AE3FA0622EB04FB0051F27F /* food-burger.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-burger.pdf"; sourceTree = "<group>"; };
+		8AFD017923813E6500BE14D1 /* WeekCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendar.swift; sourceTree = "<group>"; };
+		8AFD017A23813E6500BE14D1 /* WeekCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekCalendarCell.swift; sourceTree = "<group>"; };
 		8AFE334522F41A06008DBCD6 /* LabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewCell.swift; sourceTree = "<group>"; };
 		8AFE334722F4319F008DBCD6 /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
 		8AFF663F218EEC9100DDA40B /* TextDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailsCell.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 		8A161E1F23225A730067BE89 /* Calendar UI */ = {
 			isa = PBXGroup;
 			children = (
+				8AFD017923813E6500BE14D1 /* WeekCalendar.swift */,
+				8AFD017A23813E6500BE14D1 /* WeekCalendarCell.swift */,
 				8A5D0859234757D2009D9F55 /* CalendarSelector.swift */,
 				8A0EA8E2234B404E0029CFB4 /* FastingLegendTableView.swift */,
 				8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */,
@@ -567,6 +573,7 @@
 				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
 				8A5D085A234757D2009D9F55 /* CalendarSelector.swift in Sources */,
 				8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */,
+				8AFD017C23813E6500BE14D1 /* WeekCalendarCell.swift in Sources */,
 				8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
@@ -594,6 +601,7 @@
 				8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */,
 				8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */,
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
+				8AFD017B23813E6500BE14D1 /* WeekCalendar.swift in Sources */,
 				8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */,
 				8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */,
 				8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */,
