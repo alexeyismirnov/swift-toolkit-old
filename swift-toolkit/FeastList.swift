@@ -9,8 +9,8 @@
 import Foundation
 
 public struct FeastList {
-    static let formatter1: DateFormatter = {
-        var formatter = DateFormatter()
+    static var formatter1: DateFormatter { get {
+        let formatter = DateFormatter()
         formatter.timeStyle = .none
         switch Translate.language {
         case "ru":
@@ -25,10 +25,11 @@ public struct FeastList {
         formatter.locale = Translate.locale
         
         return formatter
-    }()
+        }
+    }
     
-    static let formatter2: DateFormatter = {
-        var formatter = DateFormatter()
+    static var formatter2: DateFormatter { get {
+        let formatter = DateFormatter()
         formatter.timeStyle = .none
         switch Translate.language {
         case "ru":
@@ -43,7 +44,8 @@ public struct FeastList {
         formatter.locale = Translate.locale
         
         return formatter
-    }()
+        }
+    }
     
     public static var sharing: Bool {
         set { textFontSize = newValue ? CGFloat(12) : CGFloat(16)

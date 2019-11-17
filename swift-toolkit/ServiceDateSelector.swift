@@ -66,6 +66,7 @@ public class ServiceDateSelector: UIViewController, ResizableTableViewCells, Pop
         let descr = formatter.string(from: dates[indexPath.row]).capitalizingFirstLetter()
         let cell = getTextDetailsCell(title: descr, subtitle: "")
         cell.title.textAlignment = .center
+        cell.title.textColor = .black
         
         return cell
     }
