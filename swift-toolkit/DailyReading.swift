@@ -50,6 +50,7 @@ public struct DailyReading {
         .saturdayAfterTheophany:    "Ephes 6:10-17 Matthew 4:1-11 # Saturday after the Theophany",
         .sundayAfterTheophany:      "Ephes 4:7-13 Matthew 4:12-17 # Sunday after the Theophany",
         .newMartyrsConfessorsOfRussia: "Rom 8:28-39 Luke 21:8-19 # Martyrs",
+        .holyFathersSixCouncils:    "Heb 13:7-16 John 17:1-13 # Fathers",
         .saturdayOfFathers:         "Gal 5:22-6:2 Matthew 11:27-30 # Fathers",
         .saturdayOfDeparted:        "1Thess 4:13-17 John 5:24-30 # Departed",
         .saturdayTrinity:           "1Cor 15:47-57 John 6:35-39 # Departed"
