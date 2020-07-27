@@ -377,6 +377,21 @@ public struct ChurchCalendar {
         let sunOffset = (weekday == 1) ? 0 : weekday-1
         return date - sunOffset.days
     }
+    
+    static public func nearestSunday(_ date: Date) -> Date {
+        let weekday = DayOfWeek(rawValue: DateComponents(date:date).weekday!)!
+        
+        switch (weekday) {
+        case .sunday:
+            return date
+            
+        case .monday, .tuesday, .wednesday:
+            return nearestSundayBefore(date)
+            
+        default:
+            return nearestSundayAfter(date)
+        }
+    }
 
     static func generateFeastDates(_ year: Int) {
         let pascha = paschaDay(year)
@@ -503,23 +518,8 @@ public struct ChurchCalendar {
         let demetriusWeekday = DateComponents(date: demetrius).weekday!
         
         feastDates += [demetrius - demetriusWeekday.days: [.demetriusSaturday]]
-        
-        let newMartyrs = Date(7,2,year)
-        let newMartyrsWeekday = DayOfWeek(rawValue: DateComponents(date:newMartyrs).weekday!)!
-        
-        switch (newMartyrsWeekday) {
-        case .sunday:
-            feastDates += [newMartyrs: [.newMartyrsConfessorsOfRussia]]
-            
-        case .monday, .tuesday, .wednesday:
-            feastDates += [nearestSundayBefore(newMartyrs): [.newMartyrsConfessorsOfRussia]]
-
-        default:
-            feastDates += [nearestSundayAfter(newMartyrs): [.newMartyrsConfessorsOfRussia]]
-
-        }
-        
-        feastDates += [nearestSundayAfter(Date(29, 7, year)): [.holyFathersSixCouncils]]
+        feastDates += [nearestSunday(Date(7,2,year)): [.newMartyrsConfessorsOfRussia]]
+        feastDates += [nearestSunday(Date(29, 7, year)): [.holyFathersSixCouncils]]
         
         if Translate.language == "ru" {
             feastDates += [nearestSundayBefore(Date(8, 9, year)): [.synaxisMoscowSaints]]
