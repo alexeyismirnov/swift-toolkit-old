@@ -6,7 +6,7 @@ public enum FeastType: Int {
 }
 
 public enum NameOfDay: Int {
-    case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostolesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
+    case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostolesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, allRussianSaints,  synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
 }
 
 public enum DayOfWeek: Int  {
@@ -100,6 +100,7 @@ public struct ChurchCalendar {
         .saturdayAfterTheophany:    (.none, "Saturday after Theophany"),
         .sundayAfterTheophany:      (.none, "Sunday after Theophany"),
         .newMartyrsConfessorsOfRussia: (.vigil, "Holy New Martyrs and Confessors of Russia"),
+        .allRussianSaints:          (.none,   "All Saints who have shown forth in the land of Russia"),
         .holyFathersSixCouncils:    (.none, "Commemoration of the Holy Fathers of the First Six Councils"),
         .synaxisMoscowSaints:       (.none, "Synaxis of all saints of Moscow"),
         .synaxisNizhnyNovgorodSaints:       (.none, "Synaxis of all saints of Nizhny Novgorod"),
@@ -212,7 +213,6 @@ public struct ChurchCalendar {
             pentecost+4.days:       [(.none,   "Icon of the Mother of God “Surety of Sinners” in Korets (1622)")],
             pentecost+7.days:       [(.none,   "Feast of All Saints"),
                                      (.none,   "Icons of the Mother of God: “the Softener of evil hearts” and “the Indestructible Wall”")],
-            pentecost+14.days:      [(.none,   "All Saints who have shown forth in the land of Russia")],
         ]
         
         var beforeAfterFeasts :[Date: [(FeastType, String)]] = [
@@ -420,6 +420,7 @@ public struct ChurchCalendar {
             pascha+48.days:                           [.saturdayTrinity],
             pascha+49.days:                           [.pentecost],
             pascha+57.days:                           [.beginningOfApostolesFast],
+            pascha+63.days:                           [.allRussianSaints],
         ]
     
         var fixedFeasts : [Date: [NameOfDay]] = [
