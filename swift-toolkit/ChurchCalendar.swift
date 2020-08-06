@@ -213,6 +213,7 @@ public struct ChurchCalendar {
             pentecost+4.days:       [(.none,   "Icon of the Mother of God “Surety of Sinners” in Korets (1622)")],
             pentecost+7.days:       [(.none,   "Feast of All Saints"),
                                      (.none,   "Icons of the Mother of God: “the Softener of evil hearts” and “the Indestructible Wall”")],
+            pentecost+14.days:      [(.none,   "All Saints of the Holy Mount Athos")],
         ]
         
         var beforeAfterFeasts :[Date: [(FeastType, String)]] = [
