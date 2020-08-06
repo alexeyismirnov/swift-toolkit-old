@@ -198,7 +198,7 @@ public struct ChurchCalendar {
             pascha-3.days:          [(.none,   "Great Thursday")],
             pascha-2.days:          [(.none,   "Great Friday")],
             pascha-1.days:          [(.none,   "Great Saturday")],
-
+            pascha+2.days:          [(.noSign, "Iveron Icon of the Most Holy Theotokos (9th c.)")],
             pascha+5.days:          [(.none,   "Feast of the Life-Giving Spring of the Mother of God")],
             pascha+14.days:         [(.noSign, "St Joseph of Arimathea, and Nicodemus"),
                                      (.noSign, "Right-believing Tamara, Queen of Georgia († 1213)")],
