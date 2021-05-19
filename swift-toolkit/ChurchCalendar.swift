@@ -6,7 +6,7 @@ public enum FeastType: Int {
 }
 
 public enum NameOfDay: Int {
-    case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostolesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, holyFathersSeventhCouncil, allRussianSaints,  synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
+    case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostlesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, holyFathersSeventhCouncil, allRussianSaints,  synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
 }
 
 public enum DayOfWeek: Int  {
@@ -84,7 +84,7 @@ public struct ChurchCalendar {
         .beginningOfGreatLent:      (.none, "Beginning of Great Lent"),
         .beginningOfDormitionFast:  (.none, "Beginning of Dormition fast"),
         .beginningOfNativityFast:   (.none, "Beginning of Nativity fast"),
-        .beginningOfApostolesFast:  (.none, "Beginning of Apostoles' fast"),
+        .beginningOfApostlesFast:  (.none, "Beginning of Apostles' fast"),
         .sundayOfForefathers:       (.none, "Sunday of the Holy Forefathers"),
         .sundayAfterExaltation:     (.none, "Sunday after the Exaltation"),
         .saturdayAfterExaltation:   (.none, "Saturday after the Exaltation"),
@@ -110,7 +110,7 @@ public struct ChurchCalendar {
         .saturdayTrinity:           (.none, "Trinity Saturday; Commemoration of the Departed"),
         .saturdayOfDeparted:        (.none, "The Saturday of the Dead"),
         .demetriusSaturday:         (.none, "Demetrius Saturday: Commemoration of the Departed"),
-        .radonitsa:                 (.none, "Radonitsa (Day of Rejoycing)"),
+        .radonitsa:                 (.none, "Radonitsa (Day of Rejoicing)"),
         .killedInAction:            (.none, "Commemoration of Fallen Soldiers"),
         .sundayOfPublicianAndPharisee:  (.none, "Sunday of the Publican and the Pharisee"),
         .sundayOfProdigalSon:           (.none, "Sunday of the Prodigal Son"),
@@ -422,7 +422,7 @@ public struct ChurchCalendar {
             pascha+39.days:                           [.ascension],
             pascha+48.days:                           [.saturdayTrinity],
             pascha+49.days:                           [.pentecost],
-            pascha+57.days:                           [.beginningOfApostolesFast],
+            pascha+57.days:                           [.beginningOfApostlesFast],
             pascha+63.days:                           [.allRussianSaints],
         ]
     

@@ -221,7 +221,7 @@ public struct FastingModel {
         case Cal.d(.pentecost)+1.days ... Cal.d(.pentecost)+7.days:
             return FastingModel(.fastFree)
             
-        case Cal.d(.beginningOfApostolesFast) ... Cal.d(.peterAndPaul)-1.days:
+        case Cal.d(.beginningOfApostlesFast) ... Cal.d(.peterAndPaul)-1.days:
             return monasticApostolesFast()
             
         case Cal.d(.beginningOfDormitionFast) ... Cal.d(.dormition)-1.days:
@@ -310,7 +310,7 @@ public struct FastingModel {
         case Cal.d(.pentecost)+1.days ... Cal.d(.pentecost)+7.days:
             return FastingModel(.fastFree)
             
-        case Cal.d(.beginningOfApostolesFast) ... Cal.d(.peterAndPaul)-1.days:
+        case Cal.d(.beginningOfApostlesFast) ... Cal.d(.peterAndPaul)-1.days:
             return (Cal.currentWeekday == .monday ||
                 Cal.currentWeekday == .wednesday ||
                 Cal.currentWeekday == .friday) ? FastingModel(.vegetarian, "Apostoles' Fast") : FastingModel(.fishAllowed, "Apostoles' Fast")

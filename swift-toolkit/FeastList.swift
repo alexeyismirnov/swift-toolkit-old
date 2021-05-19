@@ -89,7 +89,7 @@ public struct FeastList {
                                                        toDate: Cal.d(.beginningOfGreatLent) + 47.days,
                                                        descr: Translate.s("Great Lent")),
             
-            Cal.d(.beginningOfApostolesFast) : makeLentStr(fromDate: Cal.d(.beginningOfApostolesFast),
+            Cal.d(.beginningOfApostlesFast) : makeLentStr(fromDate: Cal.d(.beginningOfApostlesFast),
                                                            toDate: Cal.d(.peterAndPaul) - 1.days,
                                                            descr: Translate.s("Apostoles' Fast")),
             
