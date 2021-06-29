@@ -541,8 +541,16 @@ public extension UIViewController {
     
     var fullScreenFrame : CGRect {
         get {
+            
             let navbarHeight = (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height
-            let tabbarHeight = (tabBarController?.tabBar.frame.size.height ?? 0.0)
+            var tabbarHeight : CGFloat
+            
+            if let tabBarController = self.tabBarController {
+                tabbarHeight = tabBarController.tabBar.isHidden ? 0.0 : tabBarController.tabBar.frame.size.height
+            } else {
+                tabbarHeight = 0.0
+            }
+            
             let xMargin = CGFloat(10.0)
             
             return CGRect(origin: CGPoint(x: xMargin, y: navbarHeight),
