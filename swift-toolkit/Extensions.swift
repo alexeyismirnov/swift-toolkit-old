@@ -539,35 +539,34 @@ public extension Collection  {
 public extension UIViewController {
     static var popup: PopupController!
     
-    var fullScreenFrame : CGRect {
-        get {
-            var navbarHeight : CGFloat
-            var tabbarHeight : CGFloat
-            
-            let topInset = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
-            let bottomInset = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-            
-            if navigationController?.isNavigationBarHidden ?? true {
-                navbarHeight = 0.0
-            } else {
-                navbarHeight = navigationController?.navigationBar.frame.height ?? 0.0
-            }
-
-            if let tabBarController = self.tabBarController {
-                tabbarHeight = tabBarController.tabBar.isHidden ? 0.0 : tabBarController.tabBar.frame.size.height
-            } else {
-                tabbarHeight = 0.0
-            }
-            
-            let xMargin = CGFloat(10.0)
-            
-            return CGRect(origin: CGPoint(x: xMargin, y: navbarHeight + topInset),
-                          size: CGSize(width: view.frame.width - 2*xMargin, height: view.frame.height -
-                                        navbarHeight -
-                                        tabbarHeight -
-                                        topInset -
-                                        bottomInset))
+    func getFullScreenFrame(margin: CGFloat = 10.0) -> CGRect {
+        var navbarHeight : CGFloat
+        var tabbarHeight : CGFloat
+        
+        let topInset = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
+        let bottomInset = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        
+        if navigationController?.isNavigationBarHidden ?? true {
+            navbarHeight = 0.0
+        } else {
+            navbarHeight = navigationController?.navigationBar.frame.height ?? 0.0
         }
+        
+        if let tabBarController = self.tabBarController {
+            tabbarHeight = tabBarController.tabBar.isHidden ? 0.0 : tabBarController.tabBar.frame.size.height
+        } else {
+            tabbarHeight = 0.0
+        }
+        
+        let xMargin = CGFloat(margin)
+        
+        return CGRect(origin: CGPoint(x: xMargin, y: navbarHeight + topInset),
+                      size: CGSize(width: view.frame.width - 2*xMargin, height: view.frame.height -
+                                    navbarHeight -
+                                    tabbarHeight -
+                                    topInset -
+                                    bottomInset))
+    
     }
     
     func showPopup(_ vc: UIViewController, onClose handler: @escaping (PopupController) -> Void = {_ in }) {

@@ -50,7 +50,7 @@ public class BookPageText: BookPage {
     }
     
     override func createContentView(_ pos: BookPosition, _ _frame: CGRect? = nil) -> UIView {
-        let frame = _frame ?? fullScreenFrame
+        let frame = _frame ?? getFullScreenFrame()
         let textView = UITextView(frame: frame)
         
         view.addSubview(textView)

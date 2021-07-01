@@ -142,7 +142,7 @@ public class BookPageHTML: BookPage, WKNavigationDelegate {
     }
     
     override func createContentView(_ pos: BookPosition, _ _frame: CGRect? = nil) -> UIView {
-        let frame = _frame ?? fullScreenFrame
+        let frame = _frame ?? getFullScreenFrame()
         let webView = WKWebView(frame: frame)
         
         webView.isOpaque = false

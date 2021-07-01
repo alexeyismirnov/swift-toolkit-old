@@ -140,7 +140,7 @@ public class BookPage: UIViewController {
         if let nextPos = model.getNextSection(at: pos) {
             let width = view.frame.width
 
-            var frame = fullScreenFrame
+            var frame = getFullScreenFrame()
             frame.origin.x += width
             
             contentView2 = self.createContentView(nextPos, frame)
@@ -166,7 +166,7 @@ public class BookPage: UIViewController {
         if let prevPos = model.getPrevSection(at: pos) {
             let width = view.frame.width
             
-            var frame = fullScreenFrame
+            var frame = getFullScreenFrame()
             frame.origin.x -= width
             
             contentView2 = self.createContentView(prevPos, frame)
