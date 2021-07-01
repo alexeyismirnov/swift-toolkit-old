@@ -547,14 +547,17 @@ public extension UIViewController {
     func getFullScreenFrame(margin: CGFloat = 10.0) -> CGRect {
         var navbarHeight : CGFloat
         var tabbarHeight : CGFloat
+        var toolbarHeight : CGFloat
         
+        guard let navigationController = navigationController else { return CGRect.zero }
+
         let topInset = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
         let bottomInset = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
         
-        if navigationController?.isNavigationBarHidden ?? true {
+        if navigationController.isNavigationBarHidden {
             navbarHeight = 0.0
         } else {
-            navbarHeight = navigationController?.navigationBar.frame.height ?? 0.0
+            navbarHeight = navigationController.navigationBar.frame.height
         }
         
         if let tabBarController = self.tabBarController {
@@ -563,12 +566,19 @@ public extension UIViewController {
             tabbarHeight = 0.0
         }
         
+        if navigationController.isToolbarHidden {
+            toolbarHeight = 0.0
+        } else {
+            toolbarHeight = navigationController.toolbar.frame.height
+        }
+        
         let xMargin = CGFloat(margin)
         
         return CGRect(origin: CGPoint(x: xMargin, y: navbarHeight + topInset),
                       size: CGSize(width: view.frame.width - 2*xMargin, height: view.frame.height -
                                     navbarHeight -
                                     tabbarHeight -
+                                    toolbarHeight -
                                     topInset -
                                     bottomInset))
     
