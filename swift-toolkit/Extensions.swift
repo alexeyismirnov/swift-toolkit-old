@@ -490,6 +490,11 @@ public extension UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
         navigationBar.backgroundColor = UIColor.clear
+        
+        toolbar.setBackgroundImage(UIImage(),
+                                   forToolbarPosition: .any,
+                                   barMetrics: .default)
+        toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
     }
 }
 

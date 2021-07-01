@@ -56,6 +56,7 @@ public protocol BookModel {
     func getNumChapters(_ index : IndexPath) -> Int
     func getComment(commentId: Int) -> String?
     
+    func getTitle(at pos: BookPosition) -> String?
     func getContent(at pos: BookPosition) -> Any?
     
     func getNextSection(at pos: BookPosition) -> BookPosition?
@@ -75,6 +76,8 @@ public extension BookModel {
     func getNextSection(at pos: BookPosition) -> BookPosition? { return nil }
     func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
     
+    func getTitle(at pos: BookPosition) -> String? { return nil }
+
     func getBookmark(at pos: BookPosition) -> String? { return nil }
     func getBookmarkName(_ bookmark : String) -> String { return "" }
 }
