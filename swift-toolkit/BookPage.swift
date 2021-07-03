@@ -10,13 +10,13 @@ import UIKit
 
 public class FontSizeViewController : UIViewController, PopupContentViewController {
     let prefs = AppGroup.prefs!
-    var delegate: BookPage!
     
     var text : String!
-    var fontSize: Int!
     var con : [NSLayoutConstraint]!
     
     override public func loadView() {
+        let fontSize = prefs.integer(forKey: "fontSize")
+
         view = UIView()
         view.backgroundColor = UIColor(hex: "#FFEBCD")
         
@@ -240,11 +240,6 @@ public class BookPage: UIViewController {
     }
     
     @objc func showFontSizeDialog() {
-        let vc = FontSizeViewController()
-        vc.fontSize = fontSize
-        vc.delegate = self
-        
-        showPopup(vc, onClose: { _ in  self.reloadTheme() })
+        showPopup(FontSizeViewController(), onClose: { _ in  self.reloadTheme() })
     }
-
 }
