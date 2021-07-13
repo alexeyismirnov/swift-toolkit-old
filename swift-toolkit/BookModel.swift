@@ -8,8 +8,8 @@
 
 import Foundation
 
-public enum BookType {
-    case text, html
+public enum BookContentType: Int {
+    case text = 0, html
 }
 
 public struct BookPosition {
@@ -43,11 +43,11 @@ public struct BookPosition {
 
 public protocol BookModel {
     var code : String { get }
-    var mode : BookType { get }
+    var contentType : BookContentType { get }
     var title: String { get }
     var date : Date { get set }
     
-    var isExpandable : Bool { get }
+    var hasChapters : Bool { get }
     var hasDate : Bool { get }
     
     func getSections() -> [String]
@@ -72,7 +72,7 @@ public extension BookModel {
     func dateIterator(startDate: Date) -> AnyIterator<Date> {
         return AnyIterator({ return nil })
     }
-    
+        
     func getNextSection(at pos: BookPosition) -> BookPosition? { return nil }
     func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
     

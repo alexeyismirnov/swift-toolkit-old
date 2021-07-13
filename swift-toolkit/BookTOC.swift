@@ -31,7 +31,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        expandable = model.isExpandable
+        expandable = model.hasChapters
         
         createTableView(style: .grouped)
         tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
@@ -72,7 +72,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
             pos = BookPosition(model: model, index: index, chapter: chapter)
         }
         
-        if pos.model!.mode == .html {
+        if pos.model!.contentType == .html {
             vc = BookPageHTML(pos)
         } else {
             vc = BookPageText(pos)

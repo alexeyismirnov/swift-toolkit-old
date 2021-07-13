@@ -95,9 +95,9 @@ public class OldTestamentModel : BookModel {
         get { return Translate.s("Old Testament") }
     }
     
-    public var mode: BookType = .text
+    public var contentType: BookContentType = .text
 
-    public var isExpandable = true
+    public var hasChapters = true
     
     public var hasDate = false
     public var date: Date = Date()
@@ -224,9 +224,9 @@ public class NewTestamentModel : BookModel {
         get { return Translate.s("New Testament") }
     }
     
-    public var mode: BookType = .text
+    public var contentType: BookContentType = .text
 
-    public var isExpandable = true
+    public var hasChapters = true
 
     public var hasDate = false
     public var date: Date = Date()

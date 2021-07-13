@@ -11,9 +11,9 @@ import UIKit
 public class PericopeModel : BookModel {
     public var code : String = "Pericope"
     public var title = ""
-    public var mode: BookType = .text
+    public var contentType: BookContentType = .text
     
-    public var isExpandable = false
+    public var hasChapters = false
 
     public var hasDate = false
     public var date: Date = Date()

@@ -15,9 +15,9 @@ public class BookmarksModel : BookModel {
         get { return Translate.s("Bookmarks...") }
     }
     
-    public var mode: BookType = .text
+    public var contentType: BookContentType = .text
 
-    public var isExpandable = false
+    public var hasChapters = false
 
     public var hasDate = false
     public var date: Date = Date()
