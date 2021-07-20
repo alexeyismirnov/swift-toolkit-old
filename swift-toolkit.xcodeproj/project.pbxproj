@@ -35,9 +35,6 @@
 		8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D6022FD7E6700CEA2DB /* add_bookmark.pdf */; };
 		8A229D6722FD7E6700CEA2DB /* fontsize.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D6122FD7E6700CEA2DB /* fontsize.pdf */; };
 		8A229D6822FD7E6700CEA2DB /* remove_bookmark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A229D6222FD7E6700CEA2DB /* remove_bookmark.pdf */; };
-		8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6922FD7FB300CEA2DB /* BookPageText.swift */; };
-		8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6A22FD7FB300CEA2DB /* BookPage.swift */; };
-		8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */; };
 		8A229D7122FD92A800CEA2DB /* BookTOC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D6F22FD92A800CEA2DB /* BookTOC.swift */; };
 		8A229D7222FD92A800CEA2DB /* BookmarksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */; };
 		8A23BFBD201048EE0034189E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFBC201048EE0034189E /* Images.xcassets */; };
@@ -52,6 +49,11 @@
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A3D824923696D6D00C118AA /* salami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3D824823696D6D00C118AA /* salami.pdf */; };
+		8A4D008926A6D6E400E355B2 /* BookPageCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008526A6D6E300E355B2 /* BookPageCells.swift */; };
+		8A4D008A26A6D6E400E355B2 /* EbookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008626A6D6E400E355B2 /* EbookModel.swift */; };
+		8A4D008B26A6D6E400E355B2 /* BookPageSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */; };
+		8A4D008C26A6D6E400E355B2 /* BookPageMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */; };
+		8A4D008E26A6D76300E355B2 /* BookUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008D26A6D76300E355B2 /* BookUtils.swift */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */; };
@@ -139,9 +141,6 @@
 		8A229D6022FD7E6700CEA2DB /* add_bookmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = add_bookmark.pdf; sourceTree = "<group>"; };
 		8A229D6122FD7E6700CEA2DB /* fontsize.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = fontsize.pdf; sourceTree = "<group>"; };
 		8A229D6222FD7E6700CEA2DB /* remove_bookmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = remove_bookmark.pdf; sourceTree = "<group>"; };
-		8A229D6922FD7FB300CEA2DB /* BookPageText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageText.swift; sourceTree = "<group>"; };
-		8A229D6A22FD7FB300CEA2DB /* BookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPage.swift; sourceTree = "<group>"; };
-		8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageHTML.swift; sourceTree = "<group>"; };
 		8A229D6F22FD92A800CEA2DB /* BookTOC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTOC.swift; sourceTree = "<group>"; };
 		8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModel.swift; sourceTree = "<group>"; };
 		8A23BFBC201048EE0034189E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -156,6 +155,11 @@
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A3D824823696D6D00C118AA /* salami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = salami.pdf; sourceTree = "<group>"; };
+		8A4D008526A6D6E300E355B2 /* BookPageCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageCells.swift; sourceTree = "<group>"; };
+		8A4D008626A6D6E400E355B2 /* EbookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EbookModel.swift; sourceTree = "<group>"; };
+		8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageSingle.swift; sourceTree = "<group>"; };
+		8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageMultiple.swift; sourceTree = "<group>"; };
+		8A4D008D26A6D76300E355B2 /* BookUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookUtils.swift; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingLegendCell.swift; sourceTree = "<group>"; };
@@ -294,12 +298,14 @@
 		8A229D5C22FD7C7600CEA2DB /* LibraryTab */ = {
 			isa = PBXGroup;
 			children = (
+				8A4D008526A6D6E300E355B2 /* BookPageCells.swift */,
+				8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */,
+				8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */,
+				8A229D6F22FD92A800CEA2DB /* BookTOC.swift */,
+				8A4D008D26A6D76300E355B2 /* BookUtils.swift */,
 				8A86F7432333883800CFC905 /* ServiceDateSelector.swift */,
 				8A229D7022FD92A800CEA2DB /* BookmarksModel.swift */,
-				8A229D6F22FD92A800CEA2DB /* BookTOC.swift */,
-				8A229D6A22FD7FB300CEA2DB /* BookPage.swift */,
-				8A229D6B22FD7FB300CEA2DB /* BookPageHTML.swift */,
-				8A229D6922FD7FB300CEA2DB /* BookPageText.swift */,
+				8A4D008626A6D6E400E355B2 /* EbookModel.swift */,
 				8A229D5622FD7C0F00CEA2DB /* BibleModel.swift */,
 				8A229D5722FD7C0F00CEA2DB /* BookModel.swift */,
 				8A229D5822FD7C0F00CEA2DB /* ChapterViewCell.swift */,
@@ -560,7 +566,6 @@
 				8A0EA8E3234B404E0029CFB4 /* FastingLegendTableView.swift in Sources */,
 				8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
-				8A229D6D22FD7FB300CEA2DB /* BookPage.swift in Sources */,
 				8A19AE60235171D7004A059B /* SaintIconView.swift in Sources */,
 				8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */,
 				8AFE334822F4319F008DBCD6 /* DayViewCell.swift in Sources */,
@@ -570,13 +575,12 @@
 				8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */,
 				8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
-				8A229D6C22FD7FB300CEA2DB /* BookPageText.swift in Sources */,
 				8A5D085A234757D2009D9F55 /* CalendarSelector.swift in Sources */,
 				8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */,
 				8AFD017C23813E6500BE14D1 /* WeekCalendarCell.swift in Sources */,
-				8A229D6E22FD7FB300CEA2DB /* BookPageHTML.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
+				8A4D008E26A6D76300E355B2 /* BookUtils.swift in Sources */,
 				8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */,
 				8A19AE5F235171D7004A059B /* CenterViewFlowLayout.swift in Sources */,
 				8A12C92423507D1B00F16694 /* FeastNotifications.swift in Sources */,
@@ -594,16 +598,20 @@
 				8A5D085423475101009D9F55 /* YearCalendarGridTheme.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
 				8A19AE61235171D7004A059B /* SaintIconModel.swift in Sources */,
+				8A4D008A26A6D6E400E355B2 /* EbookModel.swift in Sources */,
 				8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */,
+				8A4D008B26A6D6E400E355B2 /* BookPageSingle.swift in Sources */,
 				8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */,
 				8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */,
 				8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */,
 				8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */,
 				8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */,
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
+				8A4D008926A6D6E400E355B2 /* BookPageCells.swift in Sources */,
 				8AFD017B23813E6500BE14D1 /* WeekCalendar.swift in Sources */,
 				8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */,
 				8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */,
+				8A4D008C26A6D6E400E355B2 /* BookPageMultiple.swift in Sources */,
 				8AFF6645218EED6500DDA40B /* ImageCell.swift in Sources */,
 				8A5D085723475433009D9F55 /* YearCalendarGrid.swift in Sources */,
 			);

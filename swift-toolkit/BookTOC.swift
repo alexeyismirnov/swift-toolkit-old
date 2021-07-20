@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Alexey Smirnov. All rights reserved.
 //
 
-import UIKit
-
 public class BookTOC: UIViewController, ResizableTableViewCells {
     let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
     let prefs = AppGroup.prefs!
@@ -72,12 +70,9 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
             pos = BookPosition(model: model, index: index, chapter: chapter)
         }
         
-        if pos.model!.contentType == .html {
-            vc = BookPageHTML(pos)
-        } else {
-            vc = BookPageText(pos)
-        }
-        
+        vc = BookPageMultiple(pos)
+
+        vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -220,4 +215,6 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
     }
     
 }
+
+
 
