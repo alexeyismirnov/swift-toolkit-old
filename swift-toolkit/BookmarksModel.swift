@@ -51,7 +51,7 @@ public class BookmarksModel : BookModel {
     
     public func getComment(commentId: Int) -> String? { return nil }
     
-    func resolveBookmarkAt(row: Int) -> BookPosition {
+    public func resolveBookmarkAt(row: Int) -> BookPosition {
         let bookmarks = prefs.stringArray(forKey: "bookmarks")!
         let comp = bookmarks[row].components(separatedBy: "_")
         
