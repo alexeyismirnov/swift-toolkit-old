@@ -13,7 +13,7 @@ public enum BookContentType: Int {
 }
 
 public struct BookPosition {
-    public init(model: BookModel, index: IndexPath, chapter: Int) {
+    public init(model: BookModel, index: IndexPath, chapter: Int = 0) {
         self.model = model
         self.index = index
         self.chapter = chapter
