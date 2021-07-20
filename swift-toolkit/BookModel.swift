@@ -29,7 +29,7 @@ public struct BookPosition {
         self.data = data
     }
     
-    public init(index: IndexPath, chapter: Int) {
+    public init(index: IndexPath, chapter: Int = 0) {
         self.index = index
         self.chapter = chapter
     }
