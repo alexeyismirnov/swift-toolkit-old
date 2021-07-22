@@ -30,31 +30,63 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
     var button_fontsize, button_add_bookmark, button_remove_bookmark : CustomBarButton!
     var button_close : CustomBarButton!
     
+    var totalCells = 3
+    
     public init?(_ pos: BookPosition) {
         guard let model = pos.model else { return nil }
         
         self.model = model
         
+        var nextnextPos, prevprevPos : BookPosition?
+        
         let prevPos = model.getPrevSection(at: pos)
         let nextPos = model.getNextSection(at: pos)
         
+        if let nextPos = nextPos  {
+            nextnextPos = model.getNextSection(at: nextPos)
+        }
+        
+        if let prevPos = prevPos {
+            prevprevPos = model.getPrevSection(at: prevPos)
+        }
+        
         if prevPos == nil {
-            let nextnextPos = model.getNextSection(at: nextPos!)
-            
             bookPos.append(pos)
-            bookPos.append(nextPos!)
-            bookPos.append(nextnextPos!)
+            
+            if let nextPos = nextPos {
+                bookPos.append(nextPos)
+                
+            } else {
+                totalCells -= 1
+            }
+            
+            if let nextnextPos = nextnextPos {
+                bookPos.append(nextnextPos)
+
+            } else {
+                totalCells -= 1
+            }
             
             initialPos = 0
             
         } else if nextPos == nil {
-            let prevprevPos = model.getPrevSection(at: prevPos!)
+            if let prevprevPos = prevprevPos {
+                bookPos.append(prevprevPos)
+
+            } else {
+                totalCells -= 1
+            }
             
-            bookPos.append(prevprevPos!)
-            bookPos.append(prevPos!)
+            if let prevPos = prevPos {
+                bookPos.append(prevPos)
+
+            } else {
+                totalCells -= 1
+            }
+            
             bookPos.append(pos)
             
-            initialPos = 2
+            initialPos = totalCells - 1
             
         } else {
             bookPos.append(prevPos!)
@@ -272,7 +304,7 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
 
 extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return totalCells
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -299,27 +331,40 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
     
     func adjustView(_ scrollView: UIScrollView) {
         let contentOffsetWhenFullyScrolledRight = collectionView.frame.size.width * CGFloat(bookPos.count - 1)
-        var newPos = bookPos[1]
+        var newPos: BookPosition
         
         if scrollView.contentOffset.x == 0 {
             newPos = bookPos[0]
         } else if scrollView.contentOffset.x == contentOffsetWhenFullyScrolledRight {
-            newPos = bookPos[2]
+            newPos = bookPos[totalCells-1]
+        } else {
+            newPos = bookPos[1]
         }
         
         let prevPos = model.getPrevSection(at: newPos)
         let nextPos = model.getNextSection(at: newPos)
         
+        var nextnextPos, prevprevPos : BookPosition?
+        
+        if let nextPos = nextPos {
+            nextnextPos = model.getNextSection(at: nextPos)
+        }
+        
+        if let prevPos = prevPos {
+            prevprevPos = model.getPrevSection(at: prevPos)
+        }
+        
         updateNavigationButtons(pos: newPos)
         updateToolbar(pos: newPos)
 
+        bookPos = []
+        
         if prevPos == nil {
-            let nextnextPos = model.getNextSection(at: nextPos!)
-            
             collectionView.performBatchUpdates({
-                self.bookPos[0] = newPos
-                self.bookPos[1] = nextPos!
-                self.bookPos[2] = nextnextPos!
+                bookPos.append(newPos)
+                if let nextPos = nextPos { bookPos.append(nextPos) }
+                if let nextnextPos = nextnextPos { bookPos.append(nextnextPos) }
+                
             }, completion: { _ in
                 UIView.setAnimationsEnabled(false)
                 self.collectionView.reloadData()
@@ -327,12 +372,11 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
             })
             
         } else if nextPos == nil {
-            let prevprevPos = model.getPrevSection(at: prevPos!)
-
             collectionView.performBatchUpdates({
-                self.bookPos[0] = prevprevPos!
-                self.bookPos[1] = prevPos!
-                self.bookPos[2] = newPos
+                if let prevprevPos = prevprevPos { bookPos.append(prevprevPos) }
+                if let prevPos = prevPos { bookPos.append(prevPos) }
+                bookPos.append(newPos)
+
             }, completion: { _ in
                 UIView.setAnimationsEnabled(false)
                 self.collectionView.reloadData()
@@ -340,9 +384,9 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
             })
         } else {
             collectionView.performBatchUpdates({
-                self.bookPos[0] = prevPos!
-                self.bookPos[1] = newPos
-                self.bookPos[2] = nextPos!
+                bookPos.append(prevPos!)
+                bookPos.append(newPos)
+                bookPos.append(nextPos!)
                 
             }, completion: { _ in
                 UIView.setAnimationsEnabled(false)
@@ -369,3 +413,4 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
 }
+
