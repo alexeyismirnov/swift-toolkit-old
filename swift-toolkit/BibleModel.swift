@@ -187,7 +187,7 @@ public class OldTestamentModel : BookModel {
         guard let index = pos.index, let chapter = pos.chapter else { return nil }
         
         let header = (OldTestamentModel.data[index.section][index.row].1 == "ps") ? Translate.s("Kathisma %@") : Translate.s("Chapter %@")
-        let chapterTitle = String(format: header, Translate.stringFromNumber(chapter+1)).lowercased()
+        let chapterTitle = String(format: header, Translate.stringFromNumber(chapter+1))
        
         return chapterTitle
     }
@@ -309,7 +309,7 @@ public class NewTestamentModel : BookModel {
     
     public func getTitle(at pos: BookPosition) -> String? {
         guard let chapter = pos.chapter else { return nil }
-        let chapterTitle = String(format: Translate.s("Chapter %@"), Translate.stringFromNumber(chapter+1)).lowercased()
+        let chapterTitle = String(format: Translate.s("Chapter %@"), Translate.stringFromNumber(chapter+1))
        
         return chapterTitle
     }
