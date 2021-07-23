@@ -28,19 +28,8 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     }
     
     func updateText() {
-        // let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
-
-        if Translate.language == "cn" {
-            textView.attributedText = attributedText
-            textView.font = font
-            
-        } else {
-            textView.font = UIFont(name: "PonomarUnicode", size: CGFloat(20))!
-
-            textView.attributedText = attributedText
-            textView.font = UIFont(name: "PonomarUnicode", size: CGFloat(20))!
-
-        }
+        textView.attributedText = attributedText
+        textView.font = font
     }
     
     required init?(coder aDecoder: NSCoder) {
