@@ -17,6 +17,7 @@ protocol BookPageDelegate {
 public class BookPageMultiple: UIViewController, BookPageDelegate {
     let prefs = AppGroup.prefs!
 
+    var lang: String
     var collectionView: UICollectionView!
     var isScrolling: Bool!
 
@@ -32,9 +33,10 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
     
     var totalCells = 3
     
-    public init?(_ pos: BookPosition) {
+    public init?(_ pos: BookPosition, lang: String = Translate.language) {
         guard let model = pos.model else { return nil }
         
+        self.lang = lang
         self.model = model
         
         var nextnextPos, prevprevPos : BookPosition?
@@ -320,6 +322,20 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
             
         } else {
             let cell: BookPageCellText = collectionView.dequeueReusableCell(for: indexPath)
+            var font: UIFont!
+            let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
+
+            if lang == "cn" {
+                font = UIFont(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
+                
+            } else if lang == "cs" {
+                font = UIFont(name: "PonomarUnicode", size: CGFloat(fontSize))!
+                
+            } else {
+                font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+            }
+            
+            cell.font = font
             cell.attributedText = model.getContent(at: bookPos[indexPath.row]) as? NSAttributedString
             cell.cellFrame = getFullScreenFrame()
             cell.delegate = self

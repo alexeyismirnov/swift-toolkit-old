@@ -43,8 +43,19 @@ public class Translate: NSObject {
         }
     }
     
-    static public func s(_ str : String) -> String {
-        return dict[str] ?? str
+    static public func s(_ str : String, lang: String? = nil) -> String {
+        if let lang = lang {
+            var specialDict = [String:String]()
+            
+            for file in files.filter({ $0.contains("_\(lang)")})  {
+                specialDict += NSDictionary(contentsOfFile: file) as! [String: String]
+            }
+            return specialDict[str] ?? str
+
+        } else {
+            return dict[str] ?? str
+
+        }
     }
     
     static public func stringFromNumber(_ num : Int) -> String {

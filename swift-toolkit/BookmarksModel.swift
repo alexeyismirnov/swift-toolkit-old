@@ -10,7 +10,8 @@ import UIKit
 
 public class BookmarksModel : BookModel {
     public var code = "Bookmarks"
-    
+    public var lang = Translate.language
+
     public var title: String {
         get { return Translate.s("Bookmarks...") }
     }

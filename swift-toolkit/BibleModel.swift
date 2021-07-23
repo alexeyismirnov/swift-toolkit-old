@@ -9,48 +9,12 @@
 import UIKit
 import Squeal
 
-public struct BibleModel {
-    static public func book(_ name: String, whereExpr: String = "") -> [[String:Bindable?]] {
-        let path = Bundle.main.path(forResource: name.lowercased()+"_"+Translate.language, ofType: "sqlite")!
-        let db = try! Database(path:path)
-        
-        return try! db.selectFrom("scripture", whereExpr:whereExpr) { ["verse": $0["verse"], "text": $0["text"]] }
-    }
-    
-    static public func numberOfChapters(_ name: String) -> Int {
-        let path = Bundle.main.path(forResource: name.lowercased()+"_"+Translate.language, ofType: "sqlite")!
-        let db = try! Database(path:path)
-        
-        let results = try! db.prepareStatement("SELECT COUNT(DISTINCT chapter) FROM scripture")
-        
-        while try! results.next() {
-            let num = results[0] as! Int64
-            return Int(num)
-        }
-        
-        return 0
-    }
-    
-    static public func decorateLine(_ verse:Int64, _ content:String, _ fontSize:CGFloat, _ isPsalm: Bool = false) -> NSAttributedString {
+public class BibleUtils {
+    static public func decorateLine(num verse:Int64, text content:String, fontSize:CGFloat, lang: String, isPsalm: Bool = false) -> NSAttributedString {
         if isPsalm {
             let text = NSMutableAttributedString(attributedString: content.colored(with: Theme.textColor).systemFont(ofSize: fontSize))
             
-            /*
-            let stasis = Translate.s("Stasis")
-            var position = content.startIndex
-
-            while let r = content.range(of: stasis, options:[], range: position..<content.endIndex) {
-                text.addAttribute(.font, value: UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.bold), range: NSRange(r, in: content))
-                
-                guard let after = content.index(r.lowerBound,
-                                        offsetBy: stasis.count,
-                                        limitedBy: content.endIndex)
-                    else { break }
-                position = content.index(after: after)
-            }
-            */
-            
-            if Translate.language == "en" ||  Translate.language == "ru" {
+            if lang == "en" ||  lang == "ru" {
                 if let r = content.range(of: ".", options:[], range: nil) {
                     let r2 = content.startIndex..<r.upperBound
                     
@@ -67,20 +31,53 @@ public struct BibleModel {
         return text.systemFont(ofSize: fontSize)
     }
     
-    static public func getChapter(_ name: String, _ chapter: Int) -> NSAttributedString {
+    static public func getText(_ name: String, whereExpr: String, lang: String) -> [[String:Bindable?]] {
+        let path = Bundle.main.path(forResource: name.lowercased()+"_"+lang, ofType: "sqlite")!
+        let db = try! Database(path:path)
+        
+        return try! db.selectFrom("scripture", whereExpr:whereExpr) { ["verse": $0["verse"], "text": $0["text"]] }
+    }
+    
+}
+
+public protocol BibleModel {
+    func numberOfChapters(_ name: String) -> Int
+    func getChapter(_ name: String, _ chapter: Int) -> NSAttributedString
+}
+
+public extension BibleModel where Self:BookModel {
+    func numberOfChapters(_ name: String) -> Int {
+        let path = Bundle.main.path(forResource: name.lowercased()+"_"+lang, ofType: "sqlite")!
+        let db = try! Database(path:path)
+        
+        let results = try! db.prepareStatement("SELECT COUNT(DISTINCT chapter) FROM scripture")
+        
+        while try! results.next() {
+            let num = results[0] as! Int64
+            return Int(num)
+        }
+        
+        return 0
+    }
+    
+    func getChapter(_ name: String, _ chapter: Int) -> NSAttributedString {
         var text = NSAttributedString()
         
         let prefs = AppGroup.prefs!
         let fontSize = prefs.integer(forKey: "fontSize")
         
-        let header = (name == "ps") ? Translate.s("Kathisma %@") : Translate.s("Chapter %@")
+        let header = (name == "ps") ? Translate.s("Kathisma %@", lang: lang) : Translate.s("Chapter %@", lang: lang)
         let title = String(format: header, Translate.stringFromNumber(chapter))
             .colored(with: Theme.textColor).boldFont(ofSize: CGFloat(fontSize)).centered
         
         text += title + "\n\n"
         
-        for line in book(name, whereExpr: "chapter=\(chapter)") {
-            let row  = decorateLine(line["verse"] as! Int64, line["text"] as! String, CGFloat(fontSize), name == "ps")
+        for line in BibleUtils.getText(name, whereExpr: "chapter=\(chapter)", lang: lang) {
+            let row  = BibleUtils.decorateLine(num: line["verse"] as! Int64,
+                                               text: line["text"] as! String,
+                                               fontSize: CGFloat(fontSize),
+                                               lang: lang,
+                                               isPsalm:name == "ps")
             text = text + row
         }
         
@@ -89,10 +86,12 @@ public struct BibleModel {
     
 }
 
-public class OldTestamentModel : BookModel {
+public class OldTestamentModel : BookModel, BibleModel {
+    public var lang: String
+    
     public var code : String = "OldTestament"
     public var title: String {
-        get { return Translate.s("Old Testament") }
+        get { return Translate.s("Old Testament", lang: lang) }
     }
     
     public var contentType: BookContentType = .text
@@ -153,18 +152,22 @@ public class OldTestamentModel : BookModel {
             ]
     ]
     
-    public static let shared = OldTestamentModel()
-
+    public init(lang: String) {
+        self.lang = lang
+    }
+    
     public func getSections() -> [String] {
-        return ["Five Books of Moses", "Historical books", "Wisdom books", "Prophets books"].map { return Translate.s($0) }
+        return ["Five Books of Moses", "Historical books", "Wisdom books", "Prophets books"]
+            .map { return Translate.s($0, lang: lang) }
     }
     
     public func getItems(_ section: Int) -> [String] {
-        return OldTestamentModel.data[section].map { return Translate.s($0.0) }
+        return OldTestamentModel.data[section]
+            .map { return Translate.s($0.0, lang: lang) }
     }
     
     public func getNumChapters(_ index: IndexPath) -> Int {
-        return BibleModel.numberOfChapters(OldTestamentModel.data[index.section][index.row].1)
+        return numberOfChapters(OldTestamentModel.data[index.section][index.row].1)
     }
 
     public func getComment(commentId: Int) -> String? { return nil }
@@ -177,16 +180,22 @@ public class OldTestamentModel : BookModel {
         let row = Int(comp[2])!
         let chapter = Int(comp[3])!
         
-        let header = (OldTestamentModel.data[section][row].1 == "ps") ? Translate.s("Kathisma %@") : Translate.s("Chapter %@")
+        let header = (OldTestamentModel.data[section][row].1 == "ps")
+            ? Translate.s("Kathisma %@", lang: lang)
+            : Translate.s("Chapter %@", lang: lang)
+        
         let chapterTitle = String(format: header, Translate.stringFromNumber(chapter+1)).lowercased()
         
-        return "\(title) - " + Translate.s(OldTestamentModel.data[section][row].0) + ", \(chapterTitle)"
+        return "\(title) - " + Translate.s(OldTestamentModel.data[section][row].0, lang: lang) + ", \(chapterTitle)"
     }
     
     public func getTitle(at pos: BookPosition) -> String? {
         guard let index = pos.index, let chapter = pos.chapter else { return nil }
         
-        let header = (OldTestamentModel.data[index.section][index.row].1 == "ps") ? Translate.s("Kathisma %@") : Translate.s("Chapter %@")
+        let header = (OldTestamentModel.data[index.section][index.row].1 == "ps")
+            ? Translate.s("Kathisma %@", lang: lang)
+            : Translate.s("Chapter %@", lang: lang)
+        
         let chapterTitle = String(format: header, Translate.stringFromNumber(chapter+1))
        
         return chapterTitle
@@ -195,7 +204,7 @@ public class OldTestamentModel : BookModel {
     public func getContent(at pos: BookPosition) -> Any? {
         guard let index = pos.index, let chapter = pos.chapter else { return nil }
         let code =  OldTestamentModel.data[index.section][index.row].1
-        return BibleModel.getChapter(code, chapter+1)
+        return getChapter(code, chapter+1)
     }
     
     public func getBookmark(at pos: BookPosition) -> String? {
@@ -206,7 +215,7 @@ public class OldTestamentModel : BookModel {
     public func getNextSection(at pos: BookPosition) -> BookPosition? {
         guard let index = pos.index, let chapter = pos.chapter else { return nil }
 
-        let numChapters = BibleModel.numberOfChapters(OldTestamentModel.data[index.section][index.row].1)
+        let numChapters = numberOfChapters(OldTestamentModel.data[index.section][index.row].1)
         if chapter < numChapters-1 {
             return BookPosition(index: index, chapter: chapter+1)
         } else {
@@ -226,11 +235,12 @@ public class OldTestamentModel : BookModel {
     }
 }
 
-public class NewTestamentModel : BookModel {
+public class NewTestamentModel : BookModel, BibleModel {
+    public var lang: String
     public var code: String = "NewTestament"
     
     public var title: String {
-        get { return Translate.s("New Testament") }
+        get { return Translate.s("New Testament", lang: lang) }
     }
     
     public var contentType: BookContentType = .text
@@ -278,18 +288,22 @@ public class NewTestamentModel : BookModel {
         ]
     ]
     
-    public static let shared = NewTestamentModel()
-    
+    public init(lang: String) {
+        self.lang = lang
+    }
+        
     public func getSections() -> [String] {
-        return ["Four Gospels and Acts", "Catholic Epistles", "Epistles of Paul", "Apocalypse"].map { return Translate.s($0) }
+        return ["Four Gospels and Acts", "Catholic Epistles", "Epistles of Paul", "Apocalypse"]
+            .map { return Translate.s($0, lang: lang) }
     }
     
     public func getItems(_ section: Int) -> [String] {
-        return NewTestamentModel.data[section].map { return  Translate.s($0.0) }
+        return NewTestamentModel.data[section]
+            .map { return  Translate.s($0.0, lang: lang) }
     }
     
     public func getNumChapters(_ index: IndexPath) -> Int {
-        return BibleModel.numberOfChapters(NewTestamentModel.data[index.section][index.row].1)
+        return numberOfChapters(NewTestamentModel.data[index.section][index.row].1)
     }
     
     public func getComment(commentId: Int) -> String? { return nil }
@@ -302,14 +316,14 @@ public class NewTestamentModel : BookModel {
         let row = Int(comp[2])!
         let chapter = Int(comp[3])!
         
-        let chapterTitle = String(format: Translate.s("Chapter %@"), Translate.stringFromNumber(chapter+1)).lowercased()
+        let chapterTitle = String(format: Translate.s("Chapter %@", lang: lang), Translate.stringFromNumber(chapter+1)).lowercased()
         
-        return "\(title) - " + Translate.s(NewTestamentModel.data[section][row].0) + ", \(chapterTitle)"
+        return "\(title) - " + Translate.s(NewTestamentModel.data[section][row].0, lang: lang) + ", \(chapterTitle)"
     }
     
     public func getTitle(at pos: BookPosition) -> String? {
         guard let chapter = pos.chapter else { return nil }
-        let chapterTitle = String(format: Translate.s("Chapter %@"), Translate.stringFromNumber(chapter+1))
+        let chapterTitle = String(format: Translate.s("Chapter %@", lang: lang), Translate.stringFromNumber(chapter+1))
        
         return chapterTitle
     }
@@ -318,7 +332,7 @@ public class NewTestamentModel : BookModel {
         guard let index = pos.index, let chapter = pos.chapter else { return nil }
 
         let code =  NewTestamentModel.data[index.section][index.row].1
-        return BibleModel.getChapter(code, chapter+1)
+        return getChapter(code, chapter+1)
     }
     
     public func getBookmark(at pos: BookPosition) -> String? {
@@ -329,13 +343,12 @@ public class NewTestamentModel : BookModel {
     public func getNextSection(at pos: BookPosition) -> BookPosition? {
         guard let index = pos.index, let chapter = pos.chapter else { return nil }
 
-        let numChapters = BibleModel.numberOfChapters(NewTestamentModel.data[index.section][index.row].1)
+        let numChapters = numberOfChapters(NewTestamentModel.data[index.section][index.row].1)
         if chapter < numChapters-1 {
             return BookPosition(index: index, chapter: chapter+1)
         } else {
             return nil
         }
-        
     }
     
     public func getPrevSection(at pos: BookPosition) -> BookPosition? {

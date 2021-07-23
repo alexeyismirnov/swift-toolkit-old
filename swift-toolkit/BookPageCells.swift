@@ -19,6 +19,7 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     
     var textView: UITextView!
     var delegate: BookPageDelegate!
+    var font : UIFont!
     
     var attributedText : NSAttributedString! {
         didSet {
@@ -27,18 +28,14 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     }
     
     func updateText() {
-        let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
+        // let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
 
         if Translate.language == "cn" {
             textView.attributedText = attributedText
-            
-            textView.font = UIFont(name: "STHeitiSC-Light" ,
-                                   size: CGFloat(fontSize))!
+            textView.font = font
             
         } else {
-            textView.font = UIFont(name: "TimesNewRomanPSMT",
-                                   size: CGFloat(fontSize))!
-            
+            textView.font = font
             textView.attributedText = attributedText
         }
     }

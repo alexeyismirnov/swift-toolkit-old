@@ -11,6 +11,7 @@ import UIKit
 public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     let prefs = AppGroup.prefs!
 
+    var lang: String
     var collectionView: UICollectionView!
 
     var model : BookModel
@@ -18,9 +19,10 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
         
     var button_fontsize, button_close : CustomBarButton!
     
-    public init?(_ pos: BookPosition) {
+    public init?(_ pos: BookPosition, lang: String = Translate.language) {
         guard let model = pos.model else { return nil }
         
+        self.lang = lang
         self.model = model
         self.bookPos = pos
         
@@ -122,6 +124,20 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
             
         } else {
             let cell: BookPageCellText = collectionView.dequeueReusableCell(for: indexPath)
+            var font: UIFont!
+            let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
+
+            if lang == "cn" {
+                font = UIFont(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
+                
+            } else if lang == "cs" {
+                font = UIFont(name: "PonomarUnicode", size: CGFloat(fontSize))!
+
+            } else {
+                font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+            }
+            
+            cell.font = font
             cell.attributedText = model.getContent(at: bookPos) as? NSAttributedString
             cell.cellFrame = getFullScreenFrame()
             cell.delegate = self
