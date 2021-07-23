@@ -70,7 +70,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
             pos = BookPosition(model: model, index: index, chapter: chapter)
         }
         
-        vc = BookPageMultiple(pos)
+        vc = BookPageMultiple(pos, lang: model.lang)
 
         vc.hidesBottomBarWhenPushed = true;
         navigationController?.pushViewController(vc, animated: true)
