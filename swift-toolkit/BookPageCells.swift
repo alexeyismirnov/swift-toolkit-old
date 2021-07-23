@@ -35,7 +35,8 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
             textView.font = font
             
         } else {
-            textView.font = font
+            textView.font = UIFont(name: "PonomarUnicode", size: CGFloat(20))!
+
             textView.attributedText = attributedText
         }
     }
