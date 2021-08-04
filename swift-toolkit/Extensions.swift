@@ -319,7 +319,7 @@ public extension UIFont {
             self.init(name: "PonomarUnicode", size: CGFloat(fontSize))!
             
         } else {
-            self.init(name: ".SFUIText-Bold", size: CGFloat(fontSize))!
+            self.init(name: "SFUIText-Medium", size: CGFloat(fontSize))!
            // self.init(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         }
         
