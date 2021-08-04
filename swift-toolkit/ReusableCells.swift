@@ -96,13 +96,16 @@ public extension ResizableTableViewCells where Self: UIViewController {
         return newCell
     }
     
-    func getTextDetailsCell(title: String, subtitle: String) -> TextDetailsCell {
+    func getTextDetailsCell(title: String, subtitle: String, lang: String = "en") -> TextDetailsCell {
         let newCell:TextDetailsCell = tableView.dequeueReusableCell()
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
         
         newCell.title.textColor = Theme.textColor
         newCell.subtitle.textColor = Theme.secondaryColor
+        
+        newCell.title.font = UIFont(lang: lang)
+        newCell.subtitle.font = UIFont(lang: lang)
         
         newCell.title.text = title
         newCell.subtitle.text = subtitle

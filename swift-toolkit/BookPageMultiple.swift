@@ -310,7 +310,6 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if model.contentType == .html {
             let cell: BookPageCellHTML = collectionView.dequeueReusableCell(for: indexPath)
             cell.text = model.getContent(at: bookPos[indexPath.row]) as? String
@@ -322,20 +321,8 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
             
         } else {
             let cell: BookPageCellText = collectionView.dequeueReusableCell(for: indexPath)
-            var font: UIFont!
-            let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
-
-            if lang == "cn" {
-                font = UIFont(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
-                
-            } else if lang == "cs" {
-                font = UIFont(name: "PonomarUnicode", size: CGFloat(fontSize))!
-                
-            } else {
-                font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
-            }
             
-            cell.font = font
+            cell.font = UIFont(lang: lang)
             cell.attributedText = model.getContent(at: bookPos[indexPath.row]) as? NSAttributedString
             cell.cellFrame = getFullScreenFrame()
             cell.delegate = self

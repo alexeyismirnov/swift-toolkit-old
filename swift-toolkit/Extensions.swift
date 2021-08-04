@@ -309,6 +309,20 @@ public extension String {
 }
 
 public extension UIFont {
+    convenience init(lang: String) {
+        let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
+
+        if lang == "cn" {
+            self.init(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
+            
+        } else if lang == "cs" {
+            self.init(name: "PonomarUnicode", size: CGFloat(fontSize))!
+            
+        } else {
+            self.init(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
+        }
+    }
+    
     func withTraits(_ traits:UIFontDescriptor.SymbolicTraits...) -> UIFont {
         let descriptor = self.fontDescriptor
             .withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits))

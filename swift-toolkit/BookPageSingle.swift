@@ -124,20 +124,8 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
             
         } else {
             let cell: BookPageCellText = collectionView.dequeueReusableCell(for: indexPath)
-            var font: UIFont!
-            let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
-
-            if lang == "cn" {
-                font = UIFont(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
-                
-            } else if lang == "cs" {
-                font = UIFont(name: "PonomarUnicode", size: CGFloat(fontSize))!
-
-            } else {
-                font = UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
-            }
-            
-            cell.font = font
+           
+            cell.font = UIFont(lang: lang)
             cell.attributedText = model.getContent(at: bookPos) as? NSAttributedString
             cell.cellFrame = getFullScreenFrame()
             cell.delegate = self
