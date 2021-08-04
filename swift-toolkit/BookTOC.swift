@@ -134,7 +134,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
         
         if (expandable) {
             if indexPath.row % 2 == 0 {
-                return getTextDetailsCell(title: model.getItems(section)[indexPath.row / 2], subtitle: "")
+                return getTextDetailsCell(title: model.getItems(section)[indexPath.row / 2], subtitle: "", lang: model.lang)
                 
             } else {
                 let newCell: ChapterViewCell = tableView.dequeueReusableCell()
@@ -147,7 +147,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
             }
             
         } else {
-            return getTextDetailsCell(title: model.getItems(section)[indexPath.row], subtitle: "")
+            return getTextDetailsCell(title: model.getItems(section)[indexPath.row], subtitle: "", lang: model.lang)
         }
 
     }
