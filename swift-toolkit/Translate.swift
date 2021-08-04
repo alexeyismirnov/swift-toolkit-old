@@ -15,14 +15,24 @@ extension Array {
 }
 
 public class Translate: NSObject {
-    fileprivate static var dict = [String:String]()
+    fileprivate static var dict = [String:[String:String]]()
     
     static public var defaultLanguage = "en"
     static public var locale  = Locale(identifier: "en")
     static public var files = [String]() {
         didSet {
-            files.mapInPlace { file in
-                return AppGroup.url.appendingPathComponent("\(file).plist").path
+            dict = [:]
+
+            for file in files {
+                let lang = file.components(separatedBy: "_").last!
+                
+                if !dict.keys.contains(lang) {
+                    dict[lang] = [String:String]()
+                }
+                
+                dict[lang]! += NSDictionary(contentsOfFile:
+                                                AppGroup.url.appendingPathComponent("\(file).plist").path)
+                                    as! [String: String]
             }
         }
     }
@@ -30,32 +40,12 @@ public class Translate: NSObject {
     static public var language:String = defaultLanguage {
         didSet {
             locale = Locale(identifier: (language == "cn") ? "zh_CN" : language)
-            
-            dict = [:]
-            
-            if language == defaultLanguage {
-                return
-            }
-            
-            for file in files {
-                dict += NSDictionary(contentsOfFile: file) as! [String: String]
-            }
         }
     }
     
     static public func s(_ str : String, lang: String? = nil) -> String {
-        if let lang = lang {
-            var specialDict = [String:String]()
-            
-            for file in files.filter({ $0.contains("_\(lang)")})  {
-                specialDict += NSDictionary(contentsOfFile: file) as! [String: String]
-            }
-            return specialDict[str] ?? str
-
-        } else {
-            return dict[str] ?? str
-
-        }
+        let lang = lang ?? language
+        return dict[lang]![str] ?? str
     }
     
     static public func stringFromNumber(_ num : Int) -> String {
