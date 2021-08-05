@@ -104,8 +104,10 @@ public extension ResizableTableViewCells where Self: UIViewController {
         newCell.title.textColor = Theme.textColor
         newCell.subtitle.textColor = Theme.secondaryColor
         
-        newCell.title.font = UIFont(lang: lang)
-        newCell.subtitle.font = UIFont(lang: lang)
+        let fontSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 20 : 22
+        
+        newCell.title.font = UIFont(lang: lang, fontSize: fontSize)
+        newCell.subtitle.font = UIFont(lang: lang, fontSize: fontSize)
         
         newCell.title.text = title
         newCell.subtitle.text = subtitle

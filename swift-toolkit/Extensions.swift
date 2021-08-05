@@ -309,8 +309,8 @@ public extension String {
 }
 
 public extension UIFont {
-    convenience init(lang: String) {
-        let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
+    convenience init(lang: String, fontSize: Int? = nil) {
+        let fontSize = fontSize ?? AppGroup.prefs.integer(forKey: "fontSize")
 
         if lang == "cn" {
             self.init(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
@@ -322,7 +322,6 @@ public extension UIFont {
             self.init(name: "HelveticaNeue", size: CGFloat(fontSize))!
            // self.init(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         }
-        
         
     }
     
