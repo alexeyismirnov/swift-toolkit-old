@@ -30,6 +30,7 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     func updateText() {
         textView.attributedText = attributedText
         textView.font = font
+        textView.setContentOffset(.zero, animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
