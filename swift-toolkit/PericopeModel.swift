@@ -9,22 +9,27 @@
 import UIKit
 
 public class PericopeModel : BookModel {
+    public var lang: String
+    
     public var code : String = "Pericope"
     public var title = ""
     public var contentType: BookContentType = .text
-    public var lang = Translate.language
 
     public var hasChapters = false
 
     public var hasDate = false
     public var date: Date = Date()
     
+    public init(lang: String) {
+        self.lang = lang
+    }
+    
     public func getPericope(_ str: String, decorated: Bool = true) -> [(NSAttributedString, NSAttributedString)] {
         var result = [(NSAttributedString, NSAttributedString)]()
         let prefs = AppGroup.prefs!
         let fontSize = CGFloat(prefs.integer(forKey: "fontSize"))
         
-        var pericope = str.split { $0 == " " }.map { String($0) }
+        let pericope = str.split { $0 == " " }.map { String($0) }
         
         for i in stride(from: 0, to: pericope.count-1, by: 2) {
             var chapter: Int = 0
@@ -36,10 +41,13 @@ public class PericopeModel : BookModel {
             var text = NSAttributedString()
             
             if decorated {
-                bookName = (Translate.s(bookTuple[0].0) + " " + pericope[i+1]).colored(with: Theme.textColor).boldFont(ofSize: fontSize).centered
+                bookName = (Translate.s(bookTuple[0].0, lang: lang) + " " + pericope[i+1])
+                    .colored(with: Theme.textColor)
+                    .boldFont(ofSize: fontSize)
+                    .centered
                 
             } else {
-                bookName = NSAttributedString(string: Translate.s(bookTuple[0].0))
+                bookName = NSAttributedString(string: Translate.s(bookTuple[0].0, lang: lang))
             }
             
             let arr2 = pericope[i+1].components(separatedBy: ",")
@@ -49,7 +57,7 @@ public class PericopeModel : BookModel {
                 
                 let arr3 = segment.components(separatedBy: "-")
                 for offset in arr3 {
-                    var arr4 = offset.components(separatedBy: ":")
+                    let arr4 = offset.components(separatedBy: ":")
                     
                     if arr4.count == 1 {
                         range += [ (chapter, Int(arr4[0])!) ]
@@ -63,12 +71,12 @@ public class PericopeModel : BookModel {
                 if range.count == 1 {
                     for line in BibleUtils.getText(fileName,
                                                    whereExpr: "chapter=\(range[0].0) AND verse=\(range[0].1)",
-                                                   lang: Translate.language) {
+                                                   lang: lang) {
                         if decorated {
                             text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
                                                             text: line["text"] as! String,
                                                             fontSize: fontSize,
-                                                            lang: Translate.language)
+                                                            lang: lang)
                         } else {
                             text += (line["text"] as! String) + " "
                         }
@@ -77,12 +85,12 @@ public class PericopeModel : BookModel {
                 } else if range[0].0 != range[1].0 {
                     for line in BibleUtils.getText(fileName,
                                                    whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1)",
-                                                   lang: Translate.language) {
+                                                   lang: lang) {
                         if decorated {
                             text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
                                                             text: line["text"] as! String,
                                                             fontSize: fontSize,
-                                                            lang: Translate.language)
+                                                            lang: lang)
                         } else {
                             text += (line["text"] as! String) + " "
                         }
@@ -91,12 +99,12 @@ public class PericopeModel : BookModel {
                     for chap in range[0].0+1 ..< range[1].0 {
                         for line in BibleUtils.getText(fileName,
                                                        whereExpr: "chapter=\(chap)",
-                                                       lang: Translate.language) {
+                                                       lang: lang) {
                             if decorated {
                                 text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
                                                                 text: line["text"] as! String,
                                                                 fontSize: fontSize,
-                                                                lang: Translate.language)
+                                                                lang: lang)
                             } else {
                                 text += (line["text"] as! String) + " "
                             }
@@ -105,12 +113,12 @@ public class PericopeModel : BookModel {
                     
                     for line in BibleUtils.getText(fileName,
                                                    whereExpr: "chapter=\(range[1].0) AND verse<=\(range[1].1)",
-                                                   lang: Translate.language) {
+                                                   lang: lang) {
                         if decorated {
                             text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
                                                             text: line["text"] as! String,
                                                             fontSize: fontSize,
-                                                            lang: Translate.language)
+                                                            lang: lang)
                         } else {
                             text += (line["text"] as! String) + " "
                         }
@@ -119,12 +127,12 @@ public class PericopeModel : BookModel {
                 } else {
                     for line in BibleUtils.getText(fileName,
                                                    whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1) AND verse<=\(range[1].1)",
-                                                   lang: Translate.language) {
+                                                   lang: lang) {
                         if decorated {
                             text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
                                                             text: line["text"] as! String,
                                                             fontSize: fontSize,
-                                                            lang: Translate.language)
+                                                            lang: lang)
                         } else {
                             text += (line["text"] as! String) + " "
                         }
@@ -138,9 +146,7 @@ public class PericopeModel : BookModel {
         
         return result
     }
-    
-    public static let shared = PericopeModel()
-    
+        
     public func getSections() -> [String] {
         return []
     }
