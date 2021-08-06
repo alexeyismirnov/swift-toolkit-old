@@ -31,6 +31,8 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
         textView.attributedText = attributedText
         textView.font = font
         textView.setContentOffset(.zero, animated: false)
+        textView.scrollRangeToVisible(NSRange(location:0, length:0))
+
     }
     
     required init?(coder aDecoder: NSCoder) {
