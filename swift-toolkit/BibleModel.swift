@@ -66,12 +66,6 @@ public extension BibleModel where Self:BookModel {
         let prefs = AppGroup.prefs!
         let fontSize = prefs.integer(forKey: "fontSize")
         
-        let header = (name == "ps") ? Translate.s("Kathisma %@", lang: lang) : Translate.s("Chapter %@", lang: lang)
-        let title = String(format: header, Translate.stringFromNumber(chapter))
-            .colored(with: Theme.textColor).boldFont(ofSize: CGFloat(fontSize)).centered
-        
-        text += title + "\n\n"
-        
         for line in BibleUtils.getText(name, whereExpr: "chapter=\(chapter)", lang: lang) {
             let row  = BibleUtils.decorateLine(num: line["verse"] as! Int64,
                                                text: line["text"] as! String,
