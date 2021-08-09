@@ -84,7 +84,7 @@ public class OldTestamentModel : BookModel, BibleModel {
     public var lang: String
     
     public var code : String {
-        get { return "OldTestament-\(lang)" }
+        get { return lang == "ru" ?  "OldTestament" : "OldTestamentCS" }
     }
     
     public var title: String {
@@ -236,7 +236,7 @@ public class NewTestamentModel : BookModel, BibleModel {
     public var lang: String
     
     public var code : String {
-        get { return "NewTestament-\(lang)" }
+        get { return lang == "ru" ?  "NewTestament" : "NewTestamentCS" }
     }
     
     public var title: String {
