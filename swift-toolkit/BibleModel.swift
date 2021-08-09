@@ -83,7 +83,10 @@ public extension BibleModel where Self:BookModel {
 public class OldTestamentModel : BookModel, BibleModel {
     public var lang: String
     
-    public var code : String = "OldTestament"
+    public var code : String {
+        get { return "OldTestament-\(lang)" }
+    }
+    
     public var title: String {
         get { return Translate.s("Old Testament", lang: lang) }
     }
@@ -168,7 +171,7 @@ public class OldTestamentModel : BookModel, BibleModel {
     
     public func getBookmarkName(_ bookmark: String) -> String {
         let comp = bookmark.components(separatedBy: "_")
-        guard comp[0] == "OldTestament" else { return "" }
+        guard comp[0] == code else { return "" }
         
         let section = Int(comp[1])!
         let row = Int(comp[2])!
@@ -203,7 +206,7 @@ public class OldTestamentModel : BookModel, BibleModel {
     
     public func getBookmark(at pos: BookPosition) -> String? {
         guard let index = pos.index, let chapter = pos.chapter else { return "" }
-        return "OldTestament_\(index.section)_\(index.row)_\(chapter)"
+        return "\(code)_\(index.section)_\(index.row)_\(chapter)"
     }
     
     public func getNextSection(at pos: BookPosition) -> BookPosition? {
@@ -231,7 +234,10 @@ public class OldTestamentModel : BookModel, BibleModel {
 
 public class NewTestamentModel : BookModel, BibleModel {
     public var lang: String
-    public var code: String = "NewTestament"
+    
+    public var code : String {
+        get { return "NewTestament-\(lang)" }
+    }
     
     public var title: String {
         get { return Translate.s("New Testament", lang: lang) }
@@ -304,7 +310,7 @@ public class NewTestamentModel : BookModel, BibleModel {
     
     public func getBookmarkName(_ bookmark: String) -> String {
         let comp = bookmark.components(separatedBy: "_")
-        guard comp[0] == "NewTestament" else { return "" }
+        guard comp[0] == code else { return "" }
         
         let section = Int(comp[1])!
         let row = Int(comp[2])!
@@ -331,7 +337,7 @@ public class NewTestamentModel : BookModel, BibleModel {
     
     public func getBookmark(at pos: BookPosition) -> String? {
         guard let index = pos.index, let chapter = pos.chapter else { return "" }
-        return "NewTestament_\(index.section)_\(index.row)_\(chapter)"
+        return "\(code)_\(index.section)_\(index.row)_\(chapter)"
     }
     
     public func getNextSection(at pos: BookPosition) -> BookPosition? {
