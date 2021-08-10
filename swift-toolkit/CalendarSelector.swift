@@ -18,6 +18,14 @@ public extension Notification.Name {
 public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupContentViewController {
     public var tableView: UITableView!
     
+    let items = ["Today", "Weekly", "Monthly", "Yearly"]
+    
+    let notifications : [Notification.Name] = [
+        .todayCalendarNotification,
+        .weeklyCalendarNotification,
+        .monthlyCalendarNotification,
+        .yearlyCalendarNotification]
+
     public init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,8 +44,6 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        let notifications : [Notification.Name] = [.weeklyCalendarNotification, .monthlyCalendarNotification, .yearlyCalendarNotification]
-        
         NotificationCenter.default.post(name: notifications[indexPath.row],
                                         object: nil,
                                         userInfo: nil)
@@ -46,7 +52,7 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return items.count
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -54,9 +60,7 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let names = ["Today", "Weekly", "Monthly", "Yearly"]
-        
-        let cell = getTextDetailsCell(title: Translate.s(names[indexPath.row]), subtitle: "")
+        let cell = getTextDetailsCell(title: Translate.s(items[indexPath.row]), subtitle: "")
         cell.title.textColor = .black
         cell.title.textAlignment = .center
         
