@@ -86,6 +86,7 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
     }
     
     @objc func close() {
+        tabBarController?.tabBar.isHidden = false
         let _ = navigationController?.popViewController(animated: true)
     }
     
