@@ -9,6 +9,7 @@
 import UIKit
 
 public extension Notification.Name {
+    static let todayCalendarNotification = Notification.Name("SHOW_TODAY")
     static let weeklyCalendarNotification = Notification.Name("SHOW_WEEKLY")
     static let monthlyCalendarNotification = Notification.Name("SHOW_MONTHLY")
     static let yearlyCalendarNotification = Notification.Name("SHOW_YEARLY")
@@ -53,7 +54,7 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let names = ["Weekly", "Monthly", "Yearly"]
+        let names = ["Today", "Weekly", "Monthly", "Yearly"]
         
         let cell = getTextDetailsCell(title: Translate.s(names[indexPath.row]), subtitle: "")
         cell.title.textColor = .black
