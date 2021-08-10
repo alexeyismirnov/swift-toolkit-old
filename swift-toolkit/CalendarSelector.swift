@@ -72,7 +72,7 @@ public class CalendarSelector: UIViewController, ResizableTableViewCells, PopupC
     }
     
     public func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
-        return CGSize(width: 200, height: 220)
+        return CGSize(width: 200, height: 260)
     }
     
 }
