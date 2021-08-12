@@ -70,6 +70,9 @@ public class SaintIconCell : UITableViewCell, UICollectionViewDataSource, UIColl
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(saints[indexPath.row].name)
+        print(selectable)
+        
         if selectable {
             _ = UIAlertController(title: saints[indexPath.row].name,
                                          message: "",
