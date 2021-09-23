@@ -45,7 +45,7 @@ public class Translate: NSObject {
     
     static public func s(_ str : String, lang: String? = nil) -> String {
         let lang = lang ?? language
-        return dict[lang]![str] ?? str
+        return (lang == defaultLanguage) ? str : (dict[lang]![str] ?? str)
     }
     
     static public func stringFromNumber(_ num : Int) -> String {
