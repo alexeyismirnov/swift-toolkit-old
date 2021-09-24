@@ -84,7 +84,6 @@
 		8AA660DA22EEA1AE0021D996 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D622EEA1AE0021D996 /* FastingModel.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
 		8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */; };
-		8AA660DE22EEA5690021D996 /* Squeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA660DD22EEA5690021D996 /* Squeal.framework */; platformFilter = ios; };
 		8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660DF22EEA67F0021D996 /* SaintModel.swift */; };
 		8AA660E222EED0570021D996 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660E122EED0570021D996 /* AppGroup.swift */; };
 		8AB18EF01F86360300F1A65C /* swift_toolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB18EEE1F86360300F1A65C /* swift_toolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,7 +92,6 @@
 		8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381B1FB879D200CF0D02 /* PopupController.swift */; };
 		8AC338201FB879D300CF0D02 /* CalendarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */; };
 		8AC338211FB879D300CF0D02 /* MonthViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3381D1FB879D300CF0D02 /* MonthViewCell.swift */; };
-		8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6753E1FED05DB00A9000C /* Chameleon.framework */; platformFilter = ios; };
 		8AC675421FED06A900A9000C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC675411FED06A900A9000C /* Theme.swift */; };
 		8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3F9FE22EB04FB0051F27F /* food-fish.pdf */; };
 		8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3F9FF22EB04FB0051F27F /* food-fruits.pdf */; };
@@ -190,7 +188,6 @@
 		8AA660D622EEA1AE0021D996 /* FastingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar.swift; sourceTree = "<group>"; };
-		8AA660DD22EEA5690021D996 /* Squeal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Squeal.framework; path = Carthage/Build/iOS/Squeal.framework; sourceTree = "<group>"; };
 		8AA660DF22EEA67F0021D996 /* SaintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintModel.swift; sourceTree = "<group>"; };
 		8AA660E122EED0570021D996 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		8AB18EEB1F86360300F1A65C /* swift_toolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_toolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,8 +198,6 @@
 		8AC3381B1FB879D200CF0D02 /* PopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		8AC3381C1FB879D300CF0D02 /* CalendarContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarContainer.swift; sourceTree = "<group>"; };
 		8AC3381D1FB879D300CF0D02 /* MonthViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewCell.swift; sourceTree = "<group>"; };
-		8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = swift_toolkit.framework; path = Carthage/Build/iOS/swift_toolkit.framework; sourceTree = "<group>"; };
-		8AC6753E1FED05DB00A9000C /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		8AC675411FED06A900A9000C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8AE3F9FE22EB04FB0051F27F /* food-fish.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-fish.pdf"; sourceTree = "<group>"; };
 		8AE3F9FF22EB04FB0051F27F /* food-fruits.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "food-fruits.pdf"; sourceTree = "<group>"; };
@@ -227,8 +222,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A88FD852377FAB600E46116 /* NotificationCenter.framework in Frameworks */,
-				8AC6753F1FED05DB00A9000C /* Chameleon.framework in Frameworks */,
-				8AA660DE22EEA5690021D996 /* Squeal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,9 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				8A88FD842377FAB600E46116 /* NotificationCenter.framework */,
-				8AA660DD22EEA5690021D996 /* Squeal.framework */,
-				8AC6753E1FED05DB00A9000C /* Chameleon.framework */,
-				8AC6753C1FED05AE00A9000C /* swift_toolkit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -748,8 +738,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
+					/Users/alexey/workspace/prayerbook_eng/Carthage/Build/iOS,
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "swift-toolkit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -762,6 +752,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rlc.swift-toolkit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -780,8 +771,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
+					/Users/alexey/workspace/prayerbook_eng/Carthage/Build/iOS,
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "swift-toolkit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -794,6 +785,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rlc.swift-toolkit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

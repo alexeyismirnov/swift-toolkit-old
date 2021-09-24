@@ -48,7 +48,7 @@ public class Translate: NSObject {
         return (lang == defaultLanguage) ? str : (dict[lang]![str] ?? str)
     }
     
-    static public func stringFromNumber(_ num : Int) -> String {
+    static public func stringFromNumber(_ num : Int) -> String {        
         if language == defaultLanguage {
             return String(num)
 
