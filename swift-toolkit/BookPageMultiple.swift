@@ -9,8 +9,8 @@
 import UIKit
 
 protocol BookPageDelegate {
-    func hideBars() -> CGRect
-    func showBars() -> CGRect
+    func hideBars() -> (CGRect, UIEdgeInsets)
+    func showBars() -> (CGRect, UIEdgeInsets)
     func showComment(_ popup: UIViewController)
 }
 
@@ -287,16 +287,18 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
         navigationItem.rightBarButtonItems = [button_fontsize, button_add_bookmark]
     }
     
-    func hideBars() -> CGRect {
+    func hideBars() -> (CGRect, UIEdgeInsets) {
         navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setToolbarHidden(true, animated: true)
-        return getFullScreenFrame()
+        //navigationController?.setToolbarHidden(true, animated: true)
+        return (getFullScreenFrame(),
+                UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
     
-    func showBars() -> CGRect {
+    func showBars() -> (CGRect, UIEdgeInsets) {
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.setToolbarHidden(false, animated: true)
-        return getFullScreenFrame()
+        //navigationController?.setToolbarHidden(false, animated: true)
+        return (getFullScreenFrame(),
+                UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
 
     func showComment(_ popup: UIViewController) {

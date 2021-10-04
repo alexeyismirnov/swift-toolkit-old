@@ -105,14 +105,17 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
         showPopup(FontSizeViewController(), onClose: { _ in self.collectionView.reloadData() })
     }
     
-    func hideBars() -> CGRect {
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        return getFullScreenFrame()
+    func hideBars() -> (CGRect, UIEdgeInsets) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+
+        return (getFullScreenFrame(),
+                UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
     
-    func showBars() -> CGRect {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        return getFullScreenFrame()
+    func showBars() -> (CGRect, UIEdgeInsets) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        return (getFullScreenFrame(),
+                UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
 
     func showComment(_ popup: UIViewController) {

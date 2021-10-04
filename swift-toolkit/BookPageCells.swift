@@ -59,17 +59,23 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var newFrame: CGRect
+        var padding:UIEdgeInsets!
         
         if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
-            newFrame = delegate.hideBars()
+            (newFrame, padding) = delegate.hideBars()
             
         } else {
-            newFrame = delegate.showBars()
+            (newFrame, padding) = delegate.showBars()
+        }
+                
+        if (targetContentOffset.pointee.y == 0) {
+            padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.7,
                        animations: {
                         self.textView.frame = newFrame
+                        self.textView.textContainerInset = padding
                        })
     }
 }
@@ -136,7 +142,8 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
         webView.navigationDelegate = self
         webView.scrollView.delegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
-        
+        webView.scrollView.contentInsetAdjustmentBehavior = .never;
+
         contentView.addSubview(webView)
     }
     
@@ -165,17 +172,24 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var newFrame: CGRect
-        
+        var padding:UIEdgeInsets!
+
         if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
-            newFrame = delegate.hideBars()
-            
+            (newFrame, padding) = delegate.hideBars()
+
         } else {
-            newFrame = delegate.showBars()
+            (newFrame, padding) = delegate.showBars()
+        }
+                
+        if (targetContentOffset.pointee.y <= 0) {
+            padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            targetContentOffset.pointee.y = 0
         }
         
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.7,
                        animations: {
                         self.webView.frame = newFrame
+                        self.webView.scrollView.contentInset = padding
                        })
     }
 }
