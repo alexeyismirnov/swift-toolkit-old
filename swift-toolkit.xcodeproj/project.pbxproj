@@ -738,7 +738,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
-					/Users/alexey/workspace/prayerbook_ru/Carthage/Build/iOS,
+					/Users/alexey/workspace/prayerbook_eng/Carthage/Build/iOS,
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "swift-toolkit/Info.plist";
@@ -771,7 +771,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
-					/Users/alexey/workspace/prayerbook_ru/Carthage/Build/iOS,
+					/Users/alexey/workspace/prayerbook_eng/Carthage/Build/iOS,
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "swift-toolkit/Info.plist";
