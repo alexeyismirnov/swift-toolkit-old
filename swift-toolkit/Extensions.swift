@@ -316,7 +316,7 @@ public extension UIFont {
             self.init(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
             
         } else if lang == "cs" {
-            self.init(name: "PonomarUnicode", size: CGFloat(fontSize+2))!
+            self.init(name: "PonomarUnicode", size: CGFloat(fontSize+3))!
             
         } else {
             self.init(name: "HelveticaNeue", size: CGFloat(fontSize))!
