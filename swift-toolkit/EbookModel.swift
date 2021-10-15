@@ -12,6 +12,7 @@ import Squeal
 public class EbookModel : BookModel {
     public var code: String
     public var title: String
+    public var author: String?
     public var contentType: BookContentType
     
     public var hasChapters = false
@@ -33,6 +34,8 @@ public class EbookModel : BookModel {
         
         code = try! db.selectString("SELECT value FROM data WHERE key=$0", parameters: ["code"])!
         title = try! db.selectString("SELECT value FROM data WHERE key=$0", parameters: ["title"])!
+        author = try! db.selectString("SELECT value FROM data WHERE key=$0", parameters: ["author"])
+    
         contentType = BookContentType(rawValue:
                                         try! db.selectInt("SELECT value FROM data WHERE key=$0", parameters: ["contentType"])!)!
 

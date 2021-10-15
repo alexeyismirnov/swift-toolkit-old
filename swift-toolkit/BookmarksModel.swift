@@ -16,8 +16,8 @@ public class BookmarksModel : BookModel {
         get { return Translate.s("Bookmarks...") }
     }
     
+    public var author: String?
     public var contentType: BookContentType = .text
-
     public var hasChapters = false
 
     public var hasDate = false

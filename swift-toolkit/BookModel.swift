@@ -45,6 +45,8 @@ public protocol BookModel {
     var code : String { get }
     var contentType : BookContentType { get }
     var title: String { get }
+    var author: String? { get }
+
     var date : Date { get set }
     var lang : String { get set }
     

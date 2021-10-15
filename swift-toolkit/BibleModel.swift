@@ -91,6 +91,7 @@ public class OldTestamentModel : BookModel, BibleModel {
         get { return Translate.s("Old Testament", lang: lang) }
     }
     
+    public var author: String?
     public var contentType: BookContentType = .text
 
     public var hasChapters = true
@@ -243,6 +244,7 @@ public class NewTestamentModel : BookModel, BibleModel {
         get { return Translate.s("New Testament", lang: lang) }
     }
     
+    public var author: String?
     public var contentType: BookContentType = .text
 
     public var hasChapters = true

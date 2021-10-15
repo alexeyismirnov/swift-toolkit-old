@@ -67,10 +67,8 @@ public protocol ResizableTableViewCells : UITableViewDelegate, UITableViewDataSo
 
 public extension ResizableTableViewCells where Self: UIViewController {
     func createTableView(style: UITableView.Style, isPopup: Bool = false) {
-        automaticallyAdjustsScrollViewInsets = false
-        
         tableView = UITableView(frame: .zero, style: style)
-        
+        tableView.contentInsetAdjustmentBehavior = .never;
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
@@ -96,8 +94,10 @@ public extension ResizableTableViewCells where Self: UIViewController {
         return newCell
     }
     
-    func getTextDetailsCell(title: String, subtitle: String, lang: String = "en") -> TextDetailsCell {
+    func getTextDetailsCell(title: String, subtitle: String, lang: String = "en", flipped: Bool = false) -> TextDetailsCell {
         let newCell:TextDetailsCell = tableView.dequeueReusableCell()
+        
+        newCell.flipped = flipped
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
         
@@ -107,7 +107,7 @@ public extension ResizableTableViewCells where Self: UIViewController {
         let fontSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 20 : 22
         
         newCell.title.font = UIFont(lang: lang, fontSize: fontSize)
-        newCell.subtitle.font = UIFont(lang: lang, fontSize: fontSize)
+        newCell.subtitle.font = UIFont(lang: lang, fontSize: fontSize-3)
         
         newCell.title.text = title
         newCell.subtitle.text = subtitle

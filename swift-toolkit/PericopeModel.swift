@@ -13,6 +13,7 @@ public class PericopeModel : BookModel {
     
     public var code : String = "Pericope"
     public var title = ""
+    public var author: String?
     public var contentType: BookContentType = .text
 
     public var hasChapters = false
