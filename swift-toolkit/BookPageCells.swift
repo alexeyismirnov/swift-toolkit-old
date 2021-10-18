@@ -20,6 +20,7 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     var textView: UITextView!
     var delegate: BookPageDelegate!
     var font : UIFont!
+    var prevTrans = 1.0
     
     var attributedText : NSAttributedString! {
         didSet {
@@ -59,23 +60,39 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var newFrame: CGRect
-        var padding:UIEdgeInsets!
+        var containerInset = textView.textContainerInset
         
         if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+            var padding: UIEdgeInsets
+            
             (newFrame, padding) = delegate.hideBars()
             
+            if velocity.y == 0 && prevTrans > 0 {
+                containerInset.top += padding.top
+            }
+            
         } else {
-            (newFrame, padding) = delegate.showBars()
-        }
-                
-        if (targetContentOffset.pointee.y == 0) {
-            padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            (newFrame, _) = delegate.showBars()
         }
         
+        prevTrans = scrollView.panGestureRecognizer.translation(in: scrollView).y
+        
+        if (targetContentOffset.pointee.y == 0) {
+            containerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+                
         UIView.animate(withDuration: 0.7,
                        animations: {
-                        self.textView.frame = newFrame
-                        self.textView.textContainerInset = padding
+            self.textView.frame = newFrame
+            self.textView.textContainerInset = containerInset
+            
+            self.layoutIfNeeded()
+            self.contentView.layoutIfNeeded()
+            self.textView.layoutIfNeeded()
+            
+            self.layoutSubviews()
+            self.contentView.layoutSubviews()
+            self.textView.layoutSubviews()
                        })
     }
 }
@@ -172,24 +189,21 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var newFrame: CGRect
-        var padding:UIEdgeInsets!
 
         if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
-            (newFrame, padding) = delegate.hideBars()
+            (newFrame, _) = delegate.hideBars()
 
         } else {
-            (newFrame, padding) = delegate.showBars()
+            (newFrame, _) = delegate.showBars()
         }
                 
         if (targetContentOffset.pointee.y <= 0) {
-            padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             targetContentOffset.pointee.y = 0
         }
         
         UIView.animate(withDuration: 0.7,
                        animations: {
                         self.webView.frame = newFrame
-                        self.webView.scrollView.contentInset = padding
                        })
     }
 }

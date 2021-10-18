@@ -94,9 +94,12 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
                 } else {
                     expanded.insert(expandedRow)
                 }
-                
+
+                tableView.reloadData()
+                /*
                 tableView.beginUpdates()
                 tableView.endUpdates()
+                */
             }
             
         } else {
@@ -174,6 +177,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
                 cell.layoutIfNeeded()
                 
                 let layout = cell.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                
                 return layout.collectionViewContentSize.height
                 
             } else {
@@ -191,6 +195,14 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
         headerView.textLabel?.textColor = Theme.textColor
         headerView.contentView.backgroundColor = UIColor.clear
         headerView.backgroundView?.backgroundColor = UIColor.clear
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
     
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

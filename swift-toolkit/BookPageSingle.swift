@@ -106,16 +106,18 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
     }
     
     func hideBars() -> (CGRect, UIEdgeInsets) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
 
         return (getFullScreenFrame(),
                 UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
     
     func showBars() -> (CGRect, UIEdgeInsets) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         return (getFullScreenFrame(),
-                UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
+                UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+
+               // UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
 
     func showComment(_ popup: UIViewController) {

@@ -298,7 +298,9 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
         navigationController?.setNavigationBarHidden(false, animated: true)
         //navigationController?.setToolbarHidden(false, animated: true)
         return (getFullScreenFrame(),
-                UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
+                UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+
+                //UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
 
     func showComment(_ popup: UIViewController) {

@@ -28,21 +28,25 @@ public class BookmarksModel : BookModel {
     let prefs = AppGroup.prefs!
     public static let shared = BookmarksModel()
     
+    var bookmarks = [String]()
+    
     public func getSections() -> [String] {
         let bookmarks = prefs.stringArray(forKey: "bookmarks")!
         return (bookmarks.count == 0) ? [String]() : [""]
     }
     
     public func getItems(_ section: Int) -> [String] {
-        let bookmarks = prefs.stringArray(forKey: "bookmarks")!
-        
         var arr = [String]()
-        
-        for b in bookmarks {
+        bookmarks = [String]()
+       
+        for b in prefs.stringArray(forKey: "bookmarks")! {
             let comp = b.components(separatedBy: "_")
-            let model = BookmarksModel.books.filter() { $0.code == comp[0] }.first!
+            let model = BookmarksModel.books.filter() { $0.code == comp[0] }.first
             
-            arr.append(model.getBookmarkName(b))
+            if let model = model {
+                bookmarks.append(b)
+                arr.append(model.getBookmarkName(b))
+            }
         }
 
         return arr
@@ -53,7 +57,6 @@ public class BookmarksModel : BookModel {
     public func getComment(commentId: Int) -> String? { return nil }
     
     public func resolveBookmarkAt(row: Int) -> BookPosition {
-        let bookmarks = prefs.stringArray(forKey: "bookmarks")!
         let comp = bookmarks[row].components(separatedBy: "_")
         
         let model = BookmarksModel.books.filter() { $0.code == comp[0] }.first!
