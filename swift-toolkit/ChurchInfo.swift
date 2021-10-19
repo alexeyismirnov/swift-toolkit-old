@@ -55,9 +55,6 @@ public class ChurchInfo: UITableViewController {
         makeRoundedCorners(donationButton3)
         makeRoundedCorners(donationButtonOther)
         
-        donationButtonOther.setTitle(Translate.s("Any amount..."), for: .normal)
-        appButton.setTitle(Translate.s("Install app"), for: .normal)
-
         loadProducts()
         reload()
     }
@@ -140,7 +137,7 @@ public class ChurchInfo: UITableViewController {
     
     @objc func reload() {
         label1.textColor = Theme.textColor
-        label2.text = Translate.s("Orthodox Church in Hong Kong")
+        label1.text = Translate.s("Orthodox Church in Hong Kong")
 
         label2.textColor = Theme.textColor
         label2.text = Translate.s("church_info")
@@ -150,6 +147,20 @@ public class ChurchInfo: UITableViewController {
         
         label4.textColor = Theme.textColor
         label4.text = Translate.s("donation_info")
+        
+        donationButtonOther.setTitle(Translate.s("Any amount..."), for: .normal)
+        appButton.setTitle(Translate.s("Install app"), for: .normal)
+        
+        if products.count > 0 {
+            donationButton1.setTitle(String(format: Translate.s("Donate %@"), products[0].localizedPrice),
+                                          for: .normal)
+            
+            donationButton2.setTitle(String(format: Translate.s("Donate %@"), products[1].localizedPrice),
+                                          for: .normal)
+            
+            donationButton3.setTitle(String(format: Translate.s("Donate %@"), products[2].localizedPrice),
+                                          for: .normal)
+        }
         
         updateButtonStyle(appButton)
         updateButtonStyle(donationButton1)
