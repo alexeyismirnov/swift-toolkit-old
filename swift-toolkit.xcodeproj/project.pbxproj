@@ -49,6 +49,10 @@
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A3D824923696D6D00C118AA /* salami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3D824823696D6D00C118AA /* salami.pdf */; };
+		8A42D4B7271E801400AE8E13 /* ChurchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B3271E801400AE8E13 /* ChurchTab.swift */; };
+		8A42D4B8271E801400AE8E13 /* ChurchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */; };
+		8A42D4B9271E801400AE8E13 /* ChurchDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B5271E801400AE8E13 /* ChurchDonation.swift */; };
+		8A42D4BA271E801400AE8E13 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B6271E801400AE8E13 /* IAPHelper.swift */; };
 		8A4D008926A6D6E400E355B2 /* BookPageCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008526A6D6E300E355B2 /* BookPageCells.swift */; };
 		8A4D008A26A6D6E400E355B2 /* EbookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008626A6D6E400E355B2 /* EbookModel.swift */; };
 		8A4D008B26A6D6E400E355B2 /* BookPageSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */; };
@@ -153,6 +157,10 @@
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A3D824823696D6D00C118AA /* salami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = salami.pdf; sourceTree = "<group>"; };
+		8A42D4B3271E801400AE8E13 /* ChurchTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchTab.swift; sourceTree = "<group>"; };
+		8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchInfo.swift; sourceTree = "<group>"; };
+		8A42D4B5271E801400AE8E13 /* ChurchDonation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchDonation.swift; sourceTree = "<group>"; };
+		8A42D4B6271E801400AE8E13 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		8A4D008526A6D6E300E355B2 /* BookPageCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageCells.swift; sourceTree = "<group>"; };
 		8A4D008626A6D6E400E355B2 /* EbookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EbookModel.swift; sourceTree = "<group>"; };
 		8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageSingle.swift; sourceTree = "<group>"; };
@@ -350,6 +358,17 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		8A42D4B2271E7F9900AE8E13 /* ChurchTab */ = {
+			isa = PBXGroup;
+			children = (
+				8A42D4B5271E801400AE8E13 /* ChurchDonation.swift */,
+				8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */,
+				8A42D4B3271E801400AE8E13 /* ChurchTab.swift */,
+				8A42D4B6271E801400AE8E13 /* IAPHelper.swift */,
+			);
+			name = ChurchTab;
+			sourceTree = "<group>";
+		};
 		8A5D0852234750B7009D9F55 /* Year Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +412,7 @@
 		8AB18EED1F86360300F1A65C /* swift-toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				8A42D4B2271E7F9900AE8E13 /* ChurchTab */,
 				8A00A50A22F6DE540040F14C /* Calendar */,
 				8A161E1F23225A730067BE89 /* Calendar UI */,
 				8A5D0852234750B7009D9F55 /* Year Calendar */,
@@ -553,6 +573,7 @@
 				8A5D085823475433009D9F55 /* TopAlignedCollection.swift in Sources */,
 				8AC3381E1FB879D300CF0D02 /* CalendarDelegate.swift in Sources */,
 				8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */,
+				8A42D4B9271E801400AE8E13 /* ChurchDonation.swift in Sources */,
 				8A0EA8E3234B404E0029CFB4 /* FastingLegendTableView.swift in Sources */,
 				8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
@@ -562,6 +583,7 @@
 				8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */,
 				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
 				8A88FD7F2377F58000E46116 /* CompactViewController.swift in Sources */,
+				8A42D4B8271E801400AE8E13 /* ChurchInfo.swift in Sources */,
 				8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */,
 				8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
@@ -573,6 +595,7 @@
 				8A4D008E26A6D76300E355B2 /* BookUtils.swift in Sources */,
 				8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */,
 				8A19AE5F235171D7004A059B /* CenterViewFlowLayout.swift in Sources */,
+				8A42D4B7271E801400AE8E13 /* ChurchTab.swift in Sources */,
 				8A12C92423507D1B00F16694 /* FeastNotifications.swift in Sources */,
 				8AA660E222EED0570021D996 /* AppGroup.swift in Sources */,
 				8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */,
@@ -599,6 +622,7 @@
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
 				8A4D008926A6D6E400E355B2 /* BookPageCells.swift in Sources */,
 				8AFD017B23813E6500BE14D1 /* WeekCalendar.swift in Sources */,
+				8A42D4BA271E801400AE8E13 /* IAPHelper.swift in Sources */,
 				8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */,
 				8A86F7442333883800CFC905 /* ServiceDateSelector.swift in Sources */,
 				8A4D008C26A6D6E400E355B2 /* BookPageMultiple.swift in Sources */,
