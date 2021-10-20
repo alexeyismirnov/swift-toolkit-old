@@ -16,6 +16,7 @@ public class CalendarNavigation: UINavigationController, PopupContentViewControl
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.backgroundColor = UIColor(hex: "#FFEBCD")
         navigationBar.barTintColor = UIColor(hex: "#FFEBCD")
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         

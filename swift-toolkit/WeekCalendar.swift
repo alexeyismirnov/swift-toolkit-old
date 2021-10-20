@@ -43,9 +43,7 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
         super.viewDidLoad()
         
         setupNavbar()
-        
         createTableView(style: .grouped)
-        tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -62,11 +60,9 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
         navigationItem.leftBarButtonItem = backButton
         
         let button_info = UIBarButtonItem(image: UIImage(named: "help", in: toolkit), style: .plain, target: self, action: #selector(showInfo))
-        
         navigationItem.rightBarButtonItem = button_info
 
         navigationController?.makeTransparent()
-        automaticallyAdjustsScrollViewInsets = false
         
         if let bgColor = Theme.mainColor {
             view.backgroundColor =  bgColor
@@ -116,6 +112,22 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
             
             return cell
         }
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

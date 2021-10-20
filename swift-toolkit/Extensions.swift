@@ -619,8 +619,8 @@ public extension UIViewController {
 
         forView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         forView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        forView.topAnchor.constraint(equalTo: view.topAnchor, constant: (navigationController?.navigationBar.frame.height ?? 0.0) + UIApplication.shared.statusBarFrame.height).isActive = true
-        forView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController?.tabBar.frame.size.height ?? 0.0)).isActive = true
+        forView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
+        forView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0.0).isActive = true
     }
 }
 
@@ -654,7 +654,7 @@ public extension UIView {
     
     func fullScreen(view forView: UIView, marginX: CGFloat = 0.0, marginY: CGFloat = 0.0) {
         forView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         forView.leftAnchor.constraint(equalTo: leftAnchor, constant: marginX).isActive = true
         forView.rightAnchor.constraint(equalTo: rightAnchor, constant: -marginX).isActive = true
         forView.topAnchor.constraint(equalTo: topAnchor, constant: marginY).isActive = true

@@ -62,7 +62,7 @@ public class YearCalendarGrid: UIView, UICollectionViewDataSource, UICollectionV
     
     func setupGrid() {
         let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
-
+        
         backgroundColor = .clear
 
         let layout =  TopAlignedCollectionViewFlowLayout()
