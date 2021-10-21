@@ -89,6 +89,7 @@ public class ChurchInfo: UITableViewController {
         donationButton1.isHidden = true
         donationButton2.isHidden = true
         donationButton3.isHidden = true
+        donationButtonOther.isHidden = true
         
         products = []
         
