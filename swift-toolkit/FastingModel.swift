@@ -152,6 +152,8 @@ public struct FastingModel {
     }
     
     static func getFastingMonastic(_ date: Date) -> FastingModel {
+        let stNicholas = Date(19, 12, Cal.currentYear)
+        
         switch date {
         case Cal.d(.meetingOfLord):
             return meetingOfLord(date, monastic: true)
@@ -170,7 +172,7 @@ public struct FastingModel {
         case Cal.d(.nativityOfJohn),
              Cal.d(.transfiguration),
              Cal.d(.entryIntoTemple),
-             Cal.d(.stNicholas),
+             stNicholas,
              Cal.d(.palmSunday):
             return FastingModel(.fishAllowed)
             
@@ -227,10 +229,10 @@ public struct FastingModel {
         case Cal.d(.beginningOfDormitionFast) ... Cal.d(.dormition)-1.days:
             return monasticGreatLent()
             
-        case Cal.d(.beginningOfNativityFast) ..< Cal.d(.stNicholas):
+        case Cal.d(.beginningOfNativityFast) ..< stNicholas:
             return monasticApostolesFast()
             
-        case Cal.d(.stNicholas) ... Cal.d(.endOfYear):
+        case stNicholas ... Cal.d(.endOfYear):
             return (Cal.currentWeekday == .tuesday || Cal.currentWeekday == .thursday) ? FastingModel(.withOil) : monasticApostolesFast()
             
         default:
@@ -256,6 +258,8 @@ public struct FastingModel {
     }
     
     static func getFastingLaymen(_ date: Date) -> FastingModel {
+        let stNicholas = Date(19, 12, Cal.currentYear)
+
         switch date {
         case Cal.d(.meetingOfLord):
             return meetingOfLord(date, monastic: false)
@@ -273,7 +277,7 @@ public struct FastingModel {
         case Cal.d(.nativityOfJohn),
              Cal.d(.transfiguration),
              Cal.d(.entryIntoTemple),
-             Cal.d(.stNicholas),
+             stNicholas,
              Cal.d(.palmSunday):
             return FastingModel(.fishAllowed)
             
@@ -318,12 +322,12 @@ public struct FastingModel {
         case Cal.d(.beginningOfDormitionFast) ... Cal.d(.dormition)-1.days:
             return FastingModel(.vegetarian, "Dormition Fast")
             
-        case Cal.d(.beginningOfNativityFast) ..< Cal.d(.stNicholas):
+        case Cal.d(.beginningOfNativityFast) ..< stNicholas:
             return (Cal.currentWeekday == .monday ||
                 Cal.currentWeekday == .wednesday ||
                 Cal.currentWeekday == .friday) ? FastingModel(.vegetarian, "Nativity Fast") : FastingModel(.fishAllowed, "Nativity Fast")
             
-        case Cal.d(.stNicholas) ... Cal.d(.endOfYear):
+        case stNicholas ... Cal.d(.endOfYear):
             return (Cal.currentWeekday == .saturday ||
                 Cal.currentWeekday == .sunday) ? FastingModel(.fishAllowed, "Nativity Fast") : FastingModel(.vegetarian, "Nativity Fast")
             

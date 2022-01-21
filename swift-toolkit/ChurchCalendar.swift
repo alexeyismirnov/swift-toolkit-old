@@ -93,7 +93,7 @@ public struct ChurchCalendar {
         .saturdayBeforeNativity:    (.none, "Saturday before the Nativity of Christ"),
         .sundayBeforeNativity:      (.none, "Sunday before the Nativity of Christ, of the Fathers"),
         .saturdayAfterNativity:     (.none, "Saturday after the Nativity of Christ"),
-        .sundayAfterNativity:       (.none, "Sunday after Nativity"),
+        .sundayAfterNativity:       (.none, "Sunday after Nativity of Christ"),
         .josephBetrothed:           (.noSign, "Saints Joseph the Betrothed, David the King, and James the Brother of the Lord"),
         .saturdayBeforeTheophany:   (.none, "Saturday before Theophany"),
         .sundayBeforeTheophany:     (.none, "Sunday before Theophany"),
