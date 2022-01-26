@@ -32,12 +32,14 @@ func == (lhs: DateCache, rhs: DateCache) -> Bool {
 }
 
 public struct ChurchCalendar {
+    /*
     static var formatter: DateFormatter = {
         var formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
         return formatter
     }()
+     */
     
     static public var currentDate: Date!
     static public var currentYear: Int!
