@@ -81,7 +81,7 @@ public struct FastingModel {
     
     static public var fastingLevel: FastingLevel!
     
-    init(_ type: FastingType, _ descr: String? = nil) {
+    public init(_ type: FastingType, _ descr: String? = nil) {
         self.type = type
         self.color = FastingModel.fastingColor[type]!
         
