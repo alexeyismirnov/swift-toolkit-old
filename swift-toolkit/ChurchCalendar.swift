@@ -11,6 +11,10 @@ public enum NameOfDay: Int {
 
 public enum DayOfWeek: Int  {
     case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
+    
+    public init?(date: Date) {
+        self.init(rawValue: DateComponents(date: date).weekday!)
+    }
 }
 
 struct DateCache : Hashable {
