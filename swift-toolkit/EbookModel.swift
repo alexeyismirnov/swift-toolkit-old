@@ -9,7 +9,7 @@
 import UIKit
 import Squeal
 
-public class EbookModel : BookModel {
+open class EbookModel : BookModel {
     public var code: String
     public var title: String
     public var author: String?
