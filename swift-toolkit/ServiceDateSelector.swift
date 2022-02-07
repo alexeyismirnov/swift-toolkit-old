@@ -14,13 +14,13 @@ public extension Notification.Name {
 
 public class ServiceDateSelector: UIViewController, ResizableTableViewCells, PopupContentViewController {
     public var tableView: UITableView!
-    var model : BookModel
+    var model : ServiceModel
     var iterator: AnyIterator<Date>
     
     var dates = [Date]()
     var formatter = DateFormatter()
     
-    public init?(_ model: BookModel) {
+    public init?(_ model: ServiceModel) {
         self.model = model
         self.iterator = model.dateIterator(startDate: DateComponents(date: Date()).toDate())
         super.init(nibName: nil, bundle: nil)

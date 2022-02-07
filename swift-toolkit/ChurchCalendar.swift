@@ -3,6 +3,30 @@ import UIKit
 
 public enum FeastType: Int {
     case none=0, noSign, sixVerse, doxology, polyeleos, vigil, great
+    
+    static let tk = Bundle(identifier: "com.rlc.swift-toolkit")
+    static let size15 = CGSize(width: 15, height: 15)
+    
+    static let icon : [FeastType: UIImage] = [
+        .noSign: UIImage(named: "nosign", in: tk)!,
+        .sixVerse: UIImage(named: "sixverse", in: tk)!,
+        .doxology: UIImage(named: "doxology", in: tk)!,
+        .polyeleos: UIImage(named: "polyeleos", in: tk)!,
+        .vigil: UIImage(named: "vigil", in: tk)!,
+        .great: UIImage(named: "great", in: tk)!
+    ]
+    
+    static let icon15x15 : [FeastType: UIImage] = [
+        .noSign: UIImage(named: "nosign", in: tk)!.resize(size15),
+        .sixVerse: UIImage(named: "sixverse", in: tk)!.resize(size15),
+        .doxology: UIImage(named: "doxology", in: tk)!.resize(size15),
+        .polyeleos: UIImage(named: "polyeleos", in: tk)!.resize(size15),
+        .vigil: UIImage(named: "vigil", in: tk)!.resize(size15),
+        .great: UIImage(named: "great", in: tk)!.resize(size15)
+    ]
+    
+    public var icon15x15: UIImage { FeastType.icon15x15[self]! }
+    public var icon: UIImage { FeastType.icon[self]! }
 }
 
 public enum NameOfDay: Int {

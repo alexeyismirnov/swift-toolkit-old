@@ -17,9 +17,6 @@ public class PericopeModel : BookModel {
     public var contentType: BookContentType = .text
 
     public var hasChapters = false
-
-    public var hasDate = false
-    public var date: Date = Date()
     
     public init(lang: String) {
         self.lang = lang

@@ -47,11 +47,9 @@ public protocol BookModel {
     var title: String { get }
     var author: String? { get }
 
-    var date : Date { get set }
     var lang : String { get set }
     
     var hasChapters : Bool { get }
-    var hasDate : Bool { get }
     
     func getSections() -> [String]
     func getItems(_ section : Int) -> [String]
@@ -67,15 +65,9 @@ public protocol BookModel {
     
     func getBookmark(at pos: BookPosition) -> String?
     func getBookmarkName(_ bookmark : String) -> String
-    
-    func dateIterator(startDate: Date) -> AnyIterator<Date>
 }
 
 public extension BookModel {
-    func dateIterator(startDate: Date) -> AnyIterator<Date> {
-        return AnyIterator({ return nil })
-    }
-        
     func getNextSection(at pos: BookPosition) -> BookPosition? { return nil }
     func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
     
@@ -83,4 +75,15 @@ public extension BookModel {
 
     func getBookmark(at pos: BookPosition) -> String? { return nil }
     func getBookmarkName(_ bookmark : String) -> String { return "" }
+}
+
+public protocol ServiceModel: BookModel {
+    var date : Date { get set }
+    func dateIterator(startDate: Date) -> AnyIterator<Date>
+}
+
+public extension ServiceModel {
+    func dateIterator(startDate: Date) -> AnyIterator<Date> {
+        return AnyIterator({ return nil })
+    }
 }

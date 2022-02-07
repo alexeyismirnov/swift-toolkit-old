@@ -16,8 +16,6 @@ open class EbookModel : BookModel {
     public var contentType: BookContentType
     
     public var hasChapters = false
-    public var hasDate = false
-    public var date: Date = Date()
     public var lang = Translate.language
     
     var db : Database

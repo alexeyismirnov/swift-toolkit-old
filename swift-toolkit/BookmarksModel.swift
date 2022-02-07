@@ -19,9 +19,6 @@ public class BookmarksModel : BookModel {
     public var author: String?
     public var contentType: BookContentType = .text
     public var hasChapters = false
-
-    public var hasDate = false
-    public var date: Date = Date()
     
     public static var books = [BookModel]()
     

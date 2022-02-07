@@ -95,9 +95,6 @@ public class OldTestamentModel : BookModel, BibleModel {
     public var contentType: BookContentType = .text
 
     public var hasChapters = true
-    
-    public var hasDate = false
-    public var date: Date = Date()
 
     public static let data: [[(String, String)]] = [
         [
@@ -248,9 +245,6 @@ public class NewTestamentModel : BookModel, BibleModel {
     public var contentType: BookContentType = .text
 
     public var hasChapters = true
-
-    public var hasDate = false
-    public var date: Date = Date()
     
     public static let data: [[(String, String)]] = [
         [
