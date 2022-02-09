@@ -44,8 +44,8 @@ public class DayViewCell: LabelViewCell {
             title.font = UIFont.systemFont(ofSize: fontSize)
         }
         
-        let fasting = FastingModel.fasting(forDate: date)
-        
+        let fasting = ChurchFasting.forDate(date)
+                
         if let _ = Cal.getGreatFeast(date) {
             title.textColor = .red
             

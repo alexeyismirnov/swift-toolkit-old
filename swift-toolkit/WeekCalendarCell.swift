@@ -105,7 +105,7 @@ public class WeekCalendarCell : UITableViewCell {
     }
     
     func configureCell(date: Date, content: [(FeastType, String)], cellWidth: CGFloat, appeared: Bool) {
-        let fasting = FastingModel.fasting(forDate: date)
+        let fasting = ChurchFasting.forDate(date) 
         
         let textColor = Theme.textColor
         let fontSize = CGFloat(18)

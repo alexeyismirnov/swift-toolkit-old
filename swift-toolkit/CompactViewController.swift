@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import swift_toolkit
 
 class CompactViewController: UIViewController {
     var formatter: DateFormatter = {
@@ -97,7 +96,7 @@ class CompactViewController: UIViewController {
             result.append(s3)
         }
         
-        let fasting = FastingModel.fasting(forDate: currentDate)
+        let fasting = ChurchFasting.forDate(currentDate) 
         descr = ". " + fasting.descr
 
         let s4 = NSAttributedString(string: descr, attributes: [.font: fontItalic])
