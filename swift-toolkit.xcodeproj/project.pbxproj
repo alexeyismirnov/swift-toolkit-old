@@ -50,6 +50,7 @@
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A35609F27B3BC220096902C /* ChurchFasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35609E27B3BC220096902C /* ChurchFasting.swift */; };
 		8A3560A127B3BC5E0096902C /* ChurchCalendar2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A027B3BC5E0096902C /* ChurchCalendar2.swift */; };
+		8A3560A327B3BF910096902C /* ChurchReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A227B3BF910096902C /* ChurchReading.swift */; };
 		8A3D824923696D6D00C118AA /* salami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3D824823696D6D00C118AA /* salami.pdf */; };
 		8A42D4B7271E801400AE8E13 /* ChurchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B3271E801400AE8E13 /* ChurchTab.swift */; };
 		8A42D4B8271E801400AE8E13 /* ChurchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */; };
@@ -86,7 +87,6 @@
 		8A88FD802377F58000E46116 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */; };
 		8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */; };
 		8A88FD852377FAB600E46116 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A88FD842377FAB600E46116 /* NotificationCenter.framework */; platformFilter = ios; };
-		8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D522EEA1AE0021D996 /* DailyReading.swift */; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
 		8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */; };
 		8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660DF22EEA67F0021D996 /* SaintModel.swift */; };
@@ -159,6 +159,7 @@
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A35609E27B3BC220096902C /* ChurchFasting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchFasting.swift; sourceTree = "<group>"; };
 		8A3560A027B3BC5E0096902C /* ChurchCalendar2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar2.swift; sourceTree = "<group>"; };
+		8A3560A227B3BF910096902C /* ChurchReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchReading.swift; sourceTree = "<group>"; };
 		8A3D824823696D6D00C118AA /* salami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = salami.pdf; sourceTree = "<group>"; };
 		8A42D4B3271E801400AE8E13 /* ChurchTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchTab.swift; sourceTree = "<group>"; };
 		8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchInfo.swift; sourceTree = "<group>"; };
@@ -195,7 +196,6 @@
 		8A88FD7E2377F58000E46116 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
 		8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewController.swift; sourceTree = "<group>"; };
 		8A88FD842377FAB600E46116 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		8AA660D522EEA1AE0021D996 /* DailyReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReading.swift; sourceTree = "<group>"; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar.swift; sourceTree = "<group>"; };
 		8AA660DF22EEA67F0021D996 /* SaintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintModel.swift; sourceTree = "<group>"; };
@@ -241,11 +241,11 @@
 		8A00A50A22F6DE540040F14C /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				8A3560A227B3BF910096902C /* ChurchReading.swift */,
 				8A3560A027B3BC5E0096902C /* ChurchCalendar2.swift */,
 				8A35609E27B3BC220096902C /* ChurchFasting.swift */,
 				8A161E2A232263130067BE89 /* PericopeModel.swift */,
 				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
-				8AA660D522EEA1AE0021D996 /* DailyReading.swift */,
 				8A161E2423225C900067BE89 /* ReadingApostle.plist */,
 				8A161E2023225C8F0067BE89 /* ReadingJohn.plist */,
 				8A161E2223225C900067BE89 /* ReadingLent.plist */,
@@ -578,7 +578,6 @@
 				8A229D5922FD7C0F00CEA2DB /* BibleModel.swift in Sources */,
 				8A42D4B9271E801400AE8E13 /* ChurchDonation.swift in Sources */,
 				8A0EA8E3234B404E0029CFB4 /* FastingLegendTableView.swift in Sources */,
-				8AA660D922EEA1AE0021D996 /* DailyReading.swift in Sources */,
 				8AC3381F1FB879D300CF0D02 /* PopupController.swift in Sources */,
 				8A19AE60235171D7004A059B /* SaintIconView.swift in Sources */,
 				8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */,
@@ -614,6 +613,7 @@
 				8A5D085423475101009D9F55 /* YearCalendarGridTheme.swift in Sources */,
 				8AFF6641218EEC9100DDA40B /* TextDetailsCell.swift in Sources */,
 				8A19AE61235171D7004A059B /* SaintIconModel.swift in Sources */,
+				8A3560A327B3BF910096902C /* ChurchReading.swift in Sources */,
 				8A4D008A26A6D6E400E355B2 /* EbookModel.swift in Sources */,
 				8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */,
 				8A4D008B26A6D6E400E355B2 /* BookPageSingle.swift in Sources */,
