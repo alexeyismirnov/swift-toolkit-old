@@ -15,7 +15,7 @@ enum IconCodes: Int {
     theotokosWall=100105, theotokosSevenArrows=100106, theotokosTabynsk=100108
 }
 
-public struct Saint {
+public struct SaintIcon {
     public var id : Int
     public var name : String
     public var has_icon : Bool
@@ -34,8 +34,8 @@ public struct Saint {
 public struct SaintIconModel {
     static let db = try! Database(path:Bundle.main.path(forResource: "icons", ofType: "sqlite")!)
 
-    static func addSaints(date: Date) -> [Saint] {
-        var saints = [Saint]()
+    static func addSaints(date: Date) -> [SaintIcon] {
+        var saints = [SaintIcon]()
         
         let day = date.day
         let month = date.month
@@ -46,7 +46,7 @@ public struct SaintIconModel {
         for data in results {
             let id = Int(exactly: data["id"] as! Int64) ?? 0
             let has_icon = data["has_icon"] as! Int64 == 0 ? false : true
-            let saint = Saint(id: id, name: data["name"] as! String, has_icon: has_icon)
+            let saint = SaintIcon(id: id, name: data["name"] as! String, has_icon: has_icon)
             saints.append(saint)
         }
         
@@ -57,19 +57,19 @@ public struct SaintIconModel {
         for data in links {
             let id = Int(exactly: data["id"] as! Int64) ?? 0
             let has_icon = data["has_icon"] as! Int64 == 0 ? false : true
-            let saint = Saint(id: id, name: data["name"] as! String, has_icon: has_icon)
+            let saint = SaintIcon(id: id, name: data["name"] as! String, has_icon: has_icon)
             saints.append(saint)
         }
         
         return saints
     }
     
-    static public func get(_ date: Date) -> [Saint] {
-        var saints = [Saint]()
+    static public func get(_ date: Date) -> [SaintIcon] {
+        var saints = [SaintIcon]()
         let year = date.year
-
-        Cal.setDate(date)
-        let pascha = Cal.d(.pascha)
+        
+        let cal = Cal2.fromDate(date)
+        let pascha = cal.pascha
         
         let moveableIcons : [Date: [IconCodes]] = [
             pascha-7.days:      [.palmSunday],
@@ -91,19 +91,19 @@ public struct SaintIconModel {
                 
                 for data in results {
                     let has_icon = data["has_icon"] as! Int64 == 0 ? false : true
-                    let saint = Saint(id: code.rawValue, name: data["name"] as! String, has_icon: has_icon)
+                    let saint = SaintIcon(id: code.rawValue, name: data["name"] as! String, has_icon: has_icon)
                     saints.append(saint)
                 }
             }
         }
         
-        if Cal.isLeapYear {
+        if cal.isLeapYear {
             switch date {
-            case Cal.leapStart ..< Cal.leapEnd:
+            case cal.leapStart ..< cal.leapEnd:
                 saints += addSaints(date: date+1.days)
                 break
                 
-            case Cal.leapEnd:
+            case cal.leapEnd:
                 saints += addSaints(date: Date(29, 2, year))
                 break
                 
@@ -113,7 +113,7 @@ public struct SaintIconModel {
         } else {
             saints += addSaints(date: date)
             
-            if date == Cal.leapEnd {
+            if date == cal.leapEnd {
                 saints += addSaints(date: Date(29, 2, 2000))
             }
         }

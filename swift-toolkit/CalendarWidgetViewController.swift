@@ -12,16 +12,6 @@ import NotificationCenter
 open class CalendarWidgetViewController : UINavigationController, NCWidgetProviding {
     static let tk = Bundle(identifier: "com.rlc.swift-toolkit")
     
-    static let size15 = CGSize(width: 15, height: 15)
-    static let icon15x15 : [FeastType: UIImage] = [
-        .noSign: UIImage(named: "nosign", in: tk)!.resize(size15),
-        .sixVerse: UIImage(named: "sixverse", in: tk)!.resize(size15),
-        .doxology: UIImage(named: "doxology", in: tk)!.resize(size15),
-        .polyeleos: UIImage(named: "polyeleos", in: tk)!.resize(size15),
-        .vigil: UIImage(named: "vigil", in: tk)!.resize(size15),
-        .great: UIImage(named: "great", in: tk)!.resize(size15)
-    ]
-    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -66,21 +56,21 @@ open class CalendarWidgetViewController : UINavigationController, NCWidgetProvid
         completionHandler(NCUpdateResult.newData)
     }
     
-    static func describe(saints: [(FeastType, String)], font: UIFont!, dark: Bool) -> NSAttributedString {
+    static func describe(saints: [Saint], font: UIFont!, dark: Bool) -> NSAttributedString {
         let myString = NSMutableAttributedString(string: "")
         
-        if let _ = Cal.feastIcon[saints[0].0] {
+        if saints[0].type != .none  {
             let attachment = NSTextAttachment()
-            attachment.image = CalendarWidgetViewController.icon15x15[saints[0].0]
+            attachment.image = saints[0].type.icon15x15
             attachment.bounds = CGRect(x: 0.0, y: font.descender/2, width: attachment.image!.size.width, height: attachment.image!.size.height)
             
             myString.append(NSAttributedString(attachment: attachment))
         }
         
         var textColor:UIColor = dark ? .white : .black
-        if (saints[0].0 == .great) { textColor = .red }
+        if (saints[0].type == .great) { textColor = .red }
 
-        myString.append(NSMutableAttributedString(string: saints[0].1,
+        myString.append(NSMutableAttributedString(string: saints[0].name,
                                                   attributes: [
                                                     .foregroundColor: textColor,
                                                     .font: font! ]))

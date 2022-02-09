@@ -10,19 +10,20 @@ import Foundation
 import Squeal
 
 public struct SaintModel {
-    static public func saints(_ date: Date) -> [(FeastType, String)] {
-        var saints = [(FeastType, String)]()
+    static var databases = [String: Database]()
+    
+    static public func saints(_ date: Date) -> [Saint] {
+        var saints = [Saint]()
+        let cal = Cal2.fromDate(date)
         
-        Cal.setDate(date)
-        
-        if (Cal.isLeapYear) {
+        if (cal.isLeapYear) {
             switch date {
-            case Cal.leapStart ..< Cal.leapEnd:
+            case cal.leapStart ..< cal.leapEnd:
                 saints = saintsData(date+1.days)
                 break
                 
-            case Cal.leapEnd:
-                saints = saintsData(Date(29, 2, Cal.currentYear))
+            case cal.leapEnd:
+                saints = saintsData(Date(29, 2, cal.year))
                 break
                 
             default:
@@ -31,7 +32,7 @@ public struct SaintModel {
             
         } else {
             saints = saintsData(date)
-            if (date == Cal.leapEnd) {
+            if (date == cal.leapEnd) {
                 saints += saintsData(Date(29, 2, 2000))
             }
         }
@@ -39,20 +40,28 @@ public struct SaintModel {
         return saints
     }
     
-    private static func saintsData(_ date: Date) -> [(FeastType, String)] {
+    static func getDatabase(_ filename: String) -> Database {
+        let url = AppGroup.url.appendingPathComponent(filename)
+        let db = try! Database(path: url.path)
+
+        databases[filename] = db
+        return db
+    }
+    
+    private static func saintsData(_ date: Date) -> [Saint] {
+        var saints = [Saint]()
+        
         let dc = DateComponents(date: date)
+
         let filename = String(format: "saints_%02d_%@.sqlite", dc.month!, Translate.language)
-        
-        let dst = AppGroup.url.appendingPathComponent(filename)
-        let db = try! Database(path:dst.path)
-        
-        var saints = [(FeastType, String)]()
+        let db = databases[filename] ?? getDatabase(filename)
+
         let saintsDB = try! db.selectFrom("saints", whereExpr:"day=\(dc.day!)", orderBy: "-typikon") { ["name": $0["name"], "typikon": $0["typikon"]] }
         
         for line in saintsDB {
             let name = line["name"] as! String
             let typikon = FeastType(rawValue: Int(line["typikon"] as! Int64))
-            saints.append((typikon!, name))
+            saints.append(Saint(name,typikon!))
         }
         
         return saints

@@ -37,23 +37,17 @@ public class DayViewCell: LabelViewCell {
         guard let date = date else { title.text = ""; return }
         
         title.text = String(format: "%d", date.day)
-        
-        if let _ = Cal.getGreatFeast(date) {
+        let fasting = ChurchFasting.forDate(date)
+
+        if !Cal2.getGreatFeast(date).isEmpty {
             title.font = UIFont.boldSystemFont(ofSize: fontSize)
+            title.textColor = .red
+
         } else {
             title.font = UIFont.systemFont(ofSize: fontSize)
-        }
-        
-        let fasting = ChurchFasting.forDate(date)
-                
-        if let _ = Cal.getGreatFeast(date) {
-            title.textColor = .red
-            
-        } else if fasting.type == .noFast || fasting.type == .noFastMonastic {
-            title.textColor = textColor
-            
-        } else {
-            title.textColor = .black
+            title.textColor = (fasting.type == .noFast || fasting.type == .noFastMonastic)
+                ? textColor
+                : .black
         }
         
         contentView.backgroundColor = fasting.color

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import swift_toolkit
 
 class ExpandedViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
@@ -16,9 +15,12 @@ class ExpandedViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saintsLabel: UILabel!
     
-    var currentDate: Date = {
-        return DateComponents(date: Date()).toDate()
-    }()
+    var cal: Cal2!
+    var currentDate: Date!  {
+        didSet {
+            cal = Cal2.fromDate(currentDate)
+        }
+    }
     
     var selectedDate: Date!
     
@@ -44,6 +46,8 @@ class ExpandedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentDate = DateComponents(date: Date()).toDate()
         
         if #available(iOS 12.0, *)  {
             dark = (traitCollection.userInterfaceStyle == .dark)
@@ -113,8 +117,8 @@ class ExpandedViewController: UIViewController {
     func showSaints() {
         let date = selectedDate!
         let saints = SaintModel.saints(date)
-        let dayDescription = Cal.getDayDescription(date)
-        let feasts = (saints+dayDescription).sorted { $0.0.rawValue > $1.0.rawValue }
+        let dayDescription = cal.getDayDescription(date)
+        let feasts = (saints+dayDescription).sorted { $0.type.rawValue > $1.type.rawValue }
         
         saintsLabel.attributedText = CalendarWidgetViewController.describe(saints: feasts, font: saintsLabel.font, dark: dark)
     }

@@ -300,9 +300,9 @@ public class ChurchFasting {
         default:
             if (weekday == .monday || weekday == .wednesday || weekday == .friday) {
                 let saints = SaintModel.saints(date)
-                let maxSaint = saints.max { $0.0.rawValue < $1.0.rawValue }!
+                let maxSaint = saints.max { $0.type.rawValue < $1.type.rawValue }!
                 
-                switch maxSaint.0 {
+                switch maxSaint.type {
                 case .vigil:
                     return FastingModel(.fishAllowed)
                     

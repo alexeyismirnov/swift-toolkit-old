@@ -23,9 +23,12 @@ class CompactViewController: UIViewController {
         return formatter
     }()
 
-    var currentDate: Date = {
-        return DateComponents(date: Date()).toDate()
-    }()
+    var cal: Cal2!
+    var currentDate: Date!  {
+        didSet {
+            cal = Cal2.fromDate(currentDate)
+        }
+    }
     
     var dark = false
     
@@ -35,6 +38,8 @@ class CompactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentDate = DateComponents(date: Date()).toDate()
         
         if #available(iOS 12.0, *) {
             dark = (traitCollection.userInterfaceStyle == .dark)
@@ -84,13 +89,13 @@ class CompactViewController: UIViewController {
         let s1 = NSAttributedString(string: descr, attributes: [.font: fontBold])
         result.append(s1)
 
-        if let weekDescription = Cal.getWeekDescription(currentDate) {
+        if let weekDescription = cal.getWeekDescription(currentDate) {
             descr = weekDescription
             let s2 = NSAttributedString(string: descr, attributes: [.font: fontRegular])
             result.append(s2)
         }
         
-        if let toneDescription = Cal.getToneDescription(currentDate) {
+        if let toneDescription = cal.getToneDescription(currentDate) {
             descr = "; " + toneDescription
             let s3 = NSAttributedString(string: descr, attributes: [.font: fontRegular])
             result.append(s3)
@@ -103,8 +108,8 @@ class CompactViewController: UIViewController {
         result.append(s4)
         
         let saints = SaintModel.saints(currentDate)
-        let day = Cal.getDayDescription(currentDate)
-        let feasts = (saints+day).sorted { $0.0.rawValue > $1.0.rawValue }
+        let day = cal.getDayDescription(currentDate)
+        let feasts = (saints+day).sorted { $0.type.rawValue > $1.type.rawValue }
         
         result.append(NSAttributedString(string: "\n"))
         result.append(CalendarWidgetViewController.describe(saints: feasts, font: fontRegular, dark: dark))

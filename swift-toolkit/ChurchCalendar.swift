@@ -1,6 +1,7 @@
 
 import UIKit
 
+/*
 public enum FeastType: Int {
     case none=0, noSign, sixVerse, doxology, polyeleos, vigil, great
     
@@ -28,17 +29,19 @@ public enum FeastType: Int {
     public var icon15x15: UIImage { FeastType.icon15x15[self]! }
     public var icon: UIImage { FeastType.icon[self]! }
 }
+ 
+ public enum DayOfWeek: Int  {
+     case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
+     
+     public init?(date: Date) {
+         self.init(rawValue: DateComponents(date: date).weekday!)
+     }
+ }
+ 
+*/
 
 public enum NameOfDay: Int {
     case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostlesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, holyFathersSeventhCouncil, allRussianSaints,  synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
-}
-
-public enum DayOfWeek: Int  {
-    case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
-    
-    public init?(date: Date) {
-        self.init(rawValue: DateComponents(date: date).weekday!)
-    }
 }
 
 struct DateCache : Hashable {

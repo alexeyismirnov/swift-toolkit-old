@@ -104,7 +104,7 @@ public class WeekCalendarCell : UITableViewCell {
         return regex.stringByReplacingMatches(in: string1, options: [], range: NSRange(location: 0, length: string1.count), withTemplate: "")
     }
     
-    func configureCell(date: Date, content: [(FeastType, String)], cellWidth: CGFloat, appeared: Bool) {
+    func configureCell(date: Date, content: [ChurchDay], cellWidth: CGFloat, appeared: Bool) {
         let fasting = ChurchFasting.forDate(date) 
         
         let textColor = Theme.textColor
@@ -113,10 +113,10 @@ public class WeekCalendarCell : UITableViewCell {
         subtitle.text = ""
         dateLabel.text = formatter.string(from: date)
         
-        if let _ = Cal.getGreatFeast(date) {
+        if !Cal2.getGreatFeast(date).isEmpty {
             dateLabel.font = UIFont.boldSystemFont(ofSize: fontSize)
             dateLabel.textColor = .red
-            title.textColor = .red
+            title.textColor = textColor
             
         } else {
             dateLabel.font = UIFont.systemFont(ofSize: fontSize)
@@ -128,7 +128,7 @@ public class WeekCalendarCell : UITableViewCell {
         
         if (!appeared) { return }
                 
-        title.text = removeDates(content[0].1)
+        title.text = removeDates(content[0].name)
         
         bounds = CGRect(x: 0, y: 0, width: cellWidth, height: bounds.height)
         setNeedsLayout()
@@ -138,7 +138,7 @@ public class WeekCalendarCell : UITableViewCell {
         
         if size.height < dateLabelHeight && content.count > 1  {
             subtitle.numberOfLines = 2
-            subtitle.text = removeDates(content[1].1)
+            subtitle.text = removeDates(content[1].name)
         }
     }
     

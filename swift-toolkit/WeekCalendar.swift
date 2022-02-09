@@ -13,11 +13,9 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
     let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
     var appeared = false
 
-    public var currentDate: Date = {
-        // this is done to remove time component from date
-        return DateComponents(date: Date()).toDate()
-    }()
-    
+    public var currentDate: Date
+    var cal: Cal2!
+
     override public func viewControllerCurrent() -> UIViewController {
         return WeekCalendar(currentDate)
     }
@@ -32,6 +30,8 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
     
     public init(_ date: Date) {
         self.currentDate = date
+        self.cal = Cal2.fromDate(date)
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -90,8 +90,8 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let title = Cal.getWeekDescription(currentDate)
-            let subtitle = Cal.getToneDescription(currentDate)
+            let title = cal.getWeekDescription(currentDate)
+            let subtitle = cal.getToneDescription(currentDate)
             
             return getTextDetailsCell(title: title ?? "", subtitle: subtitle ?? "")
             
@@ -99,12 +99,13 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
             let date = currentDate + (indexPath.row).days
             let cell: WeekCalendarCell = tableView.dequeueReusableCell()
             
-            var content = [(FeastType, String)]()
+            var content = [ChurchDay]()
             
             if (appeared) {
-                content.append(contentsOf:
-                    Cal.getDayDescription(date).filter({ !$0.1.contains(Translate.s("Forefeast")) && !$0.1.contains(Translate.s("Afterfeast")) }))
+                let dayDescription = cal.getDayDescription(date)
+                    .filter({ !$0.name.contains(Translate.s("forefeast")) && !$0.name.contains(Translate.s("afterfeast")) })
                 
+                content.append(contentsOf: dayDescription)
                 content.append(contentsOf: SaintModel.saints(date))
             }
             

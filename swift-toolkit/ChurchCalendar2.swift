@@ -8,15 +8,55 @@
 
 import Foundation
 
+public enum FeastType: Int {
+    case none=0, noSign, sixVerse, doxology, polyeleos, vigil, great
+    
+    static let tk = Bundle(identifier: "com.rlc.swift-toolkit")
+    static let size15 = CGSize(width: 15, height: 15)
+    
+    static let icon : [FeastType: UIImage] = [
+        .noSign: UIImage(named: "nosign", in: tk)!,
+        .sixVerse: UIImage(named: "sixverse", in: tk)!,
+        .doxology: UIImage(named: "doxology", in: tk)!,
+        .polyeleos: UIImage(named: "polyeleos", in: tk)!,
+        .vigil: UIImage(named: "vigil", in: tk)!,
+        .great: UIImage(named: "great", in: tk)!
+    ]
+    
+    static let icon15x15 : [FeastType: UIImage] = [
+        .noSign: UIImage(named: "nosign", in: tk)!.resize(size15),
+        .sixVerse: UIImage(named: "sixverse", in: tk)!.resize(size15),
+        .doxology: UIImage(named: "doxology", in: tk)!.resize(size15),
+        .polyeleos: UIImage(named: "polyeleos", in: tk)!.resize(size15),
+        .vigil: UIImage(named: "vigil", in: tk)!.resize(size15),
+        .great: UIImage(named: "great", in: tk)!.resize(size15)
+    ]
+    
+    public var icon15x15: UIImage { FeastType.icon15x15[self]! }
+    public var icon: UIImage { FeastType.icon[self]! }
+}
+
+public enum DayOfWeek: Int  {
+    case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
+    
+    public init?(date: Date) {
+        self.init(rawValue: DateComponents(date: date).weekday!)
+    }
+}
+
 public class ChurchDay : Hashable, Equatable  {
-    public var name : String
+    var _name : String
+    public var name : String {
+        get { Translate.s(_name) }
+    }
+    
     public var type : FeastType
     public var date: Date?
     public var reading : String
     public var comment: String
     
     init(_ name: String = "", _ type: FeastType = .none, date: Date? = nil, reading: String = "", comment: String = "") {
-        self.name = name
+        self._name = name
         self.type = type
         self.date = date
         self.reading = reading
@@ -24,13 +64,13 @@ public class ChurchDay : Hashable, Equatable  {
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
+        hasher.combine(_name)
         hasher.combine(type)
         hasher.combine(reading)
     }
     
     public static func == (lhs: ChurchDay, rhs: ChurchDay) -> Bool {
-        lhs.name == rhs.name &&
+        lhs._name == rhs._name &&
         lhs.type == rhs.type &&
         lhs.date == rhs.date &&
         lhs.reading == rhs.reading
@@ -493,7 +533,7 @@ public class ChurchCalendar2 {
     }
     
     public func day(_ name: String) -> ChurchDay {
-        days.filter() { $0.name == name }.first!
+        days.filter() { $0._name == name }.first!
     }
     
 }
@@ -554,7 +594,7 @@ public extension ChurchCalendar2 {
     
     func getDayDescription(_ date: Date) -> [ChurchDay] {
         days
-            .filter({ $0.date == date && $0.name.count > 0 })
+            .filter({ $0.date == date && $0._name.count > 0 })
             .sorted { $0.type.rawValue < $1.type.rawValue }
     }
     
@@ -637,3 +677,4 @@ public extension ChurchCalendar2 {
 }
 
 public typealias Cal2 = ChurchCalendar2
+public typealias Saint = ChurchDay

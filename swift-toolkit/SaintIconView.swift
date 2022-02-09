@@ -9,7 +9,7 @@
 import UIKit
 
 public class SaintIconCell : UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate  {
-    public var saints = [Saint]()  {
+    public var saints = [SaintIcon]()  {
         didSet {
             collectionView.reloadData()
         }
