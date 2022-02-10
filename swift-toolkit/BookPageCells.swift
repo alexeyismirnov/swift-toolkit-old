@@ -58,6 +58,29 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
     }
     
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= 0 {
+            var newFrame: CGRect
+            let containerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+            (newFrame, _) = delegate.showBars()
+
+            UIView.animate(withDuration: 0.7,
+                           animations: {
+                self.textView.frame = newFrame
+                self.textView.textContainerInset = containerInset
+                
+                self.layoutIfNeeded()
+                self.contentView.layoutIfNeeded()
+                self.textView.layoutIfNeeded()
+                
+                self.layoutSubviews()
+                self.contentView.layoutSubviews()
+                self.textView.layoutSubviews()
+            })
+        }
+    }
+        
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var newFrame: CGRect
         var containerInset = textView.textContainerInset
@@ -76,7 +99,7 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
         }
         
         prevTrans = scrollView.panGestureRecognizer.translation(in: scrollView).y
-        
+                
         if (targetContentOffset.pointee.y == 0) {
             containerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -93,7 +116,7 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
             self.layoutSubviews()
             self.contentView.layoutSubviews()
             self.textView.layoutSubviews()
-                       })
+        })
     }
 }
 
@@ -204,7 +227,7 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
         UIView.animate(withDuration: 0.7,
                        animations: {
                         self.webView.frame = newFrame
-                       })
+        })
     }
 }
 
