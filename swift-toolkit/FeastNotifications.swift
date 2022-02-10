@@ -40,11 +40,10 @@ open class FeastNotifications {
     open class func setupNotifications() {
         let prefs = AppGroup.prefs!
 
-        FeastList.sharing = false
-        FeastList.setDate(Date())
-        
-        let year = Cal.currentYear!
-        
+        let year = Calendar.current.component(.year, from: Date())
+        let fl = FeastList.from(year)
+        let cal = Cal2.fromDate(Date(1, 1, year))
+                
         if prefs.bool(forKey: "notifications_\(year)") {
             return
         }
@@ -57,32 +56,32 @@ open class FeastNotifications {
             if granted {
                 center.removeAllPendingNotificationRequests()
                 
-                for (date, descr) in FeastList.longFasts {
+                for (date, descr) in fl.longFasts {
                     addNotification(date: date, title: "", body: descr.string)
                 }
                 
-                for (date, descr) in FeastList.shortFasts {
-                    addNotification(date: date, title:  Translate.s("Fast day"), body: descr.string)
+                for (date, descr) in fl.shortFasts {
+                    addNotification(date: date, title: Translate.s("fast_day"), body: descr.string)
                 }
                 
-                for (date, descr) in FeastList.fastFreeWeeks {
-                    addNotification(date: date, title: Translate.s("Fast-free week"), body: descr.string)
+                for (date, descr) in fl.fastFreeWeeks {
+                    addNotification(date: date, title: Translate.s("fast_free"), body: descr.string)
                 }
                  
-                for (date, descr) in FeastList.movableFeasts {
+                for (date, descr) in fl.movableFeasts {
                     addNotification(date: date, title: "", body: descr.string)
                 }
                 
-                for (date, descr) in FeastList.nonMovableFeasts {
-                    if (date == Cal.d(.exaltationOfCross)) {
+                for (date, descr) in fl.nonMovableFeasts {
+                    if (date == cal.d("exaltationOfCross")) {
                         // print("cross")
                     } else {
                         addNotification(date: date, title: "", body: descr.string)
                     }
                 }
                 
-                for (date, descr) in FeastList.greatFeasts {
-                    if (date == Cal.d(.beheadingOfJohn)) {
+                for (date, descr) in fl.greatFeasts {
+                    if (date == cal.d("beheadingOfJohn")) {
                         // print("beheading")
                     } else {
                         addNotification(date: date, title: "", body: descr.string)

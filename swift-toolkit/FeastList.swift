@@ -8,8 +8,8 @@
 
 import Foundation
 
-public struct FeastList {
-    static var formatter1: DateFormatter { get {
+public class FeastList {
+    var formatter1: DateFormatter { get {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         switch Translate.language {
@@ -28,7 +28,7 @@ public struct FeastList {
         }
     }
     
-    static var formatter2: DateFormatter { get {
+    var formatter2: DateFormatter { get {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         switch Translate.language {
@@ -47,32 +47,43 @@ public struct FeastList {
         }
     }
     
-    public static var sharing: Bool {
-        set { textFontSize = newValue ? CGFloat(12) : CGFloat(16)
-            textFontColor = newValue ? UIColor.black :Theme.textColor
-        }
-        get { return false }
+    public var sharing: Bool = false {
+        didSet { update() }
     }
     
-    public static var textFontSize : CGFloat!
-    public static var textFontColor : UIColor!
+    public var textFontSize : CGFloat!
+    public var textFontColor : UIColor!
     
-    public static var longFasts : [Date: NSAttributedString]!
-    public static var shortFasts : [Date: NSAttributedString]!
-    public static var fastFreeWeeks : [Date: NSAttributedString]!
-    public static var movableFeasts : [Date: NSAttributedString]!
-    public static var nonMovableFeasts : [Date: NSAttributedString]!
-    public static var greatFeasts : [Date: NSAttributedString]!
-    public static var remembrance : [Date: NSAttributedString]!
+    public var longFasts : [Date: NSAttributedString]!
+    public var shortFasts : [Date: NSAttributedString]!
+    public var fastFreeWeeks : [Date: NSAttributedString]!
+    public var movableFeasts : [Date: NSAttributedString]!
+    public var nonMovableFeasts : [Date: NSAttributedString]!
+    public var greatFeasts : [Date: NSAttributedString]!
+    public var remembrance : [Date: NSAttributedString]!
     
-    public static func makeFeastStr(code: NameOfDay, color: UIColor? = nil) -> NSAttributedString  {
-        let dateStr = formatter1.string(from: Cal.d(code)).capitalizingFirstLetter()
-        let feastStr = Translate.s(Cal.codeFeastDescr[code]!.1)
+    var year: Int
+    var cal: Cal2
+    
+    static var lists = [Int:FeastList]()
+    
+    static public func from(_ year: Int) -> FeastList {
+        if lists[year] == nil {
+            lists[year] = FeastList(year)
+        }
+        
+        return lists[year]!
+    }
+    
+    func makeFeastStr(code: String, color: UIColor? = nil) -> NSAttributedString  {
+        let day = cal.day(code)
+        let dateStr = formatter1.string(from: day.date!).capitalizingFirstLetter()
+        let feastStr = day.name
         
         return "\(dateStr) — \(feastStr)\n\n".colored(with: color ?? textFontColor).systemFont(ofSize: textFontSize)
     }
     
-    public static func makeLentStr(fromDate: Date, toDate: Date, descr : String) -> NSAttributedString  {
+    func makeIntervalStr(fromDate: Date, toDate: Date, descr : String) -> NSAttributedString  {
         let d1 = formatter2.string(from: fromDate)
         let d2 = formatter2.string(from: toDate)
         
@@ -81,71 +92,75 @@ public struct FeastList {
             .systemFont(ofSize: textFontSize)
     }
     
-    public static func setDate(_ date: Date) {
-        Cal.setDate(Date(1, 1, date.year))
+    init(_ year: Int) {
+        self.year = year
+        self.cal = Cal2.fromDate(Date(1, 1, year))
         
-        longFasts = [
-            Cal.d(.beginningOfGreatLent) : makeLentStr(fromDate: Cal.d(.beginningOfGreatLent),
-                                                       toDate: Cal.d(.beginningOfGreatLent) + 47.days,
-                                                       descr: Translate.s("Great Lent")),
-            
-            Cal.d(.beginningOfApostlesFast) : makeLentStr(fromDate: Cal.d(.beginningOfApostlesFast),
-                                                           toDate: Cal.d(.peterAndPaul) - 1.days,
-                                                           descr: Translate.s("Apostoles' Fast")),
-            
-            Cal.d(.beginningOfDormitionFast) : makeLentStr(fromDate: Cal.d(.beginningOfDormitionFast),
-                                                           toDate: Cal.d(.dormition) - 1.days,
-                                                           descr: Translate.s("Dormition Fast")),
-            
-            Cal.d(.beginningOfNativityFast) : makeLentStr(fromDate: Cal.d(.beginningOfNativityFast),
-                                                          toDate: Cal.d(.nativityOfGod) - 1.days,
-                                                          descr: Translate.s("Nativity Fast"))]
-        
-        shortFasts = [Cal.d(.eveOfTheophany) :  makeFeastStr(code: .eveOfTheophany),
-                      Cal.d(.beheadingOfJohn) :  makeFeastStr(code: .beheadingOfJohn),
-                      Cal.d(.exaltationOfCross) :  makeFeastStr(code: .exaltationOfCross)]
-        
-        fastFreeWeeks = [
-            Cal.d(.nativityOfGod) : makeLentStr(fromDate: Cal.d(.nativityOfGod),
-                                                toDate: Cal.d(.eveOfTheophany) - 1.days,
-                                                descr: Translate.s("Svyatki")),
-            
-            Cal.d(.sundayOfPublicianAndPharisee)+1.days : makeLentStr(fromDate: Cal.d(.sundayOfPublicianAndPharisee)+1.days,
-                                                                      toDate: Cal.d(.sundayOfProdigalSon),
-                                                                      descr: Translate.s("Week of the Publican and the Pharisee")),
-            
-            Cal.d(.sundayOfDreadJudgement)+1.days : makeLentStr(fromDate: Cal.d(.sundayOfDreadJudgement)+1.days,
-                                                                toDate: Cal.d(.beginningOfGreatLent)-1.days,
-                                                                descr: Translate.s("Maslenitsa")),
-            
-            Cal.d(.pascha)+1.days : makeLentStr(fromDate: Cal.d(.pascha)+1.days,
-                                                toDate: Cal.d(.pascha)+7.days,
-                                                descr: Translate.s("Bright Week")),
-            
-            Cal.d(.pentecost)+1.days : makeLentStr(fromDate: Cal.d(.pentecost)+1.days,
-                                                   toDate: Cal.d(.pentecost)+7.days,
-                                                   descr: Translate.s("Trinity Week"))]
-        
-        movableFeasts = Dictionary(uniqueKeysWithValues:
-            [.palmSunday, .ascension, .pentecost].map{ (Cal.d($0), makeFeastStr(code: $0)) })
-        
-        nonMovableFeasts = Dictionary(uniqueKeysWithValues:
-            [.nativityOfGod, .theophany, .meetingOfLord, .annunciation, .transfiguration, .dormition,
-            .nativityOfTheotokos, .exaltationOfCross, .entryIntoTemple].map{ (Cal.d($0), makeFeastStr(code: $0)) })
-
-        greatFeasts = Dictionary(uniqueKeysWithValues:
-            [.circumcision, .nativityOfJohn, .peterAndPaul, .beheadingOfJohn, .veilOfTheotokos].map{ (Cal.d($0), makeFeastStr(code: $0)) })
-        
-        remembrance = [Cal.d(.newMartyrsConfessorsOfRussia): makeFeastStr(code: .newMartyrsConfessorsOfRussia),
-                       Cal.d(.saturdayOfDeparted): makeFeastStr(code: .saturdayOfDeparted),
-                       Cal.d(.radonitsa): makeFeastStr(code: .radonitsa),
-                       Cal.d(.killedInAction): makeFeastStr(code: .killedInAction),
-                       Cal.d(.saturdayTrinity): makeFeastStr(code: .saturdayTrinity),
-                       Cal.d(.demetriusSaturday):makeFeastStr(code: .demetriusSaturday)
-        ]
+        update()
     }
     
-    
-}
+    func update() {
+        textFontSize = sharing ? CGFloat(12) : CGFloat(16)
+        textFontColor = sharing ? UIColor.black :Theme.textColor
 
-public typealias FL = FeastList
+        longFasts = [
+            cal.d("beginningOfGreatLent") : makeIntervalStr(fromDate: cal.greatLentStart,
+                                                       toDate: cal.greatLentStart + 47.days,
+                                                       descr: Translate.s("great_lent")),
+            
+            cal.d("beginningOfApostlesFast") : makeIntervalStr(fromDate: cal.d("beginningOfApostlesFast"),
+                                                           toDate: cal.d("peterAndPaul") - 1.days,
+                                                           descr: Translate.s("apostles_fast")),
+            
+            cal.d("beginningOfDormitionFast") : makeIntervalStr(fromDate: cal.d("beginningOfDormitionFast"),
+                                                           toDate: cal.d("dormition") - 1.days,
+                                                           descr: Translate.s("dormition_fast")),
+            
+            cal.d("beginningOfNativityFast") : makeIntervalStr(fromDate: cal.d("beginningOfNativityFast"),
+                                                          toDate: cal.d("nativityOfGod") - 1.days,
+                                                          descr: Translate.s("nativity_fast"))]
+        
+        shortFasts = [cal.d("eveOfTheophany") :  makeFeastStr(code: "eveOfTheophany"),
+                      cal.d("beheadingOfJohn") :  makeFeastStr(code: "beheadingOfJohn"),
+                      cal.d("exaltationOfCross") :  makeFeastStr(code: "exaltationOfCross")]
+        
+        fastFreeWeeks = [
+            cal.d("nativityOfGod") : makeIntervalStr(fromDate: cal.d("nativityOfGod"),
+                                                toDate: cal.d("eveOfTheophany") - 1.days,
+                                                descr: Translate.s("svyatki")),
+            
+            cal.d("sundayOfPublicianAndPharisee")+1.days : makeIntervalStr(fromDate: cal.d("sundayOfPublicianAndPharisee")+1.days,
+                                                                      toDate: cal.d("sundayOfProdigalSon"),
+                                                                      descr: Translate.s("weekOfPublicianAndPharisee")),
+            
+            cal.d("sundayOfDreadJudgement")+1.days : makeIntervalStr(fromDate: cal.d("sundayOfDreadJudgement")+1.days,
+                                                                toDate: cal.greatLentStart-1.days,
+                                                                descr: Translate.s("maslenitsa")),
+            
+            cal.pascha+1.days : makeIntervalStr(fromDate: cal.pascha+1.days,
+                                                toDate: cal.pascha+7.days,
+                                                descr: Translate.s("brightWeek")),
+            
+            cal.pentecost+1.days : makeIntervalStr(fromDate: cal.pentecost+1.days,
+                                                   toDate: cal.pentecost+7.days,
+                                                   descr: Translate.s("trinityWeek"))]
+        
+        movableFeasts = Dictionary(uniqueKeysWithValues:
+            ["palmSunday", "ascension", "pentecost"].map{ (cal.d($0), makeFeastStr(code: $0)) })
+        
+        nonMovableFeasts = Dictionary(uniqueKeysWithValues:
+            ["nativityOfGod", "theophany", "meetingOfLord", "annunciation", "transfiguration", "dormition",
+            "nativityOfTheotokos", "exaltationOfCross", "entryIntoTemple"]
+                                        .map{ (cal.d($0), makeFeastStr(code: $0)) })
+
+        greatFeasts = Dictionary(uniqueKeysWithValues:
+            ["circumcision", "nativityOfJohn", "peterAndPaul", "beheadingOfJohn", "veilOfTheotokos"]
+                                    .map{ (cal.d($0), makeFeastStr(code: $0)) })
+        
+        remembrance = Dictionary(uniqueKeysWithValues:
+            ["newMartyrsConfessorsOfRussia", "saturdayOfDeparted", "radonitsa",
+             "killedInAction", "saturdayTrinity", "demetriusSaturday" ]
+                                    .map{ (cal.d($0), makeFeastStr(code: $0)) })
+                                    
+    }
+}
