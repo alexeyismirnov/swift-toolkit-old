@@ -97,13 +97,13 @@ public struct FastingModel {
 }
 
 public class ChurchFasting {
-    var cal: Cal2
+    var cal: Cal
     var stNicholas: Date
     
     static var models = [Int:ChurchFasting]()
     
     init(_ date: Date) {
-        cal = Cal2.fromDate(date)
+        cal = Cal.fromDate(date)
         stNicholas = Date(19, 12, cal.year)
     }
 

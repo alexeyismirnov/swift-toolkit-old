@@ -23,10 +23,10 @@ class CompactViewController: UIViewController {
         return formatter
     }()
 
-    var cal: Cal2!
+    var cal: Cal!
     var currentDate: Date!  {
         didSet {
-            cal = Cal2.fromDate(currentDate)
+            cal = Cal.fromDate(currentDate)
         }
     }
     

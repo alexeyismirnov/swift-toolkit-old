@@ -113,7 +113,7 @@ public class WeekCalendarCell : UITableViewCell {
         subtitle.text = ""
         dateLabel.text = formatter.string(from: date)
         
-        if !Cal2.getGreatFeast(date).isEmpty {
+        if !Cal.getGreatFeast(date).isEmpty {
             dateLabel.font = UIFont.boldSystemFont(ofSize: fontSize)
             dateLabel.textColor = .red
             title.textColor = textColor

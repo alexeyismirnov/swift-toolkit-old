@@ -68,7 +68,7 @@ public struct SaintIconModel {
         var saints = [SaintIcon]()
         let year = date.year
         
-        let cal = Cal2.fromDate(date)
+        let cal = Cal.fromDate(date)
         let pascha = cal.pascha
         
         let moveableIcons : [Date: [IconCodes]] = [

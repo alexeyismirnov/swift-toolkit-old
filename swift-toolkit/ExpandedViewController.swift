@@ -15,10 +15,10 @@ class ExpandedViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saintsLabel: UILabel!
     
-    var cal: Cal2!
+    var cal: Cal!
     var currentDate: Date!  {
         didSet {
-            cal = Cal2.fromDate(currentDate)
+            cal = Cal.fromDate(currentDate)
         }
     }
     

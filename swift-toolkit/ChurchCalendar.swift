@@ -1,7 +1,13 @@
+//
+//  ChurchCalendar2.swift
+//  ponomar
+//
+//  Created by Alexey Smirnov on 1/13/22.
+//  Copyright © 2022 Alexey Smirnov. All rights reserved.
+//
 
-import UIKit
+import Foundation
 
-/*
 public enum FeastType: Int {
     case none=0, noSign, sixVerse, doxology, polyeleos, vigil, great
     
@@ -29,177 +35,551 @@ public enum FeastType: Int {
     public var icon15x15: UIImage { FeastType.icon15x15[self]! }
     public var icon: UIImage { FeastType.icon[self]! }
 }
- 
- public enum DayOfWeek: Int  {
-     case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
-     
-     public init?(date: Date) {
-         self.init(rawValue: DateComponents(date: date).weekday!)
-     }
- }
- 
-*/
 
-public enum NameOfDay: Int {
-    case startOfYear=0, pascha, pentecost, ascension, palmSunday, eveOfNativityOfGod, nativityOfGod, circumcision, eveOfTheophany, theophany, meetingOfLord, annunciation, nativityOfJohn, peterAndPaul, transfiguration, dormition, beheadingOfJohn, nativityOfTheotokos, exaltationOfCross, veilOfTheotokos, entryIntoTemple, stNicholas, sundayOfPublicianAndPharisee, sundayOfProdigalSon, sundayOfDreadJudgement, cheesefareSunday, beginningOfGreatLent, beginningOfDormitionFast, beginningOfNativityFast, beginningOfApostlesFast, sundayOfForefathers, sundayBeforeNativity, sundayAfterExaltation, saturdayAfterExaltation, saturdayBeforeExaltation, sundayBeforeExaltation, saturdayBeforeNativity, saturdayAfterNativity, sundayAfterNativity, saturdayBeforeTheophany, sundayBeforeTheophany, saturdayAfterTheophany, sundayAfterTheophany, sunday2AfterPascha, sunday3AfterPascha, sunday4AfterPascha, sunday5AfterPascha, sunday6AfterPascha, sunday7AfterPascha, lazarusSaturday, newMartyrsConfessorsOfRussia, demetriusSaturday, radonitsa, killedInAction, josephBetrothed, synaxisTheotokos, holyFathersSixCouncils, holyFathersSeventhCouncil, allRussianSaints,  synaxisMoscowSaints, synaxisNizhnyNovgorodSaints, saturdayOfFathers, synaxisForerunner, saturdayTrinity, saturdayOfDeparted, endOfYear
-}
-
-struct DateCache : Hashable {
-    let code : NameOfDay
-    let year : Int
-    init(_ code: NameOfDay, _ year: Int) {
-        self.code = code
-        self.year = year
-    }
-    var hashValue: Int {
-        return code.hashValue ^ year.hashValue
+public enum DayOfWeek: Int  {
+    case sunday=1, monday, tuesday, wednesday, thursday, friday, saturday
+    
+    public init?(date: Date) {
+        self.init(rawValue: DateComponents(date: date).weekday!)
     }
 }
 
-// MARK: Equatable
-
-func == (lhs: DateCache, rhs: DateCache) -> Bool {
-    return lhs.code == rhs.code && lhs.year == rhs.year
+public class ChurchDay : Hashable, Equatable  {
+    var _name : String
+    public var name : String {
+        get { Translate.s(_name) }
+    }
+    
+    public var type : FeastType
+    public var date: Date?
+    public var reading : String
+    public var comment: String
+    
+    init(_ name: String = "", _ type: FeastType = .none, date: Date? = nil, reading: String = "", comment: String = "") {
+        self._name = name
+        self.type = type
+        self.date = date
+        self.reading = reading
+        self.comment = comment
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(_name)
+        hasher.combine(type)
+        hasher.combine(reading)
+    }
+    
+    public static func == (lhs: ChurchDay, rhs: ChurchDay) -> Bool {
+        lhs._name == rhs._name &&
+        lhs.type == rhs.type &&
+        lhs.date == rhs.date &&
+        lhs.reading == rhs.reading
+    }
 }
 
-public struct ChurchCalendar {
-    /*
-    static var formatter: DateFormatter = {
-        var formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter
-    }()
-     */
+public class ChurchCalendar {
+    public var year: Int
+    var days = [ChurchDay]()
     
-    static public var currentDate: Date!
-    static public var currentYear: Int!
-    static public var currentWeekday: DayOfWeek = .monday
+    public var startOfYear, endOfYear : Date
+    public var greatLentStart, pascha, pentecost : Date
     
-    static public var isLeapYear: Bool {
-        get { return (currentYear % 400) == 0 || ((currentYear%4 == 0) && (currentYear%100 != 0)) }
-    }
+    static var calendars = [Int:ChurchCalendar]()
     
-    static public var leapStart: Date {
-        get { return Date(29, 2, currentYear) }
-    }
-    
-    static public var leapEnd: Date {
-        get { return Date(13, 3, currentYear) }
-    }
-    
-    static var feastDates = [Date: [NameOfDay]]()
-    static var dCache = [DateCache:Date]()
-
-    static var dateFeastDescr = [Date: [(FeastType, String)]]()
-
-    static public  let codeFeastDescr : [NameOfDay: (FeastType, String)] = [
-        .pascha:                    (.great, "PASCHA. The Bright and Glorious Resurrection of our Lord, God, and Saviour Jesus Christ"),
-        .pentecost:                 (.great, "Pentecost. Sunday of the Holy Trinity. Descent of the Holy Spirit on the Apostles"),
-        .ascension:                 (.great, "Ascension of our Lord, God, and Saviour Jesus Christ"),
-        .palmSunday:                (.great, "Palm Sunday. Entrance of our Lord into Jerusalem"),
-        .eveOfNativityOfGod:        (.noSign, "Eve of the Nativity of Christ"),
-        .nativityOfGod:             (.great, "The Nativity of our Lord God and Savior Jesus Christ"),
-        .circumcision:              (.great, "Circumcision of our Lord"),
-        .eveOfTheophany:            (.noSign, "Eve of Theophany"),
-        .theophany:                 (.great, "Holy Theophany: the Baptism of Our Lord, God, and Saviour Jesus Christ"),
-        .meetingOfLord:             (.great, "The Meeting of our Lord, God, and Saviour Jesus Christ in the Temple"),
-        .annunciation:              (.great, "The Annunciation of our Most Holy Lady, Theotokos and Ever-Virgin Mary"),
-        .nativityOfJohn:            (.great, "Nativity of the Holy Glorious Prophet, Forerunner, and Baptist of the Lord, John"),
-        .peterAndPaul:              (.great, "The Holy Glorious and All-Praised Leaders of the Apostles, Peter and Paul"),
-        .transfiguration:           (.great, "The Holy Transfiguration of Our Lord God and Saviour Jesus Christ"),
-        .dormition:                 (.great, "The Dormition (Repose) of our Most Holy Lady Theotokos and Ever-Virgin Mary"),
-        .beheadingOfJohn:           (.great, "The Beheading of the Holy Glorious Prophet, Forerunner and Baptist of the Lord, John"),
-        .nativityOfTheotokos:       (.great, "Nativity of Our Most Holy Lady Theotokos and Ever-Virgin Mary"),
-        .exaltationOfCross:         (.great, "The Universal Exaltation of the Precious and Life-Giving Cross"),
-        .veilOfTheotokos:           (.great, "Protection of Our Most Holy Lady Theotokos and Ever-Virgin Mary"),
-        .entryIntoTemple:           (.great, "Entry into the Temple of our Most Holy Lady Theotokos and Ever-Virgin Mary"),
-        .beginningOfGreatLent:      (.none, "Beginning of Great Lent"),
-        .beginningOfDormitionFast:  (.none, "Beginning of Dormition fast"),
-        .beginningOfNativityFast:   (.none, "Beginning of Nativity fast"),
-        .beginningOfApostlesFast:  (.none, "Beginning of Apostles' fast"),
-        .sundayOfForefathers:       (.none, "Sunday of the Holy Forefathers"),
-        .sundayAfterExaltation:     (.none, "Sunday after the Exaltation"),
-        .saturdayAfterExaltation:   (.none, "Saturday after the Exaltation"),
-        .saturdayBeforeExaltation:  (.none, "Saturday before the Exaltation"),
-        .sundayBeforeExaltation:    (.none, "Sunday before the Exaltation"),
-        .saturdayBeforeNativity:    (.none, "Saturday before the Nativity of Christ"),
-        .sundayBeforeNativity:      (.none, "Sunday before the Nativity of Christ, of the Fathers"),
-        .saturdayAfterNativity:     (.none, "Saturday after the Nativity of Christ"),
-        .sundayAfterNativity:       (.none, "Sunday after Nativity of Christ"),
-        .josephBetrothed:           (.noSign, "Saints Joseph the Betrothed, David the King, and James the Brother of the Lord"),
-        .saturdayBeforeTheophany:   (.none, "Saturday before Theophany"),
-        .sundayBeforeTheophany:     (.none, "Sunday before Theophany"),
-        .saturdayAfterTheophany:    (.none, "Saturday after Theophany"),
-        .sundayAfterTheophany:      (.none, "Sunday after Theophany"),
-        .newMartyrsConfessorsOfRussia: (.vigil, "Holy New Martyrs and Confessors of Russia"),
-        .allRussianSaints:          (.none,   "All Saints who have shown forth in the land of Russia"),
-        .holyFathersSixCouncils:    (.none, "Commemoration of the Holy Fathers of the First Six Councils"),
-        .holyFathersSeventhCouncil: (.none, "Commemoration of the Holy Fathers of the Seventh Ecumenical Council"),
-        .synaxisMoscowSaints:       (.none, "Synaxis of all saints of Moscow"),
-        .synaxisNizhnyNovgorodSaints:       (.none, "Synaxis of all saints of Nizhny Novgorod"),
-        .saturdayOfFathers:         (.noSign, "Commemoration of all the saints, who showed forth in asceticism"),
-        .lazarusSaturday:           (.none, "Saturday of Palms (Lazarus Saturday)"),
-        .saturdayTrinity:           (.none, "Trinity Saturday; Commemoration of the Departed"),
-        .saturdayOfDeparted:        (.none, "The Saturday of the Dead"),
-        .demetriusSaturday:         (.none, "Demetrius Saturday: Commemoration of the Departed"),
-        .radonitsa:                 (.none, "Radonitsa (Day of Rejoicing)"),
-        .killedInAction:            (.none, "Commemoration of Fallen Soldiers"),
-        .sundayOfPublicianAndPharisee:  (.none, "Sunday of the Publican and the Pharisee"),
-        .sundayOfProdigalSon:           (.none, "Sunday of the Prodigal Son"),
-        .sundayOfDreadJudgement:        (.none, "Sunday of the Dread Judgement"),
-        .cheesefareSunday:              (.none, "Cheesefare Sunday (Forgiveness Sunday): Commemoration of the Expulsion of Adam from Paradise"),
-        .sunday2AfterPascha:            (.none, "Second Sunday after Pascha. Thomas Sunday, or Antipascha"),
-        .sunday3AfterPascha:            (.none, "Third Sunday after Pascha. Sunday of the Myrrhbearing Women"),
-        .sunday4AfterPascha:            (.none, "Fourth Sunday after Pascha. Sunday of the Paralytic"),
-        .sunday5AfterPascha:            (.none, "Fifth Sunday after Pascha. Sunday of the Samaritan Woman"),
-        .sunday6AfterPascha:            (.none, "Sixth Sunday after Pascha. Sunday of the Blind Man"),
-        .sunday7AfterPascha:            (.none, "Seventh Sunday after Pascha. Commemoration of the 318 Holy Fathers of the First Ecumenical Council (325)"),
-    ]
-
-    static public let feastIcon : [FeastType: String] = [
-        .noSign: "nosign",
-        .sixVerse: "sixverse",
-        .doxology: "doxology",
-        .polyeleos: "polyeleos",
-        .vigil: "vigil",
-        .great: "great"
-    ]
-
-    static let greatFeastCodes : [NameOfDay] = [.palmSunday, .pascha, .ascension, .pentecost, .nativityOfGod, .circumcision, .theophany, .meetingOfLord, .annunciation, .nativityOfJohn, .peterAndPaul, .transfiguration, .dormition, .beheadingOfJohn, .nativityOfTheotokos, .exaltationOfCross, .veilOfTheotokos, .entryIntoTemple]
-
-    static func saveFeastDate(_ code: NameOfDay, _ year:Int) {
-        if (code == .sundayBeforeNativity || code == .saturdayBeforeNativity) {
-            // it is possible that there will be 2 Sundays or Saturdays before Nativity in a given year
-            return;
+    static public func fromDate(_ date: Date) -> ChurchCalendar {
+        let year = DateComponents(date: date).year!
+        
+        if calendars[year] == nil {
+            calendars[year] = ChurchCalendar(date)
         }
         
-        var res = feastDates.compactMap() { (date, codes) in
-            return codes.contains(code) && DateComponents(date:date).year == year ? date : nil
-        }
-        
-        if res.count > 0 {
-            dCache[DateCache(code, year)] = res[0]
-        }
+        return calendars[year]!
     }
     
-    static public func d(_ code: NameOfDay) -> Date {
-        return dCache[DateCache(code, currentYear)]!
-    }
-    
-    static public func setDate(_ date: Date) {
+    init(_ date: Date) {
         let dateComponents = DateComponents(date: date)
-        currentYear = dateComponents.year
-        currentWeekday = DayOfWeek(rawValue: dateComponents.weekday!)!
-        currentDate = date
+        year = dateComponents.year!
         
-        if dCache[DateCache(.pascha, currentYear)] == nil {
-            generateFeastDates(currentYear)
-            generateFeastDescription(currentYear)
-        }
+        startOfYear = Date(1, 1, year)
+        endOfYear = Date(31, 12, year)
+        
+        pascha = Cal.paschaDay(year)
+        greatLentStart = pascha-48.days
+        pentecost = pascha+49.days
+        
+        initDays()
+        initGreatLent()
+        initSatSun()
+        initMisc()
+        initBeforeAfterFeasts()
     }
+    
+    func initDays() {
+        days = [
+            ChurchDay("palmSunday", .great, reading: "Phil 4:4-9 John 12:1-18"),
+            ChurchDay("pascha", .great, reading: "Acts 1:1-8 John 1:1-17"),
+            ChurchDay("ascension", .great, reading: "Acts 1:1-12 Luke 24:36-53"),
+            ChurchDay("pentecost", .great, reading: "Acts 2:1-11 John 7:37-52,8:12"),
+            ChurchDay("nativityOfGod", .great, date:  Date(7,  1, year), reading: "Matthew 1:18-25 Gal 4:4-7 Matthew 2:1-12"),
+            ChurchDay("theophany", .great, date:  Date(19, 1, year), reading: "Mark 1:9-11 Tit 2:11-14,3:4-7 Matthew 3:13-17"),
+            ChurchDay("meetingOfLord", .great, date: Date(15, 2, year), reading: "Luke 2:25-32 Heb 7:7-17 Luke 2:22-40"),
+            ChurchDay("annunciation", .great, date: Date(7,  4, year), reading: "Luke 1:39-49,56 Heb 2:11-18 Luke 1:24-38 # Theotokos"),
+            ChurchDay("peterAndPaul", .great, date: Date(12, 7, year), reading: "John 21:15-25 2Cor 11:21-12:9 Matthew 16:13-19"),
+            ChurchDay("transfiguration", .great, date: Date(19, 8, year), reading: "Luke 9:28-36 2Pet 1:10-19 Matthew 17:1-9"),
+            ChurchDay("dormition", .great, date: Date(28, 8, year), reading: "Luke 1:39-49,56 Phil 2:5-11 Luke 10:38-42,11:27-28"),
+            ChurchDay("nativityOfTheotokos", .great, date: Date(21, 9, year), reading: "Luke 1:39-49,56 Phil 2:5-11 Luke 10:38-42,11:27-28"),
+            ChurchDay("exaltationOfCross", .great, date: Date(27, 9, year), reading: "John 12:28-36 1Cor 1:18-24 John 19:6-11,13-20,25-28,30-35"),
+            ChurchDay("entryIntoTemple", .great, date: Date(4,  12, year), reading: "Luke 1:39-49,56 Heb 9:1-7 Luke 10:38-42,11:27-28"),
+            ChurchDay("circumcision", .great, date: Date(14, 1, year), reading: "John 10:1-9 Col 2:8-12 Luke 2:20-21,40-52"),
+            ChurchDay("veilOfTheotokos", .great, date: Date(14, 10, year), reading: "Luke 1:39-49,56 Heb 9:1-7 Luke 10:38-42,11:27-28"),
+            ChurchDay("nativityOfJohn", .great, date: Date(7,  7, year), reading: "Luke 1:24-25,57-68,76,80 Rom 13:12-14:4 Luke 1:5-25,57-68,76,80"),
+            ChurchDay("beheadingOfJohn", .great, date: Date(11, 9, year), reading: "Matthew 14:1-13 Acts 13:25-32 Mark 6:14-30"),
+            
+            ChurchDay("", .doxology, date: Date(20, 1, year),
+                      reading: "Acts 19:1-8 John 1:29-34 # Forerunner",
+                      comment: "Synaxis of John Baptist"),
+            
+            ChurchDay("eveOfNativityOfGod", .noSign, date: Date(6,  1, year), reading: "Heb 1:1-12 Luke 2:1-20 # Eve of the Nativity"),
+            ChurchDay("eveOfTheophany", .noSign, date: Date(18, 1, year), reading: "1Cor 9:19-27 Luke 3:1-18 # Epiphany Eve"),
+            
+            ChurchDay("sundayOfZacchaeus", .none),
+            ChurchDay("sundayOfPublicianAndPharisee", .none),
+            ChurchDay("sundayOfProdigalSon", .none),
+            ChurchDay("sundayOfDreadJudgement", .none),
+            ChurchDay("cheesefareSunday", .none),
+            ChurchDay("beginningOfGreatLent", .none),
+            ChurchDay("beginningOfDormitionFast", .none, date: Date(14, 8, year)),
+            ChurchDay("beginningOfNativityFast", .none, date: Date(28, 11, year)),
+            ChurchDay("beginningOfApostlesFast", .none),
+            ChurchDay("sundayOfForefathers", .none),
+            
+            ChurchDay("saturdayAfterNativity", .none, reading: "1Tim 6:11-16 Matthew 12:15-21 # Saturday after the Nativity"),
+            ChurchDay("sundayAfterNativity", .none, reading: "Gal 1:11-19 Matthew 2:13-23 # Sunday after the Nativity"),
 
-    static public func paschaDay(_ year: Int) -> Date {
+            ChurchDay("saturdayBeforeExaltation", .none, reading: "1Cor 2:6-9 Matthew 10:37-11:1 # Saturday before the Universal Elevation"),
+            ChurchDay("sundayBeforeExaltation", .none, reading: "Gal 6:11-18 John 3:13-17 # Sunday before the Universal Elevation"),
+            ChurchDay("saturdayAfterExaltation", .none, reading: "1Cor 1:26-29 John 8:21-30 # Saturday after the Universal Elevation"),
+            ChurchDay("sundayAfterExaltation", .none, reading: "Gal 2:16-20 Mark 8:34-9:1 # Sunday after the Universal Elevation"),
+
+            ChurchDay("saturdayBeforeTheophany", .none, reading: "1Tim 3:14-4:5 Matthew 3:1-11 # Saturday before the Theophany"),
+            ChurchDay("sundayBeforeTheophany", .none, reading: "2Tim 4:5-8 Mark 1:1-8 # Sunday before the Theophany"),
+            ChurchDay("saturdayAfterTheophany", .none, reading: "Ephes 6:10-17 Matthew 4:1-11 # Saturday after the Theophany"),
+            ChurchDay("sundayAfterTheophany", .none, reading: "Ephes 4:7-13 Matthew 4:12-17 # Sunday after the Theophany"),
+            
+            ChurchDay("saturday1GreatLent", .noSign, reading: "2Tim 2:1-10 John 15:17-16:2 # Great Martyr"),
+            ChurchDay("sunday1GreatLent", .none),
+            ChurchDay("saturday2GreatLent", .none, reading: "1Thess 4:13-17 John 5:24-30 # Departed"),
+            ChurchDay("sunday2GreatLent", .noSign, reading: "Heb 7:26-8:2 John 10:9-16 # Saint"),
+            ChurchDay("saturday3GreatLent", .none, reading: "1Thess 4:13-17 John 5:24-30 # Departed"),
+            ChurchDay("sunday3GreatLent", .none),
+            ChurchDay("saturday4GreatLent", .none, reading: "1Cor 15:47-57 John 5:24-30 # Departed"),
+            ChurchDay("sunday4GreatLent", .noSign, reading: "Ephes 5:8-19 Matthew 4:25-5:12 # Venerable"),
+            ChurchDay("thursday5GreatLent", .none),
+            ChurchDay("saturday5GreatLent", .none, reading: "Heb 9:1-7 Luke 10:38-42,11:27-28 # Theotokos"),
+            ChurchDay("sunday5GreatLent", .none, reading: "Gal 3:23-29 Luke 7:36-50 # Venerable"),
+            
+            ChurchDay("sunday2AfterPascha", .none),
+            ChurchDay("sunday3AfterPascha", .none),
+            ChurchDay("sunday4AfterPascha", .none),
+            ChurchDay("sunday5AfterPascha", .none),
+            ChurchDay("sunday6AfterPascha", .none),
+            ChurchDay("sunday7AfterPascha", .none),
+            
+            ChurchDay("sunday1AfterPentecost", .none),
+            ChurchDay("sunday2AfterPentecost", .none, reading: "Heb 11:33-12:2 Matthew 4:25-5:12 # Saints"),
+            
+            ChurchDay("saturdayOfFathers", .noSign, reading: "Gal 5:22-6:2 Matthew 11:27-30 # Fathers"),
+            ChurchDay("saturdayTrinity", .none, reading: "1Cor 15:47-57 John 6:35-39 # Departed"),
+            ChurchDay("saturdayOfDeparted", .none, reading: "1Thess 4:13-17 John 5:24-30 # Departed"),
+            ChurchDay("lazarusSaturday", .none),
+            
+            ChurchDay("newMartyrsConfessorsOfRussia", .vigil, reading: "Rom 8:28-39 Luke 21:8-19 # Martyrs"),
+            ChurchDay("demetriusSaturday", .none),
+            ChurchDay("radonitsa", .none),
+            ChurchDay("killedInAction", .none, date: Date(9,  5, year)),
+            ChurchDay("josephBetrothed", .noSign),
+            ChurchDay("holyFathersSixCouncils", .none, reading: "Heb 13:7-16 John 17:1-13 # Fathers"),
+            ChurchDay("holyFathersSeventhCouncil", .none),
+            
+            ChurchDay("", .polyeleos, date: Date(2, 1, year),
+                      reading: "Heb 4:14-5:6 Matthew 5:14-19 # Righteous",
+                      comment: "John of Kronstadt"),
+            
+            ChurchDay("", .polyeleos, date: Date(3, 1, year),
+                      reading: "Heb 7:26-8:2 Luke 6:17-23 # Hierarch",
+                      comment: "St. Peter"),
+            
+            ChurchDay("", .polyeleos, date: Date(15, 1, year),
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
+                      comment: "Seraphim of Sarov"),
+            
+            ChurchDay("", .polyeleos, date: Date(23, 1, year),
+                      reading: "Heb 7:26-8:2 John 10:9-16 # Hierarch",
+                      comment: "St. Theophan the Recluse"),
+            
+            ChurchDay("", .vigil, date: Date(30, 1, year),
+                      reading: "Heb 13:17-21 Luke 6:17-23 # Venerable",
+                      comment: "Anthony the Great"),
+            
+            ChurchDay("", .vigil, date: Date(2, 2, year),
+                      reading: "Heb 13:17-21 Luke 6:17-23 # Venerable",
+                      comment: "Euthymius the Great"),
+            
+            ChurchDay("", .polyeleos, date: Date(6, 2, year),
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
+                      comment: "St. Xenia of Petersburg"),
+            
+            ChurchDay("", .vigil, date: Date(12, 2, year),
+                      reading: "Heb 13:7-16 Matthew 5:14-19 # Hierarchs",
+                      comment: "Synaxis of the Three Hierarchs"),
+            
+            ChurchDay("", .polyeleos, date: Date(25, 2, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Iveron Icon"),
+                        
+            ChurchDay("", .vigil, date: Date(6, 5, year),
+                      reading: "Acts 12:1-11 John 15:17-16:2 # Great Martyr",
+                      comment: "Victory-bearer George"),
+            
+            ChurchDay("", .vigil, date: Date(21, 5, year),
+                      reading: "1John 1:1-7 John 19:25-27,21:24-25 # Apostle",
+                      comment: "Apostle John"),
+            
+            ChurchDay("", .vigil, date: Date(24, 5, year),
+                      reading: "Heb 7:26-8:2 Matthew 5:14-19 # Equals-to-the Apostles",
+                      comment: "Methodius and Cyril"),
+            
+            ChurchDay("", .vigil, date: Date(28, 7, year),
+                      reading: "Gal 1:11-19 John 10:1-9 # Equal-to-the Apostles",
+                      comment: "Great Prince Vladimir"),
+            
+            ChurchDay("", .vigil, date: Date(1, 8, year),
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
+                      comment: "Seraphim of Sarov"),
+            
+            ChurchDay("", .vigil, date: Date(2, 8, year),
+                      reading: "James 5:10-20 Luke 4:22-30 # Prophet",
+                      comment: "Prophet Elias"),
+            
+            ChurchDay("", .polyeleos, date: Date(14, 9, year),
+                      reading: "1Tim 2:1-7 Luke 4:16-22 # New Year",
+                      comment: "New Year"),
+            
+            ChurchDay("", .vigil, date: Date(9, 10, year),
+                      reading: "1John 4:12-19 John 19:25-27,21:24-25 # Repose of the John the Theologian",
+                      comment: "Apostle John"),
+            
+            ChurchDay("", .vigil, date: Date(26, 11, year),
+                      reading: "Heb 7:26-8:2 John 10:9-16 # St. John",
+                      comment: "St. John Chrysostom"),
+            
+            ChurchDay("", .vigil, date: Date(18, 12, year),
+                      reading: "Gal 5:22-6:2 Matthew 11:27-30 # Venerable",
+                      comment: "Venerable Sabbas"),
+            
+            ChurchDay("", .vigil, date: Date(19, 12, year),
+                      reading: "Heb 13:17-21 Luke 6:17-23 # St. Nicholas",
+                      comment: "St. Nicholas"),
+            
+        ]
+    }
+    
+    func initGreatLent() {
+        // TRIODION
+        day("sundayOfZacchaeus").date = greatLentStart-29.days
+        day("sundayOfPublicianAndPharisee").date = greatLentStart-22.days
+        day("sundayOfProdigalSon").date = greatLentStart-15.days
+        day("saturdayOfDeparted").date = greatLentStart-9.days
+        day("sundayOfDreadJudgement").date = greatLentStart-8.days
+        day("saturdayOfFathers").date = greatLentStart-2.days
+        day("cheesefareSunday").date = greatLentStart-1.days
+        
+        // GREAT LENT
+        day("beginningOfGreatLent").date = greatLentStart
+        day("saturday1GreatLent").date = greatLentStart+5.days
+        day("sunday1GreatLent").date = greatLentStart+6.days
+        day("saturday2GreatLent").date = greatLentStart+12.days
+        day("sunday2GreatLent").date = greatLentStart+13.days
+        day("saturday3GreatLent").date = greatLentStart+19.days
+        day("sunday3GreatLent").date = greatLentStart+20.days
+        day("saturday4GreatLent").date = greatLentStart+26.days
+        day("sunday4GreatLent").date = greatLentStart+27.days
+        day("thursday5GreatLent").date = greatLentStart+31.days
+        day("saturday5GreatLent").date = greatLentStart+33.days
+        day("sunday5GreatLent").date = greatLentStart+34.days
+        
+        day("lazarusSaturday").date = pascha-8.days
+        day("palmSunday").date = pascha-7.days
+        days.append(ChurchDay("greatMonday", .none, date: pascha-6.days))
+        days.append(ChurchDay("greatTuesday", .none, date: pascha-5.days))
+        days.append(ChurchDay("greatWednesday", .none, date: pascha-4.days))
+        days.append(ChurchDay("greatThursday", .none, date: pascha-3.days))
+        days.append(ChurchDay("greatFriday", .none, date: pascha-2.days))
+        days.append(ChurchDay("greatSaturday", .none, date: pascha-1.days))
+        
+        // PASCHA
+        day("pascha").date = pascha
+        day("sunday2AfterPascha").date = pascha+7.days
+        day("radonitsa").date = pascha+9.days
+        day("sunday3AfterPascha").date = pascha+14.days
+        day("sunday4AfterPascha").date = pascha+21.days
+        days.append(ChurchDay("midPentecost", .none, date: pascha+24.days))
+        day("sunday5AfterPascha").date = pascha+28.days
+        day("sunday6AfterPascha").date = pascha+35.days
+        day("ascension").date = pascha+39.days
+        day("sunday7AfterPascha").date = pascha+42.days
+        day("saturdayTrinity").date = pascha+48.days
+        
+        // PENTECOST
+        day("pentecost").date = pascha+49.days
+        days.append(ChurchDay("holySpirit", .none, date: pentecost+1.days))
+        day("beginningOfApostlesFast").date = pentecost+8.days
+        day("sunday1AfterPentecost").date = pentecost+7.days
+        day("sunday2AfterPentecost").date = pentecost+14.days
+    }
+    
+    func initSatSun() {
+        func saturdayBeforeNativity(_ date: Date) -> ChurchDay {
+            ChurchDay("saturdayBeforeNativity", .none, date: date, reading: "Gal 3:8-12 Luke 13:18-29 # Saturday before the Nativity")
+        }
+        
+        func sundayBeforeNativity(_ date: Date) -> ChurchDay {
+            ChurchDay("sundayBeforeNativity", .none, date: date, reading: "Heb 11:9-10,17-23,32-40 Matthew 1:1-25 # Sunday before the Nativity")
+        }
+        
+        // EXALTATION SAT & SUN
+        let exaltation = Date(27, 9, year)
+        let exaltationWeekday = DateComponents(date: exaltation).weekday!
+        let exaltationSatOffset = (exaltationWeekday == 7) ? 7 : 7-exaltationWeekday
+        let exaltationSunOffset = (exaltationWeekday == 1) ? 7 : exaltationWeekday-1
+
+        day("sundayAfterExaltation").date = exaltation + (8-exaltationWeekday).days
+        day("saturdayAfterExaltation").date = exaltation + exaltationSatOffset.days
+        day("sundayBeforeExaltation").date = exaltation - exaltationSunOffset.days
+        day("saturdayBeforeExaltation").date = exaltation - exaltationWeekday.days
+       
+        // NATIVITY SAT & SUN
+        let nativity = Date(7, 1, year)
+        let nativityWeekday = DateComponents(date:nativity).weekday!
+        let nativitySunOffset = (nativityWeekday == 1) ? 7 : (nativityWeekday-1)
+        let nativitySatOffset = (nativityWeekday == 7) ? 7 : 7-nativityWeekday
+        
+        if nativitySunOffset != 7 {
+            days.append(sundayBeforeNativity(nativity - nativitySunOffset.days))
+        }
+
+        if nativityWeekday != 7 {
+            days.append(saturdayBeforeNativity(nativity - nativityWeekday.days))
+        }
+
+        day("sundayAfterNativity").date = nativity + (8-nativityWeekday).days
+        day("saturdayAfterNativity").date = nativity + nativitySatOffset.days
+
+        if nativityWeekday == 1 {
+            day("josephBetrothed").date = nativity + 1.days
+
+        } else {
+            day("josephBetrothed").date = nativity + (8-nativityWeekday).days
+        }
+        
+        let nativityNextYear = Date(7, 1, year+1)
+        let nativityNextYearWeekday = DateComponents(date:nativityNextYear).weekday!
+        var nativityNextYearSunOffset = (nativityNextYearWeekday == 1) ? 7 : (nativityNextYearWeekday-1)
+
+        if nativityNextYearSunOffset == 7 {
+            days.append(sundayBeforeNativity(Date(31, 12, year)))
+        }
+        
+        if nativityNextYearWeekday == 7 {
+            days.append(saturdayBeforeNativity(Date(31, 12, year)))
+        }
+        
+        nativityNextYearSunOffset += 7
+        day("sundayOfForefathers").date = nativityNextYear - nativityNextYearSunOffset.days
+        
+        // THEOPHANY SAT & SUN
+        let theophany = Date(19, 1, year)
+        let theophanyWeekday = DateComponents(date:theophany).weekday!
+
+        let theophanySunOffset = (theophanyWeekday == 1) ?  7 : (theophanyWeekday-1)
+        let theophanySatOffset = (theophanyWeekday == 7) ? 7 : 7-theophanyWeekday
+        
+        day("sundayBeforeTheophany").date = theophany - theophanySunOffset.days
+        day("saturdayBeforeTheophany").date = theophany - theophanyWeekday.days
+        day("sundayAfterTheophany").date = theophany + (8-theophanyWeekday).days
+        day("saturdayAfterTheophany").date = theophany + theophanySatOffset.days
+        
+        // DEMETRIUS SAT
+        let demetrius = Date(8, 11, year)
+        let demetriusWeekday = DateComponents(date: demetrius).weekday!
+        day("demetriusSaturday").date = demetrius - demetriusWeekday.days
+        
+    }
+    
+    func initMisc() {
+        day("newMartyrsConfessorsOfRussia").date = nearestSunday(Date(7,2,year))
+        day("holyFathersSixCouncils").date = nearestSunday(Date(29, 7, year))
+        day("holyFathersSeventhCouncil").date = nearestSunday(Date(24, 10, year))
+        
+        // SYNAXIS
+        days.append(ChurchDay("synaxisKievCavesSaints", .none, date: greatLentStart+13.days))
+        days.append(ChurchDay("synaxisMartyrsButovo", .none, date: pascha+27.days))
+        days.append(ChurchDay("synaxisMountAthosSaints", .none, date: pentecost+14.days))
+        
+        if Translate.language == "ru" {
+            days.append(ChurchDay("synaxisMoscowSaints", .none, date: ChurchCalendar.nearestSundayBefore(Date(8, 9, year))))
+            days.append(ChurchDay("synaxisNizhnyNovgorodSaints", .none, date: ChurchCalendar.nearestSundayAfter(Date(8, 9, year))))
+        }
+        
+        let synaxisTheotokos = Date(8, 1, year)
+        let synaxisTheotokosW = DayOfWeek(rawValue: synaxisTheotokos.weekday)
+        
+        if synaxisTheotokosW == .monday {
+            days.append(ChurchDay("", .doxology, date: synaxisTheotokos, reading: "Heb 2:11-18 # Theotokos"))
+            days.append(ChurchDay("", .doxology, date: synaxisTheotokos, reading: "Gal 1:11-19 Matthew 2:13-23 # Holy Ancestors"))
+            
+        } else if synaxisTheotokosW != .sunday {
+            days.append(ChurchDay("", .doxology, date: synaxisTheotokos, reading: "Heb 2:11-18 Matthew 2:13-23 # Theotokos"))
+        }
+        
+        days.append(ChurchDay("josephArimathea", .noSign, date: pascha+14.days))
+        days.append(ChurchDay("tamaraGeorgia", .noSign, date: pascha+14.days))
+        days.append(ChurchDay("abrahamBulgar", .noSign, date: pascha+21.days))
+        days.append(ChurchDay("tabithaJoppa", .noSign, date: pascha+21.days))
+        
+        // ICONS OF THEOTOKOS
+        days.append(ChurchDay("iveronTheotokos", .none, date: pascha+2.days))
+        days.append(ChurchDay("springTheotokos", .none, date: pascha+5.days))
+        days.append(ChurchDay("mozdokTheotokos", .none, date: pascha+24.days))
+        days.append(ChurchDay("chelnskoyTheotokos", .none, date: pascha+42.days))
+        days.append(ChurchDay("tupichevskTheotokos", .none, date: pentecost+1.days))
+        days.append(ChurchDay("koretsTheotokos", .none, date: pentecost+4.days))
+        days.append(ChurchDay("softenerTheotokos", .none, date: pentecost+7.days))
+    }
+    
+    func generateBeforeAfter(feast: String,
+                             daysBefore: Int = 0, signBefore: FeastType = .noSign,
+                             daysAfter: Int = 0, signAfter: FeastType = .noSign,
+                             signApodosis: FeastType = .doxology) {
+        
+        let date = d(feast)
+        let eve1 = d("eveOfNativityOfGod")
+        let eve2 = d("eveOfTheophany")
+
+        if daysBefore > 0 {
+            for forefeast in DateRange(date-daysBefore.days, date-1.days) {
+                if forefeast != eve1 && forefeast != eve2 {
+                    days.append(ChurchDay("forefeast_\(feast)", signBefore, date: forefeast))
+                }
+            }
+        }
+        
+        if daysAfter > 0 {
+            for afterfeast in DateRange(date+1.days, date+daysAfter.days) {
+                days.append(ChurchDay("afterfeast_\(feast)", signAfter, date: afterfeast))
+            }
+        }
+        
+        days.append(ChurchDay("apodosis_\(feast)", signApodosis, date: date+(daysAfter+1).days))
+
+    }
+    
+    func initBeforeAfterFeasts() {
+        days.append(ChurchDay("apodosis_pascha", .none, date: pascha+38.days))
+        
+        generateBeforeAfter(feast: "ascension",
+                            daysAfter: 7, signAfter: .none,
+                            signApodosis: .none)
+        
+        generateBeforeAfter(feast: "pentecost",
+                            daysAfter: 5, signAfter: .none,
+                            signApodosis: .none)
+                
+        generateBeforeAfter(feast: "nativityOfGod", daysBefore: 5, daysAfter: 5)
+        generateBeforeAfter(feast: "theophany", daysBefore: 4, daysAfter: 7, signApodosis: .noSign)
+        generateBeforeAfter(feast: "transfiguration", daysBefore: 1, signBefore: .sixVerse, daysAfter: 6)
+        generateBeforeAfter(feast: "dormition", daysBefore: 1, signBefore: .sixVerse, daysAfter: 7)
+        generateBeforeAfter(feast: "nativityOfTheotokos", daysBefore: 1, signBefore: .sixVerse, daysAfter: 3)
+        generateBeforeAfter(feast: "exaltationOfCross", daysBefore: 1, daysAfter: 6)
+        generateBeforeAfter(feast: "entryIntoTemple", daysBefore: 1, daysAfter: 3)
+
+        let annunciation = d("annunciation")
+        
+        switch annunciation {
+        case greatLentStart ..< d("lazarusSaturday"):
+            days.append(ChurchDay("forefeast_annunciation", .sixVerse, date: annunciation-1.days))
+            days.append(ChurchDay("apodosis_annunciation", .doxology, date: annunciation+1.days))
+
+        case d("lazarusSaturday"):
+            days.append(ChurchDay("forefeast_annunciation", .sixVerse, date: annunciation-1.days))
+
+        default:
+            break
+        }
+        
+        let meetingOfLord = d("meetingOfLord")
+        days.append(ChurchDay("forefeast_meetingOfLord", .sixVerse, date: meetingOfLord-1.days))
+
+        var lastDay = meetingOfLord
+        
+        switch (meetingOfLord) {
+        case startOfYear ..< d("sundayOfProdigalSon")-1.days:
+            lastDay = meetingOfLord+7.days
+
+        case d("sundayOfProdigalSon")-1.days ... d("sundayOfProdigalSon")+2.days:
+            lastDay = d("sundayOfProdigalSon")+5.days
+
+        case d("sundayOfProdigalSon")+3.days ..< d("sundayOfDreadJudgement"):
+            lastDay = d("sundayOfDreadJudgement") + 2.days
+            
+        case d("sundayOfDreadJudgement") ... d("sundayOfDreadJudgement")+1.days:
+            lastDay = d("sundayOfDreadJudgement") + 4.days
+
+        case d("sundayOfDreadJudgement")+2.days ... d("sundayOfDreadJudgement")+3.days:
+            lastDay = d("sundayOfDreadJudgement") + 6.days
+
+        case d("sundayOfDreadJudgement")+4.days ... d("sundayOfDreadJudgement")+6.days:
+            lastDay = d("cheesefareSunday")
+
+        default:
+            break
+        }
+        
+        if (lastDay != meetingOfLord) {
+            for afterfeastDay in DateRange(meetingOfLord+1.days, lastDay-1.days) {
+                days.append(ChurchDay("afterfeast_meetingOfLord", .noSign, date: afterfeastDay))
+            }
+            days.append(ChurchDay("apodosis_meetingOfLord", .doxology, date: lastDay))
+        }
+
+    }
+    
+    public func d(_ name: String) -> Date {
+        day(name).date!
+    }
+    
+    public func day(_ name: String) -> ChurchDay {
+        days.filter() { $0._name == name }.first!
+    }
+    
+}
+
+public extension ChurchCalendar {
+    var isLeapYear: Bool {
+        get { (year % 400) == 0 || ((year % 4 == 0) && (year % 100 != 0)) }
+    }
+    
+    var leapStart: Date {
+        get { Date(29, 2, year) }
+    }
+    
+    var leapEnd: Date {
+        get { Date(13, 3, year) }
+    }
+}
+
+public extension ChurchCalendar {    
+    static func paschaDay(_ year: Int) -> Date {
         // http://calendar.lenacom.spb.ru/index.php
         let a = (19*(year%19) + 15) % 30
         let b = (2*(year%4) + 4*(year%7) + 6*a + 6) % 7
@@ -207,214 +587,23 @@ public struct ChurchCalendar {
         return  ((a+b > 10) ? Date(a+b-9, 4, year) : Date(22+a+b, 3, year)) + 13.days
     }
     
-    static func generateFeastDescription(_ year: Int) {
-        let pascha = paschaDay(year)
-        let greatLentStart = pascha-48.days
-        let pentecost = d(.pentecost)
-        
-        var miscFeasts = [Date: [(FeastType, String)]]()
-            
-        miscFeasts += [
-            greatLentStart+5.days:  [(.noSign, "Great Martyr Theodore the Recruit († c. 306)")],
-            greatLentStart+6.days:  [(.none,   "Triumph of Orthodoxy")],
-            greatLentStart+12.days: [(.none,   "Commemoration of the Departed")],
-            greatLentStart+13.days: [(.noSign, "Saint Gregory Palamas, Archbishop of Thessalonica († c. 1360)"),
-                                     (.none,   "Synaxis of all Venerable Fathers of the Kiev Caves")],
-            greatLentStart+19.days: [(.none,   "Commemoration of the Departed")],
-            greatLentStart+20.days: [(.none,   "Veneration of the Precious Cross")],
-            greatLentStart+26.days: [(.none,   "Commemoration of the Departed")],
-            greatLentStart+27.days: [(.noSign, "Venerable John Climacus of Sinai, Author of “the Ladder” († 649)")],
-            greatLentStart+31.days: [(.none,   "Thursday of the Great Canon, with the Life of St. Mary of Egypt")],
-            greatLentStart+33.days: [(.none,   "Saturday of the Akathist; Laudation of the Most Holy Theotokos")],
-            greatLentStart+34.days: [(.none,   "Venerable Mary of Egypt")],
-            pascha-6.days:          [(.none,   "Great Monday")],
-            pascha-5.days:          [(.none,   "Great Tuesday")],
-            pascha-4.days:          [(.none,   "Great Wednesday")],
-            pascha-3.days:          [(.none,   "Great Thursday")],
-            pascha-2.days:          [(.none,   "Great Friday")],
-            pascha-1.days:          [(.none,   "Great Saturday")],
-            pascha+2.days:          [(.noSign, "Iveron Icon of the Most Holy Theotokos (9th c.)")],
-            pascha+5.days:          [(.none,   "Feast of the Life-Giving Spring of the Mother of God")],
-            pascha+14.days:         [(.noSign, "St Joseph of Arimathea, and Nicodemus"),
-                                     (.noSign, "Right-believing Tamara, Queen of Georgia († 1213)")],
-            pascha+21.days:         [(.noSign, "Holy Martyr Abraham the Bulgar, Wonderworker of Vladimir († 1229)"),
-                                     (.noSign, "Righteous Tabitha of Joppa (1st C)")],
-            pascha+24.days:         [(.none,   "Mid-Pentecost"),
-                                     (.none,   "Mozdok and Dubensky-Krasnohorská (17th C) Icons of the Mother of God")],
-            pascha+27.days:         [(.none,   "Synaxis of New Martyrs of Butovo")],
-            pascha+42.days:         [(.none,   "Chelnskoy and Pskov-Kiev Caves called “Tenderness” icons of the Mother of God")],
-            pentecost+1.days:       [(.none,   "Day of the Holy Spirit"),
-                                     (.none,   "Icons of the Mother of God “Tupichevsk” (1847) and “Cypriot” (392)")],
-            pentecost+4.days:       [(.none,   "Icon of the Mother of God “Surety of Sinners” in Korets (1622)")],
-            pentecost+7.days:       [(.none,   "Feast of All Saints"),
-                                     (.none,   "Icons of the Mother of God: “the Softener of evil hearts” and “the Indestructible Wall”")],
-            pentecost+14.days:      [(.none,   "All Saints of the Holy Mount Athos")],
-        ]
-        
-        var beforeAfterFeasts :[Date: [(FeastType, String)]] = [
-            pascha+38.days:         [(.none,   "Apodosis of Pascha")],
-            pascha+40.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+41.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+42.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+43.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+44.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+45.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+46.days:         [(.none,   "Afterfeast of the Ascension")],
-            pascha+47.days:         [(.none,   "Apodosis of the Ascension")],
-            pentecost+6.days:       [(.none,   "Apodosis of Pentecost")]]
-        
-        beforeAfterFeasts += [
-            Date(2, 1, year): [(.noSign, "Forefeast of the Nativity")],
-            Date(3, 1, year): [(.noSign, "Forefeast of the Nativity")],
-            Date(4, 1, year): [(.noSign, "Forefeast of the Nativity")],
-            Date(5, 1, year): [(.noSign, "Forefeast of the Nativity")],
-            Date(8, 1, year): [(.noSign, "Afterfeast of the Nativity of Our Lord")],
-            Date(9, 1, year): [(.noSign, "Afterfeast of the Nativity of Our Lord")],
-            Date(10, 1, year): [(.noSign, "Afterfeast of the Nativity of Our Lord")],
-            Date(11, 1, year): [(.noSign, "Afterfeast of the Nativity of Our Lord")],
-            Date(12, 1, year): [(.noSign, "Afterfeast of the Nativity of Our Lord")],
-            Date(13, 1, year): [(.doxology, "Apodosis of the Nativity of Christ")],
-            Date(15, 1, year): [(.noSign, "Forefeast of Theophany")],
-            Date(16, 1, year): [(.noSign, "Forefeast of Theophany")],
-            Date(17, 1, year): [(.noSign, "Forefeast of Theophany")],
-            Date(20, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(21, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(22, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(23, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(24, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(25, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(26, 1, year): [(.noSign, "Afterfeast of the Theophany")],
-            Date(27, 1, year): [(.noSign, "Apodosis of the Theophany")]]
-        
-        beforeAfterFeasts += [
-            Date(18, 8, year): [(.sixVerse, "Forefeast of the Transfiguration of the Lord")],
-            Date(20, 8, year): [(.noSign, "Afterfeast of the Transfiguration of the Lord")],
-            Date(21, 8, year): [(.noSign, "Afterfeast of the Transfiguration of the Lord")],
-            Date(22, 8, year): [(.noSign, "Afterfeast of the Transfiguration of the Lord")],
-            Date(23, 8, year): [(.noSign, "Afterfeast of the Transfiguration of the Lord")],
-            Date(24, 8, year): [(.noSign, "Afterfeast of the Transfiguration of the Lord")],
-            Date(25, 8, year): [(.noSign, "Afterfeast of the Transfiguration of the Lord")],
-            Date(26, 8, year): [(.doxology, "Apodosis of the Transfiguration of the Lord")],
-            Date(27, 8, year): [(.sixVerse, "Forefeast of the Dormition of the Mother of God")],
-            Date(29, 8, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(30, 8, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(31, 8, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(1, 9, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(2, 9, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(3, 9, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(4, 9, year): [(.noSign, "Afterfeast of the Dormition")],
-            Date(5, 9, year): [(.doxology, "Apodosis of the Dormition")]]
-        
-        beforeAfterFeasts += [
-            Date(20, 9, year): [(.sixVerse, "Forefeast of the Nativity of the Theotokos")],
-            Date(22, 9, year): [(.noSign, "Afterfeast of the Nativity of the Theotokos")],
-            Date(23, 9, year): [(.noSign, "Afterfeast of the Nativity of the Theotokos")],
-            Date(24, 9, year): [(.noSign, "Afterfeast of the Nativity of the Theotokos")],
-            Date(25, 9, year): [(.doxology, "Apodosis of the Nativity of the Theotokos")],
-            Date(26, 9, year): [(.noSign, "Forefeast of the Exaltation of the Cross")],
-            Date(28, 9, year): [(.noSign, "Afterfeast of the Exaltation of the Cross")],
-            Date(29, 9, year): [(.noSign, "Afterfeast of the Exaltation of the Cross")],
-            Date(30, 9, year): [(.noSign, "Afterfeast of the Exaltation of the Cross")],
-            Date(1, 10, year): [(.noSign, "Afterfeast of the Exaltation of the Cross")],
-            Date(2, 10, year): [(.noSign, "Afterfeast of the Exaltation of the Cross")],
-            Date(3, 10, year): [(.noSign, "Afterfeast of the Exaltation of the Cross")],
-            Date(4, 10, year): [(.doxology, "Apodosis of the Exaltation of the Cross")],
-            Date(3, 12, year): [(.noSign, "Forefeast of the Entry of the Theotokos")],
-            Date(5, 12, year): [(.noSign, "Afterfeast of the Entry of the Theotokos")],
-            Date(6, 12, year): [(.noSign, "Afterfeast of the Entry of the Theotokos")],
-            Date(7, 12, year): [(.noSign, "Afterfeast of the Entry of the Theotokos")],
-            Date(8, 12, year): [(.doxology, "Apodosis of the Entry of the Theotokos")],
-        ]
-        
-        dateFeastDescr += miscFeasts
-        dateFeastDescr += beforeAfterFeasts
-        
-        // Sources: 
-        // http://azbyka.ru/days/p-tablica-dnej-predprazdnstv-poprazdnstv-i-otdanij-dvunadesjatyh-nepodvizhnyh-i-podvizhnyh-gospodskih-prazdnikov
-        
-        let annunciation = Date(7,  4, year)
-        var annunciationFeasts = [Date: [(FeastType, String)]]()
-        
-        switch (annunciation) {
-        case d(.startOfYear) ..< d(.lazarusSaturday):
-            annunciationFeasts = [
-                annunciation-1.days: [(.sixVerse, "Forefeast of the Annunciation")],
-                annunciation+1.days: [(.doxology, "Apodosis of the Annunciation")],
-            ]
-        case d(.lazarusSaturday):
-            annunciationFeasts = [
-                annunciation-1.days: [(.sixVerse, "Forefeast of the Annunciation")],
-            ]
-
-        default:
-            break
-        }
-        
-        dateFeastDescr += annunciationFeasts
-
-        // АРХИМАНДРИТ ИОАНН (МАСЛОВ). КОНСПЕКТ ПО ЛИТУРГИКЕ ДЛЯ 3-го класса
-        // Глава: СРЕТЕНИЕ ГОСПОДНЕ (2 февраля)
-
-        let meetingOfLord = Date(15, 2, year)
-        var meetingOfLordFeasts = [Date: [(FeastType, String)]]()
-        
-        meetingOfLordFeasts = [
-            meetingOfLord-1.days: [(.sixVerse, "Forefeast of the Meeting of the Lord")],
-        ]
-        
-        var lastDay = meetingOfLord
-        
-        switch (meetingOfLord) {
-        case d(.startOfYear) ..< d(.sundayOfProdigalSon)-1.days:
-            lastDay = meetingOfLord+7.days
-
-        case d(.sundayOfProdigalSon)-1.days ... d(.sundayOfProdigalSon)+2.days:
-            lastDay = d(.sundayOfProdigalSon)+5.days
-
-        case d(.sundayOfProdigalSon)+3.days ..< d(.sundayOfDreadJudgement):
-            lastDay = d(.sundayOfDreadJudgement) + 2.days
-            
-        case d(.sundayOfDreadJudgement) ... d(.sundayOfDreadJudgement)+1.days:
-            lastDay = d(.sundayOfDreadJudgement) + 4.days
-
-        case d(.sundayOfDreadJudgement)+2.days ... d(.sundayOfDreadJudgement)+3.days:
-            lastDay = d(.sundayOfDreadJudgement) + 6.days
-
-        case d(.sundayOfDreadJudgement)+4.days ... d(.sundayOfDreadJudgement)+6.days:
-            lastDay = d(.cheesefareSunday)
-
-        default:
-            break
-        }
-
-        if (lastDay != meetingOfLord) {
-            for afterfeastDay in DateRange(meetingOfLord+1.days, lastDay-1.days) {
-                meetingOfLordFeasts += [
-                    afterfeastDay: [(.noSign, "Afterfeast of the Meeting of the Lord")],
-                ]
-            }
-            meetingOfLordFeasts += [
-                lastDay: [(.doxology, "Apodosis of the Meeting of the Lord")]
-            ]
-        }
-
-        dateFeastDescr += meetingOfLordFeasts
-
-    }
-    
-    static public func nearestSundayAfter(_ date: Date) -> Date {
+    static func nearestSundayAfter(_ date: Date) -> Date {
         let weekday = DateComponents(date:date).weekday!
         let sunOffset = (weekday == 1) ? 0 : 8-weekday
         return date + sunOffset.days
     }
 
-    static public func nearestSundayBefore(_ date: Date) -> Date {
+    static func nearestSundayBefore(_ date: Date) -> Date {
         let weekday = DateComponents(date:date).weekday!
         let sunOffset = (weekday == 1) ? 0 : weekday-1
         return date - sunOffset.days
     }
     
-    static public func nearestSunday(_ date: Date) -> Date {
+    static func getGreatFeast(_ date: Date) -> [ChurchDay]  {
+        Cal.fromDate(date).days.filter({ $0.date == date && $0.type == .great})
+    }
+    
+    func nearestSunday(_ date: Date) -> Date {
         let weekday = DayOfWeek(rawValue: DateComponents(date:date).weekday!)!
         
         switch (weekday) {
@@ -422,254 +611,90 @@ public struct ChurchCalendar {
             return date
             
         case .monday, .tuesday, .wednesday:
-            return nearestSundayBefore(date)
+            return ChurchCalendar.nearestSundayBefore(date)
             
         default:
-            return nearestSundayAfter(date)
+            return ChurchCalendar.nearestSundayAfter(date)
         }
-    }
-
-    static func generateFeastDates(_ year: Int) {
-        let pascha = paschaDay(year)
-        let greatLentStart = pascha-48.days
-        var movingFeasts = [Date: [NameOfDay]]()
-
-        movingFeasts += [
-            greatLentStart-22.days:                   [.sundayOfPublicianAndPharisee],
-            greatLentStart-15.days:                   [.sundayOfProdigalSon],
-            greatLentStart-9.days:                    [.saturdayOfDeparted],
-            greatLentStart-8.days:                    [.sundayOfDreadJudgement],
-            greatLentStart-2.days:                    [.saturdayOfFathers],
-            greatLentStart-1.days:                    [.cheesefareSunday],
-            greatLentStart:                           [.beginningOfGreatLent],
-            pascha-8.days:                            [.lazarusSaturday],
-            pascha-7.days:                            [.palmSunday],
-            pascha:                                   [.pascha],
-            pascha+7.days:                            [.sunday2AfterPascha],
-            pascha+9.days:                            [.radonitsa],
-            pascha+14.days:                           [.sunday3AfterPascha],
-            pascha+21.days:                           [.sunday4AfterPascha],
-            pascha+28.days:                           [.sunday5AfterPascha],
-            pascha+35.days:                           [.sunday6AfterPascha],
-            pascha+42.days:                           [.sunday7AfterPascha],
-            pascha+39.days:                           [.ascension],
-            pascha+48.days:                           [.saturdayTrinity],
-            pascha+49.days:                           [.pentecost],
-            pascha+57.days:                           [.beginningOfApostlesFast],
-            pascha+63.days:                           [.allRussianSaints],
-        ]
-    
-        var fixedFeasts : [Date: [NameOfDay]] = [
-            Date(1,  1, year):   [.startOfYear],
-            Date(6,  1, year):   [.eveOfNativityOfGod],
-            Date(7,  1, year):   [.nativityOfGod],
-            Date(8,  1, year):   [.synaxisTheotokos],
-            Date(14, 1, year):   [.circumcision],
-            Date(18, 1, year):   [.eveOfTheophany],
-            Date(19, 1, year):   [.theophany],
-            Date(20, 1, year):   [.synaxisForerunner],
-            Date(15, 2, year):   [.meetingOfLord],
-            Date(7,  4, year):   [.annunciation],
-            Date(7,  7, year):   [.nativityOfJohn],
-            Date(12, 7, year):   [.peterAndPaul],
-            Date(14, 8, year):   [.beginningOfDormitionFast],
-            Date(19, 8, year):   [.transfiguration],
-            Date(28, 8, year):   [.dormition],
-            Date(11, 9, year):   [.beheadingOfJohn],
-            Date(21, 9, year):   [.nativityOfTheotokos],
-            Date(27, 9, year):   [.exaltationOfCross],
-            Date(14, 10, year):  [.veilOfTheotokos],
-            Date(28, 11, year):  [.beginningOfNativityFast],
-            Date(4,  12, year):  [.entryIntoTemple],
-            Date(19, 12, year):  [.stNicholas],
-            Date(31, 12, year):  [.endOfYear],
-        ];
-        
-        fixedFeasts += [Date(9,  5, year): [.killedInAction]]
-
-        feastDates += movingFeasts
-        feastDates += fixedFeasts
-        
-        let exaltation = Date(27, 9, year)
-        let exaltationWeekday = DateComponents(date: exaltation).weekday!
-        feastDates += [exaltation + (8-exaltationWeekday).days: [.sundayAfterExaltation]]
-
-        let exaltationSatOffset = (exaltationWeekday == 7) ? 7 : 7-exaltationWeekday
-        feastDates += [exaltation + exaltationSatOffset.days: [.saturdayAfterExaltation]]
-        
-        let exaltationSunOffset = (exaltationWeekday == 1) ? 7 : exaltationWeekday-1
-        feastDates += [exaltation - exaltationSunOffset.days: [.sundayBeforeExaltation]]
-
-        feastDates += [exaltation - exaltationWeekday.days: [.saturdayBeforeExaltation]]
-
-        let nativity = Date(7, 1, year)
-        let nativityWeekday = DateComponents(date:nativity).weekday!
-        let nativitySunOffset = (nativityWeekday == 1) ? 7 : (nativityWeekday-1)
-        if nativitySunOffset != 7 {
-            feastDates += [nativity - nativitySunOffset.days: [.sundayBeforeNativity]]
-        }
-
-        if nativityWeekday != 7 {
-            feastDates += [nativity - nativityWeekday.days: [.saturdayBeforeNativity]]
-        }
-
-        feastDates += [nativity + (8-nativityWeekday).days: [.sundayAfterNativity]]
-        
-        if nativityWeekday == 1 {
-            feastDates += [nativity + 1.days: [.josephBetrothed]]
-
-        } else {
-            feastDates += [nativity + (8-nativityWeekday).days: [.josephBetrothed]]
-        }
-        
-        let nativitySatOffset = (nativityWeekday == 7) ? 7 : 7-nativityWeekday
-        feastDates += [nativity + nativitySatOffset.days: [.saturdayAfterNativity]]
-        
-        let nativityNextYear = Date(7, 1, year+1)
-        let nativityNextYearWeekday = DateComponents(date:nativityNextYear).weekday!
-        var nativityNextYearSunOffset = (nativityNextYearWeekday == 1) ? 7 : (nativityNextYearWeekday-1)
-
-        if nativityNextYearSunOffset == 7 {
-            feastDates += [Date(31, 12, year): [.sundayBeforeNativity]]
-        }
-        
-        if nativityNextYearWeekday == 7 {
-            feastDates += [Date(31, 12, year): [.saturdayBeforeNativity]]
-        }
-        
-        nativityNextYearSunOffset += 7
-        feastDates += [nativityNextYear - nativityNextYearSunOffset.days: [.sundayOfForefathers]]
-        
-        let theophany = Date(19, 1, year)
-        let theophanyWeekday = DateComponents(date:theophany).weekday!
-
-        let theophanySunOffset = (theophanyWeekday == 1) ?  7 : (theophanyWeekday-1)
-        let theophanySatOffset = (theophanyWeekday == 7) ? 7 : 7-theophanyWeekday
-
-        feastDates += [theophany - theophanySunOffset.days: [.sundayBeforeTheophany]]
-        feastDates += [theophany - theophanyWeekday.days: [.saturdayBeforeTheophany]]
-        feastDates += [theophany + (8-theophanyWeekday).days: [.sundayAfterTheophany]]
-        feastDates += [theophany + theophanySatOffset.days: [.saturdayAfterTheophany]]
-        
-        let demetrius = Date(8, 11, year)
-        let demetriusWeekday = DateComponents(date: demetrius).weekday!
-        
-        feastDates += [demetrius - demetriusWeekday.days: [.demetriusSaturday]]
-        feastDates += [nearestSunday(Date(7,2,year)): [.newMartyrsConfessorsOfRussia]]
-        feastDates += [nearestSunday(Date(29, 7, year)): [.holyFathersSixCouncils]]
-        feastDates += [nearestSunday(Date(24, 10, year)): [.holyFathersSeventhCouncil]]
-
-        if Translate.language == "ru" {
-            feastDates += [nearestSundayBefore(Date(8, 9, year)): [.synaxisMoscowSaints]]
-            feastDates += [nearestSundayAfter(Date(8, 9, year)):  [.synaxisNizhnyNovgorodSaints]]
-        }
-        
-        let start: Int = NameOfDay.startOfYear.rawValue
-        let end: Int = NameOfDay.endOfYear.rawValue
-        
-        for index in start...end {
-            let code = NameOfDay(rawValue: index)
-            saveFeastDate(code!, year)
-        }
-
-    }
-
-    static public func getGreatFeast(_ date: Date) -> NameOfDay? {
-        if let feastCodes = feastDates[date] {
-            for code in feastCodes {
-                if greatFeastCodes.contains(code) {
-                    return code
-                }
-            }
-        }
-        return nil
     }
     
-    static public func getDayDescription(_ date: Date) -> [(FeastType, String)] {
-        var result = [(FeastType, String)]()
-        
-        setDate(date)
-
-        if let codes = feastDates[date] {
-            for code in codes {
-                if let feast = codeFeastDescr[code] {
-                    result.append((feast.0, Translate.s(feast.1)))
-                }
-            }
-        }
-
-        result.sort { $0.0.rawValue < $1.0.rawValue }
-
-        if let feasts = dateFeastDescr[date] {
-            for feast in feasts {
-                result.append((feast.0, Translate.s(feast.1)))
-            }
-        }
-        
-        return result
+    func getDayDescription(_ date: Date) -> [ChurchDay] {
+        days
+            .filter({ $0.date == date && $0._name.count > 0 })
+            .sorted { $0.type.rawValue < $1.type.rawValue }
     }
     
-    static public func getWeekDescription(_ date: Date) -> String? {
-        setDate(date)
-
-        let dayOfWeek = (currentWeekday == .sunday) ? "Sunday" : "Week"
-        
+    func getDayReadings(_ date: Date) -> [ChurchDay] {
+        days
+            .filter({ $0.date == date && $0.reading.count > 0 })
+            .sorted { $0.type.rawValue > $1.type.rawValue }
+    }
+    
+    func getAllReadings() -> [ChurchDay] {
+        days.filter({ $0.reading.count > 0 })
+    }
+    
+    func getWeekDescription(_ date: Date) -> String? {
+        let weekday = DayOfWeek(date: date)!
+        let dayOfWeek = (weekday == .sunday) ? "Sunday" : "Week"
+    
         switch (date) {
-        case d(.startOfYear) ..< d(.sundayOfPublicianAndPharisee):
-            return  String(format: Translate.s("\(dayOfWeek) %@ after Pentecost"), Translate.stringFromNumber(((paschaDay(currentYear-1)+50.days) >> date)/7+1))
+        case startOfYear ..< d("sundayOfPublicianAndPharisee"):
+            return  String(format: Translate.s("\(dayOfWeek)AfterPentecost"),
+                           Translate.stringFromNumber(((Cal.paschaDay(year-1)+50.days) >> date)/7+1))
             
-        case d(.sundayOfPublicianAndPharisee)+1.days ..< d(.sundayOfProdigalSon):
-            return Translate.s("Week of the Publican and the Pharisee")
+        case d("sundayOfPublicianAndPharisee")+1.days ..< d("sundayOfProdigalSon"):
+            return Translate.s("weekOfPublicianAndPharisee")
 
-        case d(.sundayOfProdigalSon)+1.days ..< d(.sundayOfDreadJudgement):
-            return Translate.s("Week of the Prodigal Son")
+        case d("sundayOfProdigalSon")+1.days ..< d("sundayOfDreadJudgement"):
+            return Translate.s("weekOfProdigalSon")
 
-        case d(.sundayOfDreadJudgement)+1.days ..< d(.cheesefareSunday):
-            return Translate.s("Week of the Dread Judgement")
+        case d("sundayOfDreadJudgement")+1.days ..< d("cheesefareSunday"):
+            return Translate.s("weekOfDreadJudgement")
 
-        case d(.beginningOfGreatLent) ..< d(.palmSunday):
-            return  String(format: Translate.s("\(dayOfWeek) %@ of Great Lent"), Translate.stringFromNumber((d(.beginningOfGreatLent) >> date)/7+1))
+        case d("beginningOfGreatLent") ..< d("palmSunday"):
+            return  String(format: Translate.s("\(dayOfWeek)OfGreatLent"),
+                           Translate.stringFromNumber((d("beginningOfGreatLent") >> date)/7+1))
         
-        case d(.palmSunday)+1.days ..< d(.pascha):
-            return Translate.s("Holy Week")
+        case d("palmSunday")+1.days ..< pascha:
+            return Translate.s("holyWeek")
             
-        case d(.pascha)+1.days ..< d(.pascha)+7.days:
-            return Translate.s("Bright Week")
+        case pascha+1.days ..< pascha+7.days:
+            return Translate.s("brightWeek")
             
-        case d(.pascha)+8.days ..< d(.pentecost):
-            let weekNum = (d(.pascha) >> date)/7+1
-            return (currentWeekday == .sunday) ? nil : String(format: Translate.s("Week %@ after Pascha"), Translate.stringFromNumber(weekNum))
+        case pascha+8.days ..< pentecost:
+            let weekNum = (pascha >> date)/7+1
+            return (weekday == .sunday) ? nil : String(format: Translate.s("WeekAfterPascha"),
+                                                       Translate.stringFromNumber(weekNum))
             
-        case d(.pentecost)+1.days ... d(.endOfYear):
-            return  String(format: Translate.s("\(dayOfWeek) %@ after Pentecost"), Translate.stringFromNumber(((d(.pentecost)+1.days) >> date)/7+1))
+        case pentecost+1.days ... endOfYear:
+            return  String(format: Translate.s("\(dayOfWeek)AfterPentecost"),
+                           Translate.stringFromNumber(((pentecost+1.days) >> date)/7+1))
             
         default: return nil
         }
-        
     }
     
-    static public func getTone(_ date: Date) -> Int? {
+    func getTone(_ date: Date) -> Int? {
         func tone(dayNum: Int) -> Int {
             let reminder = (dayNum/7) % 8
             return (reminder == 0) ? 8 : reminder
         }
-        
-        setDate(date)
-        
+                
         switch (date) {
-        case d(.startOfYear) ..< d(.palmSunday):
-            return tone(dayNum: paschaDay(currentYear-1) >> date)
+        case startOfYear ..< d("palmSunday"):
+            return tone(dayNum: Cal.paschaDay(year-1) >> date)
             
-        case d(.pascha)+7.days ... d(.endOfYear):
-            return tone(dayNum: d(.pascha) >> date)
+        case pascha+7.days ... endOfYear:
+            return tone(dayNum: pascha >> date)
             
         default: return nil
         }
     }
     
-    static public func getToneDescription(_ date: Date) -> String? {
+    func getToneDescription(_ date: Date) -> String? {
         if let tone = getTone(date) {
-            return String(format: Translate.s("Tone %@"), Translate.stringFromNumber(tone))
+            return String(format: Translate.s("tone"), Translate.stringFromNumber(tone))
 
         } else {
             return nil
@@ -678,4 +703,4 @@ public struct ChurchCalendar {
 }
 
 public typealias Cal = ChurchCalendar
-
+public typealias Saint = ChurchDay

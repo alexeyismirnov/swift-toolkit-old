@@ -14,7 +14,7 @@ public struct SaintModel {
     
     static public func saints(_ date: Date) -> [Saint] {
         var saints = [Saint]()
-        let cal = Cal2.fromDate(date)
+        let cal = Cal.fromDate(date)
         
         if (cal.isLeapYear) {
             switch date {

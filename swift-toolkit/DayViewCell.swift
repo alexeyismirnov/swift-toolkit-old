@@ -39,7 +39,7 @@ public class DayViewCell: LabelViewCell {
         title.text = String(format: "%d", date.day)
         let fasting = ChurchFasting.forDate(date)
 
-        if !Cal2.getGreatFeast(date).isEmpty {
+        if !Cal.getGreatFeast(date).isEmpty {
             title.font = UIFont.boldSystemFont(ofSize: fontSize)
             title.textColor = .red
 

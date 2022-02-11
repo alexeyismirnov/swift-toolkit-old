@@ -63,7 +63,7 @@ public class FeastList {
     public var remembrance : [Date: NSAttributedString]!
     
     var year: Int
-    var cal: Cal2
+    var cal: Cal
     
     static var lists = [Int:FeastList]()
     
@@ -94,7 +94,7 @@ public class FeastList {
     
     init(_ year: Int) {
         self.year = year
-        self.cal = Cal2.fromDate(Date(1, 1, year))
+        self.cal = Cal.fromDate(Date(1, 1, year))
         
         update()
     }

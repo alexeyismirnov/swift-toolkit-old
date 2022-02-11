@@ -14,7 +14,7 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
     var appeared = false
 
     public var currentDate: Date
-    var cal: Cal2!
+    var cal: Cal!
 
     override public func viewControllerCurrent() -> UIViewController {
         return WeekCalendar(currentDate)
@@ -30,7 +30,7 @@ public class WeekCalendar: UIViewControllerAnimated, ResizableTableViewCells {
     
     public init(_ date: Date) {
         self.currentDate = date
-        self.cal = Cal2.fromDate(date)
+        self.cal = Cal.fromDate(date)
 
         super.init(nibName: nil, bundle: nil)
     }

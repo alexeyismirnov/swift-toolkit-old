@@ -49,7 +49,7 @@
 		8A23BFD0201056390034189E /* close2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A23BFCE201056390034189E /* close2.pdf */; };
 		8A2E560F2302B4A8009C8DE8 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */; };
 		8A35609F27B3BC220096902C /* ChurchFasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35609E27B3BC220096902C /* ChurchFasting.swift */; };
-		8A3560A127B3BC5E0096902C /* ChurchCalendar2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A027B3BC5E0096902C /* ChurchCalendar2.swift */; };
+		8A3560A127B3BC5E0096902C /* ChurchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */; };
 		8A3560A327B3BF910096902C /* ChurchReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A227B3BF910096902C /* ChurchReading.swift */; };
 		8A3D824923696D6D00C118AA /* salami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3D824823696D6D00C118AA /* salami.pdf */; };
 		8A42D4B7271E801400AE8E13 /* ChurchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B3271E801400AE8E13 /* ChurchTab.swift */; };
@@ -88,7 +88,6 @@
 		8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */; };
 		8A88FD852377FAB600E46116 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A88FD842377FAB600E46116 /* NotificationCenter.framework */; platformFilter = ios; };
 		8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D722EEA1AE0021D996 /* Translate.swift */; };
-		8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */; };
 		8AA660E022EEA67F0021D996 /* SaintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660DF22EEA67F0021D996 /* SaintModel.swift */; };
 		8AA660E222EED0570021D996 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA660E122EED0570021D996 /* AppGroup.swift */; };
 		8AB18EF01F86360300F1A65C /* swift_toolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB18EEE1F86360300F1A65C /* swift_toolkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -158,7 +157,7 @@
 		8A23BFCE201056390034189E /* close2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = close2.pdf; sourceTree = "<group>"; };
 		8A2E560E2302B4A8009C8DE8 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		8A35609E27B3BC220096902C /* ChurchFasting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchFasting.swift; sourceTree = "<group>"; };
-		8A3560A027B3BC5E0096902C /* ChurchCalendar2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar2.swift; sourceTree = "<group>"; };
+		8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar.swift; sourceTree = "<group>"; };
 		8A3560A227B3BF910096902C /* ChurchReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchReading.swift; sourceTree = "<group>"; };
 		8A3D824823696D6D00C118AA /* salami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = salami.pdf; sourceTree = "<group>"; };
 		8A42D4B3271E801400AE8E13 /* ChurchTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchTab.swift; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 		8A88FD822377FA9C00E46116 /* CalendarWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewController.swift; sourceTree = "<group>"; };
 		8A88FD842377FAB600E46116 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8AA660D722EEA1AE0021D996 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
-		8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar.swift; sourceTree = "<group>"; };
 		8AA660DF22EEA67F0021D996 /* SaintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintModel.swift; sourceTree = "<group>"; };
 		8AA660E122EED0570021D996 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		8AB18EEB1F86360300F1A65C /* swift_toolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_toolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,10 +240,9 @@
 			isa = PBXGroup;
 			children = (
 				8A3560A227B3BF910096902C /* ChurchReading.swift */,
-				8A3560A027B3BC5E0096902C /* ChurchCalendar2.swift */,
+				8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */,
 				8A35609E27B3BC220096902C /* ChurchFasting.swift */,
 				8A161E2A232263130067BE89 /* PericopeModel.swift */,
-				8AA660D822EEA1AE0021D996 /* ChurchCalendar.swift */,
 				8A161E2423225C900067BE89 /* ReadingApostle.plist */,
 				8A161E2023225C8F0067BE89 /* ReadingJohn.plist */,
 				8A161E2223225C900067BE89 /* ReadingLent.plist */,
@@ -593,7 +590,7 @@
 				8A161E2B232263130067BE89 /* PericopeModel.swift in Sources */,
 				8AFD017C23813E6500BE14D1 /* WeekCalendarCell.swift in Sources */,
 				8A5F0BE81F872D8F0059194A /* TextCell.swift in Sources */,
-				8A3560A127B3BC5E0096902C /* ChurchCalendar2.swift in Sources */,
+				8A3560A127B3BC5E0096902C /* ChurchCalendar.swift in Sources */,
 				8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */,
 				8A4D008E26A6D76300E355B2 /* BookUtils.swift in Sources */,
 				8AFE334622F41A06008DBCD6 /* LabelViewCell.swift in Sources */,
@@ -601,7 +598,6 @@
 				8A42D4B7271E801400AE8E13 /* ChurchTab.swift in Sources */,
 				8A12C92423507D1B00F16694 /* FeastNotifications.swift in Sources */,
 				8AA660E222EED0570021D996 /* AppGroup.swift in Sources */,
-				8AA660DC22EEA1AE0021D996 /* ChurchCalendar.swift in Sources */,
 				8A12C92323507D1B00F16694 /* FeastList.swift in Sources */,
 				8A5F0BEB1F8732650059194A /* Extensions.swift in Sources */,
 				8A229D7122FD92A800CEA2DB /* BookTOC.swift in Sources */,

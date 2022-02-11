@@ -21,9 +21,9 @@ struct LukeSpringParams {
     var sundayAfterExaltationPrevYear : Date
     var totalOffset : Int
     
-    init(_ cal: Cal2) {
+    init(_ cal: Cal) {
         self.PAPSunday = cal.d("sundayOfPublicianAndPharisee")
-        self.pentecostPrevYear = Cal2.paschaDay(cal.year-1) + 50.days
+        self.pentecostPrevYear = Cal.paschaDay(cal.year-1) + 50.days
         
         let exaltationPrevYear = Date(27, 9, cal.year-1)
         let exaltationPrevYearWeekday = DateComponents(date: exaltationPrevYear).weekday!
@@ -35,7 +35,7 @@ struct LukeSpringParams {
 }
 
 public class ChurchReading {
-    var cal: Cal2
+    var cal: Cal
     static var models = [Int:ChurchReading]()
     
     var LS: LukeSpringParams
@@ -43,7 +43,7 @@ public class ChurchReading {
     var rr = [Date:[String]]()
    
     init(_ date: Date) {
-        cal = Cal2.fromDate(date)
+        cal = Cal.fromDate(date)
         LS = LukeSpringParams(cal)
 
         apostle = [String].fromPList("ReadingApostle")
@@ -75,6 +75,7 @@ public class ChurchReading {
         // Christmas' and Theophany's Eves and Feasts have their own readings
         rr[Date(7, 1, cal.year)] = nil
         rr[Date(6, 1, cal.year)] = nil
+        rr[Date(14, 1, cal.year)] = nil
         rr[Date(18, 1, cal.year)] = nil
         rr[Date(19, 1, cal.year)] = nil
 
@@ -281,7 +282,31 @@ public class ChurchReading {
                 return feasts.filter({ $0.type == .great }).map { $0.reading }
                 
             } else {
-                return feasts.map({ $0.reading }) + (rr[date] ?? [])
+                var result = [String]()
+                let weekday = DayOfWeek(date: date)
+                
+                if cal.d("beginningOfGreatLent") ..< cal.d("sunday4GreatLent") ~= date &&
+                    weekday != .saturday && weekday != .sunday {
+                    
+                    // only Lent reading
+                    result = rr[date] ?? []
+                    
+                } else if date == cal.d("sundayOfZacchaeus") ||
+                    date == cal.d("sundayOfPublicianAndPharisee") ||
+                    date == cal.d("sundayOfProdigalSon") ||
+                    date == cal.d("sundayOfDreadJudgement") ||
+                    date == cal.d("cheesefareSunday") {
+                    
+                    // Triodion Sunday's reading first, then other feasts
+                    result = (rr[date] ?? []) + feasts.map({ $0.reading })
+                    
+                } else {
+                    
+                    // feast reading first, then regular readings
+                    result = feasts.map({ $0.reading }) + (rr[date] ?? [])
+                }
+                
+                return Array(result.prefix(2))
             }
             
         } else {

@@ -42,7 +42,7 @@ open class FeastNotifications {
 
         let year = Calendar.current.component(.year, from: Date())
         let fl = FeastList.from(year)
-        let cal = Cal2.fromDate(Date(1, 1, year))
+        let cal = Cal.fromDate(Date(1, 1, year))
                 
         if prefs.bool(forKey: "notifications_\(year)") {
             return
