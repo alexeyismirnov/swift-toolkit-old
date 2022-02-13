@@ -199,7 +199,7 @@ public class ChurchCalendar {
             ChurchDay("killedInAction", .none, date: Date(9,  5, year)),
             ChurchDay("josephBetrothed", .noSign),
             ChurchDay("holyFathersSixCouncils", .none, reading: "Heb 13:7-16 John 17:1-13 # Fathers"),
-            ChurchDay("holyFathersSeventhCouncil", .none),
+            ChurchDay("holyFathersSeventhCouncil", .none, reading: "Heb 13:7-16 John 17:1-13 # Fathers"),
             
             ChurchDay("", .polyeleos, date: Date(2, 1, year),
                       reading: "Heb 4:14-5:6 Matthew 5:14-19 # Righteous",
@@ -226,7 +226,7 @@ public class ChurchCalendar {
                       comment: "Euthymius the Great"),
             
             ChurchDay("", .polyeleos, date: Date(6, 2, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Fool-for-Christ",
                       comment: "St. Xenia of Petersburg"),
             
             ChurchDay("", .vigil, date: Date(12, 2, year),
@@ -235,19 +235,55 @@ public class ChurchCalendar {
             
             ChurchDay("", .polyeleos, date: Date(25, 2, year),
                       reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Iveron Icon"),
+                      comment: "Iveron Icon of Theotokos"),
+            
+            ChurchDay("", .polyeleos, date: Date(9, 3, year),
+                      reading: "2Cor 4:6-15 Matthew 11:2-15 # Forerunner",
+                      comment: "Findings of Head of St. John the Baptist"),
                         
             ChurchDay("", .vigil, date: Date(6, 5, year),
                       reading: "Acts 12:1-11 John 15:17-16:2 # Great Martyr",
                       comment: "Victory-bearer George"),
             
+            ChurchDay("", .polyeleos, date: Date(16, 5, year),
+                      reading: "Heb 13:7-16 Matthew 11:27-30 # Venerable",
+                      comment: "Theodosius of the Kiev Caves Monastery"),
+            
             ChurchDay("", .vigil, date: Date(21, 5, year),
                       reading: "1John 1:1-7 John 19:25-27,21:24-25 # Apostle",
                       comment: "Apostle John"),
             
+            ChurchDay("", .polyeleos, date: Date(22, 5, year),
+                      reading: "Heb 13:17-21 Luke 6:17-23 # Hierarch",
+                      comment: "St. Nicholas"),
+            
             ChurchDay("", .vigil, date: Date(24, 5, year),
                       reading: "Heb 7:26-8:2 Matthew 5:14-19 # Equals-to-the Apostles",
                       comment: "Methodius and Cyril"),
+            
+            ChurchDay("", .polyeleos, date: Date(1, 6, year),
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Right-believing",
+                      comment: "Demetrius Donskoy"),
+            
+            ChurchDay("", .polyeleos, date: Date(3, 6, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Vladimir Icon of Theotokos"),
+            
+            ChurchDay("", .polyeleos, date: Date(7, 6, year),
+                      reading: "2Cor 4:6-15 Matthew 11:2-15 # Forerunner",
+                      comment: "Findings of Head of St. John the Baptist"),
+            
+            ChurchDay("", .polyeleos, date: Date(6, 7, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Vladimir Icon of Theotokos"),
+            
+            ChurchDay("", .polyeleos, date: Date(17, 7, year),
+                      reading: "Rom 8:28-39 John 15:17-16:2 # Passion-bearers",
+                      comment: "Nicholas II et al."),
+            
+            ChurchDay("", .polyeleos, date: Date(21, 7, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Kazan Icon of Theotokos"),
             
             ChurchDay("", .vigil, date: Date(28, 7, year),
                       reading: "Gal 1:11-19 John 10:1-9 # Equal-to-the Apostles",
@@ -261,24 +297,68 @@ public class ChurchCalendar {
                       reading: "James 5:10-20 Luke 4:22-30 # Prophet",
                       comment: "Prophet Elias"),
             
+            ChurchDay("", .polyeleos, date: Date(6, 8, year),
+                      reading: "Rom 8:28-39 John 15:17-16:2 # Passion-bearers",
+                      comment: "Boris and Gleb"),
+            
+            ChurchDay("", .polyeleos, date: Date(15, 8, year),
+                      reading: "Gal 5:22-6:2 Matthew 11:27-30 # Fool-for-Christ",
+                      comment: "Basil, fool-for-Christ"),
+            
+            ChurchDay("", .polyeleos, date: Date(8, 9, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Vladimir Icon of Theotokos"),
+            
             ChurchDay("", .polyeleos, date: Date(14, 9, year),
                       reading: "1Tim 2:1-7 Luke 4:16-22 # New Year",
                       comment: "New Year"),
             
+            ChurchDay("", .polyeleos, date: Date(15, 9, year),
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerables",
+                      comment: "Anthony and Theodosius of the Kiev Caves"),
+            
+            ChurchDay("", .polyeleos, date: Date(8, 10, year),
+                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
+                      comment: "Sergius of Radonezh"),
+            
             ChurchDay("", .vigil, date: Date(9, 10, year),
-                      reading: "1John 4:12-19 John 19:25-27,21:24-25 # Repose of the John the Theologian",
+                      reading: "1John 4:12-19 John 19:25-27,21:24-25 # Apostle",
                       comment: "Apostle John"),
             
+            ChurchDay("", .polyeleos, date: Date(26, 10, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Iveron Icon of Theotokos"),
+            
+            ChurchDay("", .polyeleos, date: Date(4, 11, year),
+                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Iveron Icon of Theotokos"),
+            
+            ChurchDay("", .polyeleos, date: Date(8, 11, year),
+                      reading: "2Tim 2:1-10 John 15:17-16:2 # Great Martyr",
+                      comment: "Great-martyr Demetrius"),
+            
+            ChurchDay("", .polyeleos, date: Date(21, 11, year),
+                      reading: "Heb 2:2-10 Luke 10:16-21 # Angels",
+                      comment: "Synaxis of the Archangel Michael"),
+            
             ChurchDay("", .vigil, date: Date(26, 11, year),
-                      reading: "Heb 7:26-8:2 John 10:9-16 # St. John",
+                      reading: "Heb 7:26-8:2 John 10:9-16 # Hierarch",
                       comment: "St. John Chrysostom"),
+            
+            ChurchDay("", .polyeleos, date: Date(6, 12, year),
+                      reading: "Gal 5:22-6:2 Matthew 11:27-30 # Right-believing",
+                      comment: "Alexander Nevsky"),
+            
+            ChurchDay("", .polyeleos, date: Date(10, 12, year),
+                      reading: "Heb 9:1-7 Luke 10:38-42,11:27-28 # Theotokos",
+                      comment: "Znamenie Icon of Theotokos"),
             
             ChurchDay("", .vigil, date: Date(18, 12, year),
                       reading: "Gal 5:22-6:2 Matthew 11:27-30 # Venerable",
                       comment: "Venerable Sabbas"),
             
             ChurchDay("", .vigil, date: Date(19, 12, year),
-                      reading: "Heb 13:17-21 Luke 6:17-23 # St. Nicholas",
+                      reading: "Heb 13:17-21 Luke 6:17-23 # Hierarch",
                       comment: "St. Nicholas"),
             
         ]
