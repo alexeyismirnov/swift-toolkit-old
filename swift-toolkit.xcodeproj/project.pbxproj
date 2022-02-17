@@ -62,6 +62,7 @@
 		8A4D008C26A6D6E400E355B2 /* BookPageMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */; };
 		8A4D008E26A6D76300E355B2 /* BookUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008D26A6D76300E355B2 /* BookUtils.swift */; };
 		8A53143827BE2A9600FB7149 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A53143727BE2A9600FB7149 /* calendar.json */; };
+		8A53143A27BE4D8400FB7149 /* ChurchDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53143927BE4D8400FB7149 /* ChurchDay.swift */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */; };
@@ -171,6 +172,7 @@
 		8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageMultiple.swift; sourceTree = "<group>"; };
 		8A4D008D26A6D76300E355B2 /* BookUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookUtils.swift; sourceTree = "<group>"; };
 		8A53143727BE2A9600FB7149 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendar.json; sourceTree = "<group>"; };
+		8A53143927BE4D8400FB7149 /* ChurchDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchDay.swift; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingLegendCell.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				8A53143727BE2A9600FB7149 /* calendar.json */,
 				8A3560A227B3BF910096902C /* ChurchReading.swift */,
+				8A53143927BE4D8400FB7149 /* ChurchDay.swift */,
 				8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */,
 				8A35609E27B3BC220096902C /* ChurchFasting.swift */,
 				8A161E2A232263130067BE89 /* PericopeModel.swift */,
@@ -587,6 +590,7 @@
 				8A229D5A22FD7C0F00CEA2DB /* BookModel.swift in Sources */,
 				8A88FD7F2377F58000E46116 /* CompactViewController.swift in Sources */,
 				8A42D4B8271E801400AE8E13 /* ChurchInfo.swift in Sources */,
+				8A53143A27BE4D8400FB7149 /* ChurchDay.swift in Sources */,
 				8A5D0850234750B2009D9F55 /* YearlyMonthViewCell.swift in Sources */,
 				8A88FD832377FA9C00E46116 /* CalendarWidgetViewController.swift in Sources */,
 				8A12380D1F8F3CED00F6B382 /* ViewControllerAnimated.swift in Sources */,
