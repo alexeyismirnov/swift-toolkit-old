@@ -279,7 +279,7 @@ public class ChurchReading {
         
         if feasts.count > 0 {
             if feasts[0].type == .great {
-                return feasts.filter({ $0.type == .great }).map { $0.reading }
+                return feasts.filter({ $0.type == .great }).map { $0.reading! }
                 
             } else {
                 var result = [String]()
@@ -298,14 +298,14 @@ public class ChurchReading {
                     date == cal.d("cheesefareSunday") {
                     
                     // Triodion Sunday's reading first, then other feasts
-                    result = (rr[date] ?? []) + feasts.map({ $0.reading })
+                    result = (rr[date] ?? []) + feasts.map({ $0.reading! })
                     
                 } else {
                     
                     // feast reading first, then regular readings
-                    result = feasts.map({ $0.reading }) + (rr[date] ?? [])
+                    result = feasts.map({ $0.reading! }) + (rr[date] ?? [])
                 }
-                
+                                
                 return Array(result.prefix(2))
             }
             

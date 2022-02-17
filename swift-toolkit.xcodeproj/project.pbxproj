@@ -61,6 +61,7 @@
 		8A4D008B26A6D6E400E355B2 /* BookPageSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */; };
 		8A4D008C26A6D6E400E355B2 /* BookPageMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */; };
 		8A4D008E26A6D76300E355B2 /* BookUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D008D26A6D76300E355B2 /* BookUtils.swift */; };
+		8A53143827BE2A9600FB7149 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A53143727BE2A9600FB7149 /* calendar.json */; };
 		8A55458721A122E8003C60BC /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55458621A122E8003C60BC /* SwifterSwift.swift */; };
 		8A5CE4E5219EB99C007FAEAE /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */; };
 		8A5D084F234750B2009D9F55 /* FastingLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */; };
@@ -169,6 +170,7 @@
 		8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageSingle.swift; sourceTree = "<group>"; };
 		8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPageMultiple.swift; sourceTree = "<group>"; };
 		8A4D008D26A6D76300E355B2 /* BookUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookUtils.swift; sourceTree = "<group>"; };
+		8A53143727BE2A9600FB7149 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendar.json; sourceTree = "<group>"; };
 		8A55458621A122E8003C60BC /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		8A5CE4E4219EB99C007FAEAE /* CustomBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		8A5D084C234750B1009D9F55 /* FastingLegendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingLegendCell.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		8A00A50A22F6DE540040F14C /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				8A53143727BE2A9600FB7149 /* calendar.json */,
 				8A3560A227B3BF910096902C /* ChurchReading.swift */,
 				8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */,
 				8A35609E27B3BC220096902C /* ChurchFasting.swift */,
@@ -552,6 +555,7 @@
 				8AE3FA0722EB04FB0051F27F /* food-fish.pdf in Resources */,
 				8A229D6622FD7E6700CEA2DB /* add_bookmark.pdf in Resources */,
 				8A229D6822FD7E6700CEA2DB /* remove_bookmark.pdf in Resources */,
+				8A53143827BE2A9600FB7149 /* calendar.json in Resources */,
 				8A3D824923696D6D00C118AA /* salami.pdf in Resources */,
 				8A161E2723225C900067BE89 /* ReadingLent.plist in Resources */,
 				8AE3FA0D22EB04FB0051F27F /* food-vegetables.pdf in Resources */,

@@ -8,8 +8,33 @@
 
 import Foundation
 
-public enum FeastType: Int {
+public enum FeastType: Int, Codable {
     case none=0, noSign, sixVerse, doxology, polyeleos, vigil, great
+    
+    init?(_ string: String) {
+           switch string{
+           case "none": self = .none
+           case "noSign": self = .noSign
+           case "sixVerse": self = .sixVerse
+           case "doxology": self = .doxology
+           case "polyeleos": self = .polyeleos
+           case "vigil": self = .vigil
+           case "great": self = .great
+           default: return nil
+           }
+    }
+    
+    public func toString() -> String {
+        switch self {
+        case .none: return "none"
+        case .noSign: return "noSign"
+        case .sixVerse: return "sixVerse"
+        case .doxology: return "doxology"
+        case .polyeleos: return "polyeleos"
+        case .vigil: return "vigil"
+        case .great: return "great"
+        }
+    }
     
     static let tk = Bundle(identifier: "com.rlc.swift-toolkit")
     static let size15 = CGSize(width: 15, height: 15)
@@ -44,23 +69,106 @@ public enum DayOfWeek: Int  {
     }
 }
 
-public class ChurchDay : Hashable, Equatable  {
+extension CodingUserInfoKey {
+    static let year = CodingUserInfoKey(rawValue: "year")!
+}
+
+public class ChurchDay : Hashable, Equatable, Codable, CustomStringConvertible  {
     var _name : String
+    
     public var name : String {
         get { Translate.s(_name) }
     }
     
     public var type : FeastType
     public var date: Date?
-    public var reading : String
-    public var comment: String
+    public var reading : String?
+    public var comment: String?
     
-    init(_ name: String = "", _ type: FeastType = .none, date: Date? = nil, reading: String = "", comment: String = "") {
+    init(_ name: String = "", _ type: FeastType = .none, date: Date? = nil, reading: String? = nil, comment: String? = nil) {
         self._name = name
         self.type = type
         self.date = date
         self.reading = reading
         self.comment = comment
+    }
+
+    private enum CodingKeys : String, CodingKey {
+            case name = "feastName", type = "feastType", date, reading, comment = "saint"
+    }
+    
+    // DECODE
+    required public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let year = decoder.userInfo[.year] as! Int
+
+        _name = (try? container.decode(String.self, forKey: .name)) ?? ""
+        
+        reading = try? container.decode(String.self, forKey: .reading)
+        comment = try? container.decode(String.self, forKey: .comment)
+
+        type = FeastType(try! container.decode(String.self, forKey: .type))!
+        
+        if let dateStr = try? container.decode(String.self, forKey: .date) {
+            let d = formatter.date(from: dateStr)!
+            date = Date(d.day, d.month, year)
+        }
+        
+    }
+    
+    // ENCODE
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if _name.count > 0 {
+            try container.encode(_name, forKey: .name)
+        }
+        
+        if let date = date {
+            try container.encode(formatter.string(from: date), forKey: .date)
+        }
+                 
+        if let reading = reading {
+            try container.encode(reading, forKey: .reading)
+        }
+        
+        if let comment = comment {
+            try container.encode(comment, forKey: .comment)
+        }
+        
+        try container.encode(type.toString(), forKey: .type)
+    }
+    
+    private var formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateFormat = "d MMMM"
+        formatter.locale = Locale(identifier: "en")
+        return formatter
+    }
+
+    public var description: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateFormat = "d MMMM yyyy"
+        formatter.locale = Locale(identifier: "en")
+        
+        var s = "\(_name), \(type.toString())"
+        
+        if let date = date {
+            let str = formatter.string(from: date)
+            s += ", \(str)"
+        }
+        
+        if let reading = reading {
+            s += ", \(reading)"
+        }
+        
+        if let comment = comment {
+            s += " // \(comment)"
+        }
+        
+        return "ChurchDay(\(s))\n"
     }
     
     public func hash(into hasher: inout Hasher) {
@@ -115,253 +223,24 @@ public class ChurchCalendar {
     }
     
     func initDays() {
-        days = [
-            ChurchDay("palmSunday", .great, reading: "Phil 4:4-9 John 12:1-18"),
-            ChurchDay("pascha", .great, reading: "Acts 1:1-8 John 1:1-17"),
-            ChurchDay("ascension", .great, reading: "Acts 1:1-12 Luke 24:36-53"),
-            ChurchDay("pentecost", .great, reading: "Acts 2:1-11 John 7:37-52,8:12"),
-            ChurchDay("nativityOfGod", .great, date:  Date(7,  1, year), reading: "Matthew 1:18-25 Gal 4:4-7 Matthew 2:1-12"),
-            ChurchDay("theophany", .great, date:  Date(19, 1, year), reading: "Mark 1:9-11 Tit 2:11-14,3:4-7 Matthew 3:13-17"),
-            ChurchDay("meetingOfLord", .great, date: Date(15, 2, year), reading: "Luke 2:25-32 Heb 7:7-17 Luke 2:22-40"),
-            ChurchDay("annunciation", .great, date: Date(7,  4, year), reading: "Luke 1:39-49,56 Heb 2:11-18 Luke 1:24-38 # Theotokos"),
-            ChurchDay("peterAndPaul", .great, date: Date(12, 7, year), reading: "John 21:15-25 2Cor 11:21-12:9 Matthew 16:13-19"),
-            ChurchDay("transfiguration", .great, date: Date(19, 8, year), reading: "Luke 9:28-36 2Pet 1:10-19 Matthew 17:1-9"),
-            ChurchDay("dormition", .great, date: Date(28, 8, year), reading: "Luke 1:39-49,56 Phil 2:5-11 Luke 10:38-42,11:27-28"),
-            ChurchDay("nativityOfTheotokos", .great, date: Date(21, 9, year), reading: "Luke 1:39-49,56 Phil 2:5-11 Luke 10:38-42,11:27-28"),
-            ChurchDay("exaltationOfCross", .great, date: Date(27, 9, year), reading: "John 12:28-36 1Cor 1:18-24 John 19:6-11,13-20,25-28,30-35"),
-            ChurchDay("entryIntoTemple", .great, date: Date(4,  12, year), reading: "Luke 1:39-49,56 Heb 9:1-7 Luke 10:38-42,11:27-28"),
-            ChurchDay("circumcision", .great, date: Date(14, 1, year), reading: "John 10:1-9 Col 2:8-12 Luke 2:20-21,40-52"),
-            ChurchDay("veilOfTheotokos", .great, date: Date(14, 10, year), reading: "Luke 1:39-49,56 Heb 9:1-7 Luke 10:38-42,11:27-28"),
-            ChurchDay("nativityOfJohn", .great, date: Date(7,  7, year), reading: "Luke 1:24-25,57-68,76,80 Rom 13:12-14:4 Luke 1:5-25,57-68,76,80"),
-            ChurchDay("beheadingOfJohn", .great, date: Date(11, 9, year), reading: "Matthew 14:1-13 Acts 13:25-32 Mark 6:14-30"),
-            
-            ChurchDay("", .doxology, date: Date(20, 1, year),
-                      reading: "Acts 19:1-8 John 1:29-34 # Forerunner",
-                      comment: "Synaxis of John Baptist"),
-            
-            ChurchDay("eveOfNativityOfGod", .noSign, date: Date(6,  1, year), reading: "Heb 1:1-12 Luke 2:1-20 # Eve of the Nativity"),
-            ChurchDay("eveOfTheophany", .noSign, date: Date(18, 1, year), reading: "1Cor 9:19-27 Luke 3:1-18 # Epiphany Eve"),
-            
-            ChurchDay("sundayOfZacchaeus", .none),
-            ChurchDay("sundayOfPublicianAndPharisee", .none),
-            ChurchDay("sundayOfProdigalSon", .none),
-            ChurchDay("sundayOfDreadJudgement", .none),
-            ChurchDay("cheesefareSunday", .none),
-            ChurchDay("beginningOfGreatLent", .none),
-            ChurchDay("beginningOfDormitionFast", .none, date: Date(14, 8, year)),
-            ChurchDay("beginningOfNativityFast", .none, date: Date(28, 11, year)),
-            ChurchDay("beginningOfApostlesFast", .none),
-            ChurchDay("sundayOfForefathers", .none),
-            
-            ChurchDay("saturdayAfterNativity", .none, reading: "1Tim 6:11-16 Matthew 12:15-21 # Saturday after the Nativity"),
-            ChurchDay("sundayAfterNativity", .none, reading: "Gal 1:11-19 Matthew 2:13-23 # Sunday after the Nativity"),
-
-            ChurchDay("saturdayBeforeExaltation", .none, reading: "1Cor 2:6-9 Matthew 10:37-11:1 # Saturday before the Universal Elevation"),
-            ChurchDay("sundayBeforeExaltation", .none, reading: "Gal 6:11-18 John 3:13-17 # Sunday before the Universal Elevation"),
-            ChurchDay("saturdayAfterExaltation", .none, reading: "1Cor 1:26-29 John 8:21-30 # Saturday after the Universal Elevation"),
-            ChurchDay("sundayAfterExaltation", .none, reading: "Gal 2:16-20 Mark 8:34-9:1 # Sunday after the Universal Elevation"),
-
-            ChurchDay("saturdayBeforeTheophany", .none, reading: "1Tim 3:14-4:5 Matthew 3:1-11 # Saturday before the Theophany"),
-            ChurchDay("sundayBeforeTheophany", .none, reading: "2Tim 4:5-8 Mark 1:1-8 # Sunday before the Theophany"),
-            ChurchDay("saturdayAfterTheophany", .none, reading: "Ephes 6:10-17 Matthew 4:1-11 # Saturday after the Theophany"),
-            ChurchDay("sundayAfterTheophany", .none, reading: "Ephes 4:7-13 Matthew 4:12-17 # Sunday after the Theophany"),
-            
-            ChurchDay("saturday1GreatLent", .noSign, reading: "2Tim 2:1-10 John 15:17-16:2 # Great Martyr"),
-            ChurchDay("sunday1GreatLent", .none),
-            ChurchDay("saturday2GreatLent", .none, reading: "1Thess 4:13-17 John 5:24-30 # Departed"),
-            ChurchDay("sunday2GreatLent", .noSign, reading: "Heb 7:26-8:2 John 10:9-16 # Saint"),
-            ChurchDay("saturday3GreatLent", .none, reading: "1Thess 4:13-17 John 5:24-30 # Departed"),
-            ChurchDay("sunday3GreatLent", .none),
-            ChurchDay("saturday4GreatLent", .none, reading: "1Cor 15:47-57 John 5:24-30 # Departed"),
-            ChurchDay("sunday4GreatLent", .noSign, reading: "Ephes 5:8-19 Matthew 4:25-5:12 # Venerable"),
-            ChurchDay("thursday5GreatLent", .none),
-            ChurchDay("saturday5GreatLent", .none, reading: "Heb 9:1-7 Luke 10:38-42,11:27-28 # Theotokos"),
-            ChurchDay("sunday5GreatLent", .none, reading: "Gal 3:23-29 Luke 7:36-50 # Venerable"),
-            
-            ChurchDay("sunday2AfterPascha", .none),
-            ChurchDay("sunday3AfterPascha", .none),
-            ChurchDay("sunday4AfterPascha", .none),
-            ChurchDay("sunday5AfterPascha", .none),
-            ChurchDay("sunday6AfterPascha", .none),
-            ChurchDay("sunday7AfterPascha", .none),
-            
-            ChurchDay("sunday1AfterPentecost", .none),
-            ChurchDay("sunday2AfterPentecost", .none, reading: "Heb 11:33-12:2 Matthew 4:25-5:12 # Saints"),
-            
-            ChurchDay("saturdayOfFathers", .noSign, reading: "Gal 5:22-6:2 Matthew 11:27-30 # Fathers"),
-            ChurchDay("saturdayTrinity", .none, reading: "1Cor 15:47-57 John 6:35-39 # Departed"),
-            ChurchDay("saturdayOfDeparted", .none, reading: "1Thess 4:13-17 John 5:24-30 # Departed"),
-            ChurchDay("lazarusSaturday", .none),
-            
-            ChurchDay("newMartyrsConfessorsOfRussia", .vigil, reading: "Rom 8:28-39 Luke 21:8-19 # Martyrs"),
-            ChurchDay("demetriusSaturday", .none),
-            ChurchDay("radonitsa", .none),
-            ChurchDay("killedInAction", .none, date: Date(9,  5, year)),
-            ChurchDay("josephBetrothed", .noSign),
-            ChurchDay("holyFathersSixCouncils", .none, reading: "Heb 13:7-16 John 17:1-13 # Fathers"),
-            ChurchDay("holyFathersSeventhCouncil", .none, reading: "Heb 13:7-16 John 17:1-13 # Fathers"),
-            
-            ChurchDay("", .polyeleos, date: Date(2, 1, year),
-                      reading: "Heb 4:14-5:6 Matthew 5:14-19 # Righteous",
-                      comment: "John of Kronstadt"),
-            
-            ChurchDay("", .polyeleos, date: Date(3, 1, year),
-                      reading: "Heb 7:26-8:2 Luke 6:17-23 # Hierarch",
-                      comment: "St. Peter"),
-            
-            ChurchDay("", .polyeleos, date: Date(15, 1, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
-                      comment: "Seraphim of Sarov"),
-            
-            ChurchDay("", .polyeleos, date: Date(23, 1, year),
-                      reading: "Heb 7:26-8:2 John 10:9-16 # Hierarch",
-                      comment: "St. Theophan the Recluse"),
-            
-            ChurchDay("", .vigil, date: Date(30, 1, year),
-                      reading: "Heb 13:17-21 Luke 6:17-23 # Venerable",
-                      comment: "Anthony the Great"),
-            
-            ChurchDay("", .vigil, date: Date(2, 2, year),
-                      reading: "Heb 13:17-21 Luke 6:17-23 # Venerable",
-                      comment: "Euthymius the Great"),
-            
-            ChurchDay("", .polyeleos, date: Date(6, 2, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Fool-for-Christ",
-                      comment: "St. Xenia of Petersburg"),
-            
-            ChurchDay("", .vigil, date: Date(12, 2, year),
-                      reading: "Heb 13:7-16 Matthew 5:14-19 # Hierarchs",
-                      comment: "Synaxis of the Three Hierarchs"),
-            
-            ChurchDay("", .polyeleos, date: Date(25, 2, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Iveron Icon of Theotokos"),
-            
-            ChurchDay("", .polyeleos, date: Date(9, 3, year),
-                      reading: "2Cor 4:6-15 Matthew 11:2-15 # Forerunner",
-                      comment: "Findings of Head of St. John the Baptist"),
-                        
-            ChurchDay("", .vigil, date: Date(6, 5, year),
-                      reading: "Acts 12:1-11 John 15:17-16:2 # Great Martyr",
-                      comment: "Victory-bearer George"),
-            
-            ChurchDay("", .polyeleos, date: Date(16, 5, year),
-                      reading: "Heb 13:7-16 Matthew 11:27-30 # Venerable",
-                      comment: "Theodosius of the Kiev Caves Monastery"),
-            
-            ChurchDay("", .vigil, date: Date(21, 5, year),
-                      reading: "1John 1:1-7 John 19:25-27,21:24-25 # Apostle",
-                      comment: "Apostle John"),
-            
-            ChurchDay("", .polyeleos, date: Date(22, 5, year),
-                      reading: "Heb 13:17-21 Luke 6:17-23 # Hierarch",
-                      comment: "St. Nicholas"),
-            
-            ChurchDay("", .vigil, date: Date(24, 5, year),
-                      reading: "Heb 7:26-8:2 Matthew 5:14-19 # Equals-to-the Apostles",
-                      comment: "Methodius and Cyril"),
-            
-            ChurchDay("", .polyeleos, date: Date(1, 6, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Right-believing",
-                      comment: "Demetrius Donskoy"),
-            
-            ChurchDay("", .polyeleos, date: Date(3, 6, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Vladimir Icon of Theotokos"),
-            
-            ChurchDay("", .polyeleos, date: Date(7, 6, year),
-                      reading: "2Cor 4:6-15 Matthew 11:2-15 # Forerunner",
-                      comment: "Findings of Head of St. John the Baptist"),
-            
-            ChurchDay("", .polyeleos, date: Date(6, 7, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Vladimir Icon of Theotokos"),
-            
-            ChurchDay("", .polyeleos, date: Date(17, 7, year),
-                      reading: "Rom 8:28-39 John 15:17-16:2 # Passion-bearers",
-                      comment: "Nicholas II et al."),
-            
-            ChurchDay("", .polyeleos, date: Date(21, 7, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Kazan Icon of Theotokos"),
-            
-            ChurchDay("", .vigil, date: Date(28, 7, year),
-                      reading: "Gal 1:11-19 John 10:1-9 # Equal-to-the Apostles",
-                      comment: "Great Prince Vladimir"),
-            
-            ChurchDay("", .vigil, date: Date(1, 8, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
-                      comment: "Seraphim of Sarov"),
-            
-            ChurchDay("", .vigil, date: Date(2, 8, year),
-                      reading: "James 5:10-20 Luke 4:22-30 # Prophet",
-                      comment: "Prophet Elias"),
-            
-            ChurchDay("", .polyeleos, date: Date(6, 8, year),
-                      reading: "Rom 8:28-39 John 15:17-16:2 # Passion-bearers",
-                      comment: "Boris and Gleb"),
-            
-            ChurchDay("", .polyeleos, date: Date(15, 8, year),
-                      reading: "Gal 5:22-6:2 Matthew 11:27-30 # Fool-for-Christ",
-                      comment: "Basil, fool-for-Christ"),
-            
-            ChurchDay("", .polyeleos, date: Date(8, 9, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Vladimir Icon of Theotokos"),
-            
-            ChurchDay("", .polyeleos, date: Date(14, 9, year),
-                      reading: "1Tim 2:1-7 Luke 4:16-22 # New Year",
-                      comment: "New Year"),
-            
-            ChurchDay("", .polyeleos, date: Date(15, 9, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerables",
-                      comment: "Anthony and Theodosius of the Kiev Caves"),
-            
-            ChurchDay("", .polyeleos, date: Date(8, 10, year),
-                      reading: "Gal 5:22-6:2 Luke 6:17-23 # Venerable",
-                      comment: "Sergius of Radonezh"),
-            
-            ChurchDay("", .vigil, date: Date(9, 10, year),
-                      reading: "1John 4:12-19 John 19:25-27,21:24-25 # Apostle",
-                      comment: "Apostle John"),
-            
-            ChurchDay("", .polyeleos, date: Date(26, 10, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Iveron Icon of Theotokos"),
-            
-            ChurchDay("", .polyeleos, date: Date(4, 11, year),
-                      reading: "Phil 2:5-11 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Iveron Icon of Theotokos"),
-            
-            ChurchDay("", .polyeleos, date: Date(8, 11, year),
-                      reading: "2Tim 2:1-10 John 15:17-16:2 # Great Martyr",
-                      comment: "Great-martyr Demetrius"),
-            
-            ChurchDay("", .polyeleos, date: Date(21, 11, year),
-                      reading: "Heb 2:2-10 Luke 10:16-21 # Angels",
-                      comment: "Synaxis of the Archangel Michael"),
-            
-            ChurchDay("", .vigil, date: Date(26, 11, year),
-                      reading: "Heb 7:26-8:2 John 10:9-16 # Hierarch",
-                      comment: "St. John Chrysostom"),
-            
-            ChurchDay("", .polyeleos, date: Date(6, 12, year),
-                      reading: "Gal 5:22-6:2 Matthew 11:27-30 # Right-believing",
-                      comment: "Alexander Nevsky"),
-            
-            ChurchDay("", .polyeleos, date: Date(10, 12, year),
-                      reading: "Heb 9:1-7 Luke 10:38-42,11:27-28 # Theotokos",
-                      comment: "Znamenie Icon of Theotokos"),
-            
-            ChurchDay("", .vigil, date: Date(18, 12, year),
-                      reading: "Gal 5:22-6:2 Matthew 11:27-30 # Venerable",
-                      comment: "Venerable Sabbas"),
-            
-            ChurchDay("", .vigil, date: Date(19, 12, year),
-                      reading: "Heb 13:17-21 Luke 6:17-23 # Hierarch",
-                      comment: "St. Nicholas"),
-            
-        ]
+        /*
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
+        
+        let jsonData = try! encoder.encode(days)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        
+        print("JSON String : " + jsonString!)
+         */
+        
+        let url = Bundle(identifier: "com.rlc.swift-toolkit")!.url(forResource: "calendar", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        
+        let decoder = JSONDecoder()
+        decoder.userInfo = [.year: year]
+        days = try! decoder.decode([ChurchDay].self, from: data)
+        
+        // print(days)
     }
     
     func initGreatLent() {
@@ -706,12 +585,12 @@ public extension ChurchCalendar {
     
     func getDayReadings(_ date: Date) -> [ChurchDay] {
         days
-            .filter({ $0.date == date && $0.reading.count > 0 })
+            .filter({ $0.date == date && $0.reading != nil })
             .sorted { $0.type.rawValue > $1.type.rawValue }
     }
     
     func getAllReadings() -> [ChurchDay] {
-        days.filter({ $0.reading.count > 0 })
+        days.filter({ $0.reading != nil })
     }
     
     func getWeekDescription(_ date: Date) -> String? {
