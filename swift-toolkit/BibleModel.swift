@@ -125,7 +125,6 @@ public class OldTestamentModel : BookModel, BibleModel {
             ("Ecclesiastes","eccles"),
             ("Song of Solomon","song"),
             ],
-        
         [
             ("Isaiah","isa"),
             ("Jeremiah","jer"),
@@ -164,8 +163,6 @@ public class OldTestamentModel : BookModel, BibleModel {
     public func getNumChapters(_ index: IndexPath) -> Int {
         return numberOfChapters(OldTestamentModel.data[index.section][index.row].1)
     }
-
-    public func getComment(commentId: Int) -> String? { return nil }
     
     public func getBookmarkName(_ bookmark: String) -> String {
         let comp = bookmark.components(separatedBy: "_")
@@ -280,7 +277,7 @@ public class NewTestamentModel : BookModel, BibleModel {
             ("Epistle of St Paul to Hebrews", "heb"),
             ],
         [
-            ("Revelation of St John the Devine", "rev")
+            ("Revelation of St John the Divine", "rev")
         ]
     ]
     
@@ -301,9 +298,7 @@ public class NewTestamentModel : BookModel, BibleModel {
     public func getNumChapters(_ index: IndexPath) -> Int {
         return numberOfChapters(NewTestamentModel.data[index.section][index.row].1)
     }
-    
-    public func getComment(commentId: Int) -> String? { return nil }
-    
+        
     public func getBookmarkName(_ bookmark: String) -> String {
         let comp = bookmark.components(separatedBy: "_")
         guard comp[0] == code else { return "" }

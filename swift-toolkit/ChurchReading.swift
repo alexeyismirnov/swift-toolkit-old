@@ -172,17 +172,17 @@ public class ChurchReading {
     }
     
     func GospelOfLent(_ date: Date) -> String {
-        let dayNum = cal.d("sundayOfPublicianAndPharisee") >> date;
+        let dayNum = cal.d("sundayOfPublicianAndPharisee") >> date
         return readingsLent[dayNum]
     }
     
     func GospelOfJohn(_ date: Date) -> String {
-        let dayNum = cal.pascha >> date;
+        let dayNum = cal.pascha >> date
         return readingsJohn[dayNum]
     }
     
     func GospelOfMatthew(_ date: Date) -> String {
-        var dayNum = (cal.pentecost+1.days) >> date;
+        var dayNum = (cal.pentecost+1.days) >> date
         var readings = apostle[dayNum] + " "
         
         if dayNum >= 17*7 {

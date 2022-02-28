@@ -50,9 +50,7 @@ public class BookmarksModel : BookModel {
     }
 
     public func getNumChapters(_ index: IndexPath) -> Int { return 0 }
-    
-    public func getComment(commentId: Int) -> String? { return nil }
-    
+        
     public func resolveBookmarkAt(row: Int) -> BookPosition {
         let comp = bookmarks[row].components(separatedBy: "_")
         

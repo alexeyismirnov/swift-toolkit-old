@@ -157,10 +157,6 @@ public class PericopeModel : BookModel {
         return 0
     }
     
-    public func getComment(commentId: Int) -> String? {
-        return nil
-    }
-    
     public func getContent(at pos: BookPosition) -> Any? {
         guard let str = pos.location else { return nil }
         let pericope = getPericope(str.trimmingCharacters(in: CharacterSet.whitespaces))

@@ -29,10 +29,12 @@ public struct BookPosition {
         self.data = data
     }
     
+    
     public init(index: IndexPath, chapter: Int = 0) {
         self.index = index
         self.chapter = chapter
     }
+    
     
     public var model : BookModel?
     public var index : IndexPath?
@@ -72,6 +74,7 @@ public extension BookModel {
     func getPrevSection(at pos: BookPosition) -> BookPosition? { return nil }
     
     func getTitle(at pos: BookPosition) -> String? { return nil }
+    func getComment(commentId: Int) -> String? { return nil }
 
     func getBookmark(at pos: BookPosition) -> String? { return nil }
     func getBookmarkName(_ bookmark : String) -> String { return "" }
