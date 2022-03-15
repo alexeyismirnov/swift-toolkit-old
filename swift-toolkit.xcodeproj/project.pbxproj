@@ -52,6 +52,10 @@
 		8A3560A127B3BC5E0096902C /* ChurchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */; };
 		8A3560A327B3BF910096902C /* ChurchReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3560A227B3BF910096902C /* ChurchReading.swift */; };
 		8A3D824923696D6D00C118AA /* salami.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A3D824823696D6D00C118AA /* salami.pdf */; };
+		8A3F530D27E04104005C8C2A /* OldTestamentFilenames.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F530927E04104005C8C2A /* OldTestamentFilenames.json */; };
+		8A3F530E27E04104005C8C2A /* NewTestamentItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F530A27E04104005C8C2A /* NewTestamentItems.json */; };
+		8A3F530F27E04104005C8C2A /* NewTestamentFilenames.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F530B27E04104005C8C2A /* NewTestamentFilenames.json */; };
+		8A3F531027E04104005C8C2A /* OldTestamentItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3F530C27E04104005C8C2A /* OldTestamentItems.json */; };
 		8A42D4B7271E801400AE8E13 /* ChurchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B3271E801400AE8E13 /* ChurchTab.swift */; };
 		8A42D4B8271E801400AE8E13 /* ChurchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */; };
 		8A42D4B9271E801400AE8E13 /* ChurchDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A42D4B5271E801400AE8E13 /* ChurchDonation.swift */; };
@@ -162,6 +166,10 @@
 		8A3560A027B3BC5E0096902C /* ChurchCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchCalendar.swift; sourceTree = "<group>"; };
 		8A3560A227B3BF910096902C /* ChurchReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchReading.swift; sourceTree = "<group>"; };
 		8A3D824823696D6D00C118AA /* salami.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = salami.pdf; sourceTree = "<group>"; };
+		8A3F530927E04104005C8C2A /* OldTestamentFilenames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OldTestamentFilenames.json; sourceTree = "<group>"; };
+		8A3F530A27E04104005C8C2A /* NewTestamentItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NewTestamentItems.json; sourceTree = "<group>"; };
+		8A3F530B27E04104005C8C2A /* NewTestamentFilenames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NewTestamentFilenames.json; sourceTree = "<group>"; };
+		8A3F530C27E04104005C8C2A /* OldTestamentItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OldTestamentItems.json; sourceTree = "<group>"; };
 		8A42D4B3271E801400AE8E13 /* ChurchTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchTab.swift; sourceTree = "<group>"; };
 		8A42D4B4271E801400AE8E13 /* ChurchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchInfo.swift; sourceTree = "<group>"; };
 		8A42D4B5271E801400AE8E13 /* ChurchDonation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChurchDonation.swift; sourceTree = "<group>"; };
@@ -305,6 +313,10 @@
 		8A229D5C22FD7C7600CEA2DB /* LibraryTab */ = {
 			isa = PBXGroup;
 			children = (
+				8A3F530B27E04104005C8C2A /* NewTestamentFilenames.json */,
+				8A3F530A27E04104005C8C2A /* NewTestamentItems.json */,
+				8A3F530927E04104005C8C2A /* OldTestamentFilenames.json */,
+				8A3F530C27E04104005C8C2A /* OldTestamentItems.json */,
 				8A4D008526A6D6E300E355B2 /* BookPageCells.swift */,
 				8A4D008826A6D6E400E355B2 /* BookPageMultiple.swift */,
 				8A4D008726A6D6E400E355B2 /* BookPageSingle.swift */,
@@ -533,8 +545,10 @@
 				8A88FD7A2377F2B000E46116 /* vigil.pdf in Resources */,
 				8A88FD792377F2B000E46116 /* polyeleos.pdf in Resources */,
 				8A88FD782377F2B000E46116 /* doxology.pdf in Resources */,
+				8A3F530D27E04104005C8C2A /* OldTestamentFilenames.json in Resources */,
 				8A229D6322FD7E6700CEA2DB /* review.pdf in Resources */,
 				8A23BFCC201053BC0034189E /* options.pdf in Resources */,
+				8A3F530E27E04104005C8C2A /* NewTestamentItems.json in Resources */,
 				8A229D6722FD7E6700CEA2DB /* fontsize.pdf in Resources */,
 				8A23BFD0201056390034189E /* close2.pdf in Resources */,
 				8A88FD772377F2B000E46116 /* sixverse.pdf in Resources */,
@@ -549,7 +563,9 @@
 				8A0EA8E0234B3F2D0029CFB4 /* today.pdf in Resources */,
 				8A23BFC5201049DC0034189E /* zoom_out.pdf in Resources */,
 				8AE3FA0F22EB04FB0051F27F /* food-burger.pdf in Resources */,
+				8A3F530F27E04104005C8C2A /* NewTestamentFilenames.json in Resources */,
 				8A23BFC6201049DC0034189E /* zoom_in.pdf in Resources */,
+				8A3F531027E04104005C8C2A /* OldTestamentItems.json in Resources */,
 				8A161E2623225C900067BE89 /* ReadingLuke.plist in Resources */,
 				8AE3FA0822EB04FB0051F27F /* food-fruits.pdf in Resources */,
 				8A88FD7C2377F2B000E46116 /* nosign.pdf in Resources */,

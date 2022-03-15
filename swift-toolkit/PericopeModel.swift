@@ -18,8 +18,16 @@ public class PericopeModel : BookModel {
 
     public var hasChapters = false
     
+    var allItems, allFilenames : [String]
+    
     public init(lang: String) {
         self.lang = lang
+        
+        let model1 = OldTestamentModel(lang: lang)
+        let model2 = NewTestamentModel(lang: lang)
+
+        allItems = (model1.items + model2.items).flatMap { $0 }
+        allFilenames = (model1.filenames + model2.filenames).flatMap { $0 }
     }
     
     public func getPericope(_ str: String, decorated: Bool = true) -> [(NSAttributedString, NSAttributedString)] {
@@ -33,19 +41,19 @@ public class PericopeModel : BookModel {
             var chapter: Int = 0
             
             let fileName = pericope[i].lowercased()
-            let bookTuple = (NewTestamentModel.data+OldTestamentModel.data).flatMap { $0.filter { $0.1 == fileName } }
-            
+            let item = allItems[allFilenames.firstIndex(of: fileName)!]
+                        
             var bookName = NSAttributedString()
             var text = NSAttributedString()
             
             if decorated {
-                bookName = (Translate.s(bookTuple[0].0, lang: lang) + " " + pericope[i+1])
+                bookName = (Translate.s(item, lang: lang) + " " + pericope[i+1])
                     .colored(with: Theme.textColor)
                     .boldFont(ofSize: fontSize)
                     .centered
                 
             } else {
-                bookName = NSAttributedString(string: Translate.s(bookTuple[0].0, lang: lang))
+                bookName = NSAttributedString(string: Translate.s(item, lang: lang))
             }
             
             let arr2 = pericope[i+1].components(separatedBy: ",")
@@ -67,74 +75,41 @@ public class PericopeModel : BookModel {
                 }
                 
                 if range.count == 1 {
-                    for line in BibleUtils.getText(fileName,
-                                                   whereExpr: "chapter=\(range[0].0) AND verse=\(range[0].1)",
-                                                   lang: lang) {
-                        if decorated {
-                            text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
-                                                            text: line["text"] as! String,
-                                                            fontSize: fontSize,
-                                                            lang: lang)
-                        } else {
-                            text += (line["text"] as! String) + " "
-                        }
-                    }
+                    let bu = BibleUtils.fetch(fileName,
+                                                whereExpr: "chapter=\(range[0].0) AND verse=\(range[0].1)",
+                                                lang: lang)
+                    
+                    text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     
                 } else if range[0].0 != range[1].0 {
-                    for line in BibleUtils.getText(fileName,
-                                                   whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1)",
-                                                   lang: lang) {
-                        if decorated {
-                            text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
-                                                            text: line["text"] as! String,
-                                                            fontSize: fontSize,
-                                                            lang: lang)
-                        } else {
-                            text += (line["text"] as! String) + " "
-                        }
-                    }
                     
+                    var bu = BibleUtils.fetch(fileName,
+                                                whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1)",
+                                                lang: lang)
+                    
+                    text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
+
                     for chap in range[0].0+1 ..< range[1].0 {
-                        for line in BibleUtils.getText(fileName,
-                                                       whereExpr: "chapter=\(chap)",
-                                                       lang: lang) {
-                            if decorated {
-                                text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
-                                                                text: line["text"] as! String,
-                                                                fontSize: fontSize,
-                                                                lang: lang)
-                            } else {
-                                text += (line["text"] as! String) + " "
-                            }
-                        }
+                        bu = BibleUtils.fetch(fileName,
+                                                    whereExpr: "chapter=\(chap)",
+                                                    lang: lang)
+                        
+                        text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     }
                     
-                    for line in BibleUtils.getText(fileName,
-                                                   whereExpr: "chapter=\(range[1].0) AND verse<=\(range[1].1)",
-                                                   lang: lang) {
-                        if decorated {
-                            text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
-                                                            text: line["text"] as! String,
-                                                            fontSize: fontSize,
-                                                            lang: lang)
-                        } else {
-                            text += (line["text"] as! String) + " "
-                        }
-                    }
+                    bu = BibleUtils.fetch(fileName,
+                                                whereExpr: "chapter=\(range[1].0) AND verse<=\(range[1].1)",
+                                                lang: lang)
+                    
+                    text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     
                 } else {
-                    for line in BibleUtils.getText(fileName,
-                                                   whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1) AND verse<=\(range[1].1)",
-                                                   lang: lang) {
-                        if decorated {
-                            text += BibleUtils.decorateLine(num: line["verse"] as! Int64,
-                                                            text: line["text"] as! String,
-                                                            fontSize: fontSize,
-                                                            lang: lang)
-                        } else {
-                            text += (line["text"] as! String) + " "
-                        }
-                    }
+                    let bu = BibleUtils.fetch(fileName,
+                                               whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1) AND verse<=\(range[1].1)",
+                                               lang: lang)
+                    
+                    text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
+                    
                 }
             }
             
