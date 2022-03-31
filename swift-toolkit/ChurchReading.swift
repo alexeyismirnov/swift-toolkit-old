@@ -283,12 +283,9 @@ public class ChurchReading {
                 
             } else {
                 var result = [String]()
-                let weekday = DayOfWeek(date: date)
                 
-                if cal.d("beginningOfGreatLent") ..< cal.d("sunday4GreatLent") ~= date &&
-                    weekday != .saturday && weekday != .sunday {
-                    
-                    // only Lent reading
+                if cal.d("beginningOfGreatLent") ..< cal.d("sunday1GreatLent") ~= date {
+                    // only Lent reading during 1st week of Great Lent
                     result = rr[date] ?? []
                     
                 } else if date == cal.d("sundayOfZacchaeus") ||

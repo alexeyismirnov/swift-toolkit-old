@@ -206,8 +206,23 @@ public class ChurchFasting {
                 weekday == .friday) ? FastingModel(.fishAllowed) : FastingModel(.noFast)
             
         default:
-            return (weekday == .wednesday ||
-                weekday == .friday) ? FastingModel(.vegetarian) : FastingModel(.noFast)
+            if (weekday == .wednesday || weekday == .friday) {
+                let saints = SaintModel.saints(date)
+                let maxSaint = saints.max { $0.type.rawValue < $1.type.rawValue }!
+                
+                switch maxSaint.type {
+                case .vigil, .polyeleos:
+                    return FastingModel(.fishAllowed)
+                    
+                default:
+                    return FastingModel(.vegetarian)
+                }
+                
+            }
+            else {
+                return FastingModel(.noFast)
+            }
+           
         }
     }
     
