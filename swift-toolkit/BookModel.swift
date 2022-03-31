@@ -12,7 +12,7 @@ public enum BookContentType: Int {
     case text = 0, html
 }
 
-public struct BookPosition {
+public struct BookPosition: Equatable {
     public init(model: BookModel, index: IndexPath, chapter: Int = 0) {
         self.model = model
         self.index = index
@@ -35,12 +35,15 @@ public struct BookPosition {
         self.chapter = chapter
     }
     
-    
     public var model : BookModel?
     public var index : IndexPath?
     public var chapter : Int?
     public var location: String?
     public var data: Any?
+    
+    public static func == (lhs: BookPosition, rhs: BookPosition) -> Bool {
+        return lhs.index == rhs.index && lhs.chapter == rhs.chapter
+    }
 }
 
 public protocol BookModel {

@@ -661,3 +661,15 @@ public extension UIView {
         forView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -marginY).isActive = true
     }
 }
+
+public extension UIBarButtonItem {
+    var isHidden: Bool {
+        get {
+            return !isEnabled && tintColor == .clear
+        }
+        set {
+            tintColor = newValue ? .clear : nil
+            isEnabled = !newValue
+        }
+    }
+}

@@ -23,7 +23,7 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
 
     var model : BookModel
     var bookPos = [BookPosition]()
-    var initialPos : Int!
+    var initialPos : IndexPath!
     var toolbarLabel: UILabel!
 
     var bookmark: String?
@@ -31,72 +31,36 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
     var button_fontsize, button_add_bookmark, button_remove_bookmark : CustomBarButton!
     var button_close : CustomBarButton!
     
-    var totalCells = 3
-    
+    var totalCells : Int!
+    var buttonLeft, buttonRight : UIBarButtonItem!
+
     public init?(_ pos: BookPosition, lang: String = Translate.language) {
         guard let model = pos.model else { return nil }
         
         self.lang = lang
         self.model = model
         
-        var nextnextPos, prevprevPos : BookPosition?
+        totalCells = 0
         
-        let prevPos = model.getPrevSection(at: pos)
-        let nextPos = model.getNextSection(at: pos)
-        
-        if let nextPos = nextPos  {
-            nextnextPos = model.getNextSection(at: nextPos)
-        }
-        
-        if let prevPos = prevPos {
-            prevprevPos = model.getPrevSection(at: prevPos)
-        }
-        
-        if prevPos == nil {
-            bookPos.append(pos)
-            
-            if let nextPos = nextPos {
-                bookPos.append(nextPos)
+        var curPos : BookPosition!
                 
-            } else {
-                totalCells -= 1
-            }
-            
-            if let nextnextPos = nextnextPos {
-                bookPos.append(nextnextPos)
-
-            } else {
-                totalCells -= 1
-            }
-            
-            initialPos = 0
-            
-        } else if nextPos == nil {
-            if let prevprevPos = prevprevPos {
-                bookPos.append(prevprevPos)
-
-            } else {
-                totalCells -= 1
-            }
-            
-            if let prevPos = prevPos {
-                bookPos.append(prevPos)
-
-            } else {
-                totalCells -= 1
-            }
-            
-            bookPos.append(pos)
-            
-            initialPos = totalCells - 1
-            
+        if let _ = model as? BibleModel {
+            curPos = BookPosition(model: model, index: pos.index!, chapter: 0)
         } else {
-            bookPos.append(prevPos!)
-            bookPos.append(pos)
-            bookPos.append(nextPos!)
-            
-            initialPos = 1
+            curPos = BookPosition(model: model, index: IndexPath(row: 0, section: 0))
         }
+                
+        repeat {
+            bookPos.append(curPos)
+            
+            if (curPos == pos) {
+                initialPos =  IndexPath(row: totalCells, section: 0)
+            }
+            
+            totalCells += 1
+            curPos = model.getNextSection(at: curPos)
+            
+        } while (curPos != nil)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -114,17 +78,17 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
         createCollectionView()
 
         createNavigationButtons()
-        updateNavigationButtons(pos: bookPos[initialPos])
+        updateNavigationButtons(pos: bookPos[initialPos.row])
         
         createToolbar()
-        updateToolbar(pos: bookPos[initialPos])
+        updateToolbar(pos: bookPos[initialPos.row], index: initialPos)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.scrollToItem(at: IndexPath(item: initialPos, section: 0), at: .left, animated: false)
+        collectionView.scrollToItem(at: initialPos, at: .left, animated: false)
 
-        navigationController?.toolbar.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.width - 70.0),
+        navigationController?.toolbar.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.height - 70.0),
                                                      size: CGSize(width: view.frame.width, height: 70.0))
         
         
@@ -151,7 +115,7 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
 
         view.addSubview(collectionView)
     }
-    
+        
     func createToolbar() {
         let toolkit = Bundle(identifier: "com.rlc.swift-toolkit")
         var items = [UIBarButtonItem]()
@@ -167,26 +131,33 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
         
         let customBarButton = UIBarButtonItem(customView: toolbarLabel)
         
-        items.append(UIBarButtonItem(image: UIImage(named: "arrow-left", in: toolkit),
+        buttonLeft = UIBarButtonItem(image: UIImage(named: "arrow-left", in: toolkit),
                                      style: .plain,
                                      target: self,
-                                     action: #selector(self.showPrev)))
+                                     action: #selector(self.showPrev))
+        
+        buttonRight = UIBarButtonItem(image: UIImage(named: "arrow-right", in: toolkit),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.showNext))
+        
+        items.append(buttonLeft)
         
         items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
         items.append(customBarButton)
         items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
         
-        items.append(UIBarButtonItem(image: UIImage(named: "arrow-right", in: toolkit),
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(self.showNext)))
+        items.append(buttonRight)
         
         self.toolbarItems = items
         navigationController?.setToolbarHidden(true, animated: false)
     }
     
-    func updateToolbar(pos: BookPosition) {
+    func updateToolbar(pos: BookPosition, index: IndexPath) {
         toolbarLabel.text = model.getTitle(at: pos)
+        
+        buttonLeft.isHidden = (index.row == 0)
+        buttonRight.isHidden = (index.row == totalCells - 1)
     }
     
     func createNavigationButtons() {
@@ -242,7 +213,7 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
         let index = collectionView.indexPathForItem(at: visiblePoint)!
         
-        if (index.row < 2) {
+        if (index.row < totalCells-1) {
             isScrolling = true
             collectionView.scrollToItem(at: IndexPath(item: index.row+1, section: 0), at: .left, animated: true)
         }
@@ -289,18 +260,14 @@ public class BookPageMultiple: UIViewController, BookPageDelegate {
     
     func hideBars() -> (CGRect, UIEdgeInsets) {
         navigationController?.setNavigationBarHidden(true, animated: true)
-        //navigationController?.setToolbarHidden(true, animated: true)
         return (getFullScreenFrame(),
                 UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
     
     func showBars() -> (CGRect, UIEdgeInsets) {
         navigationController?.setNavigationBarHidden(false, animated: true)
-        //navigationController?.setToolbarHidden(false, animated: true)
         return (getFullScreenFrame(),
                 UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-
-                //UIEdgeInsets(top: navigationController?.navigationBar.frame.height ?? 0, left: 0, bottom: 0, right: 0))
     }
 
     func showComment(_ popup: UIViewController) {
@@ -337,71 +304,14 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func adjustView(_ scrollView: UIScrollView) {
-        let contentOffsetWhenFullyScrolledRight = collectionView.frame.size.width * CGFloat(bookPos.count - 1)
-        var newPos: BookPosition
+        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        let index = collectionView.indexPathForItem(at: visiblePoint)!
         
-        if scrollView.contentOffset.x == 0 {
-            newPos = bookPos[0]
-        } else if scrollView.contentOffset.x == contentOffsetWhenFullyScrolledRight {
-            newPos = bookPos[totalCells-1]
-        } else {
-            newPos = bookPos[1]
-        }
-        
-        let prevPos = model.getPrevSection(at: newPos)
-        let nextPos = model.getNextSection(at: newPos)
-        
-        var nextnextPos, prevprevPos : BookPosition?
-        
-        if let nextPos = nextPos {
-            nextnextPos = model.getNextSection(at: nextPos)
-        }
-        
-        if let prevPos = prevPos {
-            prevprevPos = model.getPrevSection(at: prevPos)
-        }
-        
+        let newPos = bookPos[index.row]
+
         updateNavigationButtons(pos: newPos)
-        updateToolbar(pos: newPos)
-
-        bookPos = []
-        
-        if prevPos == nil {
-            collectionView.performBatchUpdates({
-                bookPos.append(newPos)
-                if let nextPos = nextPos { bookPos.append(nextPos) }
-                if let nextnextPos = nextnextPos { bookPos.append(nextnextPos) }
-                
-            }, completion: { _ in
-                UIView.setAnimationsEnabled(false)
-                self.collectionView.reloadData()
-                UIView.setAnimationsEnabled(true)
-            })
-            
-        } else if nextPos == nil {
-            collectionView.performBatchUpdates({
-                if let prevprevPos = prevprevPos { bookPos.append(prevprevPos) }
-                if let prevPos = prevPos { bookPos.append(prevPos) }
-                bookPos.append(newPos)
-
-            }, completion: { _ in
-                UIView.setAnimationsEnabled(false)
-                self.collectionView.reloadData()
-                UIView.setAnimationsEnabled(true)
-            })
-        } else {
-            collectionView.performBatchUpdates({
-                bookPos.append(prevPos!)
-                bookPos.append(newPos)
-                bookPos.append(nextPos!)
-                
-            }, completion: { _ in
-                UIView.setAnimationsEnabled(false)
-                self.collectionView.reloadData()
-                self.collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .left, animated: false)
-                UIView.setAnimationsEnabled(true)
-            })
-        }
+        updateToolbar(pos: newPos, index: index)
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {

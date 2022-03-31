@@ -108,7 +108,7 @@ public class BookTOC: UIViewController, ResizableTableViewCells {
             }
             
         } else {
-            openBook(indexPath, -1)
+            openBook(indexPath, 0)
         }
         
         return nil
