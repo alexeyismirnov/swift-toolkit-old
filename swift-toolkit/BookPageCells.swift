@@ -159,6 +159,7 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
         <style type='text/css'>
         body {font-size: \(fontSize)px; color: \(color); }
         .rubric { color: red; font-size: 90%; }
+        .title { font-size: 110%; font-weight:bold; text-align: center  }
         .author { color: red; font-size: 110%; font-weight:bold; }
         \(bookIcon)
         </style>
