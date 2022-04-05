@@ -61,7 +61,7 @@ open class EbookModel : BookModel {
     }
     
     public func getNumChapters(_ index: IndexPath) -> Int {
-        return 0
+        return Int(try! db.countFrom("content", columns: ["DISTINCT title"]))
     }
     
     public func getComment(commentId: Int) -> String? {

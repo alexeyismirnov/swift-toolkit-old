@@ -29,10 +29,10 @@ class BookPageCellText: UICollectionViewCell, UITextViewDelegate {
     }
     
     func updateText() {
-        textView.textColor = Theme.textColor
         textView.attributedText = attributedText
         textView.font = font
-        
+        textView.textColor = Theme.textColor
+
         textView.setContentOffset(.zero, animated: false)
         textView.scrollRangeToVisible(NSRange(location:0, length:0))
     }
