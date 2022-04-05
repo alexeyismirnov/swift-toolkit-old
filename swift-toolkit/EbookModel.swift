@@ -76,7 +76,9 @@ open class EbookModel : BookModel {
         
         if (contentType == .text) {
             let fontSize = CGFloat(AppGroup.prefs.integer(forKey: "fontSize"))
-            return  NSAttributedString(string: text).font(font: UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!)
+            return  NSAttributedString(string: text)
+                .font(font: UIFont(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!)
+                .colored(with:Theme.textColor)
             
         } else {
             let pattern = "comment_(\\d+)"

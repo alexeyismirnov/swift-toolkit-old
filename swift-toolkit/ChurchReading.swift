@@ -80,36 +80,41 @@ public class ChurchReading {
         rr[Date(19, 1, cal.year)] = nil
 
         for feast in feasts {
-            if cal.greatLentStart ... cal.pentecost ~= feast.date! {
+            let date = feast.date!
+            
+            // combine regular and feast's readings on these dates
+            if (cal.greatLentStart ... cal.pentecost ~= date) ||
+                date == cal.d("sundayOfZacchaeus") ||
+                date == cal.d("sundayOfPublicianAndPharisee") ||
+                date == cal.d("sundayOfProdigalSon") ||
+                date == cal.d("sundayOfDreadJudgement") ||
+                date == cal.d("cheesefareSunday") {
                 continue
             }
             
             if feast.type == .great {
-                let oldDate = feast.date!
-                
-                if let oldReading = rr[oldDate],
-                    let newDate = transferGreatFeast(oldDate) {
-                    let comment =  String(format: "# %@ Reading", formatter.string(from: oldDate))
+                if let oldReading = rr[date],
+                    let newDate = transferGreatFeast(date) {
+                    let comment =  String(format: "# %@ Reading", formatter.string(from: date))
                     
                     for r in oldReading {
                         rr[newDate]?.append(String(format: "%@ %@", r, comment))
                     }
                     
-                    rr[oldDate] = nil
                 }
-                
+
+                rr[date] = nil
+
             } else if feast.type == .vigil {
-                let oldDate = feast.date!
-                
-                if let oldReading = rr[oldDate],
-                    let newDate = transferVigil(oldDate) {
-                    if newDate != oldDate {
-                        let comment =  String(format: "# %@ Reading", formatter.string(from: oldDate))
+                if let oldReading = rr[date],
+                    let newDate = transferVigil(date) {
+                    if newDate != date {
+                        let comment =  String(format: "# %@ Reading", formatter.string(from: date))
                         for r in oldReading {
                             rr[newDate]?.append(String(format: "%@ %@", r, comment))
                         }
                         
-                        rr[oldDate] = nil
+                        rr[date] = nil
                     }
                 }
             }
@@ -262,8 +267,9 @@ public class ChurchReading {
             return reading.count > 0 ? reading : nil
             
         case cal.pascha ... cal.pentecost:
-            return GospelOfJohn(date)
-            
+            let reading = GospelOfJohn(date)
+            return reading.count > 0 ? reading : nil
+
         case cal.pentecost+1.days ... cal.d("sundayAfterExaltation"):
             return GospelOfMatthew(date)
             
@@ -276,14 +282,13 @@ public class ChurchReading {
     
     func getDailyReading(_ date: Date) -> [String] {
         let feasts = cal.getDayReadings(date)
-        
+        var result = [String]()
+
         if feasts.count > 0 {
             if feasts[0].type == .great {
-                return feasts.filter({ $0.type == .great }).map { $0.reading! }
+                return (rr[date] ?? []) + feasts.filter({ $0.type == .great }).map { $0.reading! }
                 
             } else {
-                var result = [String]()
-                
                 if cal.d("beginningOfGreatLent") ..< cal.d("sunday1GreatLent") ~= date {
                     // only Lent reading during 1st week of Great Lent
                     result = rr[date] ?? []
@@ -298,7 +303,6 @@ public class ChurchReading {
                     result = (rr[date] ?? []) + feasts.map({ $0.reading! })
                     
                 } else {
-                    
                     // feast reading first, then regular readings
                     result = feasts.map({ $0.reading! }) + (rr[date] ?? [])
                 }

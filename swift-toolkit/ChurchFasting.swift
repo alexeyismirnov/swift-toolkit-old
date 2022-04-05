@@ -342,7 +342,7 @@ public class ChurchFasting {
             return FastingModel(.cheesefare)
             
         } else if date == cal.d("beginningOfGreatLent") {
-            return monastic ? FastingModel(.noFood) : FastingModel(.vegetarian, "great_lent")
+            return monastic ? FastingModel(.xerophagy, "great_lent") : FastingModel(.vegetarian, "great_lent")
             
         } else {
             return (weekday == .monday ||
