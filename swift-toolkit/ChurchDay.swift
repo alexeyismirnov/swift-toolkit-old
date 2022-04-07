@@ -80,6 +80,10 @@ public class ChurchDay : Hashable, Equatable, Codable, CustomStringConvertible  
         get { Translate.s(_name) }
     }
     
+    public var id : String {
+        get { _name }
+    }
+    
     public var type : FeastType
     public var date: Date?
     public var reading : String?
