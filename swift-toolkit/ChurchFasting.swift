@@ -37,16 +37,16 @@ public struct FastingModel {
     ]
     
     static let fastingDescr : [FastingType: String] = [
-        .noFast:            "No fast",
-        .noFastMonastic:    "No fast",
-        .vegetarian:    "Vegetarian",
-        .fishAllowed:   "Fish allowed",
-        .fastFree:      "Fast-free week",
-        .cheesefare:    "Maslenitsa",
-        .noFood:        "No food",
-        .xerophagy:     "Xerophagy",
-        .withoutOil:    "Without oil",
-        .withOil:       "With oil",
+        .noFast:            "no_fast",
+        .noFastMonastic:    "no_fast",
+        .vegetarian:    "vegetarian",
+        .fishAllowed:   "fish_allowed",
+        .fastFree:      "fast_free",
+        .cheesefare:    "maslenitsa",
+        .noFood:        "no_food",
+        .xerophagy:     "xerophagy",
+        .withoutOil:    "without_oil",
+        .withOil:       "with_oil",
     ]
     
     static var fastingIcon: [FastingType: String] = [

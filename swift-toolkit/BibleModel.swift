@@ -64,7 +64,7 @@ public class BibleUtils {
         let db = try! Database(path:path)
         
         var content = [BibleVerse]()
-        let _ = try! db.selectFrom("scripture", whereExpr:whereExpr) { try! content.append(BibleVerse($0)) }
+        let _ = try! db.selectFrom("scripture", whereExpr:whereExpr, orderBy: "verse") { try! content.append(BibleVerse($0)) }
         
         return BibleUtils(bookName: name, lang: lang, content: content)
     }
