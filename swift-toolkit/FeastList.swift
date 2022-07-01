@@ -16,7 +16,8 @@ public class FeastList {
         case "ru":
             formatter.dateFormat = "cccc, d MMMM"
             break
-        case "cn":
+        case "cn",
+             "hk":
             formatter.dateFormat = "M月d日"
             break
         default:
@@ -35,7 +36,8 @@ public class FeastList {
         case "ru":
             formatter.dateFormat = "d MMMM"
             break
-        case "cn":
+        case "cn",
+             "hk":
             formatter.dateFormat = "M月d日"
             break
         default:

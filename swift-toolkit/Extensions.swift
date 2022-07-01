@@ -312,7 +312,7 @@ public extension UIFont {
     convenience init(lang: String, fontSize: Int? = nil) {
         let fontSize = fontSize ?? AppGroup.prefs.integer(forKey: "fontSize")
 
-        if lang == "cn" {
+        if lang == "cn" || lang == "hk" {
             self.init(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
             
         } else if lang == "cs" {

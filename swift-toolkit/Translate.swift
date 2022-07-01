@@ -39,7 +39,16 @@ public class Translate: NSObject {
     
     static public var language:String = defaultLanguage {
         didSet {
-            locale = Locale(identifier: (language == "cn") ? "zh_CN" : language)
+            switch (language) {
+            case "cn":
+                locale = Locale(identifier:"zh_CN")
+                break
+            case "hk":
+                locale = Locale(identifier:"zh_HK")
+                break
+            default:
+                locale = Locale(identifier: language)
+            }
         }
     }
     
@@ -56,7 +65,7 @@ public class Translate: NSObject {
             let formatter = NumberFormatter()
             formatter.locale = locale
             
-            if language == "cn" {
+            if language == "cn" || language == "hk" {
                 formatter.numberStyle = .spellOut
             }
             

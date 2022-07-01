@@ -28,7 +28,8 @@ class ExpandedViewController: UIViewController {
         var formatter = DateFormatter()
         formatter.timeStyle = .none
         switch Translate.language {
-        case "cn":
+        case "cn",
+             "hk":
             formatter.dateFormat = "y年M月"
             break
         default:
