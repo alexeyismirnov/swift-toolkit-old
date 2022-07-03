@@ -164,6 +164,11 @@ public class ChurchInfo: UITableViewController {
         }
         
         updateButtonStyle(appButton)
+        
+        // https://noahgilmore.com/blog/uibutton-padding/
+        appButton.contentEdgeInsets =  UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10+10)
+        appButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+        
         updateButtonStyle(donationButton1)
         updateButtonStyle(donationButton2)
         updateButtonStyle(donationButton3)
