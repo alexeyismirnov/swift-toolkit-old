@@ -484,9 +484,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AB18EF31F86360300F1A65C /* Build configuration list for PBXNativeTarget "swift-toolkit" */;
 			buildPhases = (
+				8AB18EE81F86360300F1A65C /* Headers */,
 				8AB18EE61F86360300F1A65C /* Sources */,
 				8AB18EE71F86360300F1A65C /* Frameworks */,
-				8AB18EE81F86360300F1A65C /* Headers */,
 				8AB18EE91F86360300F1A65C /* Resources */,
 			);
 			buildRules = (
