@@ -18,13 +18,13 @@ open class EbookModel : BookModel {
     public var hasChapters = false
     public var lang = Translate.language
     
-    var db : Database
+    public var db : Database
     
     lazy var sections: [String] = {
         return try! db.selectAll("SELECT title FROM sections ORDER BY id") { $0.stringValueAtIndex(0) ?? "" }
     }()
     
-    var items = [Int:[String]]()
+    public var items = [Int:[String]]()
 
     public init(_ filename: String) {
         let path = Bundle.main.path(forResource: filename, ofType: "sqlite")!
@@ -68,7 +68,7 @@ open class EbookModel : BookModel {
         return try! db.selectString("SELECT text FROM comments WHERE id=$0", parameters: [commentId])!
     }
     
-    public func getContent(at pos: BookPosition) -> Any? {
+    open func getContent(at pos: BookPosition) -> Any? {
         guard let index = pos.index else { return nil }
 
         var text =  try! db.selectString("SELECT text FROM content WHERE section=$0 AND item=$1",

@@ -153,6 +153,7 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
     
     func updateText() {
         let color = Theme.textColor.toHexString()
+        let color2 = Theme.secondaryColor.toHexString()
         let fontSize = AppGroup.prefs.integer(forKey: "fontSize")
 
         let styleCSS = """
@@ -160,6 +161,7 @@ class BookPageCellHTML: UICollectionViewCell, WKNavigationDelegate, UIScrollView
         body {font-size: \(fontSize)px; color: \(color); }
         .rubric { color: red; font-size: 90%; }
         .title { font-size: 110%; font-weight:bold; text-align: center  }
+        .subtitle { font-size: 85%; color: \(color2)  }
         .refrain { font-style: italic }
         .author { color: red; font-size: 110%; font-weight:bold; }
         \(bookIcon)
