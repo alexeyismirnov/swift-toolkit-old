@@ -14,6 +14,10 @@ public enum AppTheme {
     case Chameleon(color: UIColor)
 }
 
+public enum AppStyle: Int {
+    case Default=0, Light, Dark
+}
+
 public struct Theme {
     public static var textColor: UIColor!
     public static var mainColor : UIColor?
@@ -45,6 +49,9 @@ public struct Theme {
             
             Chameleon.setGlobalThemeUsingPrimaryColor(mainColor, withSecondaryColor: secondaryColor, andContentStyle: .contrast)
             UITabBar.appearance().tintColor = secondaryColor
+            
+            UITabBar.appearance().barTintColor = UIColor(red: 255/255.0, green: 233/255.0, blue: 210/255.0, alpha: 1.0)
+            UITabBar.appearance().tintColor = UIColor.red
 
         }
     }
