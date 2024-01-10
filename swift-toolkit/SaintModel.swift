@@ -7,11 +7,16 @@
 //
 
 import Foundation
-import Squeal
+import SQLite
 
 public struct SaintModel {
-    static var databases = [String: Database]()
+    static var databases = [String: Connection]()
     
+    static let saints = Table("saints")
+    static let day = Expression<Int>("day")
+    static let typikon = Expression<Int>("typikon")
+    static let name = Expression<String>("name")
+
     static public func saints(_ date: Date) -> [Saint] {
         var saints = [Saint]()
         let cal = Cal.fromDate(date)
@@ -40,31 +45,30 @@ public struct SaintModel {
         return saints
     }
     
-    static func getDatabase(_ filename: String) -> Database {
+    static func getDatabase(_ filename: String) -> Connection {
         let url = AppGroup.url.appendingPathComponent(filename)
-        let db = try! Database(path: url.path)
+        let db = try! Connection(url.path, readonly: true)
 
         databases[filename] = db
         return db
     }
     
     private static func saintsData(_ date: Date) -> [Saint] {
-        var saints = [Saint]()
+        var results = [Saint]()
         
         let dc = DateComponents(date: date)
 
         let filename = String(format: "saints_%02d_%@.sqlite", dc.month!, Translate.language)
         let db = databases[filename] ?? getDatabase(filename)
-
-        let saintsDB = try! db.selectFrom("saints", whereExpr:"day=\(dc.day!)", orderBy: "-typikon") { ["name": $0["name"], "typikon": $0["typikon"]] }
         
-        for line in saintsDB {
-            let name = line["name"] as! String
-            let typikon = FeastType(rawValue: Int(line["typikon"] as! Int64))
-            saints.append(Saint(name,typikon!))
-        }
+        results.append(
+            contentsOf: try! db.prepareRowIterator(saints
+                .filter(day == dc.day!)
+                .order(typikon.desc))
+            .map { Saint($0[name], FeastType(rawValue: $0[typikon])!) }
+        )
         
-        return saints
+        return results
     }
     
 }

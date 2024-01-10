@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Squeal
+import SQLite
 
 open class EbookModel : BookModel {
     public var code: String
@@ -18,25 +18,41 @@ open class EbookModel : BookModel {
     public var hasChapters = false
     public var lang = Translate.language
     
-    public var db : Database
+    public var db : Connection
+    
+    let t_data = Table("data")
+    let t_content = Table("content")
+    let t_sections = Table("sections")
+    let t_comments = Table("comments")
+
+    let f_id = Expression<Int>("id")
+    let f_section = Expression<Int>("section")
+    let f_item = Expression<Int>("item")
+
+    let f_title = Expression<String>("title")
+    let f_text = Expression<String>("text")
+
+    let f_key = Expression<String>("key")
+    let f_value = Expression<String>("value")
     
     lazy var sections: [String] = {
-        return try! db.selectAll("SELECT title FROM sections ORDER BY id") { $0.stringValueAtIndex(0) ?? "" }
+        return try! db.prepareRowIterator(t_sections
+            .order(f_id.asc))
+        .map { $0[f_title] }
     }()
     
     public var items = [Int:[String]]()
 
     public init(_ filename: String) {
         let path = Bundle.main.path(forResource: filename, ofType: "sqlite")!
-        db = try! Database(path:path)
+        db = try! Connection(path, readonly: true)
         
-        code = try! db.selectString("SELECT value FROM data WHERE key=$0", parameters: ["code"])!
-        title = try! db.selectString("SELECT value FROM data WHERE key=$0", parameters: ["title"])!
-        author = try! db.selectString("SELECT value FROM data WHERE key=$0", parameters: ["author"])
-    
-        contentType = BookContentType(rawValue:
-                                        try! db.selectInt("SELECT value FROM data WHERE key=$0", parameters: ["contentType"])!)!
-
+        code = try! db.pluck(t_data.filter(f_key == "code"))![f_value]
+        title = try! db.pluck(t_data.filter(f_key == "title"))![f_value]
+        author = try! db.pluck(t_data.filter(f_key == "author"))?[f_value]
+        
+        contentType = BookContentType(
+            rawValue: Int(try! db.pluck(t_data.filter(f_key == "contentType"))![f_value])!)!
     }
     
     public func getSections() -> [String] {
@@ -46,33 +62,33 @@ open class EbookModel : BookModel {
     public func getItems(_ section: Int) -> [String] {
         if items[section] != nil { return items[section]! }
         
-        items[section] =
-            try! db.selectAll("SELECT title FROM content WHERE section=$0 ORDER BY item", parameters: [section])
-                { $0.stringValueAtIndex(0) ?? "" }
+        items[section] = try! db.prepareRowIterator(t_content
+            .filter(f_section == section)
+            .order(f_item.asc))
+        .map { $0[f_title] }
         
         return items[section]!
     }
     
     public func getTitle(at pos: BookPosition) -> String? {
         guard let index = pos.index else { return nil }
-
-        return try! db.selectString("SELECT title FROM content WHERE section=$0 AND item=$1",
-                             parameters: [index.section, index.row])!
+        return try! db.pluck(t_content
+            .filter(f_section == index.section && f_item == index.row))![f_title]
     }
     
     public func getNumChapters(_ index: IndexPath) -> Int {
-        return Int(try! db.countFrom("content", columns: ["DISTINCT title"]))
+        return try! db.scalar(t_content.select(f_title.distinct.count))
     }
     
     public func getComment(commentId: Int) -> String? {
-        return try! db.selectString("SELECT text FROM comments WHERE id=$0", parameters: [commentId])!
+        return try! db.pluck(t_comments.filter(f_id == commentId))![f_text]
     }
     
     open func getContent(at pos: BookPosition) -> Any? {
         guard let index = pos.index else { return nil }
-
-        var text =  try! db.selectString("SELECT text FROM content WHERE section=$0 AND item=$1",
-                                         parameters: [index.section, index.row])!
+        
+        var text = try! db.pluck(t_content
+            .filter(f_section == index.section && f_item == index.row))![f_text]
         
         if (contentType == .text) {
             let fontSize = CGFloat(AppGroup.prefs.integer(forKey: "fontSize"))

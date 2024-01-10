@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A04B2DD2B46AB6100B5A66F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8A04B2DC2B46AB6100B5A66F /* SQLite */; };
 		8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */; };
 		8A0EA8E0234B3F2D0029CFB4 /* today.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A0EA8DE234B3F2D0029CFB4 /* today.pdf */; };
 		8A0EA8E1234B3F2D0029CFB4 /* help.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A0EA8DF234B3F2D0029CFB4 /* help.pdf */; };
@@ -243,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A04B2DD2B46AB6100B5A66F /* SQLite in Frameworks */,
 				8A88FD852377FAB600E46116 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +496,9 @@
 			dependencies = (
 			);
 			name = "swift-toolkit";
+			packageProductDependencies = (
+				8A04B2DC2B46AB6100B5A66F /* SQLite */,
+			);
 			productName = "swift-toolkit";
 			productReference = 8AB18EEB1F86360300F1A65C /* swift_toolkit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -522,6 +527,9 @@
 				en,
 			);
 			mainGroup = 8AB18EE11F86360300F1A65C;
+			packageReferences = (
+				8A04B2DB2B46AB6100B5A66F /* XCRemoteSwiftPackageReference "SQLite" */,
+			);
 			productRefGroup = 8AB18EEC1F86360300F1A65C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -711,7 +719,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -766,7 +774,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -795,7 +803,7 @@
 				);
 				INFOPLIST_FILE = "swift-toolkit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -828,7 +836,7 @@
 				);
 				INFOPLIST_FILE = "swift-toolkit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -865,6 +873,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A04B2DB2B46AB6100B5A66F /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A04B2DC2B46AB6100B5A66F /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A04B2DB2B46AB6100B5A66F /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8AB18EE21F86360300F1A65C /* Project object */;
 }

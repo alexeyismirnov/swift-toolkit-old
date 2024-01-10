@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SQLite
 
 public class PericopeModel : BookModel {
     public var lang: String
@@ -76,37 +77,40 @@ public class PericopeModel : BookModel {
                 
                 if range.count == 1 {
                     let bu = BibleUtils.fetch(fileName,
-                                                whereExpr: "chapter=\(range[0].0) AND verse=\(range[0].1)",
-                                                lang: lang)
+                                              whereExpr: BibleUtils.f_chapter == range[0].0 && BibleUtils.f_verse == range[0].1,
+                                              lang: lang)
                     
                     text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     
                 } else if range[0].0 != range[1].0 {
                     
                     var bu = BibleUtils.fetch(fileName,
-                                                whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1)",
-                                                lang: lang)
+                                              whereExpr: BibleUtils.f_chapter == range[0].0 && BibleUtils.f_verse >= range[0].1,
+                                              lang: lang)
                     
                     text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
 
                     for chap in range[0].0+1 ..< range[1].0 {
                         bu = BibleUtils.fetch(fileName,
-                                                    whereExpr: "chapter=\(chap)",
-                                                    lang: lang)
+                                              whereExpr: BibleUtils.f_chapter == chap,
+                                              lang: lang)
                         
                         text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     }
                     
                     bu = BibleUtils.fetch(fileName,
-                                                whereExpr: "chapter=\(range[1].0) AND verse<=\(range[1].1)",
-                                                lang: lang)
+                                          whereExpr: BibleUtils.f_chapter == range[1].0 && BibleUtils.f_verse <= range[1].1,
+                                          lang: lang)
                     
                     text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     
                 } else {
                     let bu = BibleUtils.fetch(fileName,
-                                               whereExpr: "chapter=\(range[0].0) AND verse>=\(range[0].1) AND verse<=\(range[1].1)",
-                                               lang: lang)
+                                               whereExpr: 
+                                                BibleUtils.f_chapter == range[0].0 &&
+                                                BibleUtils.f_verse >= range[0].1 &&
+                                                BibleUtils.f_verse <= range[1].1,
+                                              lang: lang)
                     
                     text += decorated ? bu.getAttrText(fontSize: fontSize) : bu.getText()
                     

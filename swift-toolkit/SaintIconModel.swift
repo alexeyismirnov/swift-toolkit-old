@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Squeal
+import SQLite
 
 enum IconCodes: Int {
     case pascha=100000, palmSunday=100001, ascension=100002, pentecost=100003,
@@ -32,34 +32,34 @@ public struct SaintIcon {
 }
 
 public struct SaintIconModel {
-    static let db = try! Database(path:Bundle.main.path(forResource: "icons", ofType: "sqlite")!)
+    static let db = try! Connection(Bundle.main.path(forResource: "icons", ofType: "sqlite")!, readonly: true)
+    static let app_saint = Table("app_saint")
+    static let link_saint = Table("link_saint")
 
+    static let id = Expression<Int64>("id")
+    static let day = Expression<Int64>("day")
+    static let month = Expression<Int64>("month")
+    static let has_icon = Expression<Int64>("has_icon")
+    static let name = Expression<String>("name")
+    
     static func addSaints(date: Date) -> [SaintIcon] {
         var saints = [SaintIcon]()
         
-        let day = date.day
-        let month = date.month
+        let day_num = Int64(date.day)
+        let month_num = Int64(date.month)
         
-        let results = try! db.selectFrom("app_saint", whereExpr:"month=\(month) AND day=\(day) AND has_icon=1")
-        { ["id": $0["id"] , "name": $0["name"], "has_icon": $0["has_icon"]] }
+        saints.append(
+            contentsOf: try! db.prepareRowIterator(app_saint
+                .filter(month == month_num && day == day_num && has_icon == 1))
+            .map { SaintIcon(id: Int($0[id]), name: $0[name], has_icon: true) }
+        )
         
-        for data in results {
-            let id = Int(exactly: data["id"] as! Int64) ?? 0
-            let has_icon = data["has_icon"] as! Int64 == 0 ? false : true
-            let saint = SaintIcon(id: id, name: data["name"] as! String, has_icon: has_icon)
-            saints.append(saint)
-        }
-        
-        let links = try! db.selectFrom("app_saint JOIN link_saint",
-                                       columns: ["link_saint.name AS name", "app_saint.id AS id", "app_saint.has_icon AS has_icon"],
-                                       whereExpr: "link_saint.month=\(month) AND link_saint.day=\(day) AND app_saint.id = link_saint.id AND app_saint.has_icon=1") { ["id": $0["id"],  "name": $0["name"], "has_icon": $0["has_icon"] ]}
-        
-        for data in links {
-            let id = Int(exactly: data["id"] as! Int64) ?? 0
-            let has_icon = data["has_icon"] as! Int64 == 0 ? false : true
-            let saint = SaintIcon(id: id, name: data["name"] as! String, has_icon: has_icon)
-            saints.append(saint)
-        }
+        saints.append(
+            contentsOf: try! db.prepareRowIterator(app_saint
+                .join(link_saint,
+                    on: link_saint[month] == month_num && link_saint[day] == day_num && app_saint[id] == link_saint[id]))
+            .map { SaintIcon(id: Int($0[app_saint[id]]), name: $0[link_saint[name]], has_icon: true) }
+        )
         
         return saints
     }
@@ -86,17 +86,14 @@ public struct SaintIconModel {
         
         if let codes = moveableIcons[date] {
             for code in codes {
-                let results = try! db.selectFrom("app_saint", whereExpr:"id=\(code.rawValue)")
-                { [ "name": $0["name"], "has_icon": $0["has_icon"]] }
-                
-                for data in results {
-                    let has_icon = data["has_icon"] as! Int64 == 0 ? false : true
-                    let saint = SaintIcon(id: code.rawValue, name: data["name"] as! String, has_icon: has_icon)
-                    saints.append(saint)
-                }
+                saints.append(
+                    contentsOf: try! db.prepareRowIterator(app_saint
+                        .filter(id == Int64(code.rawValue)))
+                    .map { SaintIcon(id: code.rawValue, name: $0[name], has_icon: true) }
+                )
             }
         }
-        
+         
         if cal.isLeapYear {
             switch date {
             case cal.leapStart ..< cal.leapEnd:

@@ -7,19 +7,20 @@
 //
 
 import UIKit
-import Squeal
+import SQLite
 
-class BibleVerse {
+fileprivate let t_scripture = Table("scripture")
+
+struct BibleVerse {
     var verse : Int
     var text: String
-    
-    init(_ row:Statement) throws {
-        verse = row.intValue("verse") ?? 0
-        text = row.stringValue("text") ?? ""
-    }
 }
 
 public class BibleUtils {
+    public static let f_chapter = Expression<Int>("chapter")
+    public static let f_verse = Expression<Int>("verse")
+    public static let f_text = Expression<String>("text")
+    
     var content : [BibleVerse]
     var bookName : String
     var lang : String
@@ -59,13 +60,18 @@ public class BibleUtils {
         NSAttributedString(string: content.map { $0.text }.joined(separator: " "))
     }
     
-    static public func fetch(_ name: String, whereExpr: String, lang: String) -> BibleUtils {
+    static public func fetch(_ name: String, whereExpr: Expression<Bool>, lang: String) -> BibleUtils {
         let path = Bundle.main.path(forResource: name.lowercased()+"_"+lang, ofType: "sqlite")!
-        let db = try! Database(path:path)
+        let db = try! Connection(path, readonly: true)
         
         var content = [BibleVerse]()
-        let _ = try! db.selectFrom("scripture", whereExpr:whereExpr, orderBy: "verse") { try! content.append(BibleVerse($0)) }
         
+        content.append(
+            contentsOf: try! db.prepareRowIterator(t_scripture
+                .filter(whereExpr)
+                .order(f_verse.asc))
+            .map { BibleVerse(verse: $0[f_verse], text: $0[f_text]) })
+
         return BibleUtils(bookName: name, lang: lang, content: content)
     }
 }
@@ -89,11 +95,12 @@ public protocol BibleModel {
 }
 
 public extension BibleModel where Self:BookModel {
+    
     func numberOfChapters(_ name: String) -> Int {
         let path = Bundle.main.path(forResource: name.lowercased()+"_"+lang, ofType: "sqlite")!
-        let db = try! Database(path:path)
+        let db = try! Connection(path, readonly: true)
         
-        return Int(try! db.countFrom("scripture", columns: ["DISTINCT chapter"]))
+        return try! db.scalar(t_scripture.select(BibleUtils.f_chapter.distinct.count))
     }
     
     func getItems(_ section: Int) -> [String] {
@@ -124,8 +131,8 @@ public extension BibleModel where Self:BookModel {
         let fontSize = prefs.integer(forKey: "fontSize")
         
         let bu = BibleUtils.fetch(name,
-                                    whereExpr: "chapter=\(chapter+1)",
-                                    lang: lang)
+                                  whereExpr: BibleUtils.f_chapter == chapter+1,
+                                  lang: lang)
         
         text = bu.getAttrText(fontSize:  CGFloat(fontSize))
         
