@@ -84,8 +84,8 @@ public class FontSizeViewController : UIViewController, PopupContentViewControll
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.thumbTintColor = .gray
-        slider.minimumValue = 12
-        slider.maximumValue = 30
+        slider.minimumValue = 14
+        slider.maximumValue = 32
         slider.setValue(Float(fontSize), animated: false)
         
         slider.addTarget(self, action: #selector(self.sliderVlaue(_:)), for: .valueChanged)

@@ -35,8 +35,12 @@ public extension NSAttributedString {
         return applying(attributes: [.font: UIFont.systemFont(ofSize: CGFloat(ofSize))])
     }
     
+    func csFont(ofSize: CGFloat) -> NSAttributedString {
+        return applying(attributes: [.font: UIFont(lang: "cs")])
+    }
+    
     func boldFont(ofSize: CGFloat) -> NSAttributedString {
-        return applying(attributes: [.font: UIFont.boldSystemFont(ofSize: CGFloat(ofSize))])
+        return applying(attributes: [.font: UIFont.systemFont(ofSize: CGFloat(ofSize+3), weight: UIFont.Weight.bold)])
     }
     
     fileprivate func applying(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {

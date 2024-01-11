@@ -47,9 +47,16 @@ public class BibleUtils {
                 result += "\(line.verse) ".colored(with: UIColor.red).systemFont(ofSize: fontSize) + text + "\n"
                 
             } else {
-                result += "\(line.verse) ".colored(with: UIColor.red).systemFont(ofSize: fontSize)
-                    + line.text.colored(with: Theme.textColor).systemFont(ofSize: fontSize)
-                    + "\n"
+                if (lang == "cs") {
+                    result += "\(line.verse) ".colored(with: UIColor.red).csFont(ofSize: fontSize)
+                        + line.text.colored(with: Theme.textColor).csFont(ofSize: fontSize)
+
+                } else {
+                    result += "\(line.verse) ".colored(with: UIColor.red).systemFont(ofSize: fontSize)
+                        + line.text.colored(with: Theme.textColor).systemFont(ofSize: fontSize)
+                }
+                
+                result += "\n"
             }
         }
         

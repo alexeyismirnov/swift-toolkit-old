@@ -48,10 +48,19 @@ public class PericopeModel : BookModel {
             var text = NSAttributedString()
             
             if decorated {
-                bookName = (Translate.s(item, lang: lang) + " " + pericope[i+1])
-                    .colored(with: Theme.textColor)
-                    .boldFont(ofSize: fontSize)
-                    .centered
+                bookName = (Translate.s(item, lang: lang) + " " + pericope[i+1]).colored(with: Theme.textColor)
+                
+                if (lang == "cs") {
+                    bookName = bookName
+                        .csFont(ofSize: fontSize)
+                        .centered
+                    
+                } else {
+                    bookName = bookName
+                        .boldFont(ofSize: fontSize)
+                        .centered
+                }
+                  
                 
             } else {
                 bookName = NSAttributedString(string: Translate.s(item, lang: lang))
