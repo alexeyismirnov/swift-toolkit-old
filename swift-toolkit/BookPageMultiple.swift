@@ -293,7 +293,7 @@ extension  BookPageMultiple: UICollectionViewDataSource, UICollectionViewDelegat
         } else {
             let cell: BookPageCellText = collectionView.dequeueReusableCell(for: indexPath)
             
-            cell.font = UIFont(lang: lang)
+            cell.font = UIFont.lang(lang)
             cell.attributedText = model.getContent(at: bookPos[indexPath.row]) as? NSAttributedString
             cell.cellFrame = getFullScreenFrame()
             cell.delegate = self

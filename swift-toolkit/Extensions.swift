@@ -309,17 +309,23 @@ public extension String {
 }
 
 public extension UIFont {
-    convenience init(lang: String, fontSize: Int? = nil) {
+    static func lang(_ lang: String, fontSize: Int? = nil, isBold: Bool? = false) -> UIFont {
         let fontSize = fontSize ?? AppGroup.prefs.integer(forKey: "fontSize")
 
         if lang == "cn" || lang == "hk" {
-            self.init(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
+            return UIFont(name: "STHeitiSC-Light", size: CGFloat(fontSize))!
             
         } else if lang == "cs" {
-            self.init(name: "PonomarUnicode", size: CGFloat(fontSize+3))!
+            return UIFont(name: "PonomarUnicode", size: CGFloat(fontSize+3))!
             
         } else {
-            self.init(name: "HelveticaNeue", size: CGFloat(fontSize))!
+            if isBold ?? false {
+                return UIFont.boldSystemFont(ofSize: CGFloat(fontSize))
+
+            } else {
+                return UIFont(name: "HelveticaNeue", size: CGFloat(fontSize))!
+            }
+            
            // self.init(name: "TimesNewRomanPSMT", size: CGFloat(fontSize))!
         }
         

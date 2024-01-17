@@ -94,7 +94,12 @@ public extension ResizableTableViewCells where Self: UIViewController {
         return newCell
     }
     
-    func getTextDetailsCell(title: String, subtitle: String = "", lang: String = "en", flipped: Bool = false, isChecked: Bool = false) -> TextDetailsCell {
+    func getTextDetailsCell(title: String, 
+                            subtitle: String = "",
+                            lang: String = "en",
+                            flipped: Bool = false,
+                            isChecked: Bool = false,
+                            isBold: Bool = false) -> TextDetailsCell {
         let newCell:TextDetailsCell = tableView.dequeueReusableCell()
         
         newCell.flipped = flipped
@@ -109,8 +114,8 @@ public extension ResizableTableViewCells where Self: UIViewController {
         
         let fontSize = (UIDevice.current.userInterfaceIdiom == .phone) ? 20 : 22
         
-        newCell.title.font = UIFont(lang: lang, fontSize: fontSize)
-        newCell.subtitle.font = UIFont(lang: lang, fontSize: fontSize-3)
+        newCell.title.font = UIFont.lang(lang, fontSize: fontSize, isBold: isBold)
+        newCell.subtitle.font = UIFont.lang(lang, fontSize: fontSize-3)
         
         newCell.title.text = title
         newCell.subtitle.text = subtitle

@@ -9,12 +9,16 @@
 import UIKit
 import SQLite
 
-fileprivate let t_scripture = Table("scripture")
+public enum BibleLang: Int {
+    case slavonic=0, russian
+}
 
 struct BibleVerse {
     var verse : Int
     var text: String
 }
+
+fileprivate let t_scripture = Table("scripture")
 
 public class BibleUtils {
     public static let f_chapter = Expression<Int>("chapter")

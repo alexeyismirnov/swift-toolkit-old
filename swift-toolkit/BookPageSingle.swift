@@ -18,15 +18,13 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
     var bookPos : BookPosition
         
     var button_fontsize, button_close : CustomBarButton!
-    var button_extra : CustomBarButton?
     
-    public init?(_ pos: BookPosition, lang: String = Translate.language, button_extra : CustomBarButton? = nil) {
+    public init?(_ pos: BookPosition, lang: String = Translate.language) {
         guard let model = pos.model else { return nil }
         
         self.lang = lang
         self.model = model
         self.bookPos = pos
-        self.button_extra = button_extra
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -71,16 +69,8 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
         
         button_fontsize = CustomBarButton(image: UIImage(named: "fontsize", in: toolkit)!
             , target: self, btnHandler: #selector(showFontSizeDialog))
-                
-        var rightButtons = [UIBarButtonItem]()
-        
-        rightButtons.append(button_fontsize)
-        
-        if let button_extra = button_extra {
-            rightButtons.append(button_extra)
-        }
-        
-        navigationItem.rightBarButtonItems = rightButtons
+                        
+        navigationItem.rightBarButtonItems = [button_fontsize]
         navigationItem.leftBarButtonItems = [button_close]
     }
     
@@ -140,7 +130,7 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
         } else {
             let cell: BookPageCellText = collectionView.dequeueReusableCell(for: indexPath)
            
-            cell.font = UIFont(lang: lang)
+            cell.font = UIFont.lang(lang)
             cell.attributedText = model.getContent(at: bookPos) as? NSAttributedString
             cell.cellFrame = getFullScreenFrame()
             cell.delegate = self

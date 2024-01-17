@@ -34,7 +34,7 @@ public struct Theme {
         case .Light:
             mainColor = UIColor.init(hex: "#edf1f2")
             textColor = UIColor.init(hex: "#000000")
-            secondaryColor = UIColor.init(hex: "#262626")
+            secondaryColor = UIColor.init(hex: "#804000")
             
             UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
 

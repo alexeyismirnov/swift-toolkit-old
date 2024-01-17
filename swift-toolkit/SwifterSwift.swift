@@ -36,7 +36,7 @@ public extension NSAttributedString {
     }
     
     func csFont(ofSize: CGFloat) -> NSAttributedString {
-        return applying(attributes: [.font: UIFont(lang: "cs")])
+        return applying(attributes: [.font: UIFont.lang("cs")])
     }
     
     func boldFont(ofSize: CGFloat) -> NSAttributedString {
