@@ -189,7 +189,7 @@ public class ChurchInfo: UITableViewController {
     }
     
     func updateButtonStyle(_ button: UIButton!) {
-        button.backgroundColor = .flatWhite()
+        button.backgroundColor = .white
         button.layer.borderColor = UIColor.gray.cgColor
         button.setTitleColor(.black, for: .normal)
     }

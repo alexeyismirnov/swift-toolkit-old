@@ -23,7 +23,7 @@ public class RWLabel : UILabel {
     }
 }
 
-public protocol ReusableView: class {
+public protocol ReusableView: AnyObject {
     static var defaultReuseIdentifier: String { get }
 }
 
@@ -94,12 +94,15 @@ public extension ResizableTableViewCells where Self: UIViewController {
         return newCell
     }
     
-    func getTextDetailsCell(title: String, subtitle: String, lang: String = "en", flipped: Bool = false) -> TextDetailsCell {
+    func getTextDetailsCell(title: String, subtitle: String = "", lang: String = "en", flipped: Bool = false, isChecked: Bool = false) -> TextDetailsCell {
         let newCell:TextDetailsCell = tableView.dequeueReusableCell()
         
         newCell.flipped = flipped
+        newCell.isChecked = isChecked
+
         newCell.accessoryType = .none
         newCell.backgroundColor = .clear
+        newCell.selectionStyle = .none
         
         newCell.title.textColor = Theme.textColor
         newCell.subtitle.textColor = Theme.secondaryColor

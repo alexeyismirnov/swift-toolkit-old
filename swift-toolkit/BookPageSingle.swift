@@ -82,7 +82,6 @@ public class BookPageSingle: UIViewController, BookPageDelegate, UICollectionVie
         
         navigationItem.rightBarButtonItems = rightButtons
         navigationItem.leftBarButtonItems = [button_close]
-       
     }
     
     @objc func close() {

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8A04B2DD2B46AB6100B5A66F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8A04B2DC2B46AB6100B5A66F /* SQLite */; };
-		8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */; };
 		8A0EA8E0234B3F2D0029CFB4 /* today.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A0EA8DE234B3F2D0029CFB4 /* today.pdf */; };
 		8A0EA8E1234B3F2D0029CFB4 /* help.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8A0EA8DF234B3F2D0029CFB4 /* help.pdf */; };
 		8A0EA8E3234B404E0029CFB4 /* FastingLegendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EA8E2234B404E0029CFB4 /* FastingLegendTableView.swift */; };
@@ -123,7 +122,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		8A0EA8DE234B3F2D0029CFB4 /* today.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = today.pdf; sourceTree = "<group>"; };
 		8A0EA8DF234B3F2D0029CFB4 /* help.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = help.pdf; sourceTree = "<group>"; };
 		8A0EA8E2234B404E0029CFB4 /* FastingLegendTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastingLegendTableView.swift; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 				8AA660D722EEA1AE0021D996 /* Translate.swift */,
 				8A5F0BEA1F8732650059194A /* Extensions.swift */,
 				8A55458621A122E8003C60BC /* SwifterSwift.swift */,
-				8A054C7A1FFA1ADE00A50CB4 /* Palette.swift */,
 				8A12C92123507D1B00F16694 /* FeastList.swift */,
 				8A12C92223507D1B00F16694 /* FeastNotifications.swift */,
 				8AB18EEE1F86360300F1A65C /* swift_toolkit.h */,
@@ -653,7 +650,6 @@
 				8A1238091F8F3C8900F6B382 /* Animation.swift in Sources */,
 				8A12380B1F8F3CB900F6B382 /* TabBarAnimated.swift in Sources */,
 				8AA660DB22EEA1AE0021D996 /* Translate.swift in Sources */,
-				8A054C7B1FFA1ADE00A50CB4 /* Palette.swift in Sources */,
 				8A35609F27B3BC220096902C /* ChurchFasting.swift in Sources */,
 				8AC675421FED06A900A9000C /* Theme.swift in Sources */,
 				8A4D008926A6D6E400E355B2 /* BookPageCells.swift in Sources */,

@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import Chameleon
 
-public enum AppTheme {
-    case Default
-    case Chameleon(color: UIColor)
+public extension Notification.Name {
+    static let themeChangedNotification = Notification.Name("THEME_CHANGED")
 }
 
 public enum AppStyle: Int {
@@ -24,35 +22,28 @@ public struct Theme {
     public static var secondaryColor : UIColor!
     public static let defaultFontSize = CGFloat(UIDevice.current.userInterfaceIdiom == .phone ? 16.0 : 18.0)
     
-    public static func set(_ t: AppTheme) {
-        switch t {
+    public static func set(_ s: AppStyle) {
+        switch s {
         case .Default:
             mainColor = nil
             textColor = UIColor.black
             secondaryColor = UIColor.init(hex: "#804000")
             
-            UINavigationBar.appearance().barTintColor = UIColor(red: 255/255.0, green: 233/255.0, blue: 210/255.0, alpha: 1.0)
-            UINavigationBar.appearance().tintColor = .blue
             UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
-            
-            UIBarButtonItem.appearance().tintColor = .blue
-            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .blue
-            UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .blue
-            
-            UITabBar.appearance().barTintColor = UIColor(red: 255/255.0, green: 233/255.0, blue: 210/255.0, alpha: 1.0)
-            UITabBar.appearance().tintColor = UIColor.red
 
-        case .Chameleon(let color):
-            mainColor = color
-            textColor = ContrastColorOf(mainColor!, returnFlat: false)
-            secondaryColor = textColor?.flatten()
+        case .Light:
+            mainColor = UIColor.init(hex: "#edf1f2")
+            textColor = UIColor.init(hex: "#000000")
+            secondaryColor = UIColor.init(hex: "#262626")
             
-            Chameleon.setGlobalThemeUsingPrimaryColor(mainColor, withSecondaryColor: secondaryColor, andContentStyle: .contrast)
-            UITabBar.appearance().tintColor = secondaryColor
-            
-            UITabBar.appearance().barTintColor = UIColor(red: 255/255.0, green: 233/255.0, blue: 210/255.0, alpha: 1.0)
-            UITabBar.appearance().tintColor = UIColor.red
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
 
+        case .Dark:
+            mainColor = UIColor.init(hex: "#2b2b2b")
+            textColor = UIColor.init(hex: "#ffffff")
+            secondaryColor = UIColor.init(hex: "#edf1f2")
+            
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         }
     }
     
