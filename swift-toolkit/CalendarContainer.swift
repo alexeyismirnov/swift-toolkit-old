@@ -174,10 +174,10 @@ public class CalendarContainer: UIViewController, UICollectionViewDataSource, UI
         var dayLabel = [String]()
         
         if standalone {
-            dayLabel = formatter.veryShortStandaloneWeekdaySymbols as [String]
+            dayLabel = formatter.veryShortStandaloneWeekdaySymbols!
             
         } else {
-            dayLabel = formatter.veryShortWeekdaySymbols as [String]
+            dayLabel = formatter.veryShortWeekdaySymbols!
         }
         
         for index in cal.firstWeekday...7 {

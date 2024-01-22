@@ -95,8 +95,8 @@ open class FeastNotifications {
                     for item in notifications {
                         let trigger = item.trigger as! UNCalendarNotificationTrigger
                         
-                        print(trigger.nextTriggerDate())
-                        print(item.content)
+                        // print(trigger.nextTriggerDate())
+                        // print(item.content)
                     }
                 }
                 

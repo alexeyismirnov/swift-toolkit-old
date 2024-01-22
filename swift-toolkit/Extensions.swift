@@ -606,11 +606,12 @@ public extension UIViewController {
     
     }
     
-    func showPopup(_ vc: UIViewController, onClose handler: @escaping (PopupController) -> Void = {_ in }) {
+    func showPopup(_ vc: UIViewController, dismissWhenTaps: Bool = true, onClose handler: @escaping (PopupController) -> Void = {_ in }) {
         UIViewController.popup = PopupController
             .create(self.navigationController!)
             .customize(
                 [
+                    .dismissWhenTaps(dismissWhenTaps),
                     .animation(.fadeIn),
                     .layout(.center),
                     .backgroundStyle(.blackFilter(alpha: 0.7))
